@@ -1355,7 +1355,7 @@ vertu duquel, moyennant le paiement d'une ou de plusieurs primes,
 fixe(s) ou variable(s), l'assureur s'engage envers le preneur à fournir une
 prestation stipulée dans le contrat au cas où surviendrait un événement
 incertain, dépendant exclusivement de la durée de la vie humaine, que,
-selon le cas, l'assuré ou le bénéficiaire a intérêt à ne pas voir se réali-
+selon le cas, l'assuré ou le bénéficiaire a intérêt à ne pas voir se réaliser
 Dans l'assurance en cas de décès, l'événement incertain redouté est le
 décès de la tête assurée et il est craint par le bénéficiaire.
 Dans une assurance en cas de vie, cet événement réside, non pas
