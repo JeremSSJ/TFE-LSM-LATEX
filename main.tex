@@ -1027,20 +1027,24 @@ marché \cite{directive97_9_ce}.
 
 \subsection{Présentation générale de l'approche}
 
-L'objectif central de ce travail est de déterminer dans quelle mesure et dans
-quelles conditions les produits d'assurance-vie de la branche~23 bénéficiant
-d'un avantage fiscal --- épargne-pension (EP) et épargne à long terme (ELT) ---
-sont financièrement plus avantageux qu'un investissement équivalent via un
-compte-titres en Belgique.
+La méthodologie repose sur une simulation déterministe et systématique. Pour
+chaque combinaison possible d'âge de début et de taux de rendement, les deux
+instruments sont simulés sur la même durée, soit jusqu'à l'âge de 65~ans,
+correspondant à l'âge légal de la pension en Belgique \hl{pas tout à fait ça}. Bien que l'épargne à
+long terme puisse théoriquement s'étendre au-delà de cet âge, l'horizon de
+65~ans est retenu uniformément pour l'ensemble des instruments --- y compris
+le compte-titres --- afin de garantir une comparaison homogène. 
 
 \bigskip
-La méthodologie repose sur une simulation déterministe et systématique. Pour
-chaque combinaison possible (âge de début~$\times$~taux de rendement), les deux
-instruments sont simulés sur la même durée, avec le même versement annuel, et
-leur résultat net respectif est exprimé en valeur actuelle nette (VAN). Cette
-comparaison est répétée sur l'ensemble d'une plage de versements annuels, ce qui
-permet de quantifier non seulement quel instrument domine, mais à partir de quel
-niveau de versement et dans quelle proportion.
+Les simulations
+sont réalisées avec le même versement annuel, et le résultat net de chaque
+instrument est exprimé en valeur nette (VA). Cette comparaison est répétée sur
+l'ensemble d'une plage de versements annuels allant de 1~€ jusqu'au plafond
+légal de déductibilité fiscale propre à chaque produit~; à chaque niveau de
+versement, la simulation du compte-titres est appariée à celle de l'EP ou de
+l'ELT correspondante, le même montant étant investi dans les deux instruments.
+Cela permet de quantifier non seulement quel instrument domine, mais à partir
+de quel niveau de versement et dans quelle proportion.
 
 \bigskip
 L'espace d'exploration est le suivant~:
@@ -1054,7 +1058,7 @@ L'espace d'exploration est le suivant~:
 \end{itemize}
 
 \bigskip
-Cela représente $38 \times 8 = 304$ lignes par fichier CSV, soit
+Cela représente $38 \times 8 = 304$ cas explorés par scénario, soit
 1\,216~simulations de plages au total. Chaque simulation de plage compare les
 deux instruments pour chaque versement entier de la plage, soit entre 1\,350 et
 2\,450~simulations par ligne.
@@ -1086,53 +1090,65 @@ l'investissement est donc~:
 \]
 
 Les versements sont supposés constants d'année en année (annuités constantes) et
-effectués en début d'année. Pour la branche~23, si l'investisseur souscrit après
-55~ans, la règle des dix ans minimum avant la taxe anticipative s'applique et
-décale l'année de prélèvement de la taxe.
+effectués le 31~décembre de chaque année, date conventionnelle correspondant à
+l'anniversaire de l'investisseur dans le modèle.
 
-\subsection{Le critère de comparaison~: la valeur actuelle nette}
+Les profils débutant après 55~ans ne sont pas simulés. En effet, pour un
+contrat de branche~23 souscrit après cet âge, la taxe anticipative n'est
+pas prélevée à 60~ans comme dans le cas général, mais dix ans après la
+souscription du contrat~; de même, le retrait du capital est conditionné
+à une durée minimale de dix ans, ce qui décale également l'horizon de
+sortie. Retenir de tels profils romprait l'homogénéité de la comparaison
+en ne permettant plus d'aligner la date du prélèvement et celle du retrait
+sur l'horizon de retraite commun aux deux instruments.
 
-La comparaison entre les deux instruments repose exclusivement sur leur VAN
-totale, définie comme la somme actualisée de tous les flux nets de
-l'investisseur. Le taux d'actualisation retenu est le taux OLO (Obligations
-Linéaires) à 10~ans, fixé à 3\,\%, représentant le coût d'opportunité sans
-risque de l'investisseur.
+\subsection{Le critère de comparaison~: la valeur actuelle}
 
-\subsubsection{VAN d'un instrument de la branche~23}
+La comparaison entre les deux instruments repose exclusivement sur leur VA
+totale, \hl{définie comme la somme actualisée de tous les flux de
+l'investisseur}. Le taux d'actualisation retenu est le taux OLO (Obligations Linéaires) à
+10~ans, fixé à 3\,\%. Ce choix n'est pas nécessairement le plus pertinent
+pour refléter le rendement réel atteignable sur les marchés financiers~;
+son intérêt réside ailleurs~: disposer d'un taux commun permettant
+d'actualiser sur le même pied les flux de nature différente --- rendement
+des actifs financiers, économies fiscales et coûts --- sans prétendre
+mesurer avec certitude le capital effectivement obtenable dans la réalité.
 
-La VAN branche~23 se décompose en deux composantes~:
+\subsubsection{VA d'un instrument de la branche~23}
+
+La VA branche~23 se décompose en deux composantes~:
 
 \[
-  \text{VAN}_{\text{B23}} = \text{VAN}_{\text{capital}} + \text{VAN}_{\text{économies fiscales}}
+  \text{VA}_{\text{B23}} = \text{VA}_{\text{capital}} + \text{VA}_{\text{économies fiscales}}
 \]
 
 La composante capital représente la valeur actuelle du capital net accumulé à
 l'échéance (après déduction de la taxe anticipative), actualisée sur toute la
 durée~:
 \[
-  \text{VAN}_{\text{capital}} = \frac{\text{CapitalFinalNet}}{(1 + r_{\text{OLO}})^{\text{durée}}}
+  \text{VA}_{\text{capital}} = \frac{\text{CapitalFinalNet}}{(1 + r_{\text{OLO}})^{\text{durée-1}}}
 \]
 
 La composante économies fiscales représente la somme actualisée des réductions
-d'impôt annuelles. Chaque économie perçue à l'année~$t$ est actualisée au
+d'impôt annuelles. Chaque économie d'une année~$t$ est actualisée au
 facteur $(1 + r_{\text{OLO}})^{t+1}$, car elle est remboursée l'année suivante
 via la déclaration fiscale~:
 \[
-  \text{VAN}_{\text{éco}} = \sum_{t=0}^{N-1} \frac{\text{EconomieFiscale}(t)}{(1 + r_{\text{OLO}})^{t+1}}
+  \text{VA}_{\text{éco}} = \sum_{t=0}^\text{durée-1} \frac{\text{EconomieFiscale}(t)}{(1 + r_{\text{OLO}})^{t+1}}
 \]
 
-\subsubsection{VAN du compte-titres}
+\subsubsection{VA du compte-titres}
 
-La VAN du CT intègre le capital net et les coûts récurrents~:
+La VA du CT intègre le capital net et les coûts récurrents~:
 
 \[
-  \text{VAN}_{\text{CT}} = \text{VAN}_{\text{capital net}} - \text{VAN}_{\text{TOB}} - \text{VAN}_{\text{frais par versement}}
+  \text{VA}_{\text{CT}} = \text{VA}_{\text{capital net}} - \text{VA}_{\text{TOB}} - \text{VA}_{\text{frais par versement}}
 \]
 
 La TOB et les frais de courtage sont actualisés comme des rentes annuelles sur
 toute la durée~:
 \[
-  \text{VAN}_{\text{TOB}} = \sum_{t=0}^{N} \frac{v \times \tau_{\text{TOB}}}{(1 + r_{\text{OLO}})^{t}}
+  \text{VAN}_{\text{TOB}} = \sum_{t=0}^\text{durée} \frac{v \times \tau_{\text{TOB}}}{(1 + r_{\text{OLO}})^{t}}
 \]
 
 \subsubsection{Comparaison et notion de dominance}
@@ -1169,6 +1185,18 @@ déduction fiscale appliquée à la branche~23 (EP ou ELT) et le régime fiscal
 appliqué au compte-titres (sans ou avec taxe sur les plus-values).
 
 \bigskip
+\noindent\textbf{Ancrage temporel des scénarios.} Les scénarios \emph{sans} taxe
+sur les plus-values (scénarios~1 et~3) correspondent au régime fiscal en vigueur
+\emph{jusqu'au 31~décembre~2025}, période durant laquelle les plus-values
+réalisées sur un compte-titres n'étaient pas imposées en Belgique. Les scénarios
+\emph{avec} taxe sur les plus-values (scénarios~2 et~4) correspondent au nouveau
+régime en vigueur \emph{depuis le 1\textsuperscript{er}~janvier~2026}, date
+d'entrée en application de la taxe de 10\,\% sur les plus-values mobilières
+introduite par la loi-programme du 22~décembre~2025. Cette structuration permet
+ainsi de mesurer l'impact de la réforme sur la compétitivité relative des
+véhicules d'épargne à long terme.
+
+\bigskip
 \begin{table}[h!]
   \centering
   \caption{Les quatre scénarios de comparaison}
@@ -1187,6 +1215,8 @@ appliqué au compte-titres (sans ou avec taxe sur les plus-values).
     \hline
   \end{tabular}
 \end{table}
+
+\hl{ce qui suit n est pas peut être pas pour ici}
 
 \bigskip
 Le \textbf{scénario~1} représente le cas le plus défavorable pour la branche~23~:
