@@ -7,6 +7,8 @@
 \usepackage[T1]{fontenc}
 \usepackage[french]{babel}
 \usepackage{mathptmx} % Times New Roman
+\usepackage{amsmath}
+\usepackage{enumitem}
 \usepackage{setspace}
 \usepackage{fancyhdr}
 \usepackage{titlesec}
@@ -30,6 +32,10 @@
 
 % Interligne 1.5
 \onehalfspacing
+
+% Correction headheight pour fancyhdr
+\setlength{\headheight}{14.5pt}
+\addtolength{\topmargin}{-2.5pt}
 
 % Configuration de l'en-tête et pagination
 \pagestyle{fancy}
@@ -541,6 +547,7 @@ de fait \cite[art.~145\textsuperscript{9}]{cir92_2025}.
 
 \subsubsection{Avantages fiscaux à l'entrée : la réduction
 d'impôt}
+\label{sub:avantages_ep}
 
 Les versements effectués dans le cadre de l'épargne-pension
 ouvrent droit à une réduction d'impôt selon un barème à
