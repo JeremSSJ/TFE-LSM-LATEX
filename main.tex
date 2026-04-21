@@ -1013,6 +1013,394 @@ non les pertes de valeur résultant des fluctuations de
 marché \cite{directive97_9_ce}.
 
 \newpage
+
+%==========================================================================
+\section{Méthodologie de comparaison des véhicules d'investissement}
+%==========================================================================
+
+\subsection{Présentation générale de l'approche}
+
+L'objectif central de ce travail est de déterminer dans quelle mesure et dans
+quelles conditions les produits d'assurance-vie de la branche~23 bénéficiant
+d'un avantage fiscal --- épargne-pension (EP) et épargne à long terme (ELT) ---
+sont financièrement plus avantageux qu'un investissement équivalent via un
+compte-titres en Belgique.
+
+\bigskip
+La méthodologie repose sur une simulation déterministe et systématique. Pour
+chaque combinaison possible (âge de début~$\times$~taux de rendement), les deux
+instruments sont simulés sur la même durée, avec le même versement annuel, et
+leur résultat net respectif est exprimé en valeur actuelle nette (VAN). Cette
+comparaison est répétée sur l'ensemble d'une plage de versements annuels, ce qui
+permet de quantifier non seulement quel instrument domine, mais à partir de quel
+niveau de versement et dans quelle proportion.
+
+\bigskip
+L'espace d'exploration est le suivant~:
+\begin{itemize}
+  \item 38~profils d'âge (de 18~$\to$~65~ans jusqu'à 55~$\to$~65~ans, par pas
+    d'un an)~;
+  \item 8~niveaux de rendement annuel brut (de 3\,\% à 10\,\%, par pas de 1\,\%)~;
+  \item Plages de versements~: de 1~€ à 1\,350~€/an pour l'EP et de 1~€ à
+    2\,450~€/an pour l'ELT~;
+  \item Quatre configurations fiscales (quatre scénarios).
+\end{itemize}
+
+\bigskip
+Cela représente $38 \times 8 = 304$ lignes par fichier CSV, soit
+1\,216~simulations de plages au total. Chaque simulation de plage compare les
+deux instruments pour chaque versement entier de la plage, soit entre 1\,350 et
+2\,450~simulations par ligne.
+
+\subsection{Les véhicules d'investissement analysés}
+
+Trois véhicules sont modélisés et combinés en quatre scénarios~:
+
+\begin{description}
+  \item[Épargne Pension --- Branche~23 (EP B23).] Produit d'assurance-vie en
+    unités de compte bénéficiant de la réduction fiscale pour épargne-pension
+    \cite[art.~145\textsuperscript{1}]{cir92_2025}.
+  \item[Épargne Long Terme --- Branche~23 (ELT B23).] Produit d'assurance-vie en
+    unités de compte bénéficiant de la réduction fiscale pour épargne à long terme
+    \cite[art.~145\textsuperscript{3}]{cir92_2025}.
+  \item[Compte-Titres (CT).] Portefeuille d'actions ou d'ETF géré via un
+    courtier, sans avantage fiscal à l'entrée mais sans taxe anticipative. Deux
+    variantes sont modélisées~: sans taxe sur les plus-values (taux PV~$= 0\,\%$)
+    et avec taxe sur les plus-values de 10\,\%.
+\end{description}
+
+\subsection{Le profil investisseur}
+
+Un profil investisseur est défini par son âge de début des versements (variable,
+de 18 à 55~ans) et son horizon de retraite (fixé à 65~ans). La durée de
+l'investissement est donc~:
+\[
+  \text{durée} = \text{âge de fin} - \text{âge de début}
+\]
+
+Les versements sont supposés constants d'année en année (annuités constantes) et
+effectués en début d'année. Pour la branche~23, si l'investisseur souscrit après
+55~ans, la règle des dix ans minimum avant la taxe anticipative s'applique et
+décale l'année de prélèvement de la taxe.
+
+\subsection{Le critère de comparaison~: la valeur actuelle nette}
+
+La comparaison entre les deux instruments repose exclusivement sur leur VAN
+totale, définie comme la somme actualisée de tous les flux nets de
+l'investisseur. Le taux d'actualisation retenu est le taux OLO (Obligations
+Linéaires) à 10~ans, fixé à 3\,\%, représentant le coût d'opportunité sans
+risque de l'investisseur.
+
+\subsubsection{VAN d'un instrument de la branche~23}
+
+La VAN branche~23 se décompose en deux composantes~:
+
+\[
+  \text{VAN}_{\text{B23}} = \text{VAN}_{\text{capital}} + \text{VAN}_{\text{économies fiscales}}
+\]
+
+La composante capital représente la valeur actuelle du capital net accumulé à
+l'échéance (après déduction de la taxe anticipative), actualisée sur toute la
+durée~:
+\[
+  \text{VAN}_{\text{capital}} = \frac{\text{CapitalFinalNet}}{(1 + r_{\text{OLO}})^{\text{durée}}}
+\]
+
+La composante économies fiscales représente la somme actualisée des réductions
+d'impôt annuelles. Chaque économie perçue à l'année~$t$ est actualisée au
+facteur $(1 + r_{\text{OLO}})^{t+1}$, car elle est remboursée l'année suivante
+via la déclaration fiscale~:
+\[
+  \text{VAN}_{\text{éco}} = \sum_{t=0}^{N-1} \frac{\text{EconomieFiscale}(t)}{(1 + r_{\text{OLO}})^{t+1}}
+\]
+
+\subsubsection{VAN du compte-titres}
+
+La VAN du CT intègre le capital net et les coûts récurrents~:
+
+\[
+  \text{VAN}_{\text{CT}} = \text{VAN}_{\text{capital net}} - \text{VAN}_{\text{TOB}} - \text{VAN}_{\text{frais par versement}}
+\]
+
+La TOB et les frais de courtage sont actualisés comme des rentes annuelles sur
+toute la durée~:
+\[
+  \text{VAN}_{\text{TOB}} = \sum_{t=0}^{N} \frac{v \times \tau_{\text{TOB}}}{(1 + r_{\text{OLO}})^{t}}
+\]
+
+\subsubsection{Comparaison et notion de dominance}
+
+Pour chaque versement annuel $v$ de la plage testée, on calcule la différence~:
+
+\[
+  \Delta(v) = \text{VAN}_{\text{B23}}(v) - \text{VAN}_{\text{CT}}(v)
+\]
+
+Si $\Delta(v) > 0$, la branche~23 est plus avantageuse~; si $\Delta(v) < 0$, le
+compte-titres est plus avantageux~; si $|\Delta(v)| < 1$~€, les deux instruments
+sont en situation d'ex~æquo.
+
+\bigskip
+Pour chaque combinaison (âge de début, rendement), les indicateurs de dominance
+suivants sont calculés sur l'ensemble de la plage~:
+\begin{itemize}
+  \item \textbf{Taux de dominance B23} (\%) = proportion des versements pour
+    lesquels $\text{VAN}_{\text{B23}} > \text{VAN}_{\text{CT}}$~;
+  \item \textbf{Taux de dominance CT} (\%) = proportion des versements pour
+    lesquels $\text{VAN}_{\text{CT}} > \text{VAN}_{\text{B23}}$~;
+  \item \textbf{Taux d'égalité} (\%) = proportion des versements en situation
+    d'ex~æquo.
+\end{itemize}
+
+L'instrument présentant le taux de dominance le plus élevé est désigné dominant
+global pour cette combinaison.
+
+\subsection{Description des quatre scénarios}
+
+Les quatre scénarios résultent du croisement de deux dimensions~: le type de
+déduction fiscale appliquée à la branche~23 (EP ou ELT) et le régime fiscal
+appliqué au compte-titres (sans ou avec taxe sur les plus-values).
+
+\bigskip
+\begin{table}[h!]
+  \centering
+  \caption{Les quatre scénarios de comparaison}
+  \label{tab:scenarii}
+  \begin{tabular}{|c|l|l|}
+    \hline
+    \textbf{N°} & \textbf{Véhicule A (Branche~23)} & \textbf{Véhicule B (Compte-Titres)} \\
+    \hline
+    1 & Épargne Pension (EP) B23 & CT sans taxe sur les PV (0\,\%) \\
+    \hline
+    2 & Épargne Pension (EP) B23 & CT avec taxe sur les PV (10\,\%) \\
+    \hline
+    3 & Épargne Long Terme (ELT) B23 & CT sans taxe sur les PV (0\,\%) \\
+    \hline
+    4 & Épargne Long Terme (ELT) B23 & CT avec taxe sur les PV (10\,\%) \\
+    \hline
+  \end{tabular}
+\end{table}
+
+\bigskip
+Le \textbf{scénario~1} représente le cas le plus défavorable pour la branche~23~:
+le CT n'est soumis à aucune taxe sur les plus-values, de sorte que la branche~23
+EP doit compenser intégralement sa taxe anticipative de 8\,\% par ses seules
+économies fiscales à l'entrée. Il constitue le test de robustesse de la déduction
+EP.
+
+\bigskip
+Le \textbf{scénario~2} introduit une pénalité fiscale à la sortie pour le CT.
+La taxe de 10\,\% sur les plus-values dépassant le montant exonéré améliore
+relativement la position de la branche~23 EP.
+
+\bigskip
+Le \textbf{scénario~3} teste la compétitivité de l'ELT face à un CT non taxé à
+la sortie. L'ELT supporte une taxe d'assurance de 2\,\% sur chaque prime ainsi
+qu'une taxe anticipative de 10\,\% (contre 8\,\% pour l'EP), mais bénéficie d'un
+plafond de déduction plus élevé (2\,450~€ contre 1\,350~€) et d'un taux de
+réduction unique de 30\,\%.
+
+\bigskip
+Le \textbf{scénario~4} est le plus favorable à la branche~23 ELT~: le CT subit
+une taxe PV de 10\,\% à la sortie, réduisant son avantage lié à l'absence de taxe
+anticipative.
+
+\subsection{Paramètres communs à tous les scénarios}
+
+\begin{table}[h!]
+  \centering
+  \caption{Paramètres communs à tous les scénarios}
+  \label{tab:params_communs}
+  \begin{tabular}{ll}
+    \hline
+    \textbf{Paramètre} & \textbf{Valeur} \\
+    \hline
+    Âge de fin de l'horizon & 65~ans \\
+    Âge de début (plage simulée) & 18 à 55~ans (pas de 1~an) \\
+    Taux OLO (actualisation) & 3\,\% \\
+    Rendement annuel brut (plage) & 3\,\% à 10\,\% (pas de 1\,\%) \\
+    Frais par versement / prime & 2\,\% (CT et B23) \\
+    Frais de gestion annuels & 0\,\% (les deux véhicules) \\
+    Exonération PV de base (CT) & 10\,000~€ \\
+    Exonération PV annuelle (CT) & 1\,000~€ par année de contrat \\
+    Durée maximale de cumul de l'exonération & 5~ans (exonération max. 15\,000~€) \\
+    \hline
+  \end{tabular}
+\end{table}
+
+\bigskip
+Les frais de gestion sont fixés à 0\,\% afin d'isoler l'effet fiscal pur. En
+pratique, les fonds branche~23 ont des frais de gestion internes (TER) qui
+viendraient dégrader leur performance, mais ceux-ci ne sont pas l'objet de ce
+travail.
+
+\subsection{Modélisation du compte-titres}
+
+\subsubsection{Accumulation du capital}
+
+À chaque année~$t$ (avec $t = 0$ l'année du premier versement)~:
+\[
+  R_0 = v, \qquad
+  R_t = R_{t-1} \times (1 + r) \times (1 - f_g) + v
+\]
+où $v$ est le versement annuel, $r$ le rendement annuel brut et $f_g$ les frais
+de gestion annuels (fixés à 0\,\%). Les versements ne subissent aucune déduction
+à l'entrée.
+
+\subsubsection{Capital net à l'échéance}
+
+Le capital net tient compte de la taxe éventuelle sur les plus-values~:
+\begin{align*}
+  \text{plusValue} &= \max\!\left(0;\; R_N - \text{coûtDeBase}\right) \\
+  \text{coûtDeBase} &= \sum_{t=0}^{N} v \\
+  \text{exonération} &= 10\,000 + \min(\text{durée},\,5) \times 1\,000 \\
+  \text{plusValueTaxable} &= \max\!\left(0;\; \text{plusValue} - \text{exonération}\right) \\
+  \text{taxe PV} &= \text{plusValueTaxable} \times \tau_{\text{PV}} \\
+  \text{capitalNet} &= R_N - \text{taxe PV}
+\end{align*}
+
+Le prix de revient est calculé par la méthode du coût total, équivalente à la
+méthode FIFO lorsque toutes les parts sont cédées simultanément à l'échéance.
+
+\subsubsection{Coûts récurrents modélisés}
+
+Deux coûts récurrents sont intégrés dans la VAN via une rente annuelle
+actualisée~:
+\begin{itemize}
+  \item Taxe sur les opérations de bourse (TOB)~: 0,12\,\% par versement annuel~;
+  \item Frais de courtage~: 2,00\,\% par versement annuel.
+\end{itemize}
+
+\subsection{Modélisation de la branche~23 --- Épargne Pension}
+
+\subsubsection{Fiscalité et frais à l'entrée}
+
+L'épargne-pension n'est pas soumise à la taxe sur les opérations d'assurance
+(0\,\%). Des frais de chargement de 2\,\% sont prélevés sur chaque versement~:
+\[
+  v_{\text{net}} = v \times (1 - 2\,\%) = v \times 0{,}98
+\]
+
+La réduction fiscale annuelle suit le barème à deux paliers décrit à la
+section~\ref{sub:avantages_ep}~: 30\,\% pour un versement jusqu'à 1\,050~€ et
+25\,\% sur la totalité au-delà. Elle est applicable entre 18 et 64~ans inclus.
+
+\subsubsection{Accumulation et taxe anticipative}
+
+La capitalisation suit la même formule que pour le CT, sur la base du versement
+net. La taxe anticipative de 8\,\% est prélevée une seule fois sur la réserve
+constituée au moment du 60\textsuperscript{e} anniversaire (hors versement de
+cette année-là)~:
+\[
+  R_{\text{après taxe}} = R_{59} \times (1 + r) \times (1 - 8\,\%)
+\]
+
+Pour les souscriptions après 55~ans, le prélèvement est reporté au dixième
+anniversaire du contrat. La branche~23 ne supporte aucune taxe supplémentaire à
+l'échéance.
+
+\subsection{Modélisation de la branche~23 --- Épargne Long Terme}
+
+L'ELT reprend la même structure de simulation que l'EP, avec les différences
+récapitulées dans le tableau~\ref{tab:diff_ep_elt}.
+
+\begin{table}[h!]
+  \centering
+  \caption{Différences de paramètres entre EP et ELT Branche~23}
+  \label{tab:diff_ep_elt}
+  \begin{tabular}{lll}
+    \hline
+    \textbf{Paramètre} & \textbf{EP Branche~23} & \textbf{ELT Branche~23} \\
+    \hline
+    Taxe sur opérations d'assurance & 0\,\% & 2\,\% \\
+    Frais par prime & 2\,\% & 2\,\% \\
+    Taux de la taxe anticipative & 8\,\% & 10\,\% \\
+    Plafond de déduction & 1\,350~€/an & 2\,450~€/an \\
+    Taux de réduction fiscale & 30\,\% ($\leq$1\,050~€), 25\,\% ($\leq$1\,350~€) & 30\,\% (taux unique) \\
+    Plage de versements simulés & 1~€ $\to$ 1\,350~€ & 1~€ $\to$ 2\,450~€ \\
+    \hline
+  \end{tabular}
+\end{table}
+
+\bigskip
+Le versement net après application de la taxe TOA et des frais de chargement
+est~:
+\[
+  v_{\text{net}}^{\text{ELT}} = v \times (1 - 2\,\%) \times (1 - 2\,\%) = v \times 0{,}9604
+\]
+
+\subsection{Détection des points de croisement}
+
+Un point de croisement est le versement annuel~$v^*$ à partir duquel la
+hiérarchie entre les deux instruments s'inverse. On parcourt la série des
+différences $\Delta(v) = \text{VAN}_{\text{B23}}(v) - \text{VAN}_{\text{CT}}(v)$
+et l'on repère tout changement de signe entre deux versements consécutifs
+$v_i$ et $v_{i+1}$. Le croisement est localisé par interpolation linéaire~:
+\[
+  v^* = v_i - \Delta(v_i) \times \frac{v_{i+1} - v_i}{\Delta(v_{i+1}) - \Delta(v_i)}
+\]
+
+Une condition supplémentaire exige que l'un des deux instruments ait une VAN
+non nulle ($|\text{VAN}| > 10^{-6}$~€) afin d'éliminer les artefacts numériques
+en début de plage. L'absence de croisement signifie qu'un des instruments domine
+sur l'intégralité de la plage.
+
+\subsection{Représentation graphique~: heatmaps}
+
+Les résultats sont visualisés sous forme de heatmaps bidimensionnelles dont
+l'axe~X représente le rendement annuel brut (de 3\,\% à 10\,\%) et l'axe~Y
+l'âge de début des versements (de 18 à 55~ans). Chaque cellule indique
+l'instrument dominant global (bleu pour la branche~23, vert pour le CT, gris
+pour l'ex~æquo), dont l'intensité de couleur reflète la force de la dominance.
+Lorsqu'un point de croisement existe, le versement-seuil correspondant est
+annoté dans la cellule. Quatre heatmaps sont produites, une par scénario.
+
+\subsection{Limites et hypothèses de la méthodologie}
+
+La méthodologie repose sur plusieurs hypothèses simplificatrices~:
+
+\begin{enumerate}[label=\alph*)]
+  \item \textbf{Rendement constant.} Le taux de rendement annuel brut est supposé
+    constant sur toute la durée. En pratique, les marchés financiers sont
+    volatils~; cette hypothèse est nécessaire pour rendre la comparaison
+    déterministe et systématique.
+
+  \item \textbf{Versements constants.} Les versements annuels sont identiques
+    chaque année. L'inflation et l'évolution du revenu de l'investisseur ne sont
+    pas modélisés.
+
+  \item \textbf{Frais de gestion nuls.} Les frais de gestion annuels (TER des
+    fonds) sont fixés à 0\,\% pour les deux instruments. En pratique, les fonds
+    branche~23 ont des coûts internes plus élevés que les ETF passifs.
+
+  \item \textbf{Fiscalité figée.} La réglementation fiscale est celle en vigueur
+    au moment de la rédaction. Tout changement législatif futur n'est pas pris en
+    compte.
+
+  \item \textbf{Comparaison en VAN et non en capital brut.} Ce choix permet de
+    tenir compte du moment où les flux sont perçus (économies fiscales annuelles
+    versus capital à terme), mais il dépend du taux d'actualisation retenu (OLO
+    3\,\%).
+
+  \item \textbf{Absence de risque de contrepartie.} Les deux instruments sont
+    supposés sans risque de défaut ou de faillite de l'assureur ou du courtier.
+
+  \item \textbf{Horizon retraite fixe.} L'horizon est fixé à 65~ans pour tous les
+    profils. La possibilité de rachat anticipé ou de transfert de contrat n'est
+    pas modélisée.
+
+  \item \textbf{Méthode d'exonération PV simplifiée.} L'exonération des
+    plus-values pour le CT est calculée de manière forfaitaire (montant de base
+    plus cumul annuel plafonné), ce qui constitue une approximation du régime
+    réel.
+\end{enumerate}
+
+\newpage
+
+
+
+
+
 \bibliographystyle{apacite}
 \bibliography{references}
 
