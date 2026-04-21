@@ -1104,9 +1104,63 @@ sur l'horizon de retraite commun aux deux instruments.
 
 \subsection{Le critère de comparaison~: la valeur actuelle}
 
+La \textbf{valeur actuelle} (VA) est un concept fondamental de la finance qui
+permet d'exprimer en monnaie d'aujourd'hui des flux financiers survenant à des
+moments différents dans le temps. Elle repose sur le principe qu'un euro
+disponible aujourd'hui vaut davantage qu'un euro disponible dans le futur~:
+l'euro d'aujourd'hui peut en effet être investi et générer un rendement. En
+retournant cette logique, on \emph{actualise} un flux futur pour lui attribuer
+une valeur équivalente au moment présent.
+
+\bigskip
+La formule de la valeur actuelle d'un flux unique $C_t$ reçu à la date $t$ est~:
+\[
+  \text{VA}(C_t) = \frac{C_t}{(1 + r)^t}
+\]
+où $r$ est le taux d'actualisation annuel et $t$ le nombre d'années séparant
+aujourd'hui de la réception du flux. Le dénominateur $(1+r)^t$ est le
+\emph{facteur de capitalisation}~: plus l'horizon est lointain et plus le taux
+est élevé, plus la valeur actuelle est faible.
+
+\bigskip
+\textbf{Exemple.} Un investisseur recevra 1\,000~€ dans 10~ans. Avec un taux
+d'actualisation de 3\,\%, la valeur actuelle de ce flux est~:
+\[
+  \text{VA} = \frac{1\,000}{(1{,}03)^{10}} = \frac{1\,000}{1{,}3439} \approx 744\text{~€}
+\]
+Recevoir 1\,000~€ dans dix ans équivaut donc à disposer de 744~€ aujourd'hui.
+Symétriquement, 744~€ placés pendant dix ans à 3\,\% produisent exactement
+1\,000~€ à l'échéance.
+
+\bigskip
+Lorsque plusieurs flux sont distribués dans le temps (par exemple des économies
+fiscales annuelles et un capital versé en fin de contrat), on somme leurs
+valeurs actuelles respectives~:
+\[
+  \text{VA}_{\text{totale}} = \sum_{t=0}^{T} \frac{C_t}{(1 + r)^t}
+\]
+Cette grandeur synthétise l'ensemble des entrées et sorties de trésorerie d'un
+investissement en un seul chiffre comparable entre instruments.
+
+\bigskip
+L'intérêt de ce critère pour notre simulation est double. D'une part, les deux
+instruments génèrent des flux de nature et de calendrier différents~:
+l'assurance-vie branche~23 procure des économies fiscales annuelles (restituées
+l'année suivante via la déclaration d'impôt) et un capital net disponible à la
+retraite, tandis que le compte-titres engendre des coûts annuels (TOB, frais de
+courtage) et un capital final sur lequel s'applique éventuellement une taxe sur
+les plus-values. Ramener tous ces flux à leur valeur actuelle permet de les
+comparer sur un pied d'égalité, quelle que soit leur nature ou leur date
+d'occurrence. D'autre part, la VA neutralise l'effet de la durée~: un
+investisseur qui commence à 25~ans et un autre qui commence à 50~ans n'ont pas
+le même nombre d'années pour faire fructifier leur épargne~; la valeur actuelle
+reflète cette asymétrie temporelle et pénalise les flux plus tardifs à due
+proportion.
+
+\bigskip
 La comparaison entre les deux instruments repose exclusivement sur leur VA
-totale, \hl{définie comme la somme actualisée de tous les flux de
-l'investisseur}. Le taux d'actualisation retenu est le taux OLO (Obligations Linéaires) à
+totale, définie comme la somme actualisée de tous les flux de
+l'investisseur. Le taux d'actualisation retenu est le taux OLO (Obligations Linéaires) à
 10~ans, fixé à 3\,\%. Ce choix n'est pas nécessairement le plus pertinent
 pour refléter le rendement réel atteignable sur les marchés financiers~;
 son intérêt réside ailleurs~: disposer d'un taux commun permettant
