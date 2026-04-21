@@ -1104,23 +1104,37 @@ sur l'horizon de retraite commun aux deux instruments.
 
 \subsection{Le critère de comparaison~: la valeur actuelle}
 
-La \textbf{valeur actuelle} (VA) est un concept fondamental de la finance qui
-permet d'exprimer en monnaie d'aujourd'hui des flux financiers survenant à des
-moments différents dans le temps. Elle repose sur le principe qu'un euro
-disponible aujourd'hui vaut davantage qu'un euro disponible dans le futur~:
-l'euro d'aujourd'hui peut en effet être investi et générer un rendement. En
-retournant cette logique, on \emph{actualise} un flux futur pour lui attribuer
-une valeur équivalente au moment présent.
+\subsubsection*{La valeur temps de l'argent}
 
-\bigskip
-La formule de la valeur actuelle d'un flux unique $C_t$ reçu à la date $t$ est~:
-\[
-  \text{VA}(C_t) = \frac{C_t}{(1 + r)^t}
-\]
-où $r$ est le taux d'actualisation annuel et $t$ le nombre d'années séparant
-aujourd'hui de la réception du flux. Le dénominateur $(1+r)^t$ est le
-\emph{facteur de capitalisation}~: plus l'horizon est lointain et plus le taux
-est élevé, plus la valeur actuelle est faible.
+Évaluer et comparer deux investissements revient fondamentalement à comparer leurs
+coûts et leurs bénéfices. Lorsque ces flux s'étalent dans le temps, une difficulté
+surgit~: \emph{seuls des flux exprimés à une même date peuvent être comparés ou
+combinés}. Un euro disponible aujourd'hui n'est pas
+équivalent à un euro disponible dans dix ans~: la somme disponible aujourd'hui peut
+être investie et générer des intérêts. Pour comparer des flux de dates différentes, il
+faut donc les «~transposer dans le temps~», en appliquant deux opérations inverses~:
+\begin{itemize}
+  \item \textbf{La capitalisation} consiste à transposer un flux présent vers le
+    futur, en le multipliant par le facteur $(1 + r)^t$~. Si l'on place $C_0$ euros
+    aujourd'hui à un taux annuel $r$, la valeur acquise au bout de $t$ années
+    est~:
+    \[
+      C_t = C_0 \times (1 + r)^t
+    \]
+    La croissance est \emph{géométrique}~: les intérêts portent eux-mêmes intérêts,
+    phénomène connu sous le nom d'\emph{intérêts composés}. C'est précisément ce
+    mécanisme qui gouverne l'accumulation du capital dans notre simulation~: chaque
+    versement annuel est capitalisé à intérêts composés jusqu'à l'horizon de
+    retraite.
+  \item \textbf{L'actualisation} consiste à l'inverse à transposer un flux futur
+    vers le présent, en le divisant par ce même facteur~:
+    \[
+      \text{VA}(C_t) = \frac{C_t}{(1 + r)^t}
+    \]
+    où $r$ est le taux d'actualisation annuel et $t$ le nombre d'années séparant
+    aujourd'hui de la réception du flux. Plus l'horizon est lointain et plus le taux
+    est élevé, plus la valeur actuelle est faible.
+\end{itemize}
 
 \bigskip
 \textbf{Exemple.} Un investisseur recevra 1\,000~€ dans 10~ans. Avec un taux
@@ -1129,33 +1143,74 @@ d'actualisation de 3\,\%, la valeur actuelle de ce flux est~:
   \text{VA} = \frac{1\,000}{(1{,}03)^{10}} = \frac{1\,000}{1{,}3439} \approx 744\text{~€}
 \]
 Recevoir 1\,000~€ dans dix ans équivaut donc à disposer de 744~€ aujourd'hui.
-Symétriquement, 744~€ placés pendant dix ans à 3\,\% produisent exactement
-1\,000~€ à l'échéance.
+À rebours, 744~€ placés à 3\,\% pendant dix ans produisent exactement 1\,000~€
+à l'échéance, conformément à la règle de capitalisation.
 
-\bigskip
-Lorsque plusieurs flux sont distribués dans le temps (par exemple des économies
-fiscales annuelles et un capital versé en fin de contrat), on somme leurs
-valeurs actuelles respectives~:
+\subsubsection*{Valeur actuelle d'une séquence de flux et annuités}
+
+Lorsque plusieurs flux se produisent à des dates différentes --- ce qui est
+exactement le cas des instruments que nous comparons ---, leur valeur actuelle
+totale est la somme des valeurs actuelles individuelles~:
 \[
   \text{VA}_{\text{totale}} = \sum_{t=0}^{T} \frac{C_t}{(1 + r)^t}
 \]
-Cette grandeur synthétise l'ensemble des entrées et sorties de trésorerie d'un
-investissement en un seul chiffre comparable entre instruments.
+Cette grandeur synthétise en un seul chiffre l'intégralité des entrées et sorties
+de trésorerie d'un investissement, quelle que soit leur date d'occurrence.
 
 \bigskip
-L'intérêt de ce critère pour notre simulation est double. D'une part, les deux
-instruments génèrent des flux de nature et de calendrier différents~:
-l'assurance-vie branche~23 procure des économies fiscales annuelles (restituées
-l'année suivante via la déclaration d'impôt) et un capital net disponible à la
-retraite, tandis que le compte-titres engendre des coûts annuels (TOB, frais de
-courtage) et un capital final sur lequel s'applique éventuellement une taxe sur
-les plus-values. Ramener tous ces flux à leur valeur actuelle permet de les
-comparer sur un pied d'égalité, quelle que soit leur nature ou leur date
-d'occurrence. D'autre part, la VA neutralise l'effet de la durée~: un
-investisseur qui commence à 25~ans et un autre qui commence à 50~ans n'ont pas
-le même nombre d'années pour faire fructifier leur épargne~; la valeur actuelle
-reflète cette asymétrie temporelle et pénalise les flux plus tardifs à due
-proportion.
+Un cas particulier est celui des \textbf{annuités constantes}~: une séquence de
+$N$ flux égaux versés à intervalles réguliers. C'est précisément la structure
+retenue dans notre simulation, où l'investisseur verse chaque année un montant
+$v$ constant, de la date~0 jusqu'à la date~$T-1$. La valeur actuelle d'une
+telle annuité est~:
+\[
+  \text{VA}_{\text{annuité}} = v \times \frac{1 - (1 + r)^{-T}}{r}
+\]
+Cette formule n'est toutefois pas utilisée directement dans le modèle~: les flux
+des deux instruments ne se réduisent pas à de simples annuités (ils comprennent
+notamment des économies fiscales dont le montant dépend du versement, une taxe
+anticipative prélevée à une date précise, et une éventuelle taxe sur les
+plus-values à la sortie). La formule générale de sommation est donc appliquée flux
+par flux.
+
+\subsubsection*{Pertinence pour la simulation}
+
+L'utilisation de la valeur actuelle comme critère de comparaison se justifie par
+trois arguments complémentaires.
+
+\bigskip
+\textbf{Hétérogénéité des flux.} Les deux instruments génèrent des flux de nature
+et de calendrier fondamentalement différents. La branche~23 (EP ou ELT) procure
+des économies fiscales annuelles --- restituées l'année suivante via la déclaration
+d'impôt --- et un capital net disponible à la retraite après déduction de la taxe
+anticipative. Le compte-titres, lui, engendre des coûts récurrents (TOB, frais de
+courtage) à chaque versement et un capital final sur lequel s'applique
+éventuellement une taxe sur les plus-values. Additionner ces flux bruts sans
+actualisation reviendrait à traiter de manière identique un euro de réduction
+d'impôt reçu dès la première année et un euro de capital disponible quarante ans
+plus tard~: la VA corrige cette confusion en ramenant chaque flux à son
+équivalent en monnaie d'aujourd'hui.
+
+\bigskip
+\textbf{Hétérogénéité des horizons.} La durée d'investissement varie de 10~ans
+(pour un investisseur débutant à 55~ans) à 47~ans (pour un investisseur débutant à
+18~ans). Sans actualisation, un instrument avec un long horizon accumulerait
+mécaniquement plus de flux bruts, indépendamment de sa qualité intrinsèque. La
+VA neutralise cet effet~: un flux tardif est pénalisé à due proportion de son
+éloignement, et deux instruments sont comparés sur le seul fondement de la richesse
+qu'ils procurent en monnaie d'aujourd'hui.
+
+\bigskip
+\textbf{Logique de valeur actuelle nette.} Comparer $\text{VA}_{\text{B23}}$ et
+$\text{VA}_{\text{CT}}$ revient à calculer la valeur actuelle nette (VAN) de choisir
+l'un plutôt que l'autre~:
+\[
+  \Delta = \text{VA}_{\text{B23}} - \text{VA}_{\text{CT}}
+\]
+Si $\Delta > 0$, le choix de la branche~23 est préférable~; si $\Delta < 0$, le
+compte-titres l'est. Cette logique, analogue à celle de la VAN d'un projet
+d'investissement, permet de quantifier non seulement quel instrument domine, mais
+de combien --- en euros constants d'aujourd'hui.
 
 \bigskip
 La comparaison entre les deux instruments repose exclusivement sur leur VA
