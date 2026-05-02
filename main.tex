@@ -1032,7 +1032,7 @@ chaque combinaison possible d'âge de début et de taux de rendement, chaque
 instrument est simulé sur la même durée, soit jusqu'à l'âge de 65~ans,
 retenu comme horizon conventionnel dans ce travail. Bien que la pension légale
 en Belgique soit progressivement portée à 67~ans par la réforme de 2022,
-65~ans demeure la référence la plus couramment utilisée dans la documentation
+65~ans demeure la référence utilisée dans la documentation
 des produits d'assurance épargne-pension. Cet horizon est appliqué
 uniformément à tous les instruments, y compris le compte-titres et l'assurance
 épargne long terme qui permettent techniquement d'investir jusqu'à 99~ans,
@@ -1045,7 +1045,7 @@ répétée sur l'ensemble d'une plage de versements annuels allant de 1~€ jusq
 plafond légal de déductibilité fiscale propre à chaque produit~; à chaque niveau de
 versement, la simulation du compte-titres est appariée à celle de l'EP ou de
 l'ELT correspondante, le même montant étant investi dans les deux instruments.
-Cela permet de quantifier non seulement quel instrument domine, mais à partir
+Cela permet de quantifier non seulement quel instrument domine, mais aussi à partir
 de quel niveau de versement et dans quelle proportion.
 
 \bigskip
@@ -1055,16 +1055,17 @@ L'espace d'exploration est le suivant~:
     d'un an)~;
   \item 8~niveaux de rendement annuel brut (de 3\,\% à 10\,\%, par pas de 1\,\%)~;
   \item Plages de versements~: de 1~€ à 1\,350~€/an pour l'EP et de 1~€ à
-    2\,450~€/an pour l'ELT~;
-  \item Quatre configurations fiscales (quatre scénarios), croisées avec trois
+    2\,450~€/an pour l'ELT (par pas de 1~€)~;
+  \item Quatre configurations fiscales (quatre types de scénarios), croisées avec trois
     configurations de frais.
 \end{itemize}
 
 \bigskip
 Cela représente $38 \times 8 = 304$ cas explorés par scénario fiscal, soit
-1\,216~simulations de plages au total. Chaque simulation de plage compare les
-deux instruments pour chaque versement entier de la plage, soit entre 1\,350 et
-2\,450~simulations par ligne.
+$304 \times 4 = 1\,216$~combinaisons fiscales, portées à $1\,216 \times 3 = 3\,648$~simulations
+de plages au total une fois croisées avec les trois configurations de frais.
+Chaque simulation de plage compare les deux instruments pour chaque versement
+entier de la plage, soit entre 1\,350 et 2\,450~comparaisons par ligne.
 
 \subsection{Les véhicules d'investissement analysés}
 \label{sub:vehicules}
