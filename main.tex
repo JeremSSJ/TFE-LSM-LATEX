@@ -1344,20 +1344,20 @@ tableau~\ref{tab:diff_ep_elt}.
   \end{tabular}
 \end{table}
 
-Dans les scénarios~B et~C, la TOA et les frais de chargement s'appliquent
+La TOA et les frais de chargement s'appliquent
 successivement~:
 \begin{equation}
-  v_{\text{net}}^{\text{ELT}} = v \times (1 - 2\,\%) \times (1 - 2\,\%)
-  = v \times 0{,}9604
+  v_{\text{net}}^{\text{ELT}} = v \times (1 - 2\,\%) \times (1 - f_e^{\text{B23}})
 \end{equation}
-Dans le scénario~A, $v_{\text{net}}^{\text{ELT}} = v$. L'accumulation, la TCT
+L'accumulation, la TCT
 et la taxe anticipative (au taux de 10\,\%) suivent la même logique que pour l'EP.
 
 \subsubsection{Valeur actuelle du compte-titres}
 \label{sub:va_ct_formule}
 
 Pour le compte-titres, le versement brut $v$ entre intégralement dans la
-réserve~; les frais d'entrée (courtage) sont comptabilisés séparément. La réserve
+réserve~; les frais d'entrée (courtage) et la taxe sur les opérations boursières (TOB) 
+sont comptabilisés séparément. La réserve
 s'accumule en deux temps selon la même logique que pour la branche~23, avec la
 même formule de TCT~(\ref{eq:tct})~:
 \begin{equation}
@@ -1385,12 +1385,12 @@ récurrents actualisés (TOB et frais d'entrée)~:
     }_{\text{capital net actualisé}}
   -
     \underbrace{%
-      \sum_{t=0}^{n-1}
+      \sum_{t=0}^{n}
       \frac{v \times \tau_{\text{TOB}}}{\bigl(1 + r_{\text{OLO}}(t)\bigr)^t}
     }_{\text{TOB actualisée}}
   -
     \underbrace{%
-      \sum_{t=0}^{n-1}
+      \sum_{t=0}^{n}
       \frac{v \times f_e^{\text{CT}}}{\bigl(1 + r_{\text{OLO}}(t)\bigr)^t}
     }_{\text{frais d'entrée actualisés}}
 \end{align}
@@ -1423,6 +1423,21 @@ suivants sont calculés sur l'ensemble de la plage~:
 \end{itemize}
 L'instrument présentant le taux de dominance le plus élevé est désigné dominant
 global pour cette combinaison.
+
+\subsection{Détection des points de croisement}
+
+Un point de croisement est le versement annuel~$v^*$ à partir duquel la
+hiérarchie entre les deux instruments s'inverse. On parcourt la série des
+différences $\Delta(v)$ définie à la section~\ref{sub:comparaison} et l'on
+repère tout changement de signe entre deux versements consécutifs $v_i$ et
+$v_{i+1}$. Le croisement est localisé par interpolation linéaire~:
+\begin{equation}
+  v^* = v_i - \Delta(v_i) \times \frac{v_{i+1} - v_i}{\Delta(v_{i+1}) - \Delta(v_i)}
+\end{equation}
+Une condition supplémentaire exige que l'un des deux instruments ait une valeur
+actuelle non nulle ($|\text{VA}| > 10^{-6}$~€) afin d'éliminer les artefacts
+numériques en début de plage. L'absence de croisement signifie qu'un des
+instruments domine sur l'intégralité de la plage.
 
 \subsection{Description des quatre scénarios fiscaux}
 \label{sub:scenarii_fiscaux}
@@ -1581,23 +1596,6 @@ d'assurance et $f_e^{\text{B23}}$ le taux de frais de chargement de la branche~2
     \hline
   \end{tabular}
 \end{table}
-
-
-
-\subsection{Détection des points de croisement}
-
-Un point de croisement est le versement annuel~$v^*$ à partir duquel la
-hiérarchie entre les deux instruments s'inverse. On parcourt la série des
-différences $\Delta(v)$ définie à la section~\ref{sub:comparaison} et l'on
-repère tout changement de signe entre deux versements consécutifs $v_i$ et
-$v_{i+1}$. Le croisement est localisé par interpolation linéaire~:
-\begin{equation}
-  v^* = v_i - \Delta(v_i) \times \frac{v_{i+1} - v_i}{\Delta(v_{i+1}) - \Delta(v_i)}
-\end{equation}
-Une condition supplémentaire exige que l'un des deux instruments ait une valeur
-actuelle non nulle ($|\text{VA}| > 10^{-6}$~€) afin d'éliminer les artefacts
-numériques en début de plage. L'absence de croisement signifie qu'un des
-instruments domine sur l'intégralité de la plage.
 
 \subsection{Représentation graphique~: heatmaps}
 
