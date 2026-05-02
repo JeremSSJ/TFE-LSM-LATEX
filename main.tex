@@ -1030,17 +1030,18 @@ marché \cite{directive97_9_ce}.
 La méthodologie repose sur une simulation déterministe et systématique. Pour
 chaque combinaison possible d'âge de début et de taux de rendement, les deux
 instruments sont simulés sur la même durée, soit jusqu'à l'âge de 65~ans,
-correspondant à l'âge légal de la pension en Belgique \hl{pas tout à fait ça}. Bien que l'épargne à
-long terme puisse théoriquement s'étendre au-delà de cet âge, l'horizon de
-65~ans est retenu uniformément pour l'ensemble des instruments --- y compris
-le compte-titres --- afin de garantir une comparaison homogène. 
+retenu comme horizon conventionnel de l'épargne à long terme dans le cadre de ce
+travail. Bien que la pension légale en Belgique soit progressivement portée à
+67~ans par la réforme de 2022, l'âge de 65~ans demeure la référence la plus
+couramment utilisée dans la documentation des produits d'assurance-vie à long terme,
+et il est retenu uniformément pour l'ensemble des instruments --- y compris
+le compte-titres --- afin de garantir une comparaison homogène.
 
 \bigskip
-Les simulations
-sont réalisées avec le même versement annuel, et le résultat net de chaque
-instrument est exprimé en valeur nette (VA). Cette comparaison est répétée sur
-l'ensemble d'une plage de versements annuels allant de 1~€ jusqu'au plafond
-légal de déductibilité fiscale propre à chaque produit~; à chaque niveau de
+Les simulations sont réalisées avec le même versement annuel, et le résultat net de
+chaque instrument est exprimé en valeur actuelle (VA). Cette comparaison est
+répétée sur l'ensemble d'une plage de versements annuels allant de 1~€ jusqu'au
+plafond légal de déductibilité fiscale propre à chaque produit~; à chaque niveau de
 versement, la simulation du compte-titres est appariée à celle de l'EP ou de
 l'ELT correspondante, le même montant étant investi dans les deux instruments.
 Cela permet de quantifier non seulement quel instrument domine, mais à partir
@@ -1054,11 +1055,12 @@ L'espace d'exploration est le suivant~:
   \item 8~niveaux de rendement annuel brut (de 3\,\% à 10\,\%, par pas de 1\,\%)~;
   \item Plages de versements~: de 1~€ à 1\,350~€/an pour l'EP et de 1~€ à
     2\,450~€/an pour l'ELT~;
-  \item Quatre configurations fiscales (quatre scénarios).
+  \item Quatre configurations fiscales (quatre scénarios), croisées avec trois
+    configurations de frais.
 \end{itemize}
 
 \bigskip
-Cela représente $38 \times 8 = 304$ cas explorés par scénario, soit
+Cela représente $38 \times 8 = 304$ cas explorés par scénario fiscal, soit
 1\,216~simulations de plages au total. Chaque simulation de plage compare les
 deux instruments pour chaque versement entier de la plage, soit entre 1\,350 et
 2\,450~simulations par ligne.
@@ -1076,8 +1078,8 @@ Trois véhicules sont modélisés et combinés en quatre scénarios~:
     \cite[art.~145\textsuperscript{3}]{cir92_2025}.
   \item[Compte-Titres (CT).] Portefeuille d'actions ou d'ETF géré via un
     courtier, sans avantage fiscal à l'entrée mais sans taxe anticipative. Deux
-    variantes sont modélisées~: sans taxe sur les plus-values (taux PV~$= 0\,\%$)
-    et avec taxe sur les plus-values de 10\,\%.
+    variantes sont modélisées~: sans taxe sur les plus-values (taux
+    $\tau_{\text{PV}} = 0\,\%$) et avec taxe sur les plus-values de 10\,\%.
 \end{description}
 
 \subsection{Le profil investisseur}
@@ -1085,9 +1087,9 @@ Trois véhicules sont modélisés et combinés en quatre scénarios~:
 Un profil investisseur est défini par son âge de début des versements (variable,
 de 18 à 55~ans) et son horizon de retraite (fixé à 65~ans). La durée de
 l'investissement est donc~:
-\[
+\begin{equation}
   \text{durée} = \text{âge de fin} - \text{âge de début}
-\]
+\end{equation}
 
 Les versements sont supposés constants d'année en année (annuités constantes) et
 effectués le 31~décembre de chaque année, date conventionnelle correspondant à
@@ -1104,211 +1106,299 @@ sur l'horizon de retraite commun aux deux instruments.
 
 \subsection{Le critère de comparaison~: la valeur actuelle}
 
-\subsubsection*{La valeur temps de l'argent}
+\subsubsection{Principe de la valeur actuelle}
 
-Évaluer et comparer deux investissements revient fondamentalement à comparer leurs
-coûts et leurs bénéfices. Lorsque ces flux s'étalent dans le temps, une difficulté
-surgit~: \emph{seuls des flux exprimés à une même date peuvent être comparés ou
-combinés}. Un euro disponible aujourd'hui n'est pas
-équivalent à un euro disponible dans dix ans~: la somme disponible aujourd'hui peut
-être investie et générer des intérêts. Pour comparer des flux de dates différentes, il
-faut donc les «~transposer dans le temps~», en appliquant deux opérations inverses~:
-\begin{itemize}
-  \item \textbf{La capitalisation} consiste à transposer un flux présent vers le
-    futur, en le multipliant par le facteur $(1 + r)^t$~. Si l'on place $C_0$ euros
-    aujourd'hui à un taux annuel $r$, la valeur acquise au bout de $t$ années
-    est~:
-    \[
-      C_t = C_0 \times (1 + r)^t
-    \]
-    La croissance est \emph{géométrique}~: les intérêts portent eux-mêmes intérêts,
-    phénomène connu sous le nom d'\emph{intérêts composés}. C'est précisément ce
-    mécanisme qui gouverne l'accumulation du capital dans notre simulation~: chaque
-    versement annuel est capitalisé à intérêts composés jusqu'à l'horizon de
-    retraite.
-  \item \textbf{L'actualisation} consiste à l'inverse à transposer un flux futur
-    vers le présent, en le divisant par ce même facteur~:
-    \[
-      \text{VA}(C_t) = \frac{C_t}{(1 + r)^t}
-    \]
-    où $r$ est le taux d'actualisation annuel et $t$ le nombre d'années séparant
-    aujourd'hui de la réception du flux. Plus l'horizon est lointain et plus le taux
-    est élevé, plus la valeur actuelle est faible.
-\end{itemize}
+Comparer deux placements sur un horizon de plusieurs dizaines d'années pose une
+difficulté fondamentale~: les flux de trésorerie associés à chaque instrument
+surviennent à des dates différentes. Pour la branche~23, l'avantage fiscal se
+matérialise dès la première année sous forme de remboursement d'impôt annuel,
+tandis que le capital net n'est disponible qu'à l'échéance, après prélèvement
+de la taxe anticipative à 60~ans. Pour le compte-titres, les coûts (taxe sur
+les opérations de bourse, frais de courtage) sont supportés à chaque versement,
+et une éventuelle taxe sur les plus-values n'est due qu'au moment du retrait
+final. Additionner ces flux bruts sans correction temporelle reviendrait à traiter
+de manière identique un euro perçu aujourd'hui et un euro perçu dans quarante ans,
+ce qui serait économiquement inexact.
 
 \bigskip
-\textbf{Exemple.} Un investisseur recevra 1\,000~€ dans 10~ans. Avec un taux
-d'actualisation de 3\,\%, la valeur actuelle de ce flux est~:
-\[
-  \text{VA} = \frac{1\,000}{(1{,}03)^{10}} = \frac{1\,000}{1{,}3439} \approx 744\text{~€}
-\]
-Recevoir 1\,000~€ dans dix ans équivaut donc à disposer de 744~€ aujourd'hui.
-À rebours, 744~€ placés à 3\,\% pendant dix ans produisent exactement 1\,000~€
-à l'échéance, conformément à la règle de capitalisation.
+La valeur actuelle est le concept qui résout cette difficulté. Elle repose sur un
+constat simple~: un euro disponible aujourd'hui a plus de valeur qu'un euro
+disponible dans l'avenir, parce que la somme disponible aujourd'hui peut être
+immédiatement investie et générer un rendement. Pour rendre comparables des flux
+de dates différentes, il faut les «~transposer dans le temps~», c'est-à-dire les
+ramener tous à une date commune --- le moment présent --- en les divisant par un
+facteur qui tient compte du nombre d'années d'attente et du taux de rendement
+d'un placement de référence.
 
-\subsubsection*{Valeur actuelle d'une séquence de flux et annuités}
+\bigskip
+Il est important de souligner que la valeur actuelle ne sert pas ici à comparer
+le coût des deux placements~: les deux instruments étant appariés sur le même
+montant investi chaque année, le capital engagé est identique et n'a pas à être
+soustrait du résultat. Ce que l'on actualise, c'est exclusivement le capital
+final accumulé à l'échéance et les flux annexes (économies fiscales, coûts
+récurrents), afin de les exprimer dans la même unité temporelle et de les
+comparer sur un pied d'égalité.
 
+\bigskip
+La capitalisation et l'actualisation sont les deux opérations inverses qui
+permettent ce voyage dans le temps. Si l'on place $C_0$ euros aujourd'hui à
+un taux annuel $r$, la valeur acquise au bout de $n$~années est~:
+\begin{equation}
+  C_n = C_0 \times (1 + r)^n
+\end{equation}
+La croissance est géométrique~: les intérêts de chaque période portent eux-mêmes
+intérêts lors des périodes suivantes, mécanisme connu sous le nom d'intérêts
+composés. C'est précisément ce mécanisme qui gouverne l'accumulation du capital
+dans la simulation. L'actualisation est l'opération inverse~: elle ramène un flux
+futur $C_n$ à sa valeur présente~:
+\begin{equation}
+  \text{VA}(C_n) = \frac{C_n}{(1 + r)^n}
+\end{equation}
+où $r$ est le taux d'actualisation annuel et $n$ le nombre d'années séparant
+aujourd'hui de la réception du flux. Plus l'horizon est lointain et plus le taux
+est élevé, plus la valeur actuelle est faible.
+
+\bigskip
 Lorsque plusieurs flux se produisent à des dates différentes --- ce qui est
-exactement le cas des instruments que nous comparons ---, leur valeur actuelle
-totale est la somme des valeurs actuelles individuelles~:
-\[
-  \text{VA}_{\text{totale}} = \sum_{t=0}^{T} \frac{C_t}{(1 + r)^t}
-\]
-Cette grandeur synthétise en un seul chiffre l'intégralité des entrées et sorties
-de trésorerie d'un investissement, quelle que soit leur date d'occurrence.
+exactement le cas des instruments comparés ---, leur valeur actuelle totale est
+la somme des valeurs actuelles individuelles~:
+\begin{equation}
+  \text{VA}_{\text{totale}} = \sum_{t=0}^{T} \frac{C_t}{(1 + r_{\text{OLO}}(t))^t}
+\end{equation}
+Cette grandeur synthétise en un seul chiffre l'intégralité des flux d'un
+investissement, quelle que soit leur date d'occurrence. On notera que le taux
+d'actualisation $r_{\text{OLO}}(t)$ dépend ici de la maturité $t$~: cette
+particularité est expliquée dans la section suivante.
 
 \bigskip
-Un cas particulier est celui des \textbf{annuités constantes}~: une séquence de
-$N$ flux égaux versés à intervalles réguliers. C'est précisément la structure
-retenue dans notre simulation, où l'investisseur verse chaque année un montant
-$v$ constant, de la date~0 jusqu'à la date~$T-1$. La valeur actuelle d'une
-telle annuité est~:
-\[
-  \text{VA}_{\text{annuité}} = v \times \frac{1 - (1 + r)^{-T}}{r}
-\]
-Cette formule n'est toutefois pas utilisée directement dans le modèle~: les flux
-des deux instruments ne se réduisent pas à de simples annuités (ils comprennent
-notamment des économies fiscales dont le montant dépend du versement, une taxe
-anticipative prélevée à une date précise, et une éventuelle taxe sur les
-plus-values à la sortie). La formule générale de sommation est donc appliquée flux
-par flux.
-
-\subsubsection*{Pertinence pour la simulation}
-
-L'utilisation de la valeur actuelle comme critère de comparaison se justifie par
-trois arguments complémentaires.
-
-\bigskip
-\textbf{Hétérogénéité des flux.} Les deux instruments génèrent des flux de nature
-et de calendrier fondamentalement différents. La branche~23 (EP ou ELT) procure
-des économies fiscales annuelles --- restituées l'année suivante via la déclaration
-d'impôt --- et un capital net disponible à la retraite après déduction de la taxe
-anticipative. Le compte-titres, lui, engendre des coûts récurrents (TOB, frais de
-courtage) à chaque versement et un capital final sur lequel s'applique
-éventuellement une taxe sur les plus-values. Additionner ces flux bruts sans
-actualisation reviendrait à traiter de manière identique un euro de réduction
-d'impôt reçu dès la première année et un euro de capital disponible quarante ans
-plus tard~: la VA corrige cette confusion en ramenant chaque flux à son
-équivalent en monnaie d'aujourd'hui.
-
-\bigskip
-\textbf{Hétérogénéité des horizons.} La durée d'investissement varie de 10~ans
-(pour un investisseur débutant à 55~ans) à 47~ans (pour un investisseur débutant à
-18~ans). Sans actualisation, un instrument avec un long horizon accumulerait
-mécaniquement plus de flux bruts, indépendamment de sa qualité intrinsèque. La
-VA neutralise cet effet~: un flux tardif est pénalisé à due proportion de son
-éloignement, et deux instruments sont comparés sur le seul fondement de la richesse
-qu'ils procurent en monnaie d'aujourd'hui.
-
-\bigskip
-\textbf{Logique de valeur actuelle nette.} Comparer $\text{VA}_{\text{B23}}$ et
-$\text{VA}_{\text{CT}}$ revient à calculer la valeur actuelle nette (VAN) de choisir
-l'un plutôt que l'autre~:
-\[
+La comparaison entre les deux instruments repose sur la différence de leurs
+valeurs actuelles totales~:
+\begin{equation}
   \Delta = \text{VA}_{\text{B23}} - \text{VA}_{\text{CT}}
-\]
+\end{equation}
 Si $\Delta > 0$, le choix de la branche~23 est préférable~; si $\Delta < 0$, le
-compte-titres l'est. Cette logique, analogue à celle de la VAN d'un projet
-d'investissement, permet de quantifier non seulement quel instrument domine, mais
-de combien --- en euros constants d'aujourd'hui.
+compte-titres l'est. Cette logique, analogue à celle de la valeur actuelle nette
+(VAN) d'un projet d'investissement, permet de quantifier non seulement quel
+instrument domine, mais de combien, en euros constants d'aujourd'hui.
+
+\subsubsection{Le taux d'actualisation~: la courbe OLO belge}
+\label{sub:taux_olo}
+
+Le taux d'actualisation joue le rôle d'un taux de référence~: il représente ce
+que l'investisseur pourrait obtenir sur un placement sans risque pendant la même
+durée. Le référentiel retenu est celui des OLO belges (Obligations Linéaires ---
+Lineaire Obligaties), c'est-à-dire les obligations d'État émises par le Trésor
+belge. Ces titres constituent l'instrument sans risque de référence pour un
+investisseur résident en Belgique, et leur courbe de rendement est publiée pour
+des maturités allant de un à trente ans.
 
 \bigskip
-La comparaison entre les deux instruments repose exclusivement sur leur VA
-totale, définie comme la somme actualisée de tous les flux de
-l'investisseur. Le taux d'actualisation retenu est le taux OLO (Obligations Linéaires) à
-10~ans, fixé à 3\,\%. Ce choix n'est pas nécessairement le plus pertinent
-pour refléter le rendement réel atteignable sur les marchés financiers~;
-son intérêt réside ailleurs~: disposer d'un taux commun permettant
-d'actualiser sur le même pied les flux de nature différente --- rendement
-des actifs financiers, économies fiscales et coûts --- sans prétendre
-mesurer avec certitude le capital effectivement obtenable dans la réalité.
+Plutôt que de retenir un taux unique et arbitraire pour l'ensemble des flux,
+la simulation applique le principe de correspondance par durée~: chaque flux
+est actualisé au taux OLO dont la maturité correspond précisément à l'horizon
+de ce flux. Ainsi, une économie fiscale perçue en fin de deuxième année est
+actualisée au taux OLO à deux ans, et le capital final disponible à l'issue de
+vingt ans de versements est actualisé au taux OLO à vingt ans. Cette approche
+est cohérente avec la structure par terme des taux~: les marchés obligataires
+distinguent les rendements selon la maturité, et il serait inexact d'appliquer
+un taux de court terme à un flux de long terme, ou inversement. Pour les durées
+supérieures à trente ans --- qui correspondent aux profils débutant avant l'âge
+de 35~ans environ --- le taux de l'OLO à trente ans est appliqué par convention.
 
-\subsubsection{VA d'un instrument de la branche~23}
+\bigskip
+Les taux bruts des OLO sont corrigés du précompte mobilier belge de 30\,\%~: un
+investisseur comparant les deux véhicules ne percevrait en effet que 70\,\% du
+coupon brut d'un OLO. Le taux net utilisé pour l'actualisation est donc~:
+\begin{equation}
+  r_{\text{net}}(n) = r_{\text{brut}}(n) \times (1 - 30\,\%) = r_{\text{brut}}(n) \times 0{,}7
+\end{equation}
+où $n$ désigne la maturité en années. Le tableau~\ref{tab:olo_referentiel}
+présente un extrait du référentiel utilisé.
 
-La VA branche~23 se décompose en deux composantes~:
+\begin{table}[h!]
+  \centering
+  \caption{Extrait du référentiel OLO utilisé pour l'actualisation (taux nets après précompte de 30\,\%)}
+  \label{tab:olo_referentiel}
+  \begin{tabular}{ccc}
+    \hline
+    \textbf{Maturité (ans)} & \textbf{OLO brut (\%)} & \textbf{Taux net utilisé (\%)} \\
+    \hline
+     1  & 2,62 & 1,834 \\
+     5  & 3,06 & 2,142 \\
+    10  & 3,63 & 2,541 \\
+    15  & 3,98 & 2,786 \\
+    20  & 4,21 & 2,947 \\
+    25  & 4,37 & 3,059 \\
+    30  & 4,43 & 3,101 \\
+    \hline
+    \multicolumn{3}{l}{\small Au-delà de 30~ans, le taux net de l'année~30 (3,101\,\%) est appliqué.} \\
+    \hline
+  \end{tabular}
+\end{table}
 
-\[
-  \text{VA}_{\text{B23}} = \text{VA}_{\text{capital}} + \text{VA}_{\text{économies fiscales}}
-\]
+\subsubsection{Construction pas à pas de la valeur actuelle}
 
-La composante capital représente la valeur actuelle du capital net accumulé à
-l'échéance (après déduction de la taxe anticipative), actualisée sur toute la
-durée~:
-\[
-  \text{VA}_{\text{capital}} = \frac{\text{CapitalFinalNet}}{(1 + r_{\text{OLO}})^{\text{durée-1}}}
-\]
+Avant de présenter les formules propres à chaque véhicule, il est utile de
+construire la notion de valeur actuelle de manière progressive, en partant du
+cas le plus simple.
 
-La composante économies fiscales représente la somme actualisée des réductions
-d'impôt annuelles. Chaque économie d'une année~$t$ est actualisée au
-facteur $(1 + r_{\text{OLO}})^{t+1}$, car elle est remboursée l'année suivante
-via la déclaration fiscale~:
-\[
-  \text{VA}_{\text{éco}} = \sum_{t=0}^\text{durée-1} \frac{\text{EconomieFiscale}(t)}{(1 + r_{\text{OLO}})^{t+1}}
-\]
+\bigskip
+La première étape est l'accumulation du capital. À chaque année~$t$, la réserve
+investie croît selon les intérêts composés et les versements annuels. En notant
+$v_{\text{net}}$ le montant effectivement investi après frais d'entrée, $r$ le
+rendement annuel brut et $f_g$ les frais de gestion annuels, la réserve en fin
+d'année~$t$ est~:
+\begin{equation}
+  R_0 = v_{\text{net}}, \qquad
+  R_t = R_{t-1} \times (1 + r) \times (1 - f_g) + v_{\text{net}}
+\end{equation}
+La croissance géométrique des intérêts composés signifie que les premières années
+de versements contribuent de manière disproportionnée au capital final~: un versement
+effectué à l'âge de 25~ans bénéficiera de quarante années de capitalisation,
+contre seulement dix pour un versement effectué à 55~ans.
 
-\subsubsection{VA du compte-titres}
+\bigskip
+La deuxième étape introduit les frais. Les frais d'entrée $f_e$ réduisent le
+montant effectivement investi lors de chaque versement. Pour la branche~23, ils
+diminuent directement le capital entrant dans la réserve~:
+\begin{equation}
+  v_{\text{net}}^{\text{B23}} = v \times (1 - f_e^{\text{B23}})
+\end{equation}
+Pour le compte-titres, les frais d'entrée (courtage) sont traités comme un coût
+récurrent distinct~: le versement brut $v$ entre intégralement dans la réserve,
+mais une charge $v \times f_e^{\text{CT}}$ est comptabilisée séparément dans le
+calcul de la valeur actuelle, actualisée à la date du versement. Les frais de
+gestion annuels $f_g$, quant à eux, s'appliquent à la réserve à la fin de chaque
+année pour les deux véhicules, via le facteur $(1 - f_g)$ dans la formule
+d'accumulation.
 
-La VA du CT intègre le capital net et les coûts récurrents~:
+\bigskip
+La troisième étape est la fiscalité à la sortie. À l'échéance, un prélèvement
+fiscal peut réduire le capital brut selon le véhicule~:
+\begin{itemize}
+  \item Pour la branche~23, la taxe anticipative est prélevée une seule fois sur
+    la réserve constituée au 60\textsuperscript{e} anniversaire de
+    l'investisseur~; elle est de 8\,\% pour l'EP et de 10\,\% pour l'ELT. Aucun
+    impôt supplémentaire n'est dû à la sortie finale.
+  \item Pour le compte-titres, une taxe de 10\,\% s'applique éventuellement sur
+    les plus-values excédant un seuil d'exonération forfaitaire (voir
+    section~\ref{sub:modelisation_ct}). Aucune autre retenue n'est due à la sortie.
+\end{itemize}
+Dans les deux cas, le capital net à l'échéance $C_N^{\text{net}}$ est le capital
+brut $R_N$ diminué du prélèvement fiscal applicable.
 
-\[
-  \text{VA}_{\text{CT}} = \text{VA}_{\text{capital net}} - \text{VA}_{\text{TOB}} - \text{VA}_{\text{frais par versement}}
-\]
+\bigskip
+La quatrième et dernière étape est l'actualisation proprement dite. La valeur
+actuelle du capital net reçu dans $n$~années est~:
+\begin{equation}
+  \text{VA}\!\left(C_N^{\text{net}}\right) = \frac{C_N^{\text{net}}}{\bigl(1 + r_{\text{OLO}}(n)\bigr)^n}
+\end{equation}
+où $r_{\text{OLO}}(n)$ est le taux OLO net correspondant à la maturité $n$. Cette
+même opération est appliquée à chaque flux annexe (économies fiscales pour la
+branche~23, coûts récurrents pour le compte-titres), chacun étant actualisé au
+taux OLO correspondant à son propre horizon.
 
-La TOB et les frais de courtage sont actualisés comme des rentes annuelles sur
-toute la durée~:
-\[
-  \text{VAN}_{\text{TOB}} = \sum_{t=0}^\text{durée} \frac{v \times \tau_{\text{TOB}}}{(1 + r_{\text{OLO}})^{t}}
-\]
+\subsubsection{Valeur actuelle de la branche~23}
+\label{sub:va_b23}
+
+La valeur actuelle totale d'un instrument de la branche~23 se décompose en deux
+composantes~: la valeur actuelle du capital net à l'échéance et la valeur actuelle
+des économies fiscales annuelles.
+\begin{align}
+  \text{VA}_{\text{B23}} &=
+    \underbrace{%
+      \frac{C_N^{\text{net}}}{\bigl(1 + r_{\text{OLO}}(n)\bigr)^n}
+    }_{\text{capital net actualisé}} \notag \\
+  &\quad +
+    \underbrace{%
+      \sum_{t=0}^{n-1}
+      \frac{\text{ÉcoFisc}(t)}{\bigl(1 + r_{\text{OLO}}(t+1)\bigr)^{t+1}}
+    }_{\text{économies fiscales actualisées}}
+\end{align}
+Les variables sont définies comme suit~:
+\begin{description}
+  \item[$n$] durée totale de l'investissement en années~;
+  \item[$C_N^{\text{net}}$] capital final net après déduction de la taxe
+    anticipative~;
+  \item[$r_{\text{OLO}}(k)$] taux OLO net correspondant à la maturité $k$~;
+  \item[$\text{ÉcoFisc}(t)$] économie fiscale obtenue à l'année~$t$, remboursée
+    par l'administration fiscale l'année~$t+1$, ce qui justifie l'actualisation
+    au facteur $\bigl(1 + r_{\text{OLO}}(t+1)\bigr)^{t+1}$.
+\end{description}
+
+\subsubsection{Valeur actuelle du compte-titres}
+\label{sub:va_ct_formule}
+
+La valeur actuelle du compte-titres est égale à la valeur actuelle du capital net
+diminuée de la valeur actuelle des coûts récurrents~:
+\begin{align}
+  \text{VA}_{\text{CT}} &=
+    \underbrace{%
+      \frac{C_N^{\text{net}}}{\bigl(1 + r_{\text{OLO}}(n)\bigr)^n}
+    }_{\text{capital net actualisé}} \notag \\
+  &\quad -
+    \underbrace{%
+      \sum_{t=0}^{n-1}
+      \frac{v \times \tau_{\text{TOB}}}{\bigl(1 + r_{\text{OLO}}(t)\bigr)^t}
+    }_{\text{TOB actualisée}}
+    -
+    \underbrace{%
+      \sum_{t=0}^{n-1}
+      \frac{v \times f_e^{\text{CT}}}{\bigl(1 + r_{\text{OLO}}(t)\bigr)^t}
+    }_{\text{frais d'entrée actualisés}}
+\end{align}
+où $\tau_{\text{TOB}} = 0{,}12\,\%$ est le taux de la taxe sur les opérations de
+bourse et $f_e^{\text{CT}}$ le taux de frais d'entrée du compte-titres, variable
+selon le scénario de frais retenu. Le compte-titres ne génère aucune économie
+fiscale à l'entrée.
 
 \subsubsection{Comparaison et notion de dominance}
+\label{sub:comparaison}
 
-Pour chaque versement annuel $v$ de la plage testée, on calcule la différence~:
-
-\[
-  \Delta(v) = \text{VAN}_{\text{B23}}(v) - \text{VAN}_{\text{CT}}(v)
-\]
-
-Si $\Delta(v) > 0$, la branche~23 est plus avantageuse~; si $\Delta(v) < 0$, le
-compte-titres est plus avantageux~; si $|\Delta(v)| < 1$~€, les deux instruments
-sont en situation d'ex~æquo.
+Pour chaque versement annuel $v$ de la plage testée, la différence entre les
+deux valeurs actuelles est calculée~:
+\begin{equation}
+  \Delta(v) = \text{VA}_{\text{B23}}(v) - \text{VA}_{\text{CT}}(v)
+\end{equation}
+Lorsque $\Delta(v) > 0$, la branche~23 offre une valeur actuelle supérieure pour
+ce versement~; lorsque $\Delta(v) < 0$, c'est le compte-titres qui l'emporte~;
+lorsque $|\Delta(v)| < 1$~€, les deux instruments sont considérés en situation
+d'ex~æquo.
 
 \bigskip
 Pour chaque combinaison (âge de début, rendement), les indicateurs de dominance
 suivants sont calculés sur l'ensemble de la plage~:
 \begin{itemize}
-  \item \textbf{Taux de dominance B23} (\%) = proportion des versements pour
-    lesquels $\text{VAN}_{\text{B23}} > \text{VAN}_{\text{CT}}$~;
-  \item \textbf{Taux de dominance CT} (\%) = proportion des versements pour
-    lesquels $\text{VAN}_{\text{CT}} > \text{VAN}_{\text{B23}}$~;
-  \item \textbf{Taux d'égalité} (\%) = proportion des versements en situation
-    d'ex~æquo.
+  \item taux de dominance B23 (\%) --- proportion des versements pour lesquels
+    $\text{VA}_{\text{B23}} > \text{VA}_{\text{CT}}$~;
+  \item taux de dominance CT (\%) --- proportion des versements pour lesquels
+    $\text{VA}_{\text{CT}} > \text{VA}_{\text{B23}}$~;
+  \item taux d'égalité (\%) --- proportion des versements en situation d'ex~æquo.
 \end{itemize}
-
 L'instrument présentant le taux de dominance le plus élevé est désigné dominant
 global pour cette combinaison.
 
-\subsection{Description des quatre scénarios}
+\subsection{Description des quatre scénarios fiscaux}
+\label{sub:scenarii_fiscaux}
 
-Les quatre scénarios résultent du croisement de deux dimensions~: le type de
-déduction fiscale appliquée à la branche~23 (EP ou ELT) et le régime fiscal
+Les quatre scénarios fiscaux résultent du croisement de deux dimensions~: le type
+de déduction fiscale appliquée à la branche~23 (EP ou ELT) et le régime fiscal
 appliqué au compte-titres (sans ou avec taxe sur les plus-values).
 
 \bigskip
-\noindent\textbf{Ancrage temporel des scénarios.} Les scénarios \emph{sans} taxe
-sur les plus-values (scénarios~1 et~3) correspondent au régime fiscal en vigueur
-\emph{jusqu'au 31~décembre~2025}, période durant laquelle les plus-values
-réalisées sur un compte-titres n'étaient pas imposées en Belgique. Les scénarios
-\emph{avec} taxe sur les plus-values (scénarios~2 et~4) correspondent au nouveau
-régime en vigueur \emph{depuis le 1\textsuperscript{er}~janvier~2026}, date
-d'entrée en application de la taxe de 10\,\% sur les plus-values mobilières
-introduite par la loi-programme du 22~décembre~2025. Cette structuration permet
-ainsi de mesurer l'impact de la réforme sur la compétitivité relative des
-véhicules d'épargne à long terme.
+Les scénarios sans taxe sur les plus-values (scénarios~1 et~3) correspondent au
+régime fiscal en vigueur jusqu'au 31~décembre~2025, période durant laquelle les
+plus-values réalisées sur un compte-titres n'étaient pas imposées en Belgique.
+Les scénarios avec taxe sur les plus-values (scénarios~2 et~4) correspondent au
+régime en vigueur depuis le 1\textsuperscript{er}~janvier~2026, date d'entrée en
+application de la taxe de 10\,\% sur les plus-values mobilières introduite par la
+loi-programme du 22~décembre~2025. Cette structuration permet de mesurer l'impact
+de la réforme sur la compétitivité relative des véhicules d'épargne à long terme.
 
 \bigskip
 \begin{table}[h!]
   \centering
-  \caption{Les quatre scénarios de comparaison}
+  \caption{Les quatre scénarios fiscaux de comparaison}
   \label{tab:scenarii}
   \begin{tabular}{|c|l|l|}
     \hline
@@ -1325,31 +1415,100 @@ véhicules d'épargne à long terme.
   \end{tabular}
 \end{table}
 
-\hl{ce qui suit n est pas peut être pas pour ici}
+Le scénario~1 représente le cas le plus défavorable pour la branche~23~: le CT
+n'est soumis à aucune taxe sur les plus-values, de sorte que la branche~23 EP
+doit compenser intégralement sa taxe anticipative de 8\,\% par ses seules
+économies fiscales à l'entrée. Il constitue ainsi le test de robustesse de la
+déduction EP.
 
 \bigskip
-Le \textbf{scénario~1} représente le cas le plus défavorable pour la branche~23~:
-le CT n'est soumis à aucune taxe sur les plus-values, de sorte que la branche~23
-EP doit compenser intégralement sa taxe anticipative de 8\,\% par ses seules
-économies fiscales à l'entrée. Il constitue le test de robustesse de la déduction
-EP.
+Le scénario~2 introduit une pénalité fiscale à la sortie pour le CT. La taxe de
+10\,\% sur les plus-values dépassant le montant exonéré améliore relativement la
+position de la branche~23 EP.
 
 \bigskip
-Le \textbf{scénario~2} introduit une pénalité fiscale à la sortie pour le CT.
-La taxe de 10\,\% sur les plus-values dépassant le montant exonéré améliore
-relativement la position de la branche~23 EP.
+Le scénario~3 teste la compétitivité de l'ELT face à un CT non taxé à la sortie.
+L'ELT supporte une taxe d'assurance de 2\,\% sur chaque prime ainsi qu'une taxe
+anticipative de 10\,\% (contre 8\,\% pour l'EP), mais bénéficie d'un plafond de
+déduction plus élevé (2\,450~€ contre 1\,350~€) et d'un taux de réduction
+unique de 30\,\%.
 
 \bigskip
-Le \textbf{scénario~3} teste la compétitivité de l'ELT face à un CT non taxé à
-la sortie. L'ELT supporte une taxe d'assurance de 2\,\% sur chaque prime ainsi
-qu'une taxe anticipative de 10\,\% (contre 8\,\% pour l'EP), mais bénéficie d'un
-plafond de déduction plus élevé (2\,450~€ contre 1\,350~€) et d'un taux de
-réduction unique de 30\,\%.
+Le scénario~4 est le plus favorable à la branche~23 ELT~: le CT subit une taxe
+sur les plus-values de 10\,\% à la sortie, réduisant son avantage lié à l'absence
+de taxe anticipative.
+
+\subsection{Les trois scénarios de frais}
+\label{sub:scenarii_frais}
+
+La comparaison est conduite selon trois hypothèses de frais distinctes. Cette
+dimension supplémentaire est nécessaire parce que les frais supportés par les
+deux véhicules sont structurellement différents et constituent un facteur
+déterminant du résultat final~: les frais de chargement et de gestion d'un
+contrat d'assurance branche~23 sont en pratique nettement plus élevés que ceux
+d'un investissement en ETF via un courtier en ligne.
 
 \bigskip
-Le \textbf{scénario~4} est le plus favorable à la branche~23 ELT~: le CT subit
-une taxe PV de 10\,\% à la sortie, réduisant son avantage lié à l'absence de taxe
-anticipative.
+Le scénario de frais~A isole l'effet purement fiscal des deux instruments. Aucun
+frais d'entrée ni de gestion n'est appliqué à l'un ou l'autre véhicule. Cette
+configuration mesure la valeur de l'avantage fiscal de la branche~23 en lui-même,
+abstraction faite de tout coût d'intermédiation. Les résultats obtenus sous ce
+scénario constituent un plafond théorique pour l'avantage de la branche~23.
+
+\bigskip
+Le scénario de frais~B applique des frais représentatifs des conditions de marché
+observées en Belgique. Pour le compte-titres, les frais d'entrée correspondent
+aux commissions de courtage pratiquées par les principales plateformes en ligne
+belges, et les frais de gestion reflètent le total des frais sur encours (TER)
+d'un ETF indiciel large. Pour la branche~23, les frais de chargement retenus
+correspondent à la médiane des tarifs pratiqués par les assureurs belges sur les
+contrats en unités de compte, et les frais de gestion reflètent les charges
+internes moyennes de ces fonds.
+
+\bigskip
+Le scénario de frais~C applique au compte-titres les mêmes frais d'entrée et de
+gestion que ceux que l'assureur prélève sur un contrat de branche~23. Puisque
+les frais des assureurs sont structurellement plus élevés que ceux des courtiers
+en ligne, cette hypothèse constitue une borne supérieure pour les coûts du
+compte-titres~: elle est délibérément défavorable à ce véhicule et a pour objet
+de tester si la branche~23 maintient son avantage même lorsque le compte-titres
+se voit pénalisé à hauteur des frais que la branche~23 elle-même supporte. Lorsque
+la branche~23 domine encore dans ce scénario, son avantage est robuste~; lorsque
+le compte-titres résiste malgré cette pénalité, cela indique que l'avantage fiscal
+de la branche~23 ne suffit pas à compenser la charge structurelle de ses propres
+frais.
+
+\bigskip
+\begin{table}[h!]
+  \centering
+  \caption{Les trois scénarios de frais ($f_e$ = frais d'entrée, $f_g$ = frais de gestion annuels)}
+  \label{tab:scenarii_frais}
+  \begin{tabular}{|c|l|c|c|c|c|}
+    \hline
+    \textbf{Scénario} & \textbf{Description} &
+      \multicolumn{2}{c|}{\textbf{CT}} &
+      \multicolumn{2}{c|}{\textbf{B23 (EP)}} \\
+    \cline{3-6}
+    & & $f_e$ & $f_g$ & $f_e$ & $f_g$ \\
+    \hline
+    A & Sans frais --- effet fiscal pur   & 0,00\,\% & 0,00\,\% & 0,00\,\% & 0,00\,\% \\
+    \hline
+    B & Frais réalistes de marché         & 0,80\,\% & 0,12\,\% & 2,00\,\% & 1,50\,\% \\
+    \hline
+    C & Frais majorés --- borne supérieure CT & 2,00\,\% & 1,50\,\% & 2,00\,\% & 1,50\,\% \\
+    \hline
+  \end{tabular}
+\end{table}
+
+Pour l'ELT, les frais d'entrée de la branche~23 comprennent en outre la taxe sur
+les opérations d'assurance (TOA) de 2\,\%, qui s'ajoute aux frais de chargement.
+Dans les scénarios~B et~C, le versement net effectivement investi dans l'ELT est~:
+\begin{equation}
+  v_{\text{net}}^{\text{ELT}} = v \times (1 - \tau_{\text{TOA}}) \times (1 - f_e^{\text{B23}})
+\end{equation}
+où $\tau_{\text{TOA}} = 2\,\%$ désigne le taux de la taxe sur les opérations
+d'assurance et $f_e^{\text{B23}}$ le taux de frais de chargement de la branche~23
+(2\,\% dans les scénarios~B et~C, 0\,\% dans le scénario~A).
 
 \subsection{Paramètres communs à tous les scénarios}
 
@@ -1363,10 +1522,10 @@ anticipative.
     \hline
     Âge de fin de l'horizon & 65~ans \\
     Âge de début (plage simulée) & 18 à 55~ans (pas de 1~an) \\
-    Taux OLO (actualisation) & 3\,\% \\
+    Actualisation & Courbe OLO belge, taux nets (voir tableau~\ref{tab:olo_referentiel}) \\
     Rendement annuel brut (plage) & 3\,\% à 10\,\% (pas de 1\,\%) \\
-    Frais par versement / prime & 2\,\% (CT et B23) \\
-    Frais de gestion annuels & 0\,\% (les deux véhicules) \\
+    Frais d'entrée et de gestion & Variables selon scénario de frais (voir tableau~\ref{tab:scenarii_frais}) \\
+    TOB (CT) & 0,12\,\% par versement \\
     Exonération PV de base (CT) & 10\,000~€ \\
     Exonération PV annuelle (CT) & 1\,000~€ par année de contrat \\
     Durée maximale de cumul de l'exonération & 5~ans (exonération max. 15\,000~€) \\
@@ -1374,47 +1533,46 @@ anticipative.
   \end{tabular}
 \end{table}
 
-\bigskip
-Les frais de gestion sont fixés à 0\,\% afin d'isoler l'effet fiscal pur. En
-pratique, les fonds branche~23 ont des frais de gestion internes (TER) qui
-viendraient dégrader leur performance, mais ceux-ci ne sont pas l'objet de ce
-travail.
-
 \subsection{Modélisation du compte-titres}
+\label{sub:modelisation_ct}
 
 \subsubsection{Accumulation du capital}
 
-À chaque année~$t$ (avec $t = 0$ l'année du premier versement)~:
-\[
+À chaque année~$t$ (avec $t = 0$ l'année du premier versement), la réserve évolue
+selon~:
+\begin{equation}
   R_0 = v, \qquad
-  R_t = R_{t-1} \times (1 + r) \times (1 - f_g) + v
-\]
-où $v$ est le versement annuel, $r$ le rendement annuel brut et $f_g$ les frais
-de gestion annuels (fixés à 0\,\%). Les versements ne subissent aucune déduction
-à l'entrée.
+  R_t = R_{t-1} \times (1 + r) \times (1 - f_g^{\text{CT}}) + v
+\end{equation}
+où $v$ est le versement annuel brut, $r$ le rendement annuel brut et
+$f_g^{\text{CT}}$ les frais de gestion annuels du compte-titres (variables selon
+le scénario de frais). Les versements entrent intégralement dans la réserve~;
+les frais d'entrée (courtage) sont comptabilisés séparément dans le calcul de la
+valeur actuelle.
 
 \subsubsection{Capital net à l'échéance}
 
-Le capital net tient compte de la taxe éventuelle sur les plus-values~:
+Le capital net tient compte de la taxe éventuelle sur les plus-values. En notant
+$N$ la durée totale, $R_N$ la réserve en fin de période et $v$ le versement
+annuel brut~:
 \begin{align*}
-  \text{plusValue} &= \max\!\left(0;\; R_N - \text{coûtDeBase}\right) \\
-  \text{coûtDeBase} &= \sum_{t=0}^{N} v \\
-  \text{exonération} &= 10\,000 + \min(\text{durée},\,5) \times 1\,000 \\
-  \text{plusValueTaxable} &= \max\!\left(0;\; \text{plusValue} - \text{exonération}\right) \\
-  \text{taxe PV} &= \text{plusValueTaxable} \times \tau_{\text{PV}} \\
-  \text{capitalNet} &= R_N - \text{taxe PV}
+  \text{plusValue}       &= \max\!\left(0;\; R_N - \sum_{t=0}^{N} v\right) \\
+  \text{exonération}     &= 10\,000 + \min(N,\,5) \times 1\,000 \\
+  \text{plusValueTaxable}&= \max\!\left(0;\; \text{plusValue} - \text{exonération}\right) \\
+  \text{capitalNet}      &= R_N - \text{plusValueTaxable} \times \tau_{\text{PV}}
 \end{align*}
-
 Le prix de revient est calculé par la méthode du coût total, équivalente à la
 méthode FIFO lorsque toutes les parts sont cédées simultanément à l'échéance.
 
 \subsubsection{Coûts récurrents modélisés}
 
-Deux coûts récurrents sont intégrés dans la VAN via une rente annuelle
-actualisée~:
+Deux coûts récurrents sont intégrés dans la valeur actuelle via une rente
+annuelle actualisée~:
 \begin{itemize}
-  \item Taxe sur les opérations de bourse (TOB)~: 0,12\,\% par versement annuel~;
-  \item Frais de courtage~: 2,00\,\% par versement annuel.
+  \item taxe sur les opérations de bourse (TOB) --- 0,12\,\% par versement
+    annuel, identique dans tous les scénarios de frais~;
+  \item frais d'entrée (courtage) --- variable selon le scénario de frais~:
+    0\,\% (scénario~A), 0,80\,\% (scénario~B), 2,00\,\% (scénario~C).
 \end{itemize}
 
 \subsection{Modélisation de la branche~23 --- Épargne Pension}
@@ -1422,10 +1580,11 @@ actualisée~:
 \subsubsection{Fiscalité et frais à l'entrée}
 
 L'épargne-pension n'est pas soumise à la taxe sur les opérations d'assurance
-(0\,\%). Des frais de chargement de 2\,\% sont prélevés sur chaque versement~:
-\[
-  v_{\text{net}} = v \times (1 - 2\,\%) = v \times 0{,}98
-\]
+(0\,\%). Les frais de chargement réduisent directement le montant investi~:
+\begin{equation}
+  v_{\text{net}}^{\text{EP}} = v \times (1 - f_e^{\text{B23}})
+\end{equation}
+où $f_e^{\text{B23}}$ vaut 0\,\% (scénario~A) ou 2\,\% (scénarios~B et~C).
 
 La réduction fiscale annuelle suit le barème à deux paliers décrit à la
 section~\ref{sub:avantages_ep}~: 30\,\% pour un versement jusqu'à 1\,050~€ et
@@ -1434,13 +1593,17 @@ section~\ref{sub:avantages_ep}~: 30\,\% pour un versement jusqu'à 1\,050~€ et
 \subsubsection{Accumulation et taxe anticipative}
 
 La capitalisation suit la même formule que pour le CT, sur la base du versement
-net. La taxe anticipative de 8\,\% est prélevée une seule fois sur la réserve
+net $v_{\text{net}}^{\text{EP}}$~:
+\begin{equation}
+  R_0 = v_{\text{net}}^{\text{EP}}, \qquad
+  R_t = R_{t-1} \times (1 + r) \times (1 - f_g^{\text{B23}}) + v_{\text{net}}^{\text{EP}}
+\end{equation}
+La taxe anticipative de 8\,\% est prélevée une seule fois sur la réserve
 constituée au moment du 60\textsuperscript{e} anniversaire (hors versement de
 cette année-là)~:
-\[
+\begin{equation}
   R_{\text{après taxe}} = R_{59} \times (1 + r) \times (1 - 8\,\%)
-\]
-
+\end{equation}
 Pour les souscriptions après 55~ans, le prélèvement est reporté au dixième
 anniversaire du contrat. La branche~23 ne supporte aucune taxe supplémentaire à
 l'échéance.
@@ -1458,8 +1621,8 @@ récapitulées dans le tableau~\ref{tab:diff_ep_elt}.
     \hline
     \textbf{Paramètre} & \textbf{EP Branche~23} & \textbf{ELT Branche~23} \\
     \hline
-    Taxe sur opérations d'assurance & 0\,\% & 2\,\% \\
-    Frais par prime & 2\,\% & 2\,\% \\
+    Taxe sur opérations d'assurance (TOA) & 0\,\% & 2\,\% \\
+    Frais de chargement (scénarios B et C) & 2\,\% & 2\,\% \\
     Taux de la taxe anticipative & 8\,\% & 10\,\% \\
     Plafond de déduction & 1\,350~€/an & 2\,450~€/an \\
     Taux de réduction fiscale & 30\,\% ($\leq$1\,050~€), 25\,\% ($\leq$1\,350~€) & 30\,\% (taux unique) \\
@@ -1468,28 +1631,28 @@ récapitulées dans le tableau~\ref{tab:diff_ep_elt}.
   \end{tabular}
 \end{table}
 
-\bigskip
-Le versement net après application de la taxe TOA et des frais de chargement
-est~:
-\[
+Dans les scénarios~B et~C, la TOA et les frais de chargement s'appliquent
+successivement~; le versement net effectivement investi est~:
+\begin{equation}
   v_{\text{net}}^{\text{ELT}} = v \times (1 - 2\,\%) \times (1 - 2\,\%) = v \times 0{,}9604
-\]
+\end{equation}
+Dans le scénario~A (sans frais), aucune déduction n'est appliquée~:
+$v_{\text{net}}^{\text{ELT}} = v$.
 
 \subsection{Détection des points de croisement}
 
 Un point de croisement est le versement annuel~$v^*$ à partir duquel la
 hiérarchie entre les deux instruments s'inverse. On parcourt la série des
-différences $\Delta(v) = \text{VAN}_{\text{B23}}(v) - \text{VAN}_{\text{CT}}(v)$
+différences $\Delta(v) = \text{VA}_{\text{B23}}(v) - \text{VA}_{\text{CT}}(v)$
 et l'on repère tout changement de signe entre deux versements consécutifs
 $v_i$ et $v_{i+1}$. Le croisement est localisé par interpolation linéaire~:
-\[
+\begin{equation}
   v^* = v_i - \Delta(v_i) \times \frac{v_{i+1} - v_i}{\Delta(v_{i+1}) - \Delta(v_i)}
-\]
-
-Une condition supplémentaire exige que l'un des deux instruments ait une VAN
-non nulle ($|\text{VAN}| > 10^{-6}$~€) afin d'éliminer les artefacts numériques
-en début de plage. L'absence de croisement signifie qu'un des instruments domine
-sur l'intégralité de la plage.
+\end{equation}
+Une condition supplémentaire exige que l'un des deux instruments ait une valeur
+actuelle non nulle ($|\text{VA}| > 10^{-6}$~€) afin d'éliminer les artefacts
+numériques en début de plage. L'absence de croisement signifie qu'un des
+instruments domine sur l'intégralité de la plage.
 
 \subsection{Représentation graphique~: heatmaps}
 
@@ -1499,43 +1662,44 @@ l'âge de début des versements (de 18 à 55~ans). Chaque cellule indique
 l'instrument dominant global (bleu pour la branche~23, vert pour le CT, gris
 pour l'ex~æquo), dont l'intensité de couleur reflète la force de la dominance.
 Lorsqu'un point de croisement existe, le versement-seuil correspondant est
-annoté dans la cellule. Quatre heatmaps sont produites, une par scénario.
+annoté dans la cellule. Quatre heatmaps sont produites par scénario de frais,
+soit douze heatmaps au total.
 
 \subsection{Limites et hypothèses de la méthodologie}
 
 La méthodologie repose sur plusieurs hypothèses simplificatrices~:
 
 \begin{enumerate}[label=\alph*)]
-  \item \textbf{Rendement constant.} Le taux de rendement annuel brut est supposé
+  \item Rendement constant. Le taux de rendement annuel brut est supposé
     constant sur toute la durée. En pratique, les marchés financiers sont
     volatils~; cette hypothèse est nécessaire pour rendre la comparaison
     déterministe et systématique.
 
-  \item \textbf{Versements constants.} Les versements annuels sont identiques
+  \item Versements constants. Les versements annuels sont identiques
     chaque année. L'inflation et l'évolution du revenu de l'investisseur ne sont
     pas modélisés.
 
-  \item \textbf{Frais de gestion nuls.} Les frais de gestion annuels (TER des
-    fonds) sont fixés à 0\,\% pour les deux instruments. En pratique, les fonds
-    branche~23 ont des coûts internes plus élevés que les ETF passifs.
+  \item Frais constants par scénario. Les frais d'entrée et de gestion
+    sont constants dans un scénario donné et ne varient pas dans le temps. Les
+    variations de tarification réelles ne sont pas modélisées.
 
-  \item \textbf{Fiscalité figée.} La réglementation fiscale est celle en vigueur
+  \item Fiscalité figée. La réglementation fiscale est celle en vigueur
     au moment de la rédaction. Tout changement législatif futur n'est pas pris en
     compte.
 
-  \item \textbf{Comparaison en VAN et non en capital brut.} Ce choix permet de
-    tenir compte du moment où les flux sont perçus (économies fiscales annuelles
-    versus capital à terme), mais il dépend du taux d'actualisation retenu (OLO
-    3\,\%).
+  \item Comparaison en valeur actuelle et non en capital brut. Ce choix
+    permet de tenir compte du moment où les flux sont perçus (économies fiscales
+    annuelles versus capital à terme), mais il dépend du référentiel de taux OLO
+    retenu.
 
-  \item \textbf{Absence de risque de contrepartie.} Les deux instruments sont
+  \item Absence de risque de contrepartie. Les deux instruments sont
     supposés sans risque de défaut ou de faillite de l'assureur ou du courtier.
 
-  \item \textbf{Horizon retraite fixe.} L'horizon est fixé à 65~ans pour tous les
+  \item Horizon retraite fixe. L'horizon est fixé à 65~ans pour tous les
     profils. La possibilité de rachat anticipé ou de transfert de contrat n'est
     pas modélisée.
 
-  \item \textbf{Méthode d'exonération PV simplifiée.} L'exonération des
+  \item Méthode d'exonération PV simplifiée. L'exonération des
     plus-values pour le CT est calculée de manière forfaitaire (montant de base
     plus cumul annuel plafonné), ce qui constitue une approximation du régime
     réel.
