@@ -14,6 +14,7 @@
 \usepackage{titlesec}
 \usepackage{pdfpages}
 \usepackage{longtable}
+\usepackage{makecell}
 
 %highlight
 \usepackage{soul}
@@ -1335,7 +1336,9 @@ tableau~\ref{tab:diff_ep_elt}.
     Taxe sur opérations d'assurance (TOA) & 0\,\% & 2\,\% \\
     Taux de la taxe anticipative & 8\,\% & 10\,\% \\
     Plafond de déduction & 1\,350~€/an & 2\,450~€/an \\
-    Taux de réduction fiscale & 30\,\% ($\leq$1\,050~€), 25\,\% ($\leq$1\,350~€) & 30\,\% (taux unique) \\
+    Taux de réduction fiscale
+      & \makecell[l]{30\,\% ($\leq$1\,050~€) \\ 25\,\% ($\leq$1\,350~€)}
+      & 30\,\% (taux unique) \\
     Plage de versements simulés & 1~€ $\to$ 1\,350~€ & 1~€ $\to$ 2\,450~€ \\
     \hline
   \end{tabular}
