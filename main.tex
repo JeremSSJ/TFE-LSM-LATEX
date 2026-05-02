@@ -1028,9 +1028,9 @@ marché \cite{directive97_9_ce}.
 \subsection{Présentation générale de l'approche}
 
 La méthodologie repose sur une simulation déterministe et systématique. Pour
-chaque combinaison possible d'âge de début et de taux de rendement, les deux
-instruments sont simulés sur la même durée, soit jusqu'à l'âge de 65~ans,
-retenu comme horizon conventionnel de l'épargne à long terme dans le cadre de ce
+chaque combinaison possible d'âge de début et de taux de rendement, chaque
+instrument est simulé sur la même durée, soit jusqu'à l'âge de 65~ans,
+retenu comme horizon conventionnel de l'épargne pension dans le cadre de ce
 travail. Bien que la pension légale en Belgique soit progressivement portée à
 67~ans par la réforme de 2022, l'âge de 65~ans demeure la référence la plus
 couramment utilisée dans la documentation des produits d'assurance-vie à long terme,
@@ -1066,6 +1066,7 @@ deux instruments pour chaque versement entier de la plage, soit entre 1\,350 et
 2\,450~simulations par ligne.
 
 \subsection{Les véhicules d'investissement analysés}
+\label{sub:vehicules}
 
 Trois véhicules sont modélisés et combinés en quatre scénarios~:
 
@@ -1077,10 +1078,25 @@ Trois véhicules sont modélisés et combinés en quatre scénarios~:
     unités de compte bénéficiant de la réduction fiscale pour épargne à long terme
     \cite[art.~145\textsuperscript{3}]{cir92_2025}.
   \item[Compte-Titres (CT).] Portefeuille d'actions ou d'ETF géré via un
-    courtier, sans avantage fiscal à l'entrée mais sans taxe anticipative. Deux
+    courtier, sans avantage fiscal à l'entrée ni taxe anticipative. Deux
     variantes sont modélisées~: sans taxe sur les plus-values (taux
     $\tau_{\text{PV}} = 0\,\%$) et avec taxe sur les plus-values de 10\,\%.
 \end{description}
+
+\bigskip
+Sur le plan de la taxe annuelle sur les comptes-titres (TCT), les deux véhicules
+se trouvent dans une situation de symétrie fiscale qui mérite d'être explicitée.
+Le titulaire d'un CT est directement soumis à la TCT dès que la valeur de son
+portefeuille dépasse le seuil légal. Le souscripteur d'un contrat de branche~23,
+en revanche, ne détient pas de compte-titres en son nom propre~; toutefois,
+l'assureur gère les actifs sous-jacents des contrats en unités de compte via des
+comptes-titres inscrits à son bilan, et ces comptes entrent dans le champ
+d'application de la TCT. L'impact de cette taxe se répercute donc indirectement
+sur la réserve du souscripteur via la déduction opérée sur les actifs de
+l'assureur. Dans la simulation, la TCT est modélisée comme une déduction annuelle
+sur la réserve en fin d'année pour les deux véhicules, selon les mêmes règles de
+calcul, ce qui préserve la comparabilité des résultats
+(voir section~\ref{sub:accum_ct}).
 
 \subsection{Le profil investisseur}
 
@@ -1108,16 +1124,15 @@ sur l'horizon de retraite commun aux deux instruments.
 
 \subsubsection{Principe de la valeur actuelle}
 
-Comparer deux placements sur un horizon de plusieurs dizaines d'années pose une
-difficulté fondamentale~: les flux de trésorerie associés à chaque instrument
+Comparer deux placements sur un horizon de plusieurs années pose une
+difficulté fondamentale~: les flux monétaires associés à chaque instrument
 surviennent à des dates différentes. Pour la branche~23, l'avantage fiscal se
 matérialise dès la première année sous forme de remboursement d'impôt annuel,
-tandis que le capital net n'est disponible qu'à l'échéance, après prélèvement
-de la taxe anticipative à 60~ans. Pour le compte-titres, les coûts (taxe sur
-les opérations de bourse, frais de courtage) sont supportés à chaque versement,
-et une éventuelle taxe sur les plus-values n'est due qu'au moment du retrait
-final. Additionner ces flux bruts sans correction temporelle reviendrait à traiter
-de manière identique un euro perçu aujourd'hui et un euro perçu dans quarante ans,
+tandis que le capital net n'est disponible qu'à l'échéance. 
+Pour le compte-titres, les coûts (taxe sur
+les opérations de bourse, frais de courtage) sont supportés à chaque versement. 
+Additionner ces flux bruts sans correction temporelle reviendrait à traiter
+de manière identique un euro perçu aujourd'hui et un euro perçu dans plusieurs années,
 ce qui serait économiquement inexact.
 
 \bigskip
@@ -1163,11 +1178,11 @@ Lorsque plusieurs flux se produisent à des dates différentes --- ce qui est
 exactement le cas des instruments comparés ---, leur valeur actuelle totale est
 la somme des valeurs actuelles individuelles~:
 \begin{equation}
-  \text{VA}_{\text{totale}} = \sum_{t=0}^{T} \frac{C_t}{(1 + r_{\text{OLO}}(t))^t}
+  \text{VA}_{\text{totale}} = \sum_{t=0}^{T} \frac{C_t}{(1 + r(t))^t}
 \end{equation}
 Cette grandeur synthétise en un seul chiffre l'intégralité des flux d'un
 investissement, quelle que soit leur date d'occurrence. On notera que le taux
-d'actualisation $r_{\text{OLO}}(t)$ dépend ici de la maturité $t$~: cette
+d'actualisation $r(t)$ dépend ici de la maturité $t$~: cette
 particularité est expliquée dans la section suivante.
 
 \bigskip
@@ -1177,17 +1192,16 @@ valeurs actuelles totales~:
   \Delta = \text{VA}_{\text{B23}} - \text{VA}_{\text{CT}}
 \end{equation}
 Si $\Delta > 0$, le choix de la branche~23 est préférable~; si $\Delta < 0$, le
-compte-titres l'est. Cette logique, analogue à celle de la valeur actuelle nette
-(VAN) d'un projet d'investissement, permet de quantifier non seulement quel
-instrument domine, mais de combien, en euros constants d'aujourd'hui.
+compte-titres l'est. Cette logique permet de quantifier non seulement quel
+instrument domine, mais aussi de combien, en euros constants d'aujourd'hui.
 
 \subsubsection{Le taux d'actualisation~: la courbe OLO belge}
 \label{sub:taux_olo}
 
 Le taux d'actualisation joue le rôle d'un taux de référence~: il représente ce
 que l'investisseur pourrait obtenir sur un placement sans risque pendant la même
-durée. Le référentiel retenu est celui des OLO belges (Obligations Linéaires ---
-Lineaire Obligaties), c'est-à-dire les obligations d'État émises par le Trésor
+durée. Le référentiel retenu est celui des OLO belges (Obligations Linéaires), 
+c'est-à-dire les obligations d'État émises par le Trésor
 belge. Ces titres constituent l'instrument sans risque de référence pour un
 investisseur résident en Belgique, et leur courbe de rendement est publiée pour
 des maturités allant de un à trente ans.
@@ -1202,8 +1216,7 @@ vingt ans de versements est actualisé au taux OLO à vingt ans. Cette approche
 est cohérente avec la structure par terme des taux~: les marchés obligataires
 distinguent les rendements selon la maturité, et il serait inexact d'appliquer
 un taux de court terme à un flux de long terme, ou inversement. Pour les durées
-supérieures à trente ans --- qui correspondent aux profils débutant avant l'âge
-de 35~ans environ --- le taux de l'OLO à trente ans est appliqué par convention.
+supérieures à trente ans le taux de l'OLO à trente ans est appliqué par convention.
 
 \bigskip
 Les taux bruts des OLO sont corrigés du précompte mobilier belge de 30\,\%~: un
@@ -1273,19 +1286,25 @@ année pour les deux véhicules, via le facteur $(1 - f_g)$ dans la formule
 d'accumulation.
 
 \bigskip
-La troisième étape est la fiscalité à la sortie. À l'échéance, un prélèvement
-fiscal peut réduire le capital brut selon le véhicule~:
+La troisième étape est la fiscalité, qui intervient à deux moments distincts.
+Pendant la phase d'accumulation, la TCT s'applique aux deux véhicules selon
+la symétrie exposée à la section~\ref{sub:vehicules}~: directement pour le CT,
+et via les actifs de l'assureur pour la branche~23. Cette taxe est prélevée
+chaque année sur la réserve si celle-ci dépasse le seuil légal, et réduit donc
+la base de capitalisation de l'année suivante. À l'échéance, un second
+prélèvement peut s'ajouter selon le véhicule~:
 \begin{itemize}
-  \item Pour la branche~23, la taxe anticipative est prélevée une seule fois sur
-    la réserve constituée au 60\textsuperscript{e} anniversaire de
-    l'investisseur~; elle est de 8\,\% pour l'EP et de 10\,\% pour l'ELT. Aucun
-    impôt supplémentaire n'est dû à la sortie finale.
-  \item Pour le compte-titres, une taxe de 10\,\% s'applique éventuellement sur
-    les plus-values excédant un seuil d'exonération forfaitaire (voir
-    section~\ref{sub:modelisation_ct}). Aucune autre retenue n'est due à la sortie.
+  \item pour la branche~23, la taxe anticipative est prélevée une seule fois
+    sur la réserve constituée au 60\textsuperscript{e} anniversaire de
+    l'investisseur~; elle est de 8\,\% pour l'EP et de 10\,\% pour l'ELT.
+    Aucun impôt supplémentaire n'est dû à la sortie finale~;
+  \item pour le compte-titres, une taxe de 10\,\% s'applique éventuellement
+    sur les plus-values excédant un seuil d'exonération forfaitaire, détaillé
+    à la section~\ref{sub:modelisation_ct}.
 \end{itemize}
-Dans les deux cas, le capital net à l'échéance $C_N^{\text{net}}$ est le capital
-brut $R_N$ diminué du prélèvement fiscal applicable.
+Dans les deux cas, le capital net à l'échéance $C_N^{\text{net}}$ est la réserve
+finale $R_N$ --- déjà nette des TCT annuelles cumulées --- diminuée de ce
+prélèvement de sortie.
 
 \bigskip
 La quatrième et dernière étape est l'actualisation proprement dite. La valeur
@@ -1393,7 +1412,7 @@ Les scénarios avec taxe sur les plus-values (scénarios~2 et~4) correspondent a
 régime en vigueur depuis le 1\textsuperscript{er}~janvier~2026, date d'entrée en
 application de la taxe de 10\,\% sur les plus-values mobilières introduite par la
 loi-programme du 22~décembre~2025. Cette structuration permet de mesurer l'impact
-de la réforme sur la compétitivité relative des véhicules d'épargne à long terme.
+de la réforme sur la compétitivité relative des véhicules d'investissement.
 
 \bigskip
 \begin{table}[h!]
@@ -1471,7 +1490,7 @@ gestion que ceux que l'assureur prélève sur un contrat de branche~23. Puisque
 les frais des assureurs sont structurellement plus élevés que ceux des courtiers
 en ligne, cette hypothèse constitue une borne supérieure pour les coûts du
 compte-titres~: elle est délibérément défavorable à ce véhicule et a pour objet
-de tester si la branche~23 maintient son avantage même lorsque le compte-titres
+de tester dans quelle mesure la branche~23 maintient son avantage même lorsque le compte-titres
 se voit pénalisé à hauteur des frais que la branche~23 elle-même supporte. Lorsque
 la branche~23 domine encore dans ce scénario, son avantage est robuste~; lorsque
 le compte-titres résiste malgré cette pénalité, cela indique que l'avantage fiscal
@@ -1529,32 +1548,59 @@ d'assurance et $f_e^{\text{B23}}$ le taux de frais de chargement de la branche~2
     Exonération PV de base (CT) & 10\,000~€ \\
     Exonération PV annuelle (CT) & 1\,000~€ par année de contrat \\
     Durée maximale de cumul de l'exonération & 5~ans (exonération max. 15\,000~€) \\
+    Seuil de la TCT & 1\,000\,000~€ (valeur du portefeuille en fin d'année) \\
+    Taux de la TCT & 0,15\,\% de la réserve annuelle \\
+    Plafond de la TCT & 10\,\% du dépassement du seuil \\
     \hline
   \end{tabular}
 \end{table}
+
+\bigskip
+Les paramètres de la TCT s'appliquent de manière identique aux deux véhicules,
+conformément à la symétrie décrite à la section~\ref{sub:vehicules}. Les
+modélisations suivantes précisent la formule de calcul et les paramètres propres
+à chaque véhicule.
 
 \subsection{Modélisation du compte-titres}
 \label{sub:modelisation_ct}
 
 \subsubsection{Accumulation du capital}
+\label{sub:accum_ct}
 
-À chaque année~$t$ (avec $t = 0$ l'année du premier versement), la réserve évolue
-selon~:
+À chaque année~$t$ (avec $t = 0$ l'année du premier versement), l'accumulation
+se déroule en deux temps. La réserve intermédiaire $\widetilde{R}_t$, avant
+déduction de la TCT, est d'abord calculée par intérêts composés~:
 \begin{equation}
-  R_0 = v, \qquad
-  R_t = R_{t-1} \times (1 + r) \times (1 - f_g^{\text{CT}}) + v
+  \widetilde{R}_0 = v, \qquad
+  \widetilde{R}_t = R_{t-1} \times (1 + r) \times (1 - f_g^{\text{CT}}) + v
 \end{equation}
 où $v$ est le versement annuel brut, $r$ le rendement annuel brut et
-$f_g^{\text{CT}}$ les frais de gestion annuels du compte-titres (variables selon
-le scénario de frais). Les versements entrent intégralement dans la réserve~;
-les frais d'entrée (courtage) sont comptabilisés séparément dans le calcul de la
-valeur actuelle.
+$f_g^{\text{CT}}$ les frais de gestion annuels (variables selon le scénario de
+frais). Les versements entrent intégralement dans la réserve~; les frais d'entrée
+(courtage) sont comptabilisés séparément dans le calcul de la valeur actuelle.
+La TCT est ensuite appliquée à $\widetilde{R}_t$~:
+\begin{equation}
+  \label{eq:tct}
+  \text{TCT}_t =
+  \begin{cases}
+    0 & \text{si } \widetilde{R}_t \leq 1\,000\,000 \\[4pt]
+    \min\!\bigl(\widetilde{R}_t \times 0{,}15\,\%,\;
+               (\widetilde{R}_t - 1\,000\,000) \times 10\,\%\bigr)
+      & \text{sinon}
+  \end{cases}
+\end{equation}
+Le plafond de 10\,\% du dépassement évite que la taxe n'excède les gains réalisés
+au-dessus du seuil. La réserve nette de fin d'année, qui sert de base à
+l'accumulation de l'année suivante, est alors~:
+\begin{equation}
+  R_t = \widetilde{R}_t - \text{TCT}_t
+\end{equation}
 
 \subsubsection{Capital net à l'échéance}
 
 Le capital net tient compte de la taxe éventuelle sur les plus-values. En notant
-$N$ la durée totale, $R_N$ la réserve en fin de période et $v$ le versement
-annuel brut~:
+$N$ la durée totale, $R_N$ la réserve nette de fin de période (après TCT
+annuelles cumulées) et $v$ le versement annuel brut~:
 \begin{align*}
   \text{plusValue}       &= \max\!\left(0;\; R_N - \sum_{t=0}^{N} v\right) \\
   \text{exonération}     &= 10\,000 + \min(N,\,5) \times 1\,000 \\
@@ -1592,21 +1638,24 @@ section~\ref{sub:avantages_ep}~: 30\,\% pour un versement jusqu'à 1\,050~€ et
 
 \subsubsection{Accumulation et taxe anticipative}
 
-La capitalisation suit la même formule que pour le CT, sur la base du versement
-net $v_{\text{net}}^{\text{EP}}$~:
-\begin{equation}
-  R_0 = v_{\text{net}}^{\text{EP}}, \qquad
-  R_t = R_{t-1} \times (1 + r) \times (1 - f_g^{\text{B23}}) + v_{\text{net}}^{\text{EP}}
-\end{equation}
-La taxe anticipative de 8\,\% est prélevée une seule fois sur la réserve
-constituée au moment du 60\textsuperscript{e} anniversaire (hors versement de
-cette année-là)~:
+La réserve s'accumule selon la même logique en deux temps que pour le CT
+(section~\ref{sub:accum_ct})~: une réserve intermédiaire est calculée par
+intérêts composés, puis la TCT est déduite selon la formule~(\ref{eq:tct}),
+reflétant son impact indirect via les actifs de l'assureur~:
+\begin{align}
+  \widetilde{R}_0 &= v_{\text{net}}^{\text{EP}} \notag \\
+  \widetilde{R}_t &= R_{t-1} \times (1 + r) \times (1 - f_g^{\text{B23}})
+                    + v_{\text{net}}^{\text{EP}} \notag \\
+  R_t &= \widetilde{R}_t - \text{TCT}_t
+\end{align}
+La taxe anticipative de 8\,\% est ensuite prélevée une seule fois sur la réserve
+constituée au 60\textsuperscript{e} anniversaire (hors versement de cette
+année-là)~:
 \begin{equation}
   R_{\text{après taxe}} = R_{59} \times (1 + r) \times (1 - 8\,\%)
 \end{equation}
 Pour les souscriptions après 55~ans, le prélèvement est reporté au dixième
-anniversaire du contrat. La branche~23 ne supporte aucune taxe supplémentaire à
-l'échéance.
+anniversaire du contrat. Aucune taxe supplémentaire n'est due à la sortie finale.
 
 \subsection{Modélisation de la branche~23 --- Épargne Long Terme}
 
@@ -1637,15 +1686,17 @@ successivement~; le versement net effectivement investi est~:
   v_{\text{net}}^{\text{ELT}} = v \times (1 - 2\,\%) \times (1 - 2\,\%) = v \times 0{,}9604
 \end{equation}
 Dans le scénario~A (sans frais), aucune déduction n'est appliquée~:
-$v_{\text{net}}^{\text{ELT}} = v$.
+$v_{\text{net}}^{\text{ELT}} = v$. L'accumulation et la TCT suivent ensuite la
+même logique en deux temps que pour l'EP (section~\ref{sub:accum_ct}), avec les
+frais de gestion $f_g^{\text{B23}}$ et le versement net $v_{\text{net}}^{\text{ELT}}$.
 
 \subsection{Détection des points de croisement}
 
 Un point de croisement est le versement annuel~$v^*$ à partir duquel la
 hiérarchie entre les deux instruments s'inverse. On parcourt la série des
-différences $\Delta(v) = \text{VA}_{\text{B23}}(v) - \text{VA}_{\text{CT}}(v)$
-et l'on repère tout changement de signe entre deux versements consécutifs
-$v_i$ et $v_{i+1}$. Le croisement est localisé par interpolation linéaire~:
+différences $\Delta(v)$ définie à la section~\ref{sub:comparaison} et l'on
+repère tout changement de signe entre deux versements consécutifs $v_i$ et
+$v_{i+1}$. Le croisement est localisé par interpolation linéaire~:
 \begin{equation}
   v^* = v_i - \Delta(v_i) \times \frac{v_{i+1} - v_i}{\Delta(v_{i+1}) - \Delta(v_i)}
 \end{equation}
