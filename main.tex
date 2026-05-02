@@ -1027,10 +1027,12 @@ marché \cite{directive97_9_ce}.
 
 \subsection{Présentation générale de l'approche}
 
-La méthodologie repose sur une simulation déterministe et systématique. Pour
-chaque combinaison possible d'âge de début et de taux de rendement, chaque
-instrument est simulé sur la même durée, soit jusqu'à l'âge de 65~ans,
-retenu comme horizon conventionnel dans ce travail. Bien que la pension légale
+La méthodologie repose sur une simulation déterministe et systématique comparant 
+trois véhicules~: l'épargne-pension, 
+l'épargne à long terme et le compte-titres. 
+Pour chaque combinaison possible d'âge de début et de taux de rendement, chaque 
+instrument est simulé sur la même durée, soit jusqu'à l'âge de 65~ans, retenu comme 
+horizon conventionnel dans ce travail. Bien que la pension légale
 en Belgique soit progressivement portée à 67~ans par la réforme de 2022,
 65~ans demeure la référence utilisée dans la documentation
 des produits d'assurance épargne-pension. Cet horizon est appliqué
@@ -1065,39 +1067,6 @@ $304 \times 4 = 1\,216$~combinaisons fiscales, portées à $1\,216 \times 3 = 3\
 de plages au total une fois croisées avec les trois configurations de frais.
 Chaque simulation de plage compare les deux instruments pour chaque versement
 entier de la plage, soit entre 1\,350 et 2\,450~comparaisons par ligne.
-
-\subsection{Les véhicules d'investissement analysés}
-\label{sub:vehicules}
-
-Trois véhicules sont modélisés et combinés en quatre scénarios~:
-
-\begin{description}
-  \item[Épargne Pension --- Branche~23 (EP B23).] Produit d'assurance-vie en
-    unités de compte bénéficiant de la réduction fiscale pour épargne-pension
-    \cite[art.~145\textsuperscript{1}]{cir92_2025}.
-  \item[Épargne Long Terme --- Branche~23 (ELT B23).] Produit d'assurance-vie en
-    unités de compte bénéficiant de la réduction fiscale pour épargne à long terme
-    \cite[art.~145\textsuperscript{3}]{cir92_2025}.
-  \item[Compte-Titres (CT).] Portefeuille d'actions ou d'ETF géré via un
-    courtier, sans avantage fiscal à l'entrée ni taxe anticipative. Deux
-    variantes sont modélisées~: sans taxe sur les plus-values (taux
-    $\tau_{\text{PV}} = 0\,\%$) et avec taxe sur les plus-values de 10\,\%.
-\end{description}
-
-\bigskip
-Sur le plan de la taxe annuelle sur les comptes-titres (TCT), les deux véhicules
-se trouvent dans une situation de symétrie fiscale qui mérite d'être explicitée.
-Le titulaire d'un CT est directement soumis à la TCT dès que la valeur de son
-portefeuille dépasse le seuil légal. Le souscripteur d'un contrat de branche~23,
-en revanche, ne détient pas de compte-titres en son nom propre~; toutefois,
-l'assureur gère les actifs sous-jacents des contrats en unités de compte via des
-comptes-titres inscrits à son bilan, et ces comptes entrent dans le champ
-d'application de la TCT. L'impact de cette taxe se répercute donc indirectement
-sur la réserve du souscripteur via la déduction opérée sur les actifs de
-l'assureur. Dans la simulation, la TCT est modélisée comme une déduction annuelle
-sur la réserve en fin d'année pour les deux véhicules, selon les mêmes règles de
-calcul, ce qui préserve la comparabilité des résultats
-(voir section~\ref{sub:accum_ct}).
 
 \subsection{Le profil investisseur}
 
