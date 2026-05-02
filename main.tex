@@ -1221,10 +1221,10 @@ successives, détaillées ici de manière générique avant d'être déclinées
 instrument par instrument.
 
 \bigskip
-\textbf{Étape 1 --- Accumulation du capital.}
-À chaque année~$t$, la réserve investie croît selon les intérêts composés et les
-versements annuels. En notant $v_{\text{net}}$ le montant effectivement investi
-après les éventuels taxes et frais d'entrée, $r$ le rendement annuel brut et $f_g$ les frais de gestion
+La première étape est l'accumulation du capital. À chaque année~$t$, la réserve
+investie croît selon les intérêts composés et les versements annuels. En notant
+$v_{\text{net}}$ le montant effectivement investi après les éventuels taxes et
+frais d'entrée, $r$ le rendement annuel brut et $f_g$ les frais de gestion
 annuels, la réserve en fin d'année~$t$ est~:
 \begin{equation}
   R_0 = v_{\text{net}}, \qquad
@@ -1236,24 +1236,22 @@ versement effectué à l'âge de 25~ans bénéficiera de quarante années de
 capitalisation, contre seulement dix pour un versement effectué à 55~ans.
 
 \bigskip
-\textbf{Étape 2 --- Frais.}
-Les frais d'entrée réduisent soit directement le montant investi dans la réserve,
-soit sont comptabilisés comme des sorties d'argent récurrentes actualisées
-séparément. Les frais de gestion annuels s'appliquent à la réserve en fin de
-chaque année via le facteur $(1 - f_g)$.
+La deuxième étape introduit les frais. Les frais d'entrée réduisent soit
+directement le montant investi dans la réserve, soit sont comptabilisés comme
+des sorties d'argent récurrentes actualisées séparément. Les frais de gestion
+annuels s'appliquent à la réserve en fin de chaque année via le facteur $(1 - f_g)$.
 
 \bigskip
-\textbf{Étape 3 --- Fiscalité.}
-Deux prélèvements peuvent s'appliquer. Pendant la phase d'accumulation, la taxe
-sur les comptes-titres (TCT) réduit chaque année la réserve si celle-ci dépasse
-le seuil légal d'un million d'euros. À l'échéance, un prélèvement de sortie
-propre à chaque instrument s'ajoute éventuellement. Le capital net
-$C_N^{\text{net}}$ est la réserve finale~$R_N$, déjà nette des TCT annuelles
-cumulées, diminuée de ce prélèvement de sortie.
+La troisième étape est la fiscalité. Deux prélèvements peuvent s'appliquer.
+Pendant la phase d'accumulation, la taxe sur les comptes-titres (TCT) réduit
+chaque année la réserve si celle-ci dépasse le seuil légal d'un million d'euros.
+À l'échéance, un prélèvement de sortie propre à chaque instrument s'ajoute
+éventuellement. Le capital net $C_N^{\text{net}}$ est la réserve finale~$R_N$,
+déjà nette des TCT annuelles cumulées, diminuée de ce prélèvement de sortie.
 
 \bigskip
-\textbf{Étape 4 --- Actualisation.}
-La valeur actuelle du capital net reçu dans $n$~années est~:
+La quatrième et dernière étape est l'actualisation proprement dite. La valeur
+actuelle du capital net reçu dans $n$~années est~:
 \begin{equation}
   \text{VA}\!\left(C_N^{\text{net}}\right) =
     \frac{C_N^{\text{net}}}{\bigl(1 + r_{\text{OLO}}(n)\bigr)^n}
@@ -1266,8 +1264,7 @@ horizon.
 \subsubsection{Valeur actuelle de la branche~23}
 \label{sub:va_b23}
 
-\paragraph{Épargne Pension (EP).}
-L'épargne-pension n'est pas soumise à la taxe sur les opérations d'assurance.
+Pour l'épargne-pension, aucune taxe sur les opérations d'assurance n'est due.
 Les frais de chargement réduisent directement le montant investi~:
 \begin{equation}
   v_{\text{net}}^{\text{EP}} = v \times (1 - f_e^{\text{B23}})
@@ -1321,8 +1318,7 @@ où $n$ est la durée totale, $C_N^{\text{net}}$ le capital final net après tax
 anticipative, et $\text{ÉcoFisc}(t)$ l'économie fiscale de l'année~$t$
 remboursée l'année~$t+1$.
 
-\paragraph{Épargne Long Terme (ELT).}
-L'ELT reprend la même structure, avec les différences récapitulées dans le
+Pour l'épargne à long terme (ELT), la structure est identique, avec les différences récapitulées dans le
 tableau~\ref{tab:diff_ep_elt}.
 
 \begin{table}[h!]
