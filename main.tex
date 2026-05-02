@@ -1215,125 +1215,185 @@ présente un extrait du référentiel utilisé.
 
 \subsubsection{Construction pas à pas de la valeur actuelle}
 
-Avant de présenter les formules propres à chaque véhicule, il est utile de
-construire la notion de valeur actuelle de manière progressive, en partant du
-cas le plus simple.
+La valeur actuelle de chaque instrument est construite en quatre étapes
+successives, détaillées ici de manière générique avant d'être déclinées
+instrument par instrument.
 
 \bigskip
-La première étape est l'accumulation du capital. À chaque année~$t$, la réserve
-investie croît selon les intérêts composés et les versements annuels. En notant
-$v_{\text{net}}$ le montant effectivement investi après frais d'entrée, $r$ le
-rendement annuel brut et $f_g$ les frais de gestion annuels, la réserve en fin
-d'année~$t$ est~:
+\textbf{Étape 1 --- Accumulation du capital.}
+À chaque année~$t$, la réserve investie croît selon les intérêts composés et les
+versements annuels. En notant $v_{\text{net}}$ le montant effectivement investi
+après les éventuels taxes et frais d'entrée, $r$ le rendement annuel brut et $f_g$ les frais de gestion
+annuels, la réserve en fin d'année~$t$ est~:
 \begin{equation}
   R_0 = v_{\text{net}}, \qquad
   R_t = R_{t-1} \times (1 + r) \times (1 - f_g) + v_{\text{net}}
 \end{equation}
 La croissance géométrique des intérêts composés signifie que les premières années
-de versements contribuent de manière disproportionnée au capital final~: un versement
-effectué à l'âge de 25~ans bénéficiera de quarante années de capitalisation,
-contre seulement dix pour un versement effectué à 55~ans.
+de versements contribuent de manière disproportionnée au capital final~: un
+versement effectué à l'âge de 25~ans bénéficiera de quarante années de
+capitalisation, contre seulement dix pour un versement effectué à 55~ans.
 
 \bigskip
-La deuxième étape introduit les frais. Les frais d'entrée $f_e$ réduisent le
-montant effectivement investi lors de chaque versement. Pour la branche~23, ils
-diminuent directement le capital entrant dans la réserve~:
+\textbf{Étape 2 --- Frais.}
+Les frais d'entrée réduisent soit directement le montant investi dans la réserve,
+soit sont comptabilisés comme des sorties d'argent récurrentes actualisées
+séparément. Les frais de gestion annuels s'appliquent à la réserve en fin de
+chaque année via le facteur $(1 - f_g)$.
+
+\bigskip
+\textbf{Étape 3 --- Fiscalité.}
+Deux prélèvements peuvent s'appliquer. Pendant la phase d'accumulation, la taxe
+sur les comptes-titres (TCT) réduit chaque année la réserve si celle-ci dépasse
+le seuil légal d'un million d'euros. À l'échéance, un prélèvement de sortie
+propre à chaque instrument s'ajoute éventuellement. Le capital net
+$C_N^{\text{net}}$ est la réserve finale~$R_N$, déjà nette des TCT annuelles
+cumulées, diminuée de ce prélèvement de sortie.
+
+\bigskip
+\textbf{Étape 4 --- Actualisation.}
+La valeur actuelle du capital net reçu dans $n$~années est~:
 \begin{equation}
-  v_{\text{net}}^{\text{B23}} = v \times (1 - f_e^{\text{B23}})
+  \text{VA}\!\left(C_N^{\text{net}}\right) =
+    \frac{C_N^{\text{net}}}{\bigl(1 + r_{\text{OLO}}(n)\bigr)^n}
 \end{equation}
-Pour le compte-titres, les frais d'entrée (courtage) sont traités comme un coût
-récurrent distinct~: le versement brut $v$ entre intégralement dans la réserve,
-mais une charge $v \times f_e^{\text{CT}}$ est comptabilisée séparément dans le
-calcul de la valeur actuelle, actualisée à la date du versement. Les frais de
-gestion annuels $f_g$, quant à eux, s'appliquent à la réserve à la fin de chaque
-année pour les deux véhicules, via le facteur $(1 - f_g)$ dans la formule
-d'accumulation.
-
-\bigskip
-La troisième étape est la fiscalité, qui intervient à deux moments distincts.
-Pendant la phase d'accumulation, la TCT s'applique aux deux véhicules selon
-la symétrie exposée à la section~\ref{sub:vehicules}~: directement pour le CT,
-et via les actifs de l'assureur pour la branche~23. Cette taxe est prélevée
-chaque année sur la réserve si celle-ci dépasse le seuil légal, et réduit donc
-la base de capitalisation de l'année suivante. À l'échéance, un second
-prélèvement peut s'ajouter selon le véhicule~:
-\begin{itemize}
-  \item pour la branche~23, la taxe anticipative est prélevée une seule fois
-    sur la réserve constituée au 60\textsuperscript{e} anniversaire de
-    l'investisseur~; elle est de 8\,\% pour l'EP et de 10\,\% pour l'ELT.
-    Aucun impôt supplémentaire n'est dû à la sortie finale~;
-  \item pour le compte-titres, une taxe de 10\,\% s'applique éventuellement
-    sur les plus-values excédant un seuil d'exonération forfaitaire, détaillé
-    à la section~\ref{sub:modelisation_ct}.
-\end{itemize}
-Dans les deux cas, le capital net à l'échéance $C_N^{\text{net}}$ est la réserve
-finale $R_N$ --- déjà nette des TCT annuelles cumulées --- diminuée de ce
-prélèvement de sortie.
-
-\bigskip
-La quatrième et dernière étape est l'actualisation proprement dite. La valeur
-actuelle du capital net reçu dans $n$~années est~:
-\begin{equation}
-  \text{VA}\!\left(C_N^{\text{net}}\right) = \frac{C_N^{\text{net}}}{\bigl(1 + r_{\text{OLO}}(n)\bigr)^n}
-\end{equation}
-où $r_{\text{OLO}}(n)$ est le taux OLO net correspondant à la maturité $n$. Cette
-même opération est appliquée à chaque flux annexe (économies fiscales pour la
-branche~23, coûts récurrents pour le compte-titres), chacun étant actualisé au
-taux OLO correspondant à son propre horizon.
+où $r_{\text{OLO}}(n)$ est le taux OLO net correspondant à la maturité $n$.
+Cette même opération est appliquée à chaque flux annexe (économies fiscales,
+coûts récurrents), chacun étant actualisé au taux OLO correspondant à son propre
+horizon.
 
 \subsubsection{Valeur actuelle de la branche~23}
 \label{sub:va_b23}
 
-La valeur actuelle totale d'un instrument de la branche~23 se décompose en deux
-composantes~: la valeur actuelle du capital net à l'échéance et la valeur actuelle
-des économies fiscales annuelles.
+\paragraph{Épargne Pension (EP).}
+L'épargne-pension n'est pas soumise à la taxe sur les opérations d'assurance.
+Les frais de chargement réduisent directement le montant investi~:
+\begin{equation}
+  v_{\text{net}}^{\text{EP}} = v \times (1 - f_e^{\text{B23}})
+\end{equation}
+où $f_e^{\text{B23}}$ vaut 0\,\% (scénario~A) ou 2\,\% (scénarios~B et~C).
+La réduction fiscale annuelle suit le barème à deux paliers décrit à la
+section~\ref{sub:avantages_ep}~: 30\,\% pour un versement jusqu'à 1\,050~€ et
+25\,\% sur la totalité au-delà jusqu'au plafond maximal de 1\,350~€.
+
+La réserve s'accumule en deux temps, réserve intermédiaire par intérêts composés
+puis déduction de la TCT~:
+\begin{align}
+  \widetilde{R}_0 &= v_{\text{net}}^{\text{EP}} \notag \\
+  \widetilde{R}_t &= R_{t-1} \times (1 + r) \times (1 - f_g^{\text{B23}})
+                    + v_{\text{net}}^{\text{EP}} \notag \\
+  R_t &= \widetilde{R}_t - \text{TCT}_t
+\end{align}
+avec
+\begin{equation}
+  \label{eq:tct}
+  \text{TCT}_t =
+  \begin{cases}
+    0 & \text{si } \widetilde{R}_t \leq 1\,000\,000 \\[4pt]
+    \min\!\bigl(\widetilde{R}_t \times 0{,}15\,\%,\;
+               (\widetilde{R}_t - 1\,000\,000) \times 10\,\%\bigr)
+      & \text{sinon}
+  \end{cases}
+\end{equation}
+reflétant l'impact indirect de la TCT via les actifs de l'assureur. La taxe
+anticipative de 8\,\% est ensuite prélevée une seule fois sur la réserve au
+60\textsuperscript{e} anniversaire~:
+\begin{equation}
+  R_{\text{60 après taxe}} = R_{60} \times (1 - 8\,\%)
+\end{equation}
+Aucune taxe supplémentaire n'est due à la sortie finale.
+
+La valeur actuelle totale de l'EP se compose du capital net actualisé et des
+économies fiscales actualisées~:
 \begin{align}
   \text{VA}_{\text{B23}} &=
     \underbrace{%
       \frac{C_N^{\text{net}}}{\bigl(1 + r_{\text{OLO}}(n)\bigr)^n}
-    }_{\text{capital net actualisé}} \notag \\
-  &\quad +
+    }_{\text{capital net actualisé}}
+  +
     \underbrace{%
       \sum_{t=0}^{n-1}
       \frac{\text{ÉcoFisc}(t)}{\bigl(1 + r_{\text{OLO}}(t+1)\bigr)^{t+1}}
     }_{\text{économies fiscales actualisées}}
 \end{align}
-Les variables sont définies comme suit~:
-\begin{description}
-  \item[$n$] durée totale de l'investissement en années~;
-  \item[$C_N^{\text{net}}$] capital final net après déduction de la taxe
-    anticipative~;
-  \item[$r_{\text{OLO}}(k)$] taux OLO net correspondant à la maturité $k$~;
-  \item[$\text{ÉcoFisc}(t)$] économie fiscale obtenue à l'année~$t$, remboursée
-    par l'administration fiscale l'année~$t+1$, ce qui justifie l'actualisation
-    au facteur $\bigl(1 + r_{\text{OLO}}(t+1)\bigr)^{t+1}$.
-\end{description}
+où $n$ est la durée totale, $C_N^{\text{net}}$ le capital final net après taxe
+anticipative, et $\text{ÉcoFisc}(t)$ l'économie fiscale de l'année~$t$
+remboursée l'année~$t+1$.
+
+\paragraph{Épargne Long Terme (ELT).}
+L'ELT reprend la même structure, avec les différences récapitulées dans le
+tableau~\ref{tab:diff_ep_elt}.
+
+\begin{table}[h!]
+  \centering
+  \caption{Différences de paramètres entre EP et ELT Branche~23}
+  \label{tab:diff_ep_elt}
+  \begin{tabular}{lll}
+    \hline
+    \textbf{Paramètre} & \textbf{EP Branche~23} & \textbf{ELT Branche~23} \\
+    \hline
+    Taxe sur opérations d'assurance (TOA) & 0\,\% & 2\,\% \\
+    Taux de la taxe anticipative & 8\,\% & 10\,\% \\
+    Plafond de déduction & 1\,350~€/an & 2\,450~€/an \\
+    Taux de réduction fiscale & 30\,\% ($\leq$1\,050~€), 25\,\% ($\leq$1\,350~€) & 30\,\% (taux unique) \\
+    Plage de versements simulés & 1~€ $\to$ 1\,350~€ & 1~€ $\to$ 2\,450~€ \\
+    \hline
+  \end{tabular}
+\end{table}
+
+Dans les scénarios~B et~C, la TOA et les frais de chargement s'appliquent
+successivement~:
+\begin{equation}
+  v_{\text{net}}^{\text{ELT}} = v \times (1 - 2\,\%) \times (1 - 2\,\%)
+  = v \times 0{,}9604
+\end{equation}
+Dans le scénario~A, $v_{\text{net}}^{\text{ELT}} = v$. L'accumulation, la TCT
+et la taxe anticipative (au taux de 10\,\%) suivent la même logique que pour l'EP.
 
 \subsubsection{Valeur actuelle du compte-titres}
 \label{sub:va_ct_formule}
 
-La valeur actuelle du compte-titres est égale à la valeur actuelle du capital net
-diminuée de la valeur actuelle des coûts récurrents~:
+Pour le compte-titres, le versement brut $v$ entre intégralement dans la
+réserve~; les frais d'entrée (courtage) sont comptabilisés séparément. La réserve
+s'accumule en deux temps selon la même logique que pour la branche~23, avec la
+même formule de TCT~(\ref{eq:tct})~:
+\begin{equation}
+  \widetilde{R}_0 = v, \qquad
+  \widetilde{R}_t = R_{t-1} \times (1 + r) \times (1 - f_g^{\text{CT}}) + v,
+  \qquad R_t = \widetilde{R}_t - \text{TCT}_t
+\end{equation}
+Le capital net à l'échéance tient compte de la taxe éventuelle sur les
+plus-values~:
+\begin{align*}
+  \text{plusValue}        &= \max\!\left(0;\; R_N - {\textstyle\sum_{t=0}^{N}} v\right) \\
+  \text{exonération}      &= 10\,000 + \min(N,\,5) \times 1\,000 \\
+  \text{plusValueTaxable} &= \max\!\left(0;\; \text{plusValue} - \text{exonération}\right) \\
+  C_N^{\text{net}}        &= R_N - \text{plusValueTaxable} \times \tau_{\text{PV}}
+\end{align*}
+Le prix de revient est calculé par la méthode du coût total, équivalente à FIFO
+lorsque toutes les parts sont cédées simultanément à l'échéance.
+
+La valeur actuelle est égale au capital net actualisé diminué des coûts
+récurrents actualisés (TOB et frais d'entrée)~:
 \begin{align}
   \text{VA}_{\text{CT}} &=
     \underbrace{%
       \frac{C_N^{\text{net}}}{\bigl(1 + r_{\text{OLO}}(n)\bigr)^n}
-    }_{\text{capital net actualisé}} \notag \\
-  &\quad -
+    }_{\text{capital net actualisé}}
+  -
     \underbrace{%
       \sum_{t=0}^{n-1}
       \frac{v \times \tau_{\text{TOB}}}{\bigl(1 + r_{\text{OLO}}(t)\bigr)^t}
     }_{\text{TOB actualisée}}
-    -
+  -
     \underbrace{%
       \sum_{t=0}^{n-1}
       \frac{v \times f_e^{\text{CT}}}{\bigl(1 + r_{\text{OLO}}(t)\bigr)^t}
     }_{\text{frais d'entrée actualisés}}
 \end{align}
-où $\tau_{\text{TOB}} = 0{,}12\,\%$ est le taux de la taxe sur les opérations de
-bourse et $f_e^{\text{CT}}$ le taux de frais d'entrée du compte-titres, variable
-selon le scénario de frais retenu. Le compte-titres ne génère aucune économie
-fiscale à l'entrée.
+où $\tau_{\text{TOB}} = 0{,}12\,\%$ et $f_e^{\text{CT}}$ vaut 0\,\%
+(scénario~A), 0,80\,\% (scénario~B) ou 2,00\,\% (scénario~C). Le compte-titres
+ne génère aucune économie fiscale à l'entrée.
 
 \subsubsection{Comparaison et notion de dominance}
 \label{sub:comparaison}
@@ -1519,140 +1579,7 @@ d'assurance et $f_e^{\text{B23}}$ le taux de frais de chargement de la branche~2
   \end{tabular}
 \end{table}
 
-\bigskip
-Les paramètres de la TCT s'appliquent de manière identique aux deux véhicules,
-conformément à la symétrie décrite à la section~\ref{sub:vehicules}. Les
-modélisations suivantes précisent la formule de calcul et les paramètres propres
-à chaque véhicule.
 
-\subsection{Modélisation du compte-titres}
-\label{sub:modelisation_ct}
-
-\subsubsection{Accumulation du capital}
-\label{sub:accum_ct}
-
-À chaque année~$t$ (avec $t = 0$ l'année du premier versement), l'accumulation
-se déroule en deux temps. La réserve intermédiaire $\widetilde{R}_t$, avant
-déduction de la TCT, est d'abord calculée par intérêts composés~:
-\begin{equation}
-  \widetilde{R}_0 = v, \qquad
-  \widetilde{R}_t = R_{t-1} \times (1 + r) \times (1 - f_g^{\text{CT}}) + v
-\end{equation}
-où $v$ est le versement annuel brut, $r$ le rendement annuel brut et
-$f_g^{\text{CT}}$ les frais de gestion annuels (variables selon le scénario de
-frais). Les versements entrent intégralement dans la réserve~; les frais d'entrée
-(courtage) sont comptabilisés séparément dans le calcul de la valeur actuelle.
-La TCT est ensuite appliquée à $\widetilde{R}_t$~:
-\begin{equation}
-  \label{eq:tct}
-  \text{TCT}_t =
-  \begin{cases}
-    0 & \text{si } \widetilde{R}_t \leq 1\,000\,000 \\[4pt]
-    \min\!\bigl(\widetilde{R}_t \times 0{,}15\,\%,\;
-               (\widetilde{R}_t - 1\,000\,000) \times 10\,\%\bigr)
-      & \text{sinon}
-  \end{cases}
-\end{equation}
-Le plafond de 10\,\% du dépassement évite que la taxe n'excède les gains réalisés
-au-dessus du seuil. La réserve nette de fin d'année, qui sert de base à
-l'accumulation de l'année suivante, est alors~:
-\begin{equation}
-  R_t = \widetilde{R}_t - \text{TCT}_t
-\end{equation}
-
-\subsubsection{Capital net à l'échéance}
-
-Le capital net tient compte de la taxe éventuelle sur les plus-values. En notant
-$N$ la durée totale, $R_N$ la réserve nette de fin de période (après TCT
-annuelles cumulées) et $v$ le versement annuel brut~:
-\begin{align*}
-  \text{plusValue}       &= \max\!\left(0;\; R_N - \sum_{t=0}^{N} v\right) \\
-  \text{exonération}     &= 10\,000 + \min(N,\,5) \times 1\,000 \\
-  \text{plusValueTaxable}&= \max\!\left(0;\; \text{plusValue} - \text{exonération}\right) \\
-  \text{capitalNet}      &= R_N - \text{plusValueTaxable} \times \tau_{\text{PV}}
-\end{align*}
-Le prix de revient est calculé par la méthode du coût total, équivalente à la
-méthode FIFO lorsque toutes les parts sont cédées simultanément à l'échéance.
-
-\subsubsection{Coûts récurrents modélisés}
-
-Deux coûts récurrents sont intégrés dans la valeur actuelle via une rente
-annuelle actualisée~:
-\begin{itemize}
-  \item taxe sur les opérations de bourse (TOB) --- 0,12\,\% par versement
-    annuel, identique dans tous les scénarios de frais~;
-  \item frais d'entrée (courtage) --- variable selon le scénario de frais~:
-    0\,\% (scénario~A), 0,80\,\% (scénario~B), 2,00\,\% (scénario~C).
-\end{itemize}
-
-\subsection{Modélisation de la branche~23 --- Épargne Pension}
-
-\subsubsection{Fiscalité et frais à l'entrée}
-
-L'épargne-pension n'est pas soumise à la taxe sur les opérations d'assurance
-(0\,\%). Les frais de chargement réduisent directement le montant investi~:
-\begin{equation}
-  v_{\text{net}}^{\text{EP}} = v \times (1 - f_e^{\text{B23}})
-\end{equation}
-où $f_e^{\text{B23}}$ vaut 0\,\% (scénario~A) ou 2\,\% (scénarios~B et~C).
-
-La réduction fiscale annuelle suit le barème à deux paliers décrit à la
-section~\ref{sub:avantages_ep}~: 30\,\% pour un versement jusqu'à 1\,050~€ et
-25\,\% sur la totalité au-delà. Elle est applicable entre 18 et 64~ans inclus.
-
-\subsubsection{Accumulation et taxe anticipative}
-
-La réserve s'accumule selon la même logique en deux temps que pour le CT
-(section~\ref{sub:accum_ct})~: une réserve intermédiaire est calculée par
-intérêts composés, puis la TCT est déduite selon la formule~(\ref{eq:tct}),
-reflétant son impact indirect via les actifs de l'assureur~:
-\begin{align}
-  \widetilde{R}_0 &= v_{\text{net}}^{\text{EP}} \notag \\
-  \widetilde{R}_t &= R_{t-1} \times (1 + r) \times (1 - f_g^{\text{B23}})
-                    + v_{\text{net}}^{\text{EP}} \notag \\
-  R_t &= \widetilde{R}_t - \text{TCT}_t
-\end{align}
-La taxe anticipative de 8\,\% est ensuite prélevée une seule fois sur la réserve
-constituée au 60\textsuperscript{e} anniversaire (hors versement de cette
-année-là)~:
-\begin{equation}
-  R_{\text{après taxe}} = R_{59} \times (1 + r) \times (1 - 8\,\%)
-\end{equation}
-Pour les souscriptions après 55~ans, le prélèvement est reporté au dixième
-anniversaire du contrat. Aucune taxe supplémentaire n'est due à la sortie finale.
-
-\subsection{Modélisation de la branche~23 --- Épargne Long Terme}
-
-L'ELT reprend la même structure de simulation que l'EP, avec les différences
-récapitulées dans le tableau~\ref{tab:diff_ep_elt}.
-
-\begin{table}[h!]
-  \centering
-  \caption{Différences de paramètres entre EP et ELT Branche~23}
-  \label{tab:diff_ep_elt}
-  \begin{tabular}{lll}
-    \hline
-    \textbf{Paramètre} & \textbf{EP Branche~23} & \textbf{ELT Branche~23} \\
-    \hline
-    Taxe sur opérations d'assurance (TOA) & 0\,\% & 2\,\% \\
-    Frais de chargement (scénarios B et C) & 2\,\% & 2\,\% \\
-    Taux de la taxe anticipative & 8\,\% & 10\,\% \\
-    Plafond de déduction & 1\,350~€/an & 2\,450~€/an \\
-    Taux de réduction fiscale & 30\,\% ($\leq$1\,050~€), 25\,\% ($\leq$1\,350~€) & 30\,\% (taux unique) \\
-    Plage de versements simulés & 1~€ $\to$ 1\,350~€ & 1~€ $\to$ 2\,450~€ \\
-    \hline
-  \end{tabular}
-\end{table}
-
-Dans les scénarios~B et~C, la TOA et les frais de chargement s'appliquent
-successivement~; le versement net effectivement investi est~:
-\begin{equation}
-  v_{\text{net}}^{\text{ELT}} = v \times (1 - 2\,\%) \times (1 - 2\,\%) = v \times 0{,}9604
-\end{equation}
-Dans le scénario~A (sans frais), aucune déduction n'est appliquée~:
-$v_{\text{net}}^{\text{ELT}} = v$. L'accumulation et la TCT suivent ensuite la
-même logique en deux temps que pour l'EP (section~\ref{sub:accum_ct}), avec les
-frais de gestion $f_g^{\text{B23}}$ et le versement net $v_{\text{net}}^{\text{ELT}}$.
 
 \subsection{Détection des points de croisement}
 
