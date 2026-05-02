@@ -1101,35 +1101,24 @@ Comparer deux placements sur un horizon de plusieurs années pose une
 difficulté fondamentale~: les flux monétaires associés à chaque instrument
 surviennent à des dates différentes. Pour la branche~23, l'avantage fiscal se
 matérialise dès la première année sous forme de remboursement d'impôt annuel,
-tandis que le capital net n'est disponible qu'à l'échéance. 
+tandis que le capital n'est disponible qu'à l'échéance. 
 Pour le compte-titres, la taxe sur les opérations de bourse et les frais de
 courtage sont supportés à chaque versement~: ils ne réduisent pas le montant
-investi mais constituent des sorties de trésorerie distinctes qui doivent être
-déduites séparément du résultat net. 
+investi mais constituent des sorties d'argent distinctes qui doivent être
+déduites séparément du résultat. 
 Additionner ces flux bruts sans correction temporelle reviendrait à traiter
 de manière identique un euro perçu aujourd'hui et un euro perçu dans plusieurs années,
 ce qui serait économiquement inexact.
 
 \bigskip
-La valeur actuelle est le concept qui résout cette difficulté. Elle repose sur un
-constat simple~: un euro disponible aujourd'hui a plus de valeur qu'un euro
-disponible dans l'avenir, parce que la somme disponible aujourd'hui peut être
-immédiatement investie et générer un rendement. Pour rendre comparables des flux
-de dates différentes, il faut les «~transposer dans le temps~», c'est-à-dire les
-ramener tous à une date commune --- le moment présent --- en les divisant par un
-facteur qui tient compte du nombre d'années d'attente et du taux de rendement
-d'un placement de référence.
+La solution consiste à ramener tous les flux à un même point dans le temps, que
+ce soit vers le passé par actualisation ou vers le futur par capitalisation~: la
+comparaison est valide dès lors que les flux des deux instruments sont exprimés
+à la même date de référence. Dans ce travail, on choisit la date présente, ce
+qui conduit à raisonner en valeur actuelle.
 
-\bigskip
-Il est important de souligner que la valeur actuelle ne sert pas ici à comparer
-le coût des deux placements~: les deux instruments étant appariés sur le même
-montant investi chaque année, le capital engagé est identique et n'a pas à être
-soustrait du résultat. Ce que l'on actualise, c'est exclusivement le capital
-final accumulé à l'échéance et les flux annexes (économies fiscales, coûts
-récurrents), afin de les exprimer dans la même unité temporelle et de les
-comparer sur un pied d'égalité.
+\subsubsection{Capitalisation et actualisation}
 
-\bigskip
 La capitalisation et l'actualisation sont les deux opérations inverses qui
 permettent ce voyage dans le temps. Si l'on place $C_0$ euros aujourd'hui à
 un taux annuel $r$, la valeur acquise au bout de $n$~années est~:
@@ -1150,7 +1139,7 @@ est élevé, plus la valeur actuelle est faible.
 
 \bigskip
 Lorsque plusieurs flux se produisent à des dates différentes --- ce qui est
-exactement le cas des instruments comparés ---, leur valeur actuelle totale est
+exactement le cas des instruments comparés, leur valeur actuelle totale est
 la somme des valeurs actuelles individuelles~:
 \begin{equation}
   \text{VA}_{\text{totale}} = \sum_{t=0}^{T} \frac{C_t}{(1 + r(t))^t}
