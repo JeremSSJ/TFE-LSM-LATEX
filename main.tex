@@ -1216,16 +1216,14 @@ présente un extrait du référentiel utilisé.
 
 \subsubsection{Construction pas à pas de la valeur actuelle}
 
-La valeur actuelle de chaque instrument est construite en quatre étapes
-successives, détaillées ici de manière générique avant d'être déclinées
-instrument par instrument.
+Avant de présenter les formules propres à chaque véhicule, il est utile de
+poser le cadre de calcul commun.
 
 \bigskip
-La première étape est l'accumulation du capital. À chaque année~$t$, la réserve
-investie croît selon les intérêts composés et les versements annuels. En notant
-$v_{\text{net}}$ le montant effectivement investi après les éventuels taxes et
-frais d'entrée, $r$ le rendement annuel brut et $f_g$ les frais de gestion
-annuels, la réserve en fin d'année~$t$ est~:
+À chaque année~$t$, la réserve investie croît selon les intérêts composés et les
+versements annuels. En notant $v_{\text{net}}$ le montant effectivement investi
+après les éventuels taxes et frais d'entrée, $r$ le rendement annuel brut et
+$f_g$ les frais de gestion annuels, la réserve en fin d'année~$t$ est~:
 \begin{equation}
   R_0 = v_{\text{net}}, \qquad
   R_t = R_{t-1} \times (1 + r) \times (1 - f_g) + v_{\text{net}}
@@ -1236,22 +1234,21 @@ versement effectué à l'âge de 25~ans bénéficiera de quarante années de
 capitalisation, contre seulement dix pour un versement effectué à 55~ans.
 
 \bigskip
-La deuxième étape introduit les frais. Les frais d'entrée réduisent soit
-directement le montant investi dans la réserve, soit sont comptabilisés comme
-des sorties d'argent récurrentes actualisées séparément. Les frais de gestion
-annuels s'appliquent à la réserve en fin de chaque année via le facteur $(1 - f_g)$.
+Les frais d'entrée réduisent soit directement le montant investi dans la réserve,
+soit sont comptabilisés comme des sorties d'argent récurrentes actualisées
+séparément. Les frais de gestion annuels s'appliquent à la réserve en fin de
+chaque année via le facteur $(1 - f_g)$.
 
 \bigskip
-La troisième étape est la fiscalité. Deux prélèvements peuvent s'appliquer.
-Pendant la phase d'accumulation, la taxe sur les comptes-titres (TCT) réduit
-chaque année la réserve si celle-ci dépasse le seuil légal d'un million d'euros.
-À l'échéance, un prélèvement de sortie propre à chaque instrument s'ajoute
-éventuellement. Le capital net $C_N^{\text{net}}$ est la réserve finale~$R_N$,
-déjà nette des TCT annuelles cumulées, diminuée de ce prélèvement de sortie.
+Deux prélèvements fiscaux peuvent s'appliquer. Pendant la phase d'accumulation,
+la taxe sur les comptes-titres (TCT) réduit chaque année la réserve si celle-ci
+dépasse le seuil légal d'un million d'euros. À l'échéance, un prélèvement de
+sortie propre à chaque instrument s'ajoute éventuellement. Le capital net
+$C_N^{\text{net}}$ est la réserve finale~$R_N$, déjà nette des TCT annuelles
+cumulées, diminuée de ce prélèvement de sortie.
 
 \bigskip
-La quatrième et dernière étape est l'actualisation proprement dite. La valeur
-actuelle du capital net reçu dans $n$~années est~:
+La valeur actuelle du capital net reçu dans $n$~années est~:
 \begin{equation}
   \text{VA}\!\left(C_N^{\text{net}}\right) =
     \frac{C_N^{\text{net}}}{\bigl(1 + r_{\text{OLO}}(n)\bigr)^n}
@@ -1658,188 +1655,7 @@ La méthodologie repose sur plusieurs hypothèses simplificatrices~:
 \newpage
 \appendix
 
-%--------------------------------------------------------------------------
-% Tableaux comparatifs
-%--------------------------------------------------------------------------
 
-\begin{longtable}{|p{4.5cm}|p{5cm}|p{5cm}|}
-\caption{Synthèse complète -- Épargne-pension (Branches 21 et 23)} \label{tab:epargne_pension_complete} \\
-\hline
-\textbf{Caractéristique} & \textbf{Branche 21} & \textbf{Branche 23} \\
-\hline
-\endfirsthead
 
-\multicolumn{3}{c}%
-{{\bfseries \tablename\ \thetable{} -- suite de la page précédente}} \\
-\hline
-\textbf{Caractéristique} & \textbf{Branche 21} & \textbf{Branche 23} \\
-\hline
-\endhead
-
-\hline \multicolumn{3}{|r|}{{Suite à la page suivante}} \\ \hline
-\endfoot
-
-\hline
-\endlastfoot
-
-\multicolumn{3}{|c|}{\textbf{COÛTS}} \\
-\hline
-Taxe sur opérations d'assurance & \multicolumn{2}{c|}{0\% (exemptée)} \\
-\hline
-Frais d'acquisition & Variable selon assureur (en \% de la prime) & Variable selon assureur (en \% de la prime nette) \\
-\hline
-Frais d'encaissement & Variable selon assureur (en \% de la prime) & Inclus dans frais d'entrée \\
-\hline
-Frais d'inventaire & Prélevés sur la réserve de manière récurrente & -- \\
-\hline
-Frais de gestion annuels & Variable selon assureur & Double niveau : fonds interne + actifs sous-jacents \\
-\hline
-Frais de transaction/arbitrage & -- & Variables, parfois gratuits jusqu'à un certain nombre par an \\
-\hline
-Commissions de surperformance & -- & Possibles si dépassement d'un indice de référence \\
-\hline
-Frais de sortie (rachat anticipé) & Indemnité de rachat dégressive + pénalité conjoncturelle possible & Max. 5\% du montant récupéré, structure dégressive \\
-\hline
-\multicolumn{3}{|c|}{\textbf{RENTABILITÉ ET GARANTIES}} \\
-\hline
-Garantie de capital & Oui (sauf taux garanti négatif ou frais supérieurs au rendement) & Non (sauf mécanismes optionnels à l'échéance) \\
-\hline
-Rendement garanti & Oui, max. 3,75\% pour 2026 (peut être nul ou négatif) & Non \\
-\hline
-Participation bénéficiaire & Possible, non garantie, définitivement acquise une fois octroyée & -- \\
-\hline
-Type de rendement & Intérêts composés capitalisés & Évolution selon performance des fonds \\
-\hline
-Protection en cas de faillite & Fonds de garantie : 100 000 EUR par preneur et par assureur & Aucune \\
-\hline
-Obligation de l'assureur & Obligation de résultat & Obligation de moyens \\
-\hline
-Risque & Supporté par l'assureur & Supporté intégralement par le souscripteur \\
-\hline
-Potentiel de rendement & Limité (taux garanti + participation bénéficiaire) & Illimité (perte totale possible) \\
-\hline
-Classification du risque & Faible & Échelle SRRI de 1 à 7 selon le fonds \\
-\hline
-\multicolumn{3}{|c|}{\textbf{FISCALITÉ}} \\
-\hline
-Réduction d'impôt sur versements & \multicolumn{2}{p{10cm}|}{\textbf{Jusqu'à 1 050 EUR :} 30\% (max. 315 EUR d'économie) \newline \textbf{Entre 1 050 et 1 350 EUR :} 25\% sur le total (max. 337,50 EUR d'économie)} \\
-\hline
-Âge d'accès à la réduction & \multicolumn{2}{c|}{De 18 ans jusqu'au 31 décembre de l'année des 64 ans} \\
-\hline
-Taxe anticipative & \multicolumn{2}{c|}{8\% à 60 ans (ou au 10e anniversaire si contrat souscrit après 55 ans)} \\
-\hline
-Base d'imposition & Primes capitalisées au taux garanti, déduction faite des frais (participations bénéficiaires exonérées) & Valeur totale du contrat au 60e anniversaire \\
-\hline
-Fenêtre d'optimisation & \multicolumn{2}{c|}{Entre 60 et 65 ans : réduction 30\%/25\% sans nouvelle taxe anticipative} \\
-\hline
-Rachat anticipé (avant 60 ans) & \multicolumn{2}{c|}{Taxation de 33\% + frais de sortie} \\
-\hline
-Précompte mobilier & \multicolumn{2}{c|}{Exonéré si contrat $>$ 8 ans avec conditions respectées} \\
-\hline
-Taxe sur comptes-titres (TCT) & -- & Possible répercussion indirecte (0,30\% si actifs sous-jacents $>$ 1 M EUR) \\
-\hline
-\multicolumn{3}{|c|}{\textbf{CONDITIONS CONTRACTUELLES}} \\
-\hline
-Durée minimale & \multicolumn{2}{c|}{10 ans} \\
-\hline
-Bénéficiaire en cas de vie & \multicolumn{2}{c|}{Le souscripteur lui-même (obligatoire)} \\
-\hline
-Bénéficiaires en cas de décès & \multicolumn{2}{c|}{Conjoint, cohabitant légal, ascendants et descendants jusqu'au 2e degré} \\
-\hline
-Flexibilité des versements & Variable selon contrat & Généralement flexible (montants variables, suspension possible) \\
-\hline
-\end{longtable}
-
-\begin{longtable}{|p{4.5cm}|p{5cm}|p{5cm}|}
-\caption{Synthèse complète -- Épargne à long terme (Branches 21 et 23)} \label{tab:epargne_lt_complete} \\
-\hline
-\textbf{Caractéristique} & \textbf{Branche 21} & \textbf{Branche 23} \\
-\hline
-\endfirsthead
-
-\multicolumn{3}{c}%
-{{\bfseries \tablename\ \thetable{} -- suite de la page précédente}} \\
-\hline
-\textbf{Caractéristique} & \textbf{Branche 21} & \textbf{Branche 23} \\
-\hline
-\endhead
-
-\hline \multicolumn{3}{|r|}{{Suite à la page suivante}} \\ \hline
-\endfoot
-
-\hline
-\endlastfoot
-
-\multicolumn{3}{|c|}{\textbf{COÛTS}} \\
-\hline
-Taxe sur opérations d'assurance & \multicolumn{2}{c|}{2\% sur chaque versement} \\
-\hline
-Frais d'acquisition & Variable selon assureur (en \% de la prime) & Variable selon assureur (en \% de la prime nette) \\
-\hline
-Frais d'encaissement & Variable selon assureur (en \% de la prime) & Inclus dans frais d'entrée \\
-\hline
-Frais d'inventaire & Prélevés sur la réserve de manière récurrente & -- \\
-\hline
-Frais de gestion annuels & Variable selon assureur & Double niveau : fonds interne + actifs sous-jacents \\
-\hline
-Frais totaux estimés & Variable & Peuvent dépasser 3\% de la somme investie \\
-\hline
-Frais de transaction/arbitrage & -- & Variables, parfois gratuits jusqu'à un certain nombre par an \\
-\hline
-Commissions de surperformance & -- & Possibles si dépassement d'un indice de référence \\
-\hline
-Frais de sortie (rachat anticipé) & Indemnité de rachat dégressive + pénalité conjoncturelle possible & Max. 5\% du montant récupéré, structure dégressive \\
-\hline
-\multicolumn{3}{|c|}{\textbf{RENTABILITÉ ET GARANTIES}} \\
-\hline
-Garantie de capital & Oui (sauf taux garanti négatif ou frais supérieurs au rendement) & Non (sauf mécanismes optionnels à l'échéance) \\
-\hline
-Rendement garanti & Oui, max. 3,75\% pour 2026 (peut être nul ou négatif) & Non \\
-\hline
-Participation bénéficiaire & Possible, non garantie, définitivement acquise une fois octroyée & -- \\
-\hline
-Type de rendement & Intérêts composés capitalisés & Évolution selon performance des fonds \\
-\hline
-Protection en cas de faillite & Fonds de garantie : 100 000 EUR par preneur et par assureur & Aucune \\
-\hline
-Obligation de l'assureur & Obligation de résultat & Obligation de moyens \\
-\hline
-Risque & Supporté par l'assureur & Supporté intégralement par le souscripteur \\
-\hline
-Potentiel de rendement & Limité (taux garanti + participation bénéficiaire) & Illimité (perte totale possible) \\
-\hline
-Classification du risque & Faible & Échelle SRRI de 1 à 7 selon le fonds \\
-\hline
-\multicolumn{3}{|c|}{\textbf{FISCALITÉ}} \\
-\hline
-Réduction d'impôt sur versements & \multicolumn{2}{p{10cm}|}{30\% sur les primes versées annuellement} \\
-\hline
-Plafond déductible (2026) & \multicolumn{2}{p{10cm}|}{Maximum 2 450 EUR (économie fiscale max. : 735 EUR) -- en fonction des revenus professionnels} \\
-\hline
-Âge de souscription & \multicolumn{2}{c|}{Avant le 65e anniversaire} \\
-\hline
-Âge limite pour versements & \multicolumn{2}{c|}{Jusqu'à 99 ans (si contrat souscrit avant 65 ans)} \\
-\hline
-Taxe anticipative & \multicolumn{2}{c|}{10\% à 60 ans (ou au 10e anniversaire si contrat souscrit après 55 ans)} \\
-\hline
-Base d'imposition & \multicolumn{2}{p{10cm}|}{Intégralité du capital constitué et du rendement accumulé} \\
-\hline
-Rachat anticipé & \multicolumn{2}{c|}{Taxation substantielle + frais de sortie} \\
-\hline
-Précompte mobilier & \multicolumn{2}{c|}{Exonéré si contrat $>$ 8 ans avec conditions respectées} \\
-\hline
-Taxe sur comptes-titres (TCT) & -- & Possible répercussion indirecte (0,30\% si actifs sous-jacents $>$ 1 M EUR) \\
-\hline
-\multicolumn{3}{|c|}{\textbf{CONDITIONS CONTRACTUELLES}} \\
-\hline
-Durée minimale & \multicolumn{2}{c|}{10 ans} \\
-\hline
-Bénéficiaire en cas de vie & \multicolumn{2}{c|}{Le souscripteur lui-même à partir de 65 ans (obligatoire)} \\
-\hline
-Bénéficiaires en cas de décès & \multicolumn{2}{c|}{Conjoint, cohabitant légal, ascendants et descendants jusqu'au 2e degré} \\
-\hline
-Flexibilité des versements & Variable selon contrat & Généralement flexible (montants variables, suspension possible) \\
-\hline
-\end{longtable}
 
 \end{document}
