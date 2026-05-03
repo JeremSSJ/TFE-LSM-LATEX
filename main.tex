@@ -1252,6 +1252,14 @@ Les frais de chargement réduisent directement le montant investi~:
 La réduction fiscale annuelle suit le barème à deux paliers décrit à la
 section~\ref{sub:avantages_ep}~: 30\,\% pour un versement jusqu'à 1\,050~€ et
 25\,\% au-delà jusqu'au plafond maximal de 1\,350~€.
+En notant $v$ le versement annuel, on écrit~:
+\begin{equation}
+  \text{ÉcoFisc}(v)=
+  \begin{cases}
+    0{,}30\,v & \text{si } 0 \le v \le 1\,050, \\
+    0{,}25\,v & \text{si } 1\,050 < v \le 1\,350.
+  \end{cases}
+\end{equation}
 
 La réserve s'accumule en deux temps, réserve intermédiaire par intérêts composés
 puis déduction de la TCT~:
