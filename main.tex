@@ -1343,15 +1343,15 @@ ainsi que le calcul de la valeur actuelle suivent la même logique que pour l'EP
 \label{sub:va_ct_formule}
 
 Pour le compte-titres, le versement brut $v$ entre intégralement dans la
-réserve~; les frais d'entrée (courtage) et la taxe sur les opérations boursières (TOB) 
+réserve~; les frais de courtage et la TOB
 sont comptabilisés séparément. La réserve
 s'accumule en deux temps selon la même logique que pour la branche~23, avec la
 même formule de TCT~(\ref{eq:tct})~:
-\begin{equation}
-  \widetilde{R}_0 = v, \qquad
-  \widetilde{R}_t = R_{t-1} \times (1 + r) \times (1 - f_g^{\text{CT}}) + v,
-  \qquad R_t = \widetilde{R}_t - \text{TCT}_t
-\end{equation}
+\begin{align}
+  \widetilde{R}_0 &= v \notag \\
+  \widetilde{R}_t &= R_{t-1} \times (1 + r) \times (1 - f_g^{\text{CT}}) + v \notag \\
+  R_t &= \widetilde{R}_t - \text{TCT}_t
+\end{align}
 Le capital net à l'échéance tient compte de la taxe éventuelle sur les
 plus-values~:
 \begin{align*}
