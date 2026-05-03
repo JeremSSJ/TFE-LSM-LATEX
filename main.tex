@@ -1344,7 +1344,16 @@ ainsi que le calcul de la valeur actuelle suivent la même logique que pour l'EP
 
 Pour le compte-titres, le versement brut $v$ entre intégralement dans la
 réserve~; les frais de courtage et la TOB
-sont comptabilisés séparément. La réserve
+sont comptabilisés séparément~:
+\begin{align}
+  \text{Courtage}_t &= v \times f_e^{\text{CT}} \\
+  \text{TOB}_t       &= v \times \tau_{\text{TOB}}
+\end{align}
+où $f_e^{\text{CT}}$ désigne le taux de frais de courtage et $\tau_{\text{TOB}}$
+le taux de la taxe sur les opérations de bourse, appliqués à chaque versement annuel.
+
+\bigskip
+La réserve
 s'accumule en deux temps selon la même logique que pour la branche~23, avec la
 même formule de TCT~(\ref{eq:tct})~:
 \begin{align}
@@ -1354,17 +1363,18 @@ même formule de TCT~(\ref{eq:tct})~:
 \end{align}
 Le capital net à l'échéance tient compte de la taxe éventuelle sur les
 plus-values~:
-\begin{align*}
-  \text{plusValue}        &= \max\!\left(0;\; R_N - {\textstyle\sum_{t=0}^{N}} v\right) \\
-  \text{exonération}      &= 10\,000 + \min(N,\,5) \times 1\,000 \\
-  \text{plusValueTaxable} &= \max\!\left(0;\; \text{plusValue} - \text{exonération}\right) \\
+\begin{align}
+  \text{plusValue}        &= \max\!\left(0;\; R_N - {\textstyle\sum_{t=0}^{N}} v\right) \notag \\
+  \text{exonération}      &= 10\,000 + \min(N,\,5) \times 1\,000 \notag \\
+  \text{plusValueTaxable} &= \max\!\left(0;\; \text{plusValue} - \text{exonération}\right) \notag \\
   C_N^{\text{net}}        &= R_N - \text{plusValueTaxable} \times \tau_{\text{PV}}
-\end{align*}
+\end{align}
 Le prix de revient est calculé par la méthode du coût total, équivalente à FIFO
 lorsque toutes les parts sont cédées simultanément à l'échéance.
 
+\bigskip
 La valeur actuelle est égale au capital net actualisé diminué des coûts
-récurrents actualisés (TOB et frais d'entrée)~:
+récurrents actualisés (frais de courtage et TOB)~:
 \begin{align}
   \text{VA}_{\text{CT}} &=
     \underbrace{%
@@ -1373,17 +1383,14 @@ récurrents actualisés (TOB et frais d'entrée)~:
   -
     \underbrace{%
       \sum_{t=0}^{n}
-      \frac{v \times \tau_{\text{TOB}}}{\bigl(1 + r_{\text{OLO}}(t)\bigr)^t}
+      \frac{\text{TOB}_t}{\bigl(1 + r_{\text{OLO}}(t)\bigr)^t}
     }_{\text{TOB actualisée}}
   -
     \underbrace{%
       \sum_{t=0}^{n}
-      \frac{v \times f_e^{\text{CT}}}{\bigl(1 + r_{\text{OLO}}(t)\bigr)^t}
-    }_{\text{frais d'entrée actualisés}}
+      \frac{\text{Courtage}_t}{\bigl(1 + r_{\text{OLO}}(t)\bigr)^t}
+    }_{\text{courtage actualisé}}
 \end{align}
-où $\tau_{\text{TOB}} = 0{,}12\,\%$ et $f_e^{\text{CT}}$ vaut 0\,\%
-(scénario~A), 0,80\,\% (scénario~B) ou 2,00\,\% (scénario~C). Le compte-titres
-ne génère aucune économie fiscale à l'entrée.
 
 \subsubsection{Comparaison et notion de dominance}
 \label{sub:comparaison}
@@ -1421,9 +1428,7 @@ $v_{i+1}$. Le croisement est localisé par interpolation linéaire~:
 \begin{equation}
   v^* = v_i - \Delta(v_i) \times \frac{v_{i+1} - v_i}{\Delta(v_{i+1}) - \Delta(v_i)}
 \end{equation}
-Une condition supplémentaire exige que l'un des deux instruments ait une valeur
-actuelle non nulle ($|\text{VA}| > 10^{-6}$~€) afin d'éliminer les artefacts
-numériques en début de plage. L'absence de croisement signifie qu'un des
+L'absence de croisement signifie qu'un des
 instruments domine sur l'intégralité de la plage.
 
 \subsection{Description des quatre scénarios fiscaux}
