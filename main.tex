@@ -1114,7 +1114,7 @@ ce qui serait économiquement inexact.
 La solution consiste à ramener tous les flux à un même point dans le temps, que
 ce soit vers le passé par actualisation ou vers le futur par capitalisation~: la
 comparaison est valide dès lors que les flux des deux instruments sont exprimés
-à la même date de référence. Dans ce travail, on choisit la date présente, ce
+à la même date de référence \cite[p.~67]{berk2020}. Dans ce travail, on choisit la date présente, ce
 qui conduit à raisonner en valeur actuelle.
 
 \subsubsection{Capitalisation et actualisation}
@@ -1127,14 +1127,14 @@ un taux annuel $r$, la valeur acquise au bout de $n$~années est~:
 \end{equation}
 La croissance est géométrique~: les intérêts de chaque période portent eux-mêmes
 intérêts lors des périodes suivantes, mécanisme connu sous le nom d'intérêts
-composés. C'est précisément ce mécanisme qui gouverne l'accumulation du capital
+composés \cite[p.~96]{berk2020}. C'est précisément ce mécanisme qui gouverne l'accumulation du capital
 dans la simulation. L'actualisation est l'opération inverse~: elle ramène un flux
 futur $C_n$ à sa valeur présente~:
 \begin{equation}
   \text{VA}(C_n) = C_0 = \frac{C_n}{(1 + r)^n}
 \end{equation}
 où $r$ est le taux d'actualisation annuel et $n$ le nombre d'années séparant
-le moment présent de la réception du flux. Plus l'horizon est lointain et plus le taux
+le moment présent de la réception du flux \cite[p.~97--98]{berk2020}. Plus l'horizon est lointain et plus le taux
 est élevé, plus la valeur actuelle est faible.
 
 \bigskip
@@ -1142,12 +1142,12 @@ Lorsque plusieurs flux se produisent à des dates différentes, ce qui est
 exactement le cas des instruments comparés, la capitalisation totale à
 l'horizon $T$ est la somme des capitaux acquis par chaque flux~:
 \begin{equation}
-  C_{\text{total}} = \sum_{t=0}^{T} C_t \times (1 + r)^{T-t}
+  C_{\text{total}} = \sum_{n=0}^{N} C_n \times (1 + r)^{N-n}
 \end{equation}
 L'opération inverse consiste à ramener l'ensemble de ces flux à leur valeur
-actuelle totale~:
+actuelle totale \cite[p.~101]{berk2020}~:
 \begin{equation}
-  \text{VA}_{\text{totale}} = \sum_{t=0}^{T} \frac{C_t}{(1 + r)^t}
+  \text{VA}_{\text{totale}} = \sum_{n=0}^{N} \frac{C_n}{(1 + r)^n}
 \end{equation}
 Ces deux grandeurs synthétisent en un seul chiffre l'intégralité des flux
 d'un investissement, quelle que soit leur date d'occurrence.
@@ -1160,7 +1160,7 @@ valeurs actuelles totales~:
 \end{equation}
 Si $\Delta > 0$, l'investissement~1 est préférable~; si $\Delta < 0$, c'est
 l'investissement~2. Cette logique permet de quantifier non seulement quel
-instrument domine, mais aussi de combien, en euros constants d'aujourd'hui.
+instrument domine, mais aussi de combien, en euros constants d'aujourd'hui \cite[p.~68-70]{berk2020}.
 
 \subsubsection{Le taux d'actualisation~: la courbe OLO belge}
 \label{sub:taux_olo}
