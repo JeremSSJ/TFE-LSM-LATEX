@@ -1237,19 +1237,18 @@ le dernier remboursement fiscal reçu après l'horizon~:
 \end{align}
 où $n$ est la durée totale et $C_N^{\text{net}}$ le capital final net après taxe
 anticipative.
-Pour les versements de l'année~$0$ à l'année~$n-1$, l'économie fiscale
-$\text{ÉcoFisc}(t)$ est remboursée à l'année~$t+1$. Le nombre d'années
-résiduelles avant l'échéance est $n-(t+1) \geq 0$~; la capitalisation de
-$\text{ÉcoFisc}(t)$ s'effectue donc sur cette durée au taux OLO correspondant.
+Pour tout versement de l'année~$t$, l'économie fiscale $\text{ÉcoFisc}(t)$ est
+remboursée à l'année~$t+1$. Pour les versements de l'année~$0$ à l'année~$n-1$,
+ce remboursement intervient avant ou à l'échéance ($t+1 \leq n$), et
+$\text{ÉcoFisc}(t)$ est capitalisée sur les $n-(t+1) \geq 0$~années résiduelles
+au taux OLO correspondant.
 
-Un cas particulier se présente pour le versement effectué exactement à
-l'échéance (année~$n$). Son économie fiscale $\text{ÉcoFisc}(n)$ n'est
-remboursée que lors de la déclaration de l'année suivante, soit à l'année~$n+1$,
-un an \emph{après} l'horizon de comparaison. Pour ramener ce flux à la date de
-référence commune, on applique la formule de la valeur actuelle (seul usage de
+Pour le versement effectué à l'année~$n$ (l'échéance elle-même), la même règle
+s'applique. Le remboursement $\text{ÉcoFisc}(n)$ intervient à l'année~$n+1$,
+soit un an après l'horizon de comparaison. Pour ramener ce flux à la date
+de référence commune, on applique la formule de la valeur actuelle (seul usage de
 l'actualisation dans cette méthodologie), en le divisant par
-$\bigl(1 + r_{\text{OLO}}(1)\bigr)$. Ce flux mineur mis à part, le critère de
-comparaison repose intégralement sur la capitalisation.
+$\bigl(1 + r_{\text{OLO}}(1)\bigr)$.
 
 
 Pour l'épargne à long terme (ELT), la structure est identique, avec les différences récapitulées dans le
