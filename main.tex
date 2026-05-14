@@ -1054,15 +1054,15 @@ L'espace d'exploration est le suivant~:
 \begin{itemize}
   \item 38~profils d'âge (de 18~$\to$~65~ans jusqu'à 55~$\to$~65~ans, par pas
     d'un an)~;
-  \item 8~niveaux de rendement annuel brut (de 3\,\% à 10\,\%, par pas de 1\,\%)~;
+  \item 8~niveaux de rendement annuel brut (de 0\,\% à 10\,\%, par pas de 1\,\%)~;
   \item Plages de versements~: de 1~€ à 1\,350~€/an pour l'EP et de 1~€ à
     2\,450~€/an pour l'ELT (par pas de 1~€)~;
   \item Quatre configurations fiscales (quatre types de scénarios).
 \end{itemize}
 
 \bigskip
-Cela représente $38 \times 8 = 304$ cas explorés par scénario fiscal, soit
-$304 \times 4 = 1\,216$~combinaisons fiscales.
+Cela représente $38 \times 11 = 418$ cas explorés par scénario fiscal, soit
+$418 \times 4 = 1\,672$~combinaisons fiscales.
 Chaque simulation de plage compare les deux instruments pour chaque versement
 entier de la plage, soit entre 1\,350 et 2\,450~comparaisons par ligne.
 
@@ -1131,10 +1131,10 @@ dans la simulation.
 
 \bigskip
 Lorsque plusieurs flux se produisent à des dates différentes, ce qui est
-exactement le cas des instruments comparés, le capital final net à
+exactement le cas des instruments comparés, le capital final à
 l'horizon $N$ est la somme des capitaux acquis par chaque flux~:
 \begin{equation}
-  \text{CFN}_{\text{total}} = \sum_{t=0}^{N} F_t \times (1 + r)^{N-t}
+  \text{F}_{\text{total}} = \sum_{t=0}^{N} F_t \times (1 + r)^{N-t}
 \end{equation}
 Cette grandeur synthétise en un seul chiffre l'intégralité des flux d'un
 investissement, quelle que soit leur date d'occurrence, et exprime leur valeur
@@ -1144,7 +1144,7 @@ cumulée à l'échéance \cite[p.~96--97]{berk2020}.
 La comparaison entre deux instruments repose sur la différence de leurs
 capitaux finaux nets à l'échéance~:
 \begin{equation}
-  \Delta = \text{CFN}_{\text{inv. 1}} - \text{CFN}_{\text{inv. 2}}
+  \Delta = \text{F}_{\text{inv. 1}} - \text{F}_{\text{inv. 2}}
 \end{equation}
 Si $\Delta > 0$, l'investissement~1 est préférable~; si $\Delta < 0$, c'est
 l'investissement~2. Cette logique permet de quantifier non seulement quel
@@ -1221,8 +1221,8 @@ $C_N^{\text{net}}$ est la réserve finale~$R_N$, déjà nette des TCT annuelles
 cumulées, diminuée de ce prélèvement.
 
 \bigskip
-Le capital net $C_N^{\text{net}}$ constitue la première composante de la valeur
-terminale~: il représente déjà la valeur de l'investissement à l'échéance.
+Le capital net $C_N^{\text{net}}$ constitue la première composante du capital
+final net~: il représente déjà la valeur de l'investissement à l'échéance.
 Les flux annexes (économies fiscales pour la branche~23, coûts récurrents pour
 le compte-titres) sont quant à eux capitalisés jusqu'à cette même échéance~:
 un flux survenant à l'année~$t$ est multiplié par le facteur
@@ -1533,7 +1533,7 @@ frais.
     Âge de fin de l'horizon & 65~ans \\
     Âge de début (plage simulée) & 18 à 55~ans (pas de 1~an) \\
     Capitalisation & Courbe OLO belge, taux nets (voir tableau~\ref{tab:olo_referentiel}) \\
-    Rendement annuel brut (plage) & 3\,\% à 10\,\% (pas de 1\,\%) \\
+    Rendement annuel brut (plage) & 0\,\% à 10\,\% (pas de 1\,\%) \\
     Frais d'entrée et de gestion & Variables selon scénario de frais (voir tableau~\ref{tab:scenarii_frais}) \\
     TOB (CT) & 0,12\,\% par versement \\
     Exonération PV de base (CT) & 10\,000~€ \\
@@ -1549,7 +1549,7 @@ frais.
 \subsection{Représentation graphique~: heatmaps}
 
 Les résultats sont visualisés sous forme de heatmaps bidimensionnelles dont
-l'axe~X représente le rendement annuel brut (de 3\,\% à 10\,\%) et l'axe~Y
+l'axe~X représente le rendement annuel brut (de 0\,\% à 10\,\%) et l'axe~Y
 l'âge de début des versements (de 18 à 55~ans). Chaque cellule indique
 l'instrument dominant global (bleu pour la branche~23, vert pour le CT, gris
 pour l'ex~æquo), dont l'intensité de couleur reflète la force de la dominance.
