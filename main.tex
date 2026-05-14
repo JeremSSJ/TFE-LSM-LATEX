@@ -1044,7 +1044,7 @@ Pour chaque combinaison, la simulation parcourt une plage de versements annuels
 allant de 1~€ jusqu'au plafond légal de déductibilité fiscale propre à chaque
 produit~; à chaque niveau de versement, le compte-titres est apparié à l'EP ou à
 l'ELT correspondante, le même montant étant investi dans les deux instruments,
-et le résultat net de chacun est exprimé en valeur actuelle (VA).
+et le résultat net de chacun est exprimé en valeur terminale nette (VT).
 Cela permet de comparer les instruments afin de déterminer non seulement lequel domine, 
 mais aussi à partir
 de quel niveau de versement il l'emporte et dans quelle proportion.
@@ -1091,9 +1091,9 @@ sortie. Retenir de tels profils romprait l'homogénéité de la comparaison
 en ne permettant plus d'aligner la date du prélèvement et celle du retrait
 sur l'horizon de retraite commun aux deux instruments.
 
-\subsection{Le critère de comparaison~: la valeur actuelle}
+\subsection{Le critère de comparaison~: la valeur terminale nette}
 
-\subsubsection{Principe de la valeur actuelle}
+\subsubsection{Principe de la valeur terminale nette}
 
 Comparer deux placements sur un horizon de plusieurs années pose une
 difficulté fondamentale~: les flux monétaires associés à chaque instrument
@@ -1105,67 +1105,57 @@ courtage sont supportés à chaque versement~: ils ne réduisent pas le montant
 investi mais constituent des sorties d'argent distinctes qui doivent être
 déduites séparément du résultat. 
 Additionner ces flux bruts sans correction temporelle reviendrait à traiter
-de manière identique un euro perçu aujourd'hui et un euro perçu dans plusieurs années,
+de manière identique un euro reçu aujourd'hui et un euro reçu dans plusieurs années,
 ce qui serait économiquement inexact.
 
 \bigskip
-La solution consiste à ramener tous les flux à un même point dans le temps, que
-ce soit vers le passé par actualisation ou vers le futur par capitalisation~: la
-comparaison est valide dès lors que les flux des deux instruments sont exprimés
-à la même date de référence \cite[p.~67]{berk2020}. Dans ce travail, on choisit la date présente, ce
-qui conduit à raisonner en valeur actuelle.
+La solution consiste à ramener tous les flux à un même point dans le temps
+par capitalisation~: la comparaison est valide dès lors que les flux des deux
+instruments sont exprimés à la même date de référence \cite[p.~67]{berk2020}.
+Dans ce travail, on choisit l'horizon de l'investissement comme date de référence
+commune, ce qui conduit à raisonner en valeur terminale nette (VT). Chaque flux
+annexe est porté à la valeur qu'il aurait s'il était réinvesti jusqu'à l'échéance.
 
-\subsubsection{Capitalisation et actualisation}
+\subsubsection{La capitalisation}
 
-La capitalisation et l'actualisation sont les deux opérations inverses qui
-permettent ce voyage dans le temps. Si l'on place $F_0$ euros aujourd'hui à
-un taux annuel $r$, la valeur acquise au bout de $n$~années est~:
+La capitalisation est l'opération qui permet ce voyage dans le temps. Si l'on
+place $F_0$ euros aujourd'hui à un taux annuel $r$, la valeur acquise au bout
+de $n$~années est~:
 \begin{equation}
   F_n = F_0 \times (1 + r)^n
 \end{equation}
 La croissance est géométrique~: les intérêts de chaque période portent eux-mêmes
 intérêts lors des périodes suivantes, mécanisme connu sous le nom d'intérêts
 composés \cite[p.~96]{berk2020}. C'est précisément ce mécanisme qui gouverne l'accumulation du capital
-dans la simulation. L'actualisation est l'opération inverse~: elle ramène un flux
-futur $F_n$ à sa valeur présente~:
-\begin{equation}
-  \text{VA}(F_n) = F_0 = \frac{F_n}{(1 + r)^n}
-\end{equation}
-où $r$ est le taux d'actualisation annuel et $n$ le nombre d'années séparant
-le moment présent de la réception du flux \cite[p.~97--98]{berk2020}. Plus l'horizon est lointain et plus le taux
-est élevé, plus la valeur actuelle est faible.
+dans la simulation.
 
 \bigskip
 Lorsque plusieurs flux se produisent à des dates différentes, ce qui est
-exactement le cas des instruments comparés, la capitalisation totale à
-l'horizon $T$ est la somme des capitaux acquis par chaque flux~:
+exactement le cas des instruments comparés, la valeur terminale à
+l'horizon $N$ est la somme des capitaux acquis par chaque flux~:
 \begin{equation}
-  F_{\text{total}} = \sum_{n=0}^{N} F_n \times (1 + r)^{N-n}
+  \text{VT}_{\text{totale}} = \sum_{t=0}^{N} F_t \times (1 + r)^{N-t}
 \end{equation}
-L'opération inverse consiste à ramener l'ensemble de ces flux à leur valeur
-actuelle totale \cite[p.~101]{berk2020}~:
-\begin{equation}
-  \text{VA}_{\text{totale}} = \sum_{n=0}^{N} \frac{F_n}{(1 + r)^n}
-\end{equation}
-Ces deux grandeurs synthétisent en un seul chiffre l'intégralité des flux
-d'un investissement, quelle que soit leur date d'occurrence.
+Cette grandeur synthétise en un seul chiffre l'intégralité des flux d'un
+investissement, quelle que soit leur date d'occurrence, et exprime leur valeur
+cumulée à l'échéance \cite[p.~96--97]{berk2020}.
 
 \bigskip
 La comparaison entre deux instruments repose sur la différence de leurs
-valeurs actuelles totales~:
+valeurs terminales nettes~:
 \begin{equation}
-  \Delta = \text{VA}_{\text{inv. 1}} - \text{VA}_{\text{inv. 2}}
+  \Delta = \text{VT}_{\text{inv. 1}} - \text{VT}_{\text{inv. 2}}
 \end{equation}
 Si $\Delta > 0$, l'investissement~1 est préférable~; si $\Delta < 0$, c'est
 l'investissement~2. Cette logique permet de quantifier non seulement quel
-instrument domine, mais aussi de combien, en euros constants d'aujourd'hui \cite[p.~68-70]{berk2020}.
+instrument domine, mais aussi de combien, en euros à l'échéance.
 
-\subsubsection{Le taux d'actualisation~: la courbe OLO belge}
+\subsubsection{Le taux de capitalisation~: la courbe OLO belge}
 \label{sub:taux_olo}
 
-Le taux d'actualisation joue le rôle d'un taux de référence~: il représente ce
+Le taux de capitalisation joue le rôle d'un taux de référence~: il représente ce
 que l'investisseur pourrait obtenir sur un placement sans risque pendant la même
-durée. Le référentiel retenu est celui des OLO belges (Obligations Linéaires), 
+durée. Le référentiel retenu est celui des OLO belges (Obligations Linéaires),
 c'est-à-dire les obligations d'État émises par le Trésor
 belge. Ces titres constituent l'instrument sans risque de référence pour un
 investisseur résident en Belgique, et leur courbe de rendement est publiée pour
@@ -1174,28 +1164,29 @@ des maturités allant de un à trente ans.
 \bigskip
 Plutôt que de retenir un taux unique et arbitraire pour l'ensemble des flux,
 la simulation applique le principe de correspondance par durée~: chaque flux
-est actualisé au taux OLO dont la maturité correspond précisément à l'horizon
-de ce flux. Ainsi, une économie fiscale perçue en fin de deuxième année est
-actualisée au taux OLO à deux ans, et le capital final disponible à l'issue de
-vingt ans de versements est actualisé au taux OLO à vingt ans. Cette approche
-est cohérente avec la structure par terme des taux~: les marchés obligataires
-distinguent les rendements selon la maturité, et il serait inexact d'appliquer
-un taux de court terme à un flux de long terme, ou inversement. Pour les durées
-supérieures à trente ans le taux de l'OLO à trente ans est appliqué par convention.
+annexe est capitalisé au taux OLO dont la maturité correspond précisément au
+nombre d'années restantes entre ce flux et l'échéance. Ainsi, une économie
+fiscale perçue en fin de deuxième année est capitalisée au taux OLO correspondant
+au nombre d'années la séparant de l'échéance, et un coût supporté lors de la
+dernière année de versement ne fait l'objet d'aucune capitalisation supplémentaire.
+Cette approche est cohérente avec la structure par terme des taux~: les marchés
+obligataires distinguent les rendements selon la maturité, et il serait inexact
+d'appliquer un taux de court terme à un flux de long terme, ou inversement. Pour
+les durées supérieures à trente ans le taux de l'OLO à trente ans est appliqué
+par convention.
 
 \bigskip
-Les capitaux perçus à l'échéance étant des montants nets de toute fiscalité, il a
-été choisi d'utiliser un taux d'actualisation lui aussi exprimé net d'impôt. 
+Les flux étant des montants nets de toute fiscalité, il a été choisi d'utiliser
+un taux de capitalisation lui aussi exprimé net d'impôt.
 Un investisseur ne percevrait en effet que 70\,\% du coupon
 brut d'un OLO après précompte mobilier de 30\,\%, d'où~:
 \begin{equation}
   r_{\text{net}}(n) = r_{\text{brut}}(n) \times (1 - 30\,\%) = r_{\text{brut}}(n) \times 0{,}7
 \end{equation}
-où $n$ désigne la maturité en années \cite[p.~155]{berk2020}. Le référentiel complet des taux
-utilisés est présenté
-au tableau~\ref{tab:olo_referentiel} en annexe.
+où $n$ désigne la maturité en années. Le référentiel complet des taux
+utilisés est présenté au tableau~\ref{tab:olo_referentiel} en annexe.
 
-\subsubsection{Construction pas à pas de la valeur actuelle}
+\subsubsection{Construction pas à pas de la valeur terminale}
 
 Avant de présenter les formules propres à chaque véhicule, il est utile de
 poser le cadre de calcul commun.
@@ -1216,8 +1207,8 @@ capitalisation, contre seulement dix pour un versement effectué à 55~ans.
 
 \bigskip
 Les frais d'entrée réduisent soit directement le montant investi dans la réserve,
-soit sont comptabilisés comme des sorties d'argent récurrentes actualisées
-séparément. Les frais de gestion annuels s'appliquent à la réserve en fin de
+soit sont comptabilisés comme des sorties d'argent récurrentes capitalisées
+jusqu'à l'échéance. Les frais de gestion annuels s'appliquent à la réserve en fin de
 chaque année via le facteur $(1 - f_g)$.
 
 \bigskip
@@ -1230,17 +1221,16 @@ $C_N^{\text{net}}$ est la réserve finale~$R_N$, déjà nette des TCT annuelles
 cumulées, diminuée de ce prélèvement.
 
 \bigskip
-La valeur actuelle du capital net reçu dans $n$~années est~:
-\begin{equation}
-  \text{VA}\!\left(C_N^{\text{net}}\right) =
-    \frac{C_N^{\text{net}}}{\bigl(1 + r_{\text{OLO}}(n)\bigr)^n}
-\end{equation}
-où $r_{\text{OLO}}(n)$ est le taux OLO net correspondant à la maturité $n$.
-Cette même opération est appliquée à chaque flux annexe (économies fiscales,
-coûts récurrents), chacun étant actualisé au taux OLO correspondant à son propre
-horizon.
+Le capital net $C_N^{\text{net}}$ constitue la première composante de la valeur
+terminale~: il représente déjà la valeur de l'investissement à l'échéance.
+Les flux annexes (économies fiscales pour la branche~23, coûts récurrents pour
+le compte-titres) sont quant à eux capitalisés jusqu'à cette même échéance~:
+un flux survenant à l'année~$t$ est multiplié par le facteur
+$(1 + r_{\text{OLO}}(k))^k$ où $k = n - t$ est le nombre d'années restant
+entre ce flux et l'échéance, et $r_{\text{OLO}}(k)$ est le taux OLO net
+correspondant à cette durée résiduelle.
 
-\subsubsection{Valeur actuelle de la branche~23}
+\subsubsection{Valeur terminale de la branche~23}
 \label{sub:va_b23}
 
 Pour l'épargne-pension, comme aucune taxe sur les opérations d'assurance n'est due,
@@ -1288,22 +1278,23 @@ Cette réserve réduite continue ensuite à se capitaliser selon la même logiqu
 jusqu'à l'échéance finale à 65~ans. Aucune taxe supplémentaire n'est due à ce terme.
 
 \bigskip
-La valeur actuelle totale de l'EP se compose du capital net actualisé et des
-économies fiscales actualisées~:
+La valeur terminale totale de l'EP se compose du capital net et des
+économies fiscales capitalisées jusqu'à l'échéance~:
 \begin{align}
-  \text{VA}_{\text{B23}} &=
+  \text{VT}_{\text{B23}} &=
     \underbrace{%
-      \frac{C_N^{\text{net}}}{\bigl(1 + r_{\text{OLO}}(n)\bigr)^n}
-    }_{\text{capital net actualisé}}
+      C_N^{\text{net}}
+    }_{\text{capital net}}
   +
     \underbrace{%
-      \sum_{t=0}^{n}
-      \frac{\text{ÉcoFisc}(t)}{\bigl(1 + r_{\text{OLO}}(t+1)\bigr)^{t+1}}
-    }_{\text{économies fiscales actualisées}}
+      \sum_{t=0}^{n-1}
+      \text{ÉcoFisc}(t) \times
+      \bigl(1 + r_{\text{OLO}}(n-(t+1))\bigr)^{n-(t+1)}
+    }_{\text{économies fiscales capitalisées}}
 \end{align}
 où $n$ est la durée totale, $C_N^{\text{net}}$ le capital final net après taxe
 anticipative, et $\text{ÉcoFisc}(t)$ l'économie fiscale de l'année~$t$
-remboursée à l'année~$t+1$.
+remboursée à l'année~$t+1$ et capitalisée sur les $n-(t+1)$~années restantes.
 
 \bigskip
 Pour l'épargne à long terme (ELT), la structure est identique, avec les différences récapitulées dans le
@@ -1333,11 +1324,10 @@ successivement~:
 \begin{equation}
   v_{\text{net}}^{\text{ELT}} = v \times (1 - 2\,\%) \times (1 - f_e^{\text{B23}})
 \end{equation}
-L'accumulation, la TCT,
- la taxe anticipative (au taux de 10\,\%),
-ainsi que le calcul de la valeur actuelle suivent la même logique que pour l'EP.
+L'accumulation, la TCT, la taxe anticipative (au taux de 10\,\%),
+ainsi que le calcul de la valeur terminale suivent la même logique que pour l'EP.
 
-\subsubsection{Valeur actuelle du compte-titres}
+\subsubsection{Valeur terminale du compte-titres}
 \label{sub:va_ct_formule}
 
 Pour le compte-titres, le versement brut $v$ entre intégralement dans la
@@ -1371,34 +1361,36 @@ Le prix de revient est calculé par la méthode du coût total, équivalente à 
 lorsque toutes les parts sont cédées simultanément à l'échéance.
 
 \bigskip
-La valeur actuelle est égale au capital net actualisé diminué des coûts
-récurrents actualisés (frais de courtage et TOB)~:
+La valeur terminale est égale au capital net diminué des coûts
+récurrents capitalisés jusqu'à l'échéance (frais de courtage et TOB)~:
 \begin{align}
-  \text{VA}_{\text{CT}} &=
+  \text{VT}_{\text{CT}} &=
     \underbrace{%
-      \frac{C_N^{\text{net}}}{\bigl(1 + r_{\text{OLO}}(n)\bigr)^n}
-    }_{\text{capital net actualisé}}
+      C_N^{\text{net}}
+    }_{\text{capital net}}
   -
     \underbrace{%
       \sum_{t=0}^{n}
-      \frac{\text{TOB}_t}{\bigl(1 + r_{\text{OLO}}(t)\bigr)^t}
-    }_{\text{TOB actualisée}}
+      \text{TOB}_t \times
+      \bigl(1 + r_{\text{OLO}}(n-t)\bigr)^{n-t}
+    }_{\text{TOB capitalisée}}
   -
     \underbrace{%
       \sum_{t=0}^{n}
-      \frac{\text{Courtage}_t}{\bigl(1 + r_{\text{OLO}}(t)\bigr)^t}
-    }_{\text{courtage actualisé}}
+      \text{Courtage}_t \times
+      \bigl(1 + r_{\text{OLO}}(n-t)\bigr)^{n-t}
+    }_{\text{courtage capitalisé}}
 \end{align}
 
 \subsubsection{Comparaison et notion de dominance}
 \label{sub:comparaison}
 
 Pour chaque versement annuel $v$ de la plage testée, la différence entre les
-deux valeurs actuelles est calculée~:
+deux valeurs terminales est calculée~:
 \begin{equation}
-  \Delta(v) = \text{VA}_{\text{B23}}(v) - \text{VA}_{\text{CT}}(v)
+  \Delta(v) = \text{VT}_{\text{B23}}(v) - \text{VT}_{\text{CT}}(v)
 \end{equation}
-Lorsque $\Delta(v) > 0$, la branche~23 offre une valeur actuelle supérieure pour
+Lorsque $\Delta(v) > 0$, la branche~23 offre une valeur terminale supérieure pour
 ce versement~; lorsque $\Delta(v) < 0$, c'est le compte-titres qui l'emporte~;
 lorsque $|\Delta(v)| < 1$~€, les deux instruments sont considérés en situation
 d'ex~æquo.
@@ -1408,9 +1400,9 @@ Pour chaque combinaison (âge de début, rendement), les indicateurs de dominanc
 suivants sont calculés sur l'ensemble de la plage~:
 \begin{itemize}
   \item taux de dominance B23 (\%) --- proportion des versements pour lesquels
-    $\text{VA}_{\text{B23}} > \text{VA}_{\text{CT}}$~;
+    $\text{VT}_{\text{B23}} > \text{VT}_{\text{CT}}$~;
   \item taux de dominance CT (\%) --- proportion des versements pour lesquels
-    $\text{VA}_{\text{CT}} > \text{VA}_{\text{B23}}$~;
+    $\text{VT}_{\text{CT}} > \text{VT}_{\text{B23}}$~;
   \item taux d'égalité (\%) --- proportion des versements en situation d'ex~æquo.
 \end{itemize}
 L'instrument présentant le taux de dominance le plus élevé est désigné dominant
@@ -1540,7 +1532,7 @@ frais.
     \hline
     Âge de fin de l'horizon & 65~ans \\
     Âge de début (plage simulée) & 18 à 55~ans (pas de 1~an) \\
-    Actualisation & Courbe OLO belge, taux nets (voir tableau~\ref{tab:olo_referentiel}) \\
+    Capitalisation & Courbe OLO belge, taux nets (voir tableau~\ref{tab:olo_referentiel}) \\
     Rendement annuel brut (plage) & 3\,\% à 10\,\% (pas de 1\,\%) \\
     Frais d'entrée et de gestion & Variables selon scénario de frais (voir tableau~\ref{tab:scenarii_frais}) \\
     TOB (CT) & 0,12\,\% par versement \\
@@ -1587,10 +1579,10 @@ La méthodologie repose sur plusieurs hypothèses simplificatrices~:
     au moment de la rédaction. Tout changement législatif futur n'est pas pris en
     compte.
 
-  \item Comparaison en valeur actuelle et non en capital brut. Ce choix
+  \item Comparaison en valeur terminale nette et non en capital brut. Ce choix
     permet de tenir compte du moment où les flux sont perçus (économies fiscales
-    annuelles versus capital à terme), mais il dépend du référentiel de taux OLO
-    retenu.
+    annuelles versus capital à terme) par leur capitalisation à l'échéance, mais
+    il dépend du référentiel de taux OLO retenu.
 
   \item Absence de risque de contrepartie. Les deux instruments sont
     supposés sans risque de défaut ou de faillite de l'assureur ou du courtier.
@@ -1619,7 +1611,7 @@ La méthodologie repose sur plusieurs hypothèses simplificatrices~:
 \newpage
 \appendix
 
-\section{Référentiel OLO belge utilisé pour l'actualisation}
+\section{Référentiel OLO belge utilisé pour la capitalisation}
 \label{ann:olo}
 
 \begin{table}[h!]
