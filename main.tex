@@ -1044,7 +1044,7 @@ Pour chaque combinaison, la simulation parcourt une plage de versements annuels
 allant de 1~€ jusqu'au plafond légal de déductibilité fiscale propre à chaque
 produit~; à chaque niveau de versement, le compte-titres est apparié à l'EP ou à
 l'ELT correspondante, le même montant étant investi dans les deux instruments,
-et le résultat net de chacun est exprimé en valeur terminale nette (VT).
+et le résultat net de chacun est exprimé en capital final net à l'échéance (CFN).
 Cela permet de comparer les instruments afin de déterminer non seulement lequel domine, 
 mais aussi à partir
 de quel niveau de versement il l'emporte et dans quelle proportion.
@@ -1091,9 +1091,9 @@ sortie. Retenir de tels profils romprait l'homogénéité de la comparaison
 en ne permettant plus d'aligner la date du prélèvement et celle du retrait
 sur l'horizon de retraite commun aux deux instruments.
 
-\subsection{Le critère de comparaison~: la valeur terminale nette}
+\subsection{Le critère de comparaison~: le capital final net à l'échéance}
 
-\subsubsection{Principe de la valeur terminale nette}
+\subsubsection{Principe du capital final net à l'échéance}
 
 Comparer deux placements sur un horizon de plusieurs années pose une
 difficulté fondamentale~: les flux monétaires associés à chaque instrument
@@ -1113,7 +1113,7 @@ La solution consiste à ramener tous les flux à un même point dans le temps
 par capitalisation~: la comparaison est valide dès lors que les flux des deux
 instruments sont exprimés à la même date de référence \cite[p.~67]{berk2020}.
 Dans ce travail, on choisit l'horizon de l'investissement comme date de référence
-commune, ce qui conduit à raisonner en valeur terminale nette (VT). Chaque flux
+commune, ce qui conduit à raisonner en capital final net à l'échéance (CFN). Chaque flux
 annexe est porté à la valeur qu'il aurait s'il était réinvesti jusqu'à l'échéance.
 
 \subsubsection{La capitalisation}
@@ -1131,10 +1131,10 @@ dans la simulation.
 
 \bigskip
 Lorsque plusieurs flux se produisent à des dates différentes, ce qui est
-exactement le cas des instruments comparés, la valeur terminale à
+exactement le cas des instruments comparés, le capital final net à
 l'horizon $N$ est la somme des capitaux acquis par chaque flux~:
 \begin{equation}
-  \text{VT}_{\text{totale}} = \sum_{t=0}^{N} F_t \times (1 + r)^{N-t}
+  \text{CFN}_{\text{total}} = \sum_{t=0}^{N} F_t \times (1 + r)^{N-t}
 \end{equation}
 Cette grandeur synthétise en un seul chiffre l'intégralité des flux d'un
 investissement, quelle que soit leur date d'occurrence, et exprime leur valeur
@@ -1142,9 +1142,9 @@ cumulée à l'échéance \cite[p.~96--97]{berk2020}.
 
 \bigskip
 La comparaison entre deux instruments repose sur la différence de leurs
-valeurs terminales nettes~:
+capitaux finaux nets à l'échéance~:
 \begin{equation}
-  \Delta = \text{VT}_{\text{inv. 1}} - \text{VT}_{\text{inv. 2}}
+  \Delta = \text{CFN}_{\text{inv. 1}} - \text{CFN}_{\text{inv. 2}}
 \end{equation}
 Si $\Delta > 0$, l'investissement~1 est préférable~; si $\Delta < 0$, c'est
 l'investissement~2. Cette logique permet de quantifier non seulement quel
@@ -1186,7 +1186,7 @@ brut d'un OLO après précompte mobilier de 30\,\%, d'où~:
 où $n$ désigne la maturité en années. Le référentiel complet des taux
 utilisés est présenté au tableau~\ref{tab:olo_referentiel} en annexe.
 
-\subsubsection{Construction pas à pas de la valeur terminale}
+\subsubsection{Construction pas à pas du capital final net à l'échéance}
 
 Avant de présenter les formules propres à chaque véhicule, il est utile de
 poser le cadre de calcul commun.
@@ -1230,7 +1230,7 @@ $(1 + r_{\text{OLO}}(k))^k$ où $k = n - t$ est le nombre d'années restant
 entre ce flux et l'échéance, et $r_{\text{OLO}}(k)$ est le taux OLO net
 correspondant à cette durée résiduelle.
 
-\subsubsection{Valeur terminale de la branche~23}
+\subsubsection{Capital final net à l'échéance --- branche~23}
 \label{sub:va_b23}
 
 Pour l'épargne-pension, comme aucune taxe sur les opérations d'assurance n'est due,
@@ -1278,10 +1278,10 @@ Cette réserve réduite continue ensuite à se capitaliser selon la même logiqu
 jusqu'à l'échéance finale à 65~ans. Aucune taxe supplémentaire n'est due à ce terme.
 
 \bigskip
-La valeur terminale totale de l'EP se compose du capital net et des
-économies fiscales capitalisées jusqu'à l'échéance~:
+Le capital final net à l'échéance de l'EP se compose du capital net et des
+économies fiscales capitalisées~:
 \begin{align}
-  \text{VT}_{\text{B23}} &=
+  \text{CFN}_{\text{B23}} &=
     \underbrace{%
       C_N^{\text{net}}
     }_{\text{capital net}}
@@ -1325,9 +1325,9 @@ successivement~:
   v_{\text{net}}^{\text{ELT}} = v \times (1 - 2\,\%) \times (1 - f_e^{\text{B23}})
 \end{equation}
 L'accumulation, la TCT, la taxe anticipative (au taux de 10\,\%),
-ainsi que le calcul de la valeur terminale suivent la même logique que pour l'EP.
+ainsi que le calcul du capital final net à l'échéance suivent la même logique que pour l'EP.
 
-\subsubsection{Valeur terminale du compte-titres}
+\subsubsection{Capital final net à l'échéance --- compte-titres}
 \label{sub:va_ct_formule}
 
 Pour le compte-titres, le versement brut $v$ entre intégralement dans la
@@ -1361,10 +1361,10 @@ Le prix de revient est calculé par la méthode du coût total, équivalente à 
 lorsque toutes les parts sont cédées simultanément à l'échéance.
 
 \bigskip
-La valeur terminale est égale au capital net diminué des coûts
-récurrents capitalisés jusqu'à l'échéance (frais de courtage et TOB)~:
+Le capital final net à l'échéance est égal au capital net diminué des coûts
+récurrents capitalisés (frais de courtage et TOB)~:
 \begin{align}
-  \text{VT}_{\text{CT}} &=
+  \text{CFN}_{\text{CT}} &=
     \underbrace{%
       C_N^{\text{net}}
     }_{\text{capital net}}
@@ -1386,11 +1386,11 @@ récurrents capitalisés jusqu'à l'échéance (frais de courtage et TOB)~:
 \label{sub:comparaison}
 
 Pour chaque versement annuel $v$ de la plage testée, la différence entre les
-deux valeurs terminales est calculée~:
+deux capitaux finaux nets à l'échéance est calculée~:
 \begin{equation}
-  \Delta(v) = \text{VT}_{\text{B23}}(v) - \text{VT}_{\text{CT}}(v)
+  \Delta(v) = \text{CFN}_{\text{B23}}(v) - \text{CFN}_{\text{CT}}(v)
 \end{equation}
-Lorsque $\Delta(v) > 0$, la branche~23 offre une valeur terminale supérieure pour
+Lorsque $\Delta(v) > 0$, la branche~23 offre un capital final net à l'échéance supérieur pour
 ce versement~; lorsque $\Delta(v) < 0$, c'est le compte-titres qui l'emporte~;
 lorsque $|\Delta(v)| < 1$~€, les deux instruments sont considérés en situation
 d'ex~æquo.
@@ -1400,9 +1400,9 @@ Pour chaque combinaison (âge de début, rendement), les indicateurs de dominanc
 suivants sont calculés sur l'ensemble de la plage~:
 \begin{itemize}
   \item taux de dominance B23 (\%) --- proportion des versements pour lesquels
-    $\text{VT}_{\text{B23}} > \text{VT}_{\text{CT}}$~;
+    $\text{CFN}_{\text{B23}} > \text{CFN}_{\text{CT}}$~;
   \item taux de dominance CT (\%) --- proportion des versements pour lesquels
-    $\text{VT}_{\text{CT}} > \text{VT}_{\text{B23}}$~;
+    $\text{CFN}_{\text{CT}} > \text{CFN}_{\text{B23}}$~;
   \item taux d'égalité (\%) --- proportion des versements en situation d'ex~æquo.
 \end{itemize}
 L'instrument présentant le taux de dominance le plus élevé est désigné dominant
@@ -1579,10 +1579,10 @@ La méthodologie repose sur plusieurs hypothèses simplificatrices~:
     au moment de la rédaction. Tout changement législatif futur n'est pas pris en
     compte.
 
-  \item Comparaison en valeur terminale nette et non en capital brut. Ce choix
-    permet de tenir compte du moment où les flux sont perçus (économies fiscales
-    annuelles versus capital à terme) par leur capitalisation à l'échéance, mais
-    il dépend du référentiel de taux OLO retenu.
+  \item Comparaison en capital final net à l'échéance (CFN) et non en capital
+    brut. Ce choix permet de tenir compte du moment où les flux sont perçus
+    (économies fiscales annuelles versus capital à terme) par leur capitalisation
+    à l'échéance, mais il dépend du référentiel de taux OLO retenu.
 
   \item Absence de risque de contrepartie. Les deux instruments sont
     supposés sans risque de défaut ou de faillite de l'assureur ou du courtier.
