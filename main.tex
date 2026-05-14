@@ -1216,8 +1216,9 @@ anticipative de 8\,\% est ensuite prélevée une seule fois sur la réserve au
 Cette réserve réduite continue ensuite à se capitaliser selon la même logique
 jusqu'à l'échéance finale à 65~ans. Aucune taxe supplémentaire n'est due à ce terme.
 
-Le capital final net à l'échéance de l'EP se compose du capital net et des
-économies fiscales capitalisées~:
+Le capital final net à l'échéance de l'EP se compose du capital net, des
+économies fiscales capitalisées jusqu'à l'échéance, et d'un ajustement pour
+le dernier remboursement fiscal reçu après l'horizon~:
 \begin{align}
   \text{CFN}_{\text{B23}} &=
     \underbrace{%
@@ -1229,10 +1230,27 @@ Le capital final net à l'échéance de l'EP se compose du capital net et des
       \text{ÉcoFisc}(t) \times
       \bigl(1 + r_{\text{OLO}}(n-(t+1))\bigr)^{n-(t+1)}
     }_{\text{économies fiscales capitalisées}}
+  +
+    \underbrace{%
+      \dfrac{\text{ÉcoFisc}(n)}{1 + r_{\text{OLO}}(1)}
+    }_{\text{dernier remb. actualisé}}
 \end{align}
-où $n$ est la durée totale, $C_N^{\text{net}}$ le capital final net après taxe
-anticipative, et $\text{ÉcoFisc}(t)$ l'économie fiscale de l'année~$t$
-remboursée à l'année~$t+1$ et capitalisée sur les $n-(t+1)$~années restantes.
+où $n$ est la durée totale et $C_N^{\text{net}}$ le capital final net après taxe
+anticipative.
+Pour les versements de l'année~$0$ à l'année~$n-1$, l'économie fiscale
+$\text{ÉcoFisc}(t)$ est remboursée à l'année~$t+1$. Le nombre d'années
+résiduelles avant l'échéance est $n-(t+1) \geq 0$~; la capitalisation de
+$\text{ÉcoFisc}(t)$ s'effectue donc sur cette durée au taux OLO correspondant.
+
+Un cas particulier se présente pour le versement effectué exactement à
+l'échéance (année~$n$). Son économie fiscale $\text{ÉcoFisc}(n)$ n'est
+remboursée que lors de la déclaration de l'année suivante, soit à l'année~$n+1$,
+un an \emph{après} l'horizon de comparaison. Pour ramener ce flux à la date de
+référence commune, on applique la formule de la valeur actuelle (seul usage de
+l'actualisation dans cette méthodologie), en le divisant par
+$\bigl(1 + r_{\text{OLO}}(1)\bigr)$. Ce flux mineur mis à part, le critère de
+comparaison repose intégralement sur la capitalisation.
+
 
 Pour l'épargne à long terme (ELT), la structure est identique, avec les différences récapitulées dans le
 tableau~\ref{tab:diff_ep_elt}.
