@@ -1056,44 +1056,58 @@ Additionner ces flux bruts sans correction temporelle reviendrait à traiter
 de manière identique un euro reçu aujourd'hui et un euro reçu dans plusieurs années,
 ce qui serait économiquement inexact.
 
-La solution consiste à ramener tous les flux à un même point dans le temps
-par capitalisation~: la comparaison est valide dès lors que les flux des deux
+La solution consiste à ramener tous les flux à un même point dans le temps,
+la comparaison étant valide dès lors que les flux des deux
 instruments sont exprimés à la même date de référence \cite[p.~67]{berk2020}.
 Dans ce travail, on choisit l'horizon de l'investissement comme date de référence
 commune, ce qui conduit à raisonner en capital final net à l'échéance (CFN). Chaque flux
 annexe est porté à la valeur qu'il aurait s'il était réinvesti jusqu'à l'échéance.
 
-\subsubsection{La capitalisation}
+\subsubsection{Capitalisation et actualisation}
 
-La capitalisation est l'opération qui permet ce voyage dans le temps. Si l'on
-place $F_0$ euros aujourd'hui à un taux annuel $r$, la valeur acquise au bout
-de $n$~années est~:
+La capitalisation et l'actualisation sont les deux opérations inverses qui
+permettent de comparer des flux survenant à des dates différentes. Si l'on place
+$F_0$ euros aujourd'hui à un taux annuel $r$, la valeur acquise au bout de
+$n$~années est~:
 \begin{equation}
   F_n = F_0 \times (1 + r)^n
 \end{equation}
 La croissance est géométrique~: les intérêts de chaque période portent eux-mêmes
 intérêts lors des périodes suivantes, mécanisme connu sous le nom d'intérêts
-composés \cite[p.~96]{berk2020}. C'est précisément ce mécanisme qui gouverne l'accumulation du capital
-dans la simulation.
-
-Lorsque plusieurs flux se produisent à des dates différentes, ce qui est
-exactement le cas des instruments comparés, le capital final à
-l'horizon $N$ est la somme des capitaux acquis par chaque flux~:
+composés \cite[p.~96]{berk2020}. L'actualisation est l'opération inverse~: elle
+ramène un flux futur $F_n$ à sa valeur présente~:
 \begin{equation}
-  \text{F}_{\text{total}} = \sum_{t=0}^{N} F_t \times (1 + r)^{N-t}
+  \text{VA}(F_n) = F_0 = \frac{F_n}{(1 + r)^n}
 \end{equation}
-Cette grandeur synthétise en un seul chiffre l'intégralité des flux d'un
-investissement, quelle que soit leur date d'occurrence, et exprime leur valeur
-cumulée à l'échéance \cite[p.~96--97]{berk2020}.
+où $r$ est le taux annuel et $n$ le nombre d'années séparant le moment présent
+de la réception du flux \cite[p.~97--98]{berk2020}.
 
-La comparaison entre deux instruments repose sur la différence de leurs
-capitaux finaux nets à l'échéance~:
+\bigskip
+Lorsque plusieurs flux se produisent à des dates différentes, les deux opérations
+se généralisent. La capitalisation totale à l'horizon $N$ est la somme des
+capitaux acquis par chaque flux~:
 \begin{equation}
-  \Delta = \text{F}_{\text{inv. 1}} - \text{F}_{\text{inv. 2}}
+  F_{\text{total}} = \sum_{t=0}^{N} F_t \times (1 + r)^{N-t}
+\end{equation}
+La valeur actuelle nette (VAN) est l'opération symétrique~: elle ramène
+l'ensemble des flux à leur valeur présente~:
+\begin{equation}
+  \text{VAN} = \sum_{t=0}^{N} \frac{F_t}{(1 + r)^t}
+\end{equation}
+Ces deux grandeurs synthétisent en un seul chiffre l'intégralité des flux d'un
+investissement, quelle que soit leur date d'occurrence
+\cite[p.~96--97]{berk2020}.
+
+La comparaison entre deux instruments peut être conduite indifféremment par
+capitalisation ou par actualisation~: les deux méthodes sont mathématiquement
+équivalentes et conduisent au même classement \cite[p.~68--70]{berk2020}.
+\begin{equation}
+  \Delta = F_{\text{inv. 1}} - F_{\text{inv. 2}}
+  \qquad \text{ou} \qquad
+  \Delta = \text{VAN}_{\text{inv. 1}} - \text{VAN}_{\text{inv. 2}}
 \end{equation}
 Si $\Delta > 0$, l'investissement~1 est préférable~; si $\Delta < 0$, c'est
-l'investissement~2. Cette logique permet de quantifier non seulement quel
-instrument domine, mais aussi de combien, en euros à l'échéance.
+l'investissement~2.
 
 \subsubsection{Le taux de capitalisation~: la courbe OLO belge}
 \label{sub:taux_olo}
