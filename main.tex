@@ -12,6 +12,8 @@
 \usepackage{fancyhdr}
 \usepackage{titlesec}
 \usepackage{pdfpages}
+\usepackage{graphicx}
+\usepackage{float}
 \usepackage{longtable}
 \usepackage{makecell}
 
@@ -1558,6 +1560,166 @@ La méthodologie repose sur plusieurs hypothèses simplificatrices~:
 
 \newpage
 
+%==========================================================================
+\section{Résultats~: épargne long terme (branche~23) versus compte-titres}
+\label{sec:resultats_elt}
+
+Les résultats présentés ci-après sont issus des simulations décrites au §~4.
+Chaque cellule des heatmaps synthétise la dominance globale observée sur
+l'intégralité de la plage de versements (de 1~€ à 2\,450~€ par an).
+Les trois scénarios de frais sont traités successivement~: le scénario~B
+(frais réalistes) constitue le cas central et est analysé en détail~;
+les scénarios~A (effet fiscal pur) et~C (frais majorés) sont présentés de
+manière commune et succincte, leurs heatmaps étant renvoyées en annexe.
+
+%--------------------------------------------------------------------------
+\subsection{Scénario~B --- Frais réalistes (cas central)}
+\label{sec:resultats_elt_B}
+
+\subsubsection{Frontière de dominance sans taxe sur les plus-values}
+
+La figure~\ref{fig:heatmap_elt_B_sans_pv} présente la heatmap du scénario~B
+en l'absence de taxe sur les plus-values.
+
+%\begin{figure}[H]
+%  \centering
+%  \includegraphics[width=\textwidth]{media/heatmap_elt_B_sans_pv.png}
+%  \caption{Dominance ELT\,/\,CT --- Scénario~B, sans taxe sur les plus-values.
+%           Les cellules bleues indiquent la dominance de l'ELT à 100\,\%~;
+%           les cellules vertes indiquent la dominance du CT à 100\,\%.
+%           L'intensité de couleur reflète la force de la dominance.}
+%  \label{fig:heatmap_elt_B_sans_pv}
+%\end{figure}
+
+La lecture de la heatmap révèle une frontière de dominance strictement
+monotone. Aux rendements nuls à 1\,\%, l'ELT domine sur l'ensemble des
+âges simulés (18 à 55~ans). À mesure que le rendement augmente, la zone de
+dominance de l'ELT se rétracte progressivement vers les horizons les plus
+courts~: elle atteint les âges de 44 à 55~ans à 2\,\%, de 48 à 55~ans à
+3\,\%, puis se resserre jusqu'à ne couvrir que l'âge de 55~ans à 8\,\%.
+À partir de 9\,\%, le compte-titres domine à 100\,\% pour tous les âges.
+Ce rétrécissement continu forme un coin triangulaire dans le quadrant
+inférieur gauche de la heatmap.
+
+Au sein de chaque cellule, la dominance est totale sur l'intégralité de la
+plage de versements~: il n'existe aucun point de croisement intra-cellule
+dans ce scénario. Cette propriété analytiquement significative signifie que
+le résultat est entièrement déterminé par la combinaison (rendement, durée)
+et non par le montant du versement annuel. Elle découle de la structure même
+du scénario~B~: les frais de gestion de l'ELT, proportionnels à la réserve,
+et la réduction fiscale, proportionnelle au versement, évoluent dans le même
+sens lorsque le versement augmente, de sorte que leurs effets se compensent
+à chaque niveau et n'engendrent aucun croisement.
+
+La monotonie de la frontière reflète l'arbitrage entre deux forces
+structurellement opposées. L'avantage de l'ELT est certain mais plafonné en
+valeur absolue~: la réduction fiscale annuelle ne peut excéder 735~€. En
+regard, les frais de gestion annuels de 2,34\,\% s'appliquent sur une
+réserve qui croît exponentiellement avec le rendement et la durée. Au-delà
+d'un certain seuil de rendement croisé à la durée, le coût capitalisé des
+frais de gestion excède la valeur capitalisée de l'ensemble des réductions
+fiscales accumulées sur toute la période, et le compte-titres s'impose.
+
+\subsubsection{Incidence de la taxe sur les plus-values de 2026}
+
+La figure~\ref{fig:heatmap_elt_B_avec_pv} présente la heatmap correspondante
+lorsque le compte-titres supporte la taxe sur les plus-values de 10\,\%
+introduite en 2026.
+
+%\begin{figure}[H]
+%  \centering
+%  \includegraphics[width=\textwidth]{media/heatmap_elt_B_avec_pv.png}
+%  \caption{Dominance ELT\,/\,CT --- Scénario~B, avec taxe sur les
+%           plus-values de 10\,\%.}
+%  \label{fig:heatmap_elt_B_avec_pv}
+%\end{figure}
+
+Les deux heatmaps sont visuellement identiques~: la frontière de dominance
+est inchangée. La taxe sur les plus-values réduit légèrement les marges
+absolues de dominance du compte-titres aux rendements élevés, ce qui est
+perceptible dans les données brutes mais ne déplace aucun seuil ni ne
+renverse aucune hiérarchie. Ce résultat établit que la réforme fiscale de
+2026 est insuffisante, à elle seule, pour modifier les recommandations
+pratiques dans ce scénario~: le facteur déterminant reste le coût annuel de
+gestion de l'ELT et non la fiscalité applicable à la sortie du compte-titres.
+
+\subsubsection{Interprétation synthétique}
+
+Le scénario~B conduit à trois constats. Premièrement, le compte-titres
+domine structurellement sur les horizons longs et les rendements élevés~;
+cette hiérarchie est d'origine tarifaire et non fiscale. Deuxièmement,
+l'ELT reste l'instrument favorable pour un investisseur débutant proche de
+la retraite ou opérant dans un contexte de rendements réels faibles~: plus
+l'investisseur commence tôt et vise un rendement élevé, plus le
+compte-titres lui est favorable dans ce scénario. Troisièmement, la taxe
+sur les plus-values joue un rôle second par rapport à la variable des
+frais~: elle améliore marginalement la position de l'ELT sans en modifier
+la hiérarchie globale.
+
+%--------------------------------------------------------------------------
+\subsection{Scénarios~A et~C --- Traitement commun}
+\label{sec:resultats_elt_AC}
+
+Les scénarios~A (absence totale de frais, isolation de l'effet fiscal pur)
+et~C (frais identiques entre les deux instruments, à hauteur de 2,83\,\%
+à l'entrée et 2,34\,\% de gestion annuelle) constituent respectivement la
+borne basse et la borne haute de la pression tarifaire sur le compte-titres.
+Leurs heatmaps sont reportées en annexe (figures~\ref{fig:heatmap_elt_A_sans_pv},
+\ref{fig:heatmap_elt_A_avec_pv}, \ref{fig:heatmap_elt_C_sans_pv}
+et~\ref{fig:heatmap_elt_C_avec_pv}).
+
+\subsubsection{Résultats principaux}
+
+Dans le scénario~A, sans taxe sur les plus-values, l'ELT domine à 100\,\%
+sur la quasi-totalité de l'espace (rendement, durée), à l'exception de
+quatre bandes aux rendements élevés~: le compte-titres s'impose de 18 à
+27~ans à 7\,\%, de 18 à 33~ans à 8\,\%, de 18 à 38~ans à 9\,\% et de 18
+à 41~ans à 10\,\%. Ces zones de résistance illustrent une limite structurelle
+propre au régime fiscal de l'ELT~: aux rendements très élevés sur de longs
+horizons, la taxe anticipative de 10\,\% appliquée sur une réserve
+exponentiellement croissante finit par excéder la valeur capitalisée des
+réductions fiscales accumulées, indépendamment du niveau des frais.
+
+Dans le scénario~C, où le compte-titres supporte les mêmes frais que
+l'ELT, ces zones se réduisent sensiblement~: elles se limitent à deux
+bandes, à 9\,\% (de 18 à 25~ans) et à 10\,\% (de 18 à 33~ans). La
+comparaison directe des scénarios~A et~C constitue une démonstration
+\textit{a contrario} du résultat du scénario~B~: l'avantage du compte-titres
+observé à frais réalistes n'est pas d'origine fiscale mais tarifaire,
+puisqu'il disparaît en grande partie lorsque les frais sont égalisés.
+
+\subsubsection{Incidence de la taxe sur les plus-values}
+
+L'introduction de la taxe sur les plus-values rééquilibre les cas limites
+dans les deux scénarios. Les cellules anciennement dominées par le
+compte-titres font apparaître un point de croisement à des seuils de
+versement très bas~: entre 73~€/an (18~ans, 7\,\% dans le scénario~A) et
+218~€/an (41~ans, 10\,\% dans le scénario~A), et entre 88~€/an (18~ans,
+9\,\% dans le scénario~C) et 161~€/an (33~ans, 10\,\% dans le scénario~C).
+En deçà de ces seuils, le compte-titres conserve un avantage résiduel~;
+au-delà, l'ELT reprend l'avantage. La faiblesse de ces seuils au regard de
+la plage pertinente (jusqu'à 2\,450~€/an) signifie que pour tout versement
+économiquement significatif, l'ELT est rétabli dans sa position dominante
+dès lors que le compte-titres supporte lui aussi une imposition à la sortie.
+La similarité des seuils entre les scénarios~A et~C confirme que ce
+rééquilibrage est déterminé par la structure fiscale comparée des deux
+instruments, indépendamment du niveau des frais.
+
+\subsubsection{Lecture transversale des trois scénarios}
+
+La confrontation des trois scénarios permet d'isoler le rôle de chaque
+variable. Les frais de gestion de 2,34\,\%/an constituent le facteur
+déterminant~: à eux seuls, ils détruisent l'intégralité de l'avantage
+fiscal de l'ELT (comparaison A\,$\to$\,B). L'égalisation des frais le
+restaure largement (comparaison B\,$\to$\,C), sauf aux rendements les plus
+élevés sur les très longs horizons, où la taxe anticipative constitue la
+contrainte liante. La taxe sur les plus-values de 2026 exerce un effet
+second et uniforme dans les trois scénarios~: elle améliore la position
+relative de l'ELT sans en modifier la hiérarchie globale vis-à-vis du
+compte-titres.
+
+\newpage
+
 
 
 
@@ -1617,6 +1779,40 @@ La méthodologie repose sur plusieurs hypothèses simplificatrices~:
   \end{tabular}
 \end{table}
 
+%==========================================================================
+\section{Heatmaps ELT\,/\,CT --- Scénario~A (effet fiscal pur)}
+\label{ann:heatmaps_A}
 
+%\begin{figure}[H]
+%  \centering
+%  \includegraphics[width=\textwidth]{media/heatmap_elt_A_sans_pv.png}
+%  \caption{Dominance ELT\,/\,CT --- Scénario~A (aucun frais), sans taxe sur les plus-values.}
+%  \label{fig:heatmap_elt_A_sans_pv}
+%\end{figure}
+
+%\begin{figure}[H]
+%  \centering
+%  \includegraphics[width=\textwidth]{media/heatmap_elt_A_avec_pv.png}
+%  \caption{Dominance ELT\,/\,CT --- Scénario~A (aucun frais), avec taxe sur les plus-values de 10\,\%.}
+%  \label{fig:heatmap_elt_A_avec_pv}
+%\end{figure}
+
+%==========================================================================
+\section{Heatmaps ELT\,/\,CT --- Scénario~C (frais majorés)}
+\label{ann:heatmaps_C}
+
+%\begin{figure}[H]
+%  \centering
+%  \includegraphics[width=\textwidth]{media/heatmap_elt_C_sans_pv.png}
+%  \caption{Dominance ELT\,/\,CT --- Scénario~C (frais égalisés), sans taxe sur les plus-values.}
+%  \label{fig:heatmap_elt_C_sans_pv}
+%\end{figure}
+
+%\begin{figure}[H]
+%  \centering
+%  \includegraphics[width=\textwidth]{media/heatmap_elt_C_avec_pv.png}
+%  \caption{Dominance ELT\,/\,CT --- Scénario~C (frais égalisés), avec taxe sur les plus-values de 10\,\%.}
+%  \label{fig:heatmap_elt_C_avec_pv}
+%\end{figure}
 
 \end{document}
