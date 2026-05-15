@@ -1564,13 +1564,13 @@ La méthodologie repose sur plusieurs hypothèses simplificatrices~:
 \section{Résultats~: épargne long terme (branche~23) versus compte-titres}
 \label{sec:resultats_elt}
 
-Les résultats présentés ci-après sont issus des simulations décrites au §~4.
-Chaque cellule des heatmaps synthétise la dominance globale observée sur
-l'intégralité de la plage de versements (de 1~€ à 2\,450~€ par an).
-Les trois scénarios de frais sont traités successivement~: le scénario~B
-(frais réalistes) constitue le cas central et est analysé en détail~;
-les scénarios~A (effet fiscal pur) et~C (frais majorés) sont présentés de
-manière commune et succincte, leurs heatmaps étant renvoyées en annexe.
+Les simulations comparent, pour chaque combinaison d'âge de début et de
+rendement annuel brut, le capital final net à l'échéance de l'ELT et du
+compte-titres sur l'ensemble de la plage de versements (de 1~€ à
+2\,450~€ par an). Le scénario~B, qui retient les frais réels du marché,
+est traité en priorité~; les scénarios~A et~C, qui isolent respectivement
+l'effet fiscal pur et l'effet d'une égalisation des frais, sont présentés
+conjointement en fin de section, leurs heatmaps figurant en annexe.
 
 %--------------------------------------------------------------------------
 \subsection{Scénario~B --- Frais réalistes (cas central)}
@@ -1578,8 +1578,8 @@ manière commune et succincte, leurs heatmaps étant renvoyées en annexe.
 
 \subsubsection{Frontière de dominance sans taxe sur les plus-values}
 
-La figure~\ref{fig:heatmap_elt_B_sans_pv} présente la heatmap du scénario~B
-en l'absence de taxe sur les plus-values.
+La figure~\ref{fig:heatmap_elt_B_sans_pv} présente les résultats du
+scénario~B en l'absence de taxe sur les plus-values.
 
 %\begin{figure}[H]
 %  \centering
@@ -1591,40 +1591,39 @@ en l'absence de taxe sur les plus-values.
 %  \label{fig:heatmap_elt_B_sans_pv}
 %\end{figure}
 
-La lecture de la heatmap révèle une frontière de dominance strictement
-monotone. Aux rendements nuls à 1\,\%, l'ELT domine sur l'ensemble des
-âges simulés (18 à 55~ans). À mesure que le rendement augmente, la zone de
-dominance de l'ELT se rétracte progressivement vers les horizons les plus
-courts~: elle atteint les âges de 44 à 55~ans à 2\,\%, de 48 à 55~ans à
-3\,\%, puis se resserre jusqu'à ne couvrir que l'âge de 55~ans à 8\,\%.
-À partir de 9\,\%, le compte-titres domine à 100\,\% pour tous les âges.
-Ce rétrécissement continu forme un coin triangulaire dans le quadrant
-inférieur gauche de la heatmap.
+La heatmap fait apparaître une frontière régulière entre les zones de
+dominance des deux instruments. À 0\,\% et 1\,\% de rendement, l'ELT
+l'emporte pour tous les âges simulés. Lorsque le rendement augmente, cette
+zone se rétracte vers les horizons les plus courts~: à 2\,\%, l'ELT reste
+avantageux de 44 à 55~ans~; à 3\,\%, de 48 à 55~ans~; à 8\,\%, il ne
+domine plus qu'à partir de 55~ans. Dès 9\,\%, le compte-titres l'emporte
+quelle que soit la date de début. En reliant ces seuils, on obtient un coin
+triangulaire orienté vers le bas à gauche de la heatmap, dont la forme
+symétrique témoigne d'un basculement progressif et prévisible.
 
-Au sein de chaque cellule, la dominance est totale sur l'intégralité de la
-plage de versements~: il n'existe aucun point de croisement intra-cellule
-dans ce scénario. Cette propriété analytiquement significative signifie que
-le résultat est entièrement déterminé par la combinaison (rendement, durée)
-et non par le montant du versement annuel. Elle découle de la structure même
-du scénario~B~: les frais de gestion de l'ELT, proportionnels à la réserve,
-et la réduction fiscale, proportionnelle au versement, évoluent dans le même
-sens lorsque le versement augmente, de sorte que leurs effets se compensent
-à chaque niveau et n'engendrent aucun croisement.
+Il ressort par ailleurs qu'au sein d'une même cellule, un seul instrument
+domine sur l'intégralité de la plage de versements~: il n'existe aucun seuil
+de croisement interne dans ce scénario. En d'autres termes, le résultat ne
+dépend pas du montant annuel versé~; il est entièrement déterminé par la
+combinaison âge de début et rendement. Cela s'explique par la façon dont les
+deux effets évoluent lorsque le versement augmente~: les frais de gestion de
+l'ELT, prélevés sur la réserve, et la réduction fiscale, calculée sur la
+prime, progressent dans les mêmes proportions et se neutralisent exactement.
 
-La monotonie de la frontière reflète l'arbitrage entre deux forces
-structurellement opposées. L'avantage de l'ELT est certain mais plafonné en
-valeur absolue~: la réduction fiscale annuelle ne peut excéder 735~€. En
-regard, les frais de gestion annuels de 2,34\,\% s'appliquent sur une
-réserve qui croît exponentiellement avec le rendement et la durée. Au-delà
-d'un certain seuil de rendement croisé à la durée, le coût capitalisé des
-frais de gestion excède la valeur capitalisée de l'ensemble des réductions
-fiscales accumulées sur toute la période, et le compte-titres s'impose.
+La frontière décrit en réalité un arbitrage entre deux effets de sens
+contraire. D'un côté, l'avantage fiscal de l'ELT est réel mais plafonné~:
+la réduction d'impôt ne peut dépasser 735~€ par an, quel que soit le
+versement. De l'autre, les frais de gestion annuels de 2,34\,\% s'appliquent
+à une réserve qui s'accroît d'autant plus vite que le rendement et la durée
+sont élevés. Passé un certain niveau de rendement et d'horizon, les frais
+cumulés dépassent l'ensemble des économies fiscales réalisées sur toute la
+période, et c'est le compte-titres qui sort gagnant.
 
 \subsubsection{Incidence de la taxe sur les plus-values de 2026}
 
-La figure~\ref{fig:heatmap_elt_B_avec_pv} présente la heatmap correspondante
-lorsque le compte-titres supporte la taxe sur les plus-values de 10\,\%
-introduite en 2026.
+La figure~\ref{fig:heatmap_elt_B_avec_pv} reprend les mêmes simulations en
+supposant que le compte-titres supporte la taxe de 10\,\% sur les
+plus-values introduite en 2026.
 
 %\begin{figure}[H]
 %  \centering
@@ -1634,89 +1633,82 @@ introduite en 2026.
 %  \label{fig:heatmap_elt_B_avec_pv}
 %\end{figure}
 
-Les deux heatmaps sont visuellement identiques~: la frontière de dominance
-est inchangée. La taxe sur les plus-values réduit légèrement les marges
-absolues de dominance du compte-titres aux rendements élevés, ce qui est
-perceptible dans les données brutes mais ne déplace aucun seuil ni ne
-renverse aucune hiérarchie. Ce résultat établit que la réforme fiscale de
-2026 est insuffisante, à elle seule, pour modifier les recommandations
-pratiques dans ce scénario~: le facteur déterminant reste le coût annuel de
-gestion de l'ELT et non la fiscalité applicable à la sortie du compte-titres.
+Les deux heatmaps sont visuellement identiques. La taxe réduit les marges
+du compte-titres aux rendements les plus élevés, ce qui est perceptible
+dans les données brutes, mais elle ne déplace aucun seuil et ne renverse
+aucun résultat. En pratique, la réforme de 2026 ne change pas les
+conclusions dans ce scénario~: c'est le niveau des frais qui détermine
+l'issue, pas la fiscalité à la sortie.
 
-\subsubsection{Interprétation synthétique}
+\subsubsection{Interprétation}
 
-Le scénario~B conduit à trois constats. Premièrement, le compte-titres
-domine structurellement sur les horizons longs et les rendements élevés~;
-cette hiérarchie est d'origine tarifaire et non fiscale. Deuxièmement,
-l'ELT reste l'instrument favorable pour un investisseur débutant proche de
-la retraite ou opérant dans un contexte de rendements réels faibles~: plus
-l'investisseur commence tôt et vise un rendement élevé, plus le
-compte-titres lui est favorable dans ce scénario. Troisièmement, la taxe
-sur les plus-values joue un rôle second par rapport à la variable des
-frais~: elle améliore marginalement la position de l'ELT sans en modifier
-la hiérarchie globale.
+À rendement élevé et sur un long horizon, le compte-titres l'emporte dans
+ce scénario, mais cela ne tient pas à un avantage fiscal~: c'est
+uniquement la différence de coût de gestion qui explique l'écart. À
+l'inverse, l'ELT reste le meilleur choix pour un investisseur qui commence
+tard ou dans un contexte de rendements faibles, précisément parce que la
+réduction d'impôt annuelle pèse relativement plus lourd face à des frais
+appliqués sur une réserve encore limitée.
 
 %--------------------------------------------------------------------------
 \subsection{Scénarios~A et~C --- Traitement commun}
 \label{sec:resultats_elt_AC}
 
-Les scénarios~A (absence totale de frais, isolation de l'effet fiscal pur)
-et~C (frais identiques entre les deux instruments, à hauteur de 2,83\,\%
-à l'entrée et 2,34\,\% de gestion annuelle) constituent respectivement la
-borne basse et la borne haute de la pression tarifaire sur le compte-titres.
-Leurs heatmaps sont reportées en annexe (figures~\ref{fig:heatmap_elt_A_sans_pv},
-\ref{fig:heatmap_elt_A_avec_pv}, \ref{fig:heatmap_elt_C_sans_pv}
-et~\ref{fig:heatmap_elt_C_avec_pv}).
+Le scénario~A supprime tous les frais des deux côtés, de façon à observer
+l'avantage fiscal de l'ELT à l'état pur. Le scénario~C fait l'inverse~: il
+applique les mêmes frais au compte-titres qu'à l'ELT (2,83\,\% à l'entrée
+et 2,34\,\% de gestion), ce qui neutralise l'écart tarifaire. Les heatmaps
+correspondantes sont présentées en annexe
+(figures~\ref{fig:heatmap_elt_A_sans_pv}, \ref{fig:heatmap_elt_A_avec_pv},
+\ref{fig:heatmap_elt_C_sans_pv} et~\ref{fig:heatmap_elt_C_avec_pv}).
 
 \subsubsection{Résultats principaux}
 
-Dans le scénario~A, sans taxe sur les plus-values, l'ELT domine à 100\,\%
-sur la quasi-totalité de l'espace (rendement, durée), à l'exception de
-quatre bandes aux rendements élevés~: le compte-titres s'impose de 18 à
-27~ans à 7\,\%, de 18 à 33~ans à 8\,\%, de 18 à 38~ans à 9\,\% et de 18
-à 41~ans à 10\,\%. Ces zones de résistance illustrent une limite structurelle
-propre au régime fiscal de l'ELT~: aux rendements très élevés sur de longs
-horizons, la taxe anticipative de 10\,\% appliquée sur une réserve
-exponentiellement croissante finit par excéder la valeur capitalisée des
-réductions fiscales accumulées, indépendamment du niveau des frais.
+Sans frais et sans taxe sur les plus-values (scénario~A), l'ELT domine
+quasi partout. Le compte-titres ne l'emporte que dans les zones à rendement
+élevé et long horizon~: de 18 à 27~ans à 7\,\%, de 18 à 33~ans à 8\,\%,
+de 18 à 38~ans à 9\,\% et de 18 à 41~ans à 10\,\%. Ces exceptions
+correspondent à des situations où la taxe anticipative de 10\,\%, prélevée
+sur une réserve devenue très importante, finit par excéder l'ensemble des
+réductions d'impôt cumulées sur toute la durée du contrat. C'est en quelque
+sorte la limite inhérente au régime fiscal de l'ELT, indépendante du niveau
+des frais.
 
-Dans le scénario~C, où le compte-titres supporte les mêmes frais que
-l'ELT, ces zones se réduisent sensiblement~: elles se limitent à deux
-bandes, à 9\,\% (de 18 à 25~ans) et à 10\,\% (de 18 à 33~ans). La
-comparaison directe des scénarios~A et~C constitue une démonstration
-\textit{a contrario} du résultat du scénario~B~: l'avantage du compte-titres
-observé à frais réalistes n'est pas d'origine fiscale mais tarifaire,
-puisqu'il disparaît en grande partie lorsque les frais sont égalisés.
+Lorsque l'on égalise les frais (scénario~C), ces zones se réduisent
+nettement~: il ne reste que deux bandes, à 9\,\% de 18 à 25~ans et à
+10\,\% de 18 à 33~ans. Le recul est important~: en passant du scénario~A
+au scénario~C, on constate que la majeure partie de l'avantage du
+compte-titres observé en scénario~B disparaît dès que les frais sont les
+mêmes des deux côtés. Ce résultat confirme que ce qui fait pencher la
+balance en faveur du compte-titres dans les conditions réelles du marché
+n'est pas fiscal mais tarifaire.
 
 \subsubsection{Incidence de la taxe sur les plus-values}
 
-L'introduction de la taxe sur les plus-values rééquilibre les cas limites
-dans les deux scénarios. Les cellules anciennement dominées par le
-compte-titres font apparaître un point de croisement à des seuils de
-versement très bas~: entre 73~€/an (18~ans, 7\,\% dans le scénario~A) et
-218~€/an (41~ans, 10\,\% dans le scénario~A), et entre 88~€/an (18~ans,
-9\,\% dans le scénario~C) et 161~€/an (33~ans, 10\,\% dans le scénario~C).
-En deçà de ces seuils, le compte-titres conserve un avantage résiduel~;
-au-delà, l'ELT reprend l'avantage. La faiblesse de ces seuils au regard de
-la plage pertinente (jusqu'à 2\,450~€/an) signifie que pour tout versement
-économiquement significatif, l'ELT est rétabli dans sa position dominante
-dès lors que le compte-titres supporte lui aussi une imposition à la sortie.
-La similarité des seuils entre les scénarios~A et~C confirme que ce
-rééquilibrage est déterminé par la structure fiscale comparée des deux
-instruments, indépendamment du niveau des frais.
+Lorsque la taxe de 10\,\% sur les plus-values s'applique au compte-titres,
+les quelques cellules encore dominées par celui-ci font apparaître un seuil
+de croisement à des montants très bas~: entre 73~€ et 218~€ par an dans le
+scénario~A, entre 88~€ et 161~€ dans le scénario~C. En dessous de ces
+montants, le compte-titres conserve encore un léger avantage~; au-delà,
+l'ELT reprend la tête. Ces seuils sont tellement faibles par rapport au
+plafond de versement de 2\,450~€ que, pour tout versement d'un niveau
+économiquement courant, l'ELT est gagnant dès lors que les deux instruments
+sont logés à la même enseigne fiscale à la sortie. Le fait que ces seuils
+soient comparables entre les scénarios~A et~C confirme qu'ils dépendent de
+la structure fiscale des deux instruments et non du niveau des frais.
 
-\subsubsection{Lecture transversale des trois scénarios}
+\subsubsection{Ce que la comparaison des trois scénarios révèle}
 
-La confrontation des trois scénarios permet d'isoler le rôle de chaque
-variable. Les frais de gestion de 2,34\,\%/an constituent le facteur
-déterminant~: à eux seuls, ils détruisent l'intégralité de l'avantage
-fiscal de l'ELT (comparaison A\,$\to$\,B). L'égalisation des frais le
-restaure largement (comparaison B\,$\to$\,C), sauf aux rendements les plus
-élevés sur les très longs horizons, où la taxe anticipative constitue la
-contrainte liante. La taxe sur les plus-values de 2026 exerce un effet
-second et uniforme dans les trois scénarios~: elle améliore la position
-relative de l'ELT sans en modifier la hiérarchie globale vis-à-vis du
-compte-titres.
+En mettant les trois scénarios côte à côte, on peut attribuer un rôle précis
+à chaque variable. Le passage de~A à~B, c'est-à-dire l'ajout des frais
+réels à l'ELT sans modifier ceux du compte-titres, suffit à renverser
+presque entièrement l'avantage fiscal de l'ELT. Le passage de~B à~C,
+qui ajoute les mêmes frais au compte-titres, le restaure largement, sauf
+aux rendements les plus élevés sur les horizons les plus longs, où la
+taxe anticipative reste le facteur limitant. La taxe sur les plus-values
+de 2026, quant à elle, produit un effet cohérent et modeste dans les trois
+scénarios~: elle améliore la position de l'ELT sans en changer la
+hiérarchie.
 
 \newpage
 
