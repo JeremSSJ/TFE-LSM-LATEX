@@ -1718,6 +1718,144 @@ bas.
 
 \newpage
 
+%==========================================================================
+\section{Résultats~: épargne-pension (branche~23) versus compte-titres}
+\label{sec:resultats_ep}
+
+Les simulations comparent, pour chaque combinaison d'âge de début et de
+rendement annuel brut, le capital final net à l'échéance de l'EP et du
+compte-titres sur l'ensemble de la plage de versements (de 1~€ à
+1\,350~€ par an). Une différence fondamentale distingue cependant l'EP de l'ELT.
+Son taux de réduction d'impôt n'est pas uniforme~: il s'applique à 30\,\%
+pour les versements jusqu'à 1\,050~€, puis retombe à 25\,\% pour la
+tranche allant jusqu'au plafond de 1\,350~€. Ce palier génère, dans de
+nombreuses cellules, un seuil de croisement structurel autour de 1\,050~€
+par an.
+
+%--------------------------------------------------------------------------
+\subsection{Scénario~B --- Frais réalistes (cas central)}
+\label{sec:resultats_ep_B}
+
+\subsubsection{Frontière de dominance sans taxe sur les plus-values}
+
+%\begin{figure}[H]
+%  \centering
+%  \includegraphics[width=\textwidth]{media/ep_frais_reel_sans_taxe.png}
+%  \caption{Dominance EP\,/\,CT --- Scénario~B, sans taxe sur les plus-values.
+%           Les cellules bleues indiquent la dominance de l'EP~;
+%           les cellules vertes indiquent la dominance du CT.
+%           L'intensité de couleur reflète la force de la dominance.}
+%  \label{fig:ep_frais_reel_sans_taxe}
+%\end{figure}
+
+La heatmap présente deux types de zones bleues bien distincts. Les cellules
+bleu foncé, où l'EP domine sur l'intégralité de la plage de versements, se
+concentrent aux rendements faibles et aux horizons courts. À 0\,\%, l'EP
+l'emporte pour tous les âges de début~; à 1\,\%, à partir de 42~ans~; à
+2\,\%, à partir de 48~ans~; à 3\,\%, à partir de 50~ans~; à 4\,\%, à
+partir de 52~ans~; à 5\,\%, à partir de 53~ans~; à 6\,\%, à partir de
+54~ans~; à 7\,\%, à 55~ans seulement. Dès 8\,\%, aucune cellule ne
+présente de dominance totale de l'EP.
+
+Les cellules bleu clair révèlent une dominance partielle, structurellement
+absente dans le cas de l'ELT. L'EP s'impose jusqu'au versement annuel de
+1\,050 ou 1\,051~€, au-delà duquel le compte-titres reprend la tête. Ce
+seuil traduit directement le palier de la réduction d'impôt de l'EP.
+Passé 1\,050~€, le taux retombe à 25\,\% et l'avantage fiscal s'érode
+suffisamment pour que le compte-titres l'emporte. Ces cellules à dominance
+partielle s'étendent de 18 à 41~ans à 1\,\%, de 41 à 47~ans à 2\,\%, de
+46 à 49~ans à 3\,\%, de 49 à 51~ans à 4\,\%, de 51 à 52~ans à 5\,\%, de
+52 à 53~ans à 6\,\%, de 53 à 54~ans à 7\,\%, de 54 à 55~ans à 8\,\%, et
+à 55~ans uniquement pour les rendements de 9\,\% et 10\,\%.
+
+Le compte-titres l'emporte dans ce scénario pour les mêmes raisons
+structurelles que dans le cas de l'ELT, à savoir sa structure de coûts
+plus légère aux rendements élevés et sur les longues durées. La
+caractéristique propre à l'EP est le seuil à 1\,050~€, absent dans
+l'analyse de l'ELT qui applique un taux uniforme de 30\,\%. En dessous de
+ce palier, l'EP bénéficie du même taux de 30\,\% que l'ELT~; au-delà, la
+baisse à 25\,\% érode l'avantage fiscal au point que le compte-titres
+l'emporte même dans des cellules où l'EP dominait encore jusqu'à ce
+versement. Comparé à l'ELT, l'EP présente des zones de dominance totale
+légèrement plus étendues aux rendements intermédiaires, jusqu'à 7\,\%
+pour les horizons les plus courts, là où l'ELT n'a plus de dominance
+totale dès 4\,\%. Cette différence tient à l'absence de taxe sur les
+opérations d'assurance dans l'EP et à son taux de taxe anticipative plus
+faible, 8\,\% contre 10\,\%.
+
+\subsubsection{Incidence de la taxe sur les plus-values de 2026}
+
+%\begin{figure}[H]
+%  \centering
+%  \includegraphics[width=\textwidth]{media/ep_frais_reel_avec_taxe.png}
+%  \caption{Dominance EP\,/\,CT --- Scénario~B, avec taxe sur les
+%           plus-values de 10\,\%.}
+%  \label{fig:ep_frais_reel_avec_taxe}
+%\end{figure}
+
+La heatmap avec taxe sur les plus-values est visuellement identique à la
+précédente. Comme pour l'ELT dans le scénario~B, la réforme de 2026
+réduit légèrement les marges du compte-titres aux rendements les plus
+élevés, ce qui est perceptible dans les données brutes, mais elle ne
+déplace aucun seuil et ne renverse aucun résultat. La structure des frais
+reste le facteur déterminant, davantage que la fiscalité à la sortie.
+
+%--------------------------------------------------------------------------
+\subsection{Scénarios~A et~C --- Traitement commun}
+\label{sec:resultats_ep_AC}
+
+Les heatmaps des scénarios~A et~C sont présentées en annexe.
+
+\subsubsection{Résultats principaux}
+
+Pour le scénario~A sans taxe sur les plus-values, l'EP domine massivement.
+Le compte-titres ne l'emporte à 100\,\% que dans les zones à rendement
+élevé et horizon long~: de 18 à 23~ans à 8\,\%, de 18 à 29~ans à 9\,\%
+et de 18 à 34~ans à 10\,\%. Des seuils de croisement autour de 1\,050~€
+subsistent dans les bandes adjacentes, de 24 à 28~ans à 8\,\%, de 30 à
+33~ans à 9\,\% et de 35 à 37~ans à 10\,\%. Ces zones d'exception sont
+plus restreintes que celles observées pour l'ELT dans le même scénario,
+ce qui s'explique par l'absence de taxe sur les opérations d'assurance
+dans l'EP et par son taux de taxe anticipative plus faible.
+
+Lorsque l'on égalise les frais (scénario~C), les zones d'exception se
+réduisent davantage encore. Le compte-titres domine à 100\,\% seulement
+de 18 à 24~ans à 10\,\%, tandis qu'un seuil de croisement subsiste de
+18 à 20~ans à 9\,\% et de 25 à 29~ans à 10\,\%. Le recul par rapport au
+scénario~B confirme une nouvelle fois que la différence de frais, bien
+plus que la fiscalité, est le facteur déterminant dans les conditions
+réelles de marché.
+
+\subsubsection{Incidence de la taxe sur les plus-values}
+
+Lorsque la taxe de 10\,\% sur les plus-values s'applique au compte-titres,
+les rares cellules encore favorables à celui-ci présentent des seuils très
+bas. Dans le scénario~A, l'EP reprend la tête dès 33~€ pour un âge de
+début de 18~ans à 10\,\% de rendement, et dès 90~€ pour un âge de début
+de 34~ans au même rendement~; en dessous de ces montants, le compte-titres
+conserve encore un léger avantage. Dans le scénario~C, les seuils
+correspondants s'établissent à 55~€ pour un âge de début de 18~ans et à
+70~€ pour 24~ans, toujours à 10\,\%. Ces niveaux sont si faibles par
+rapport au plafond de versement de 1\,350~€ que, pour tout versement d'un
+montant économiquement courant, l'EP est gagnant dès lors que les deux
+instruments supportent les mêmes charges à l'entrée et à la sortie.
+
+\subsubsection{Ce que la comparaison des trois scénarios révèle}
+
+Les conclusions rejoignent celles tirées pour l'ELT. Le passage du
+scénario~A au scénario~B, qui introduit les frais moyens du marché dans
+l'EP sans en faire autant pour le compte-titres, renverse largement la
+balance en faveur du compte-titres. Le passage de~B à~C, qui soumet le
+compte-titres aux mêmes frais, la restaure presque entièrement. La taxe
+sur les plus-values de 2026 produit un effet marginal dans le scénario~B,
+tandis qu'elle fait basculer les dernières cellules favorables au
+compte-titres dans les scénarios~A et~C, sauf à des niveaux de versements
+économiquement négligeables. La structure des frais, et non l'écart
+fiscal, demeure le facteur déterminant dans les conditions réelles de
+marché.
+
+\newpage
+
 
 
 
@@ -1812,5 +1950,41 @@ bas.
   \caption{Dominance ELT\,/\,CT --- Scénario~C (frais égalisés), avec taxe sur les plus-values de 10\,\%.}
   \label{fig:elt_frais_majore_avec_taxe}
 \end{figure}
+
+%==========================================================================
+\section{Heatmaps EP\,/\,CT --- Scénario~A (effet fiscal pur)}
+\label{ann:heatmaps_ep_A}
+
+%\begin{figure}[H]
+%  \centering
+%  \includegraphics[width=\textwidth]{media/ep_frais_0_sans_taxe.png}
+%  \caption{Dominance EP\,/\,CT --- Scénario~A (aucun frais), sans taxe sur les plus-values.}
+%  \label{fig:ep_frais_0_sans_taxe}
+%\end{figure}
+
+%\begin{figure}[H]
+%  \centering
+%  \includegraphics[width=\textwidth]{media/ep_frais_0_avec_taxe.png}
+%  \caption{Dominance EP\,/\,CT --- Scénario~A (aucun frais), avec taxe sur les plus-values de 10\,\%.}
+%  \label{fig:ep_frais_0_avec_taxe}
+%\end{figure}
+
+%==========================================================================
+\section{Heatmaps EP\,/\,CT --- Scénario~C (frais majorés)}
+\label{ann:heatmaps_ep_C}
+
+%\begin{figure}[H]
+%  \centering
+%  \includegraphics[width=\textwidth]{media/ep_frais_majore_sans_taxe.png}
+%  \caption{Dominance EP\,/\,CT --- Scénario~C (frais égalisés), sans taxe sur les plus-values.}
+%  \label{fig:ep_frais_majore_sans_taxe}
+%\end{figure}
+
+%\begin{figure}[H]
+%  \centering
+%  \includegraphics[width=\textwidth]{media/ep_frais_majore_avec_taxe.png}
+%  \caption{Dominance EP\,/\,CT --- Scénario~C (frais égalisés), avec taxe sur les plus-values de 10\,\%.}
+%  \label{fig:ep_frais_majore_avec_taxe}
+%\end{figure}
 
 \end{document}
