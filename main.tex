@@ -1518,6 +1518,41 @@ Lorsqu'un point de croisement existe, le versement-seuil correspondant est
 annoté dans la cellule. Quatre heatmaps sont produites par scénario de frais,
 soit douze heatmaps au total.
 
+\subsection{Implémentation de la simulation}
+
+La simulation a été développée en Java et s'articule autour de deux phases
+successives.
+
+\paragraph{Phase 1 --- Production des résultats.}
+Le programme parcourt systématiquement l'ensemble des combinaisons
+(âge de début~$\times$~rendement annuel~$\times$~scénario de frais). Pour chacune
+d'elles, il fait varier le montant du versement annuel de 1~€ jusqu'à un plafond
+défini selon le scénario, et calcule à chaque palier la valeur terminale nette
+des deux véhicules comparés. À partir de ces séries de valeurs, il détermine
+quel véhicule est dominant sur l'ensemble de la plage de versements et, le cas
+échéant, identifie le point de croisement, c'est-à-dire le montant de versement
+à partir duquel un véhicule prend l'avantage sur l'autre. Quatre fichiers de
+données sont générés, un par scénario de simulation (combinaison
+véhicule~$\times$~régime de taxe sur les plus-values). Chaque fichier contient
+une ligne par combinaison âge~$\times$~rendement, avec l'ensemble des
+indicateurs calculés. La structure détaillée de ces fichiers est présentée à
+l'annexe~\ref{ann:csv_colonnes}.
+
+\paragraph{Phase 2 --- Génération des heatmaps.}
+Dans un second temps, un programme distinct lit les quatre fichiers produits à
+l'étape précédente et génère automatiquement les douze heatmaps présentées dans
+l'analyse. La couleur de chaque cellule et les annotations de croisement sont
+dérivées directement des indicateurs numériques stockés dans les fichiers, sans
+aucune intervention manuelle.
+
+\paragraph{Validation des résultats.}
+Afin de s'assurer de l'exactitude des calculs, les formules ont été reproduites
+indépendamment dans un tableur Excel. Cette vérification a permis de confronter
+ligne par ligne les valeurs calculées par le programme à celles obtenues
+manuellement, sur un ensemble représentatif de profils d'âge et de niveaux de
+rendement. Des tests automatisés ont par ailleurs été mis en place pour détecter
+toute erreur de régression lors d'une modification ultérieure du modèle.
+
 \subsection{Limites et hypothèses de la méthodologie}
 
 La méthodologie repose sur plusieurs hypothèses simplificatrices~:
@@ -1986,5 +2021,44 @@ marché.
   \caption{Dominance EP\,/\,CT --- Scénario~C (frais égalisés), avec taxe sur les plus-values de 10\,\%.}
   \label{fig:ep_frais_majore_avec_taxe}
 \end{figure}
+
+%==========================================================================
+\section{Structure des fichiers de données produits par la simulation}
+\label{ann:csv_colonnes}
+
+La simulation produit quatre fichiers de données structurés (format CSV), un
+par scénario de comparaison. Chaque fichier contient une ligne par combinaison
+(âge de début~$\times$~rendement annuel). Le tableau ci-dessous décrit les
+colonnes présentes dans chacun de ces fichiers.
+
+\begin{table}[h!]
+  \centering
+  \caption{Description des colonnes des fichiers de données de simulation}
+  \label{tab:csv_colonnes}
+  \small
+  \begin{tabular}{lp{9cm}}
+    \hline
+    \textbf{Colonne} & \textbf{Description} \\
+    \hline
+    \texttt{vehicule\_a} & Nom du véhicule A (ex.~«~EP Branche~23~») \\
+    \texttt{vehicule\_b} & Nom du véhicule B (ex.~«~CT taxe PV 10\,\%~») \\
+    \texttt{rendement\_pct} & Rendement annuel brut simulé (en \%) \\
+    \texttt{age\_debut} & Âge de début des versements \\
+    \texttt{age\_fin} & Âge de fin de l'horizon (65~ans) \\
+    \texttt{taux\_taxe\_pv\_pct} & Taux de la taxe sur les plus-values appliqué au CT (0 ou 10) \\
+    \texttt{versement\_min} & Borne inférieure de la plage de versements (1~€) \\
+    \texttt{versement\_max} & Borne supérieure de la plage (1\,350~€ ou 2\,450~€) \\
+    \texttt{taux\_dominance\_A\_pct} & Part des versements (en \%) pour lesquels la valeur terminale de~A dépasse celle de~B \\
+    \texttt{taux\_dominance\_B\_pct} & Part des versements (en \%) pour lesquels la valeur terminale de~B dépasse celle de~A \\
+    \texttt{taux\_egaux\_pct} & Part des versements (en \%) pour lesquels les deux valeurs terminales sont égales \\
+    \texttt{nb\_croisements} & Nombre de points de croisement détectés sur la plage \\
+    \texttt{premier\_croisement\_eur} & Montant du versement au premier croisement (en~€, ou \texttt{NA} si absent) \\
+    \texttt{dominant} & Véhicule globalement dominant sur la plage (chaîne descriptive) \\
+    \texttt{capital\_final\_net\_moyen\_b23\_eur} & Capital net moyen du véhicule~A sur la plage de versements (en~€) \\
+    \texttt{eco\_fiscales\_capitalisees\_moyennes\_b23\_eur} & Économies fiscales annuelles capitalisées à l'échéance, en moyenne sur la plage (en~€) \\
+    \texttt{val\_terminale\_moyenne\_ct\_eur} & Valeur terminale nette moyenne du CT sur la plage de versements (en~€) \\
+    \hline
+  \end{tabular}
+\end{table}
 
 \end{document}
