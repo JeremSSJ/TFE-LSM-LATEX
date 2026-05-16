@@ -733,42 +733,32 @@ des fluctuations de marché \cite{directive97_9_ce}.
 
 \subsection{Présentation générale de l'approche}
 
-La méthodologie repose sur une simulation déterministe et systématique comparant 
-trois véhicules~: l'épargne-pension, 
-l'épargne à long terme et le compte-titres. 
-Pour chaque combinaison possible d'âge de début et de taux de rendement, chaque 
-instrument est simulé sur la même durée, soit jusqu'à l'âge de 65~ans, retenu comme 
-horizon conventionnel dans ce travail. Bien que la pension légale
-en Belgique soit progressivement portée à 67~ans par la réforme de 2022,
-65~ans demeure la référence utilisée dans la documentation
-des produits d'assurance épargne-pension. Cet horizon est appliqué
-uniformément à tous les instruments, y compris le compte-titres et l'assurance
-épargne long terme qui permettent techniquement d'investir jusqu'à \hl{99~ans},
-afin de garantir une comparaison homogène.
+La méthodologie repose sur une simulation déterministe comparant les trois
+véhicules jusqu'à l'horizon commun de 65~ans, retenu comme référence dans la
+documentation des produits d'épargne-pension bien que la réforme de 2022
+porte progressivement la pension légale à 67~ans. Pour chaque combinaison
+d'âge de début et de taux de rendement, les instruments sont simulés sur la
+même durée et sur une plage entière de versements annuels, ce qui permet de
+déterminer non seulement lequel domine, mais à partir de quel niveau de
+versement et dans quelle proportion. Le résultat est exprimé en capital final
+net à l'échéance.
 
-Pour chaque combinaison, la simulation parcourt une plage de versements annuels
-allant de 1~€ jusqu'au plafond légal de déductibilité fiscale propre à chaque
-produit~; à chaque niveau de versement, le compte-titres est apparié à l'EP ou à
-l'ELT correspondante, le même montant étant investi dans les deux instruments,
-et le résultat net de chacun est exprimé en capital final net à l'échéance (CFN).
-Cela permet de comparer les instruments afin de déterminer non seulement lequel domine, 
-mais aussi à partir
-de quel niveau de versement il l'emporte et dans quelle proportion.
-
-L'espace d'exploration est le suivant~:
+L'espace d'exploration couvre~:
 \begin{itemize}
-  \item 38~profils d'âge (de 18~$\to$~65~ans jusqu'à 55~$\to$~65~ans, par pas
-    d'un an)~;
-  \item 8~niveaux de rendement annuel brut (de 0\,\% à 10\,\%, par pas de 1\,\%)~;
-  \item Plages de versements~: de 1~€ à 1\,350~€/an pour l'EP et de 1~€ à
-    2\,450~€/an pour l'ELT (par pas de 1~€)~;
-  \item Quatre configurations fiscales (quatre types de scénarios).
+  \item 38~profils d'âge (18~$\to$~65~ans à 55~$\to$~65~ans, par pas d'un an)~;
+  \item 11~niveaux de rendement annuel brut (0\,\% à 10\,\%, par pas de 1\,\%)~;
+  \item Plages de versements de 1~€ au plafond légal (1\,350~€ pour l'EP,
+    2\,450~€ pour l'ELT)~;
+  \item Quatre configurations fiscales (EP/ELT~$\times$~CT sans ou avec taxe
+    sur les plus-values)~;
+  \item Trois scénarios de frais~: A~(frais nuls, effet fiscal pur),
+    B~(frais réalistes~: CT faibles, branche~23 aux tarifs du marché),
+    C~(CT pénalisé aux frais de la branche~23, borne supérieure) ---
+    voir section~\ref{sub:scenarii_frais}.
 \end{itemize}
 
-Cela représente $38 \times 11 = 418$ cas explorés par scénario fiscal, soit
-$418 \times 4 = 1\,672$~combinaisons fiscales.
-Chaque simulation de plage compare les deux instruments pour chaque versement
-entier de la plage, soit entre 1\,350 et 2\,450~comparaisons par ligne.
+Cela représente $38 \times 11 \times 4 \times 3 = 5\,016$~combinaisons, chacune
+parcourant jusqu'à 2\,450~niveaux de versement.
 
 \subsection{Le profil investisseur}
 
