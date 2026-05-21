@@ -613,6 +613,8 @@ retenir de tels profils romprait l'homogénéité de la comparaison
 en ne permettant plus d'aligner la date du prélèvement et celle du retrait
 sur l'horizon de retraite commun aux deux instruments.
 
+\hl{cfr épargne pension et épargne long terme}
+
 \hl{dire qu'on étudie donc des cas ou l effort est constant sans retrait
 anticipé ou pause intermédiaire, de toute façon 
 retrait anticipié entraine frais de sortie de max 5\% et 33\%
@@ -634,6 +636,8 @@ déduites séparément du résultat.
 Additionner ces flux bruts sans correction temporelle reviendrait à traiter
 de manière identique un euro reçu aujourd'hui et un euro reçu dans plusieurs années,
 ce qui serait économiquement inexact.
+
+\hl{à réduire}
 
 La solution consiste à ramener tous les flux à un même point dans le temps,
 la comparaison étant valide dès lors que les flux des deux
@@ -675,16 +679,14 @@ l'ensemble des flux à leur valeur présente~:
 \end{equation}
 Ces deux grandeurs synthétisent en un seul chiffre l'intégralité des flux d'un
 investissement, quelle que soit leur date d'occurrence
-\cite[p.~96--97]{berk2020}.
+\cite[p.~96--97]{berk2020}. \hl{peut être à supprimer}
 
 La comparaison entre deux instruments peut être conduite indifféremment par
 capitalisation ou par actualisation~: les deux méthodes sont mathématiquement
 équivalentes et conduisent au même classement \cite[p.~68--70]{berk2020}.
 \begin{equation}
   \Delta = F_{\text{inv. 1}} - F_{\text{inv. 2}}
-  \qquad \text{\colorbox{red}{keep} ou} \qquad
-  \Delta = \text{VAN}_{\text{inv. 1}} - \text{VAN}_{\text{inv. 2}}
-\end{equation}
+\end{equation}\colorbox{red}{keep}
 Si $\Delta > 0$, l'investissement~1 est préférable~; si $\Delta < 0$, c'est
 l'investissement~2.
 
@@ -1095,34 +1097,8 @@ Lorsqu'un point de croisement existe, le versement-seuil correspondant est
 annoté dans la cellule. Quatre heatmaps sont produites par scénario de frais,
 soit douze heatmaps au total. \colorbox{red}{keep}
 
-\subsection{Implémentation de la simulation}
+\subsection{Validation des résultats}
 
-La simulation a été développée en Java et s'articule autour de deux phases
-successives.
-
-\paragraph{Phase 1 --- Production des résultats.}
-Le programme parcourt systématiquement l'ensemble des combinaisons
-(âge de début~$\times$~rendement annuel~$\times$~scénario de frais). Pour chacune
-d'elles, il fait varier le montant du versement annuel de 1~€ jusqu'à un plafond
-défini selon le scénario, et calcule à chaque palier la valeur terminale nette
-des deux véhicules comparés. À partir de ces séries de valeurs, il détermine
-quel véhicule est dominant sur l'ensemble de la plage de versements et, le cas
-échéant, identifie le point de croisement, c'est-à-dire le montant de versement
-à partir duquel un véhicule prend l'avantage sur l'autre. Quatre fichiers de
-données sont générés, un par scénario de simulation (combinaison
-véhicule~$\times$~régime de taxe sur les plus-values). Chaque fichier contient
-une ligne par combinaison âge~$\times$~rendement, avec l'ensemble des
-indicateurs calculés. La structure détaillée de ces fichiers est présentée à
-l'annexe~\ref{ann:csv_colonnes}.
-
-\paragraph{Phase 2 --- Génération des heatmaps.}
-Dans un second temps, un programme distinct lit les quatre fichiers produits à
-l'étape précédente et génère automatiquement les douze heatmaps présentées dans
-l'analyse. La couleur de chaque cellule et les annotations de croisement sont
-dérivées directement des indicateurs numériques stockés dans les fichiers, sans
-aucune intervention manuelle.
-
-\paragraph{Validation des résultats.}
 Afin de s'assurer de l'exactitude des calculs, les formules ont été reproduites
 indépendamment dans un tableur Excel. Cette vérification a permis de confronter
 ligne par ligne les valeurs calculées par le programme à celles obtenues
