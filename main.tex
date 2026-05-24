@@ -762,26 +762,41 @@ l'investissement~2.
 \subsubsection*{Le taux de capitalisation~: la courbe OLO belge}
 \label{sub:taux_olo}
 
-Le taux de capitalisation joue le rôle d'un taux de référence~: il représente ce
-que l'investisseur pourrait obtenir sur un placement sans risque pendant la même
-durée. Le référentiel retenu est celui des OLO belges (Obligations Linéaires),
-c'est-à-dire les obligations d'État émises par le Trésor
-belge. Ces titres constituent l'instrument sans risque de référence pour un
-investisseur résident en Belgique, et leur courbe de rendement est publiée pour
-des maturités allant de un à trente ans.
+Les frais de courtage et de garde liés au compte-titres sont prélevés en dehors
+de la réserve, mais les sommes ainsi décaissées auraient pu être placées et
+générer un rendement jusqu'à l'échéance~: ne pas en tenir compte reviendrait à
+ignorer leur coût d'opportunité. Les additionner sans transformation temporelle
+serait donc inexact~: un euro décaissé aujourd'hui n'est pas équivalent à un euro
+décaissé dans le futur, puisque le premier aurait pu être placé et porter intérêts. 
+Par cohérence, les économies fiscales de la
+branche~23 sont soumises au même traitement~; il semblait incohérent d'appliquer
+la valeur temps de l'argent aux seuls frais du compte-titres tout en traitant les
+remboursements fiscaux comme des flux contemporains. Le
+taux retenu pour cette capitalisation est un taux sans risque~: pour un flux
+certain, le taux de référence approprié est le taux d'intérêt d'un titre de dette
+d'État \cite[p.~156]{berk2020} \hl{peut dire dans hypothèse qu on considère ça comme flux certains
+}. Le référentiel choisi est celui des OLO belges
+(Obligations Linéaires), obligations d'État qui
+constituent l'instrument sans risque de référence pour un investisseur résident
+en Belgique~; leur courbe est publiée pour des maturités allant de un à trente ans \cite{bnb_olo}.
+Dans la simulation, une simplification est retenue~: le taux OLO est utilisé comme
+taux approximatif sans risque, sans chercher à modéliser par quels moyens ces
+sommes auraient été investies ni les frais que cela engendrerait.
 
-Plutôt que de retenir un taux unique et arbitraire pour l'ensemble des flux,
-la simulation applique le principe de correspondance par durée~: chaque flux
-annexe est capitalisé au taux OLO dont la maturité correspond précisément au
-nombre d'années restantes entre ce flux et l'échéance . Ainsi, une économie
-fiscale perçue en fin de deuxième année est capitalisée au taux OLO correspondant
-au nombre d'années la séparant de l'échéance, et un coût supporté lors de la
-dernière année de versement ne fait l'objet d'aucune capitalisation supplémentaire.
-Cette approche est cohérente avec la structure par terme des taux~: les marchés
-obligataires distinguent les rendements selon la maturité, et il serait inexact
-d'appliquer un taux de court terme à un flux de long terme, ou inversement. Pour
-les durées supérieures à trente ans le taux de l'OLO à trente ans est appliqué
-par convention.
+\hl{justification à trouver}
+
+Plutôt que de retenir un taux unique pour l'ensemble des flux, la simulation
+applique le principe de correspondance par durée. Il est en effet nécessaire que
+le terme du taux d'intérêt et celui du flux coïncident~: un flux survenant dans
+deux ans doit être capitalisé au taux à deux ans, et un flux survenant dans dix
+ans au taux à dix ans \cite[p.~149--150]{berk2020}. Chaque flux annexe est donc
+capitalisé au taux OLO dont la maturité correspond précisément au nombre d'années
+restantes entre ce flux et l'échéance~; un coût supporté lors de la dernière année
+de versement ne fait l'objet d'aucune capitalisation supplémentaire. Pour les
+durées supérieures à trente ans, le taux de l'OLO à trente ans est appliqué par
+convention.
+
+voir url \url{https://claude.ai/chat/a34f742f-bb13-4b7f-a33d-3e81c77986e0}
 
 Les flux étant des montants nets de toute fiscalité, il a été choisi d'utiliser
 un taux de capitalisation lui aussi exprimé net d'impôt.
