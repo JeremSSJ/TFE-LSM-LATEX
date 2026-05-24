@@ -1236,10 +1236,8 @@ La méthodologie repose sur plusieurs hypothèses simplificatrices~:
     réel.
 \end{enumerate}
 
-\newpage
-
 %==========================================================================
-\section{Résultats~: épargne long terme (branche~23) versus compte-titres}
+\section{Résultats~: épargne long terme (branche~23) vs compte-titres}
 \label{sec:resultats_elt}
 
 Les simulations comparent, pour chaque combinaison d'âge de début et de
@@ -1249,6 +1247,8 @@ compte-titres sur l'ensemble de la plage de versements (de 1~€ à
 est traité en priorité~; les scénarios~A et~C, qui isolent respectivement
 l'effet fiscal pur et l'effet d'une égalisation des frais, sont présentés
 conjointement en fin de section, leurs heatmaps figurant en annexe.
+
+\hl{réduire un peu imo car répétitif}
 
 %--------------------------------------------------------------------------
 \subsection{Scénario~B --- Frais réalistes (cas central)}
@@ -1275,7 +1275,8 @@ correspondant aux rendements très faibles et à certains horizons courts.
 À 0\,\% et 1\,\% de rendement, il l'emporte pour tous les âges~; à 2\,\%,
 de 44 à 55~ans~; à 3\,\%, de 48 à 55~ans~; à 8\,\%, uniquement à partir
 de 55~ans. Dès 9\,\%, le compte-titres l'emporte quelle que soit la date
-de début. Il ressort par ailleurs qu'au sein d'une même cellule, un seul instrument
+de début. \hl{avant peut être réduire car 
+on répète ce qu il y a sur le graph} Il ressort par ailleurs qu'au sein d'une même cellule, un seul instrument
 domine sur l'intégralité de la plage de versements, sans aucun seuil de
 croisement interne.
 
@@ -1308,6 +1309,10 @@ ne pèsent encore significativement. Les économies fiscales
 annuelles, perçues dès le premier versement, pèsent ainsi
 proportionnellement plus lourd que tous les autres effets.
 
+\hl{sans oublier en fait que les économies fiscales sont capitalisées à taux sans risque
+et donc très favorable aux horizons longs mais dans le ou on ne capitaliserait pas
+ce ne serait surement pas aussi écrasant même si la tendance serait quand meme là}
+
 \subsubsection*{Incidence de la taxe sur les plus-values de 2026}
 
 La figure~\ref{fig:elt_frais_reel_avec_taxe} reprend les mêmes simulations en
@@ -1329,6 +1334,11 @@ ne renverse aucun résultat. En pratique, la réforme de 2026 ne change pas
 les conclusions dans ce scénario~; c'est le niveau des frais qui détermine
 l'issue, davantage que la fiscalité à la sortie.
 
+\hl{effectivement on voit l impact dans les données brutes mais uniquement pour les montants
+impactés par taxe sur les plus values, par exemple pour montant dont plus value est
+inférieur à 15000 forcément pas impact mais je ne pense pas qu'il faille mentionner,
+surement que ça doit juste être implicite}
+
 %--------------------------------------------------------------------------
 \subsection{Scénarios~A et~C --- Traitement commun}
 \label{sec:resultats_elt_AC}
@@ -1340,6 +1350,8 @@ et 2,34\,\% de gestion), ce qui neutralise l'écart tarifaire. Les heatmaps
 correspondantes sont présentées en annexe
 (figures~\ref{fig:elt_frais_0_sans_taxe}, \ref{fig:elt_frais_0_avec_taxe},
 \ref{fig:elt_frais_majore_sans_taxe} et~\ref{fig:elt_frais_majore_avec_taxe}).
+
+\hl{tout ça on dit déjà, peut être retirer si trop redondant}
 
 \subsubsection*{Résultats principaux}
 
@@ -1355,8 +1367,8 @@ C'est en quelque sorte la limite inhérente au régime fiscal de l'ELT,
 indépendante du niveau des frais.
 
 Lorsque l'on égalise les frais (scénario~C), ces zones se réduisent
-nettement~: il ne reste que deux bandes, à 9\,\% de 18 à 25~ans et à
-10\,\% de 18 à 33~ans. Le recul est important~: en passant du scénario~A
+nettement~: il ne reste que quatre bandes, à 7\,\% de 18 à 32 ans, à 8\,\% de 18 à 39 ans, à 9\,\% de 18 à 44~ans et à
+10\,\% de 18 à 46~ans. Le recul est important~: en passant du scénario~A
 au scénario~C, on constate que la majeure partie de l'avantage du
 compte-titres observé en scénario~B disparaît dès que les frais sont les
 mêmes des deux côtés. Ce résultat confirme que ce qui fait pencher la
