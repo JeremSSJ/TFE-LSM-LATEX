@@ -970,20 +970,23 @@ ainsi que le calcul du capital final net à l'échéance suivent la même logiqu
 \label{sub:va_ct_formule}
 
 Pour le compte-titres, le versement brut $v$ entre intégralement dans la
-réserve. Trois types de coûts sont comptabilisés séparément comme des flux
-sortants~: les frais de courtage et la TOB, prélevés à chaque versement, et les
-frais de garde du courtier, prélevés chaque année sur la réserve~:
+réserve. Quatre types de coûts sont comptabilisés séparément comme des flux
+sortants~: les frais de courtage et la TOB, prélevés à chaque versement~; les
+frais de garde, prélevés chaque année sur la réserve~; et un frais de courtage
+à la sortie, prélevé une seule fois sur la valeur liquidée avant application de
+la taxe sur les plus-values~:
 
 \hl{corriger}
 
 \begin{align}
-  \text{Courtage}_t    &= v \times f_e^{\text{CT}} \\
-  \text{TOB}_t          &= v \times \tau_{\text{TOB}} \\
-  \text{FraisGarde}_t &= R_t \times f_{\text{garde}}^{\text{CT}}
+  \text{Courtage}_t      &= v \times f_e^{\text{CT}} \\
+  \text{TOB}_t            &= v \times \tau_{\text{TOB}} \\
+  \text{FraisGarde}_t    &= R_t \times f_{\text{garde}}^{\text{CT}} \\
+  \text{CourtageSortie}  &= R_N \times f_e^{\text{CT}}
 \end{align}
-où $f_e^{\text{CT}}$ est le taux de frais de courtage, $\tau_{\text{TOB}}$ le
-taux de la TOB et $f_{\text{garde}}^{\text{CT}}$ le taux de frais de garde
-annuels, appliqué sur la réserve en fin d'année~$t$.
+où $f_e^{\text{CT}}$ est le taux de frais de courtage (appliqué à l'entrée et
+à la sortie), $\tau_{\text{TOB}}$ le taux de la TOB, et $f_{\text{garde}}^{\text{CT}}$
+le taux de frais de garde annuels appliqué sur la réserve en fin d'année~$t$.
 
 La réserve s'accumule en deux temps selon la même logique que pour la
 branche~23, avec la même formule de TCT~(\ref{eq:tct}). Le facteur
@@ -1011,23 +1014,25 @@ lorsque toutes les parts sont cédées simultanément à l'échéance.
 \hl{expliquer fifo ?}
 
 Le capital final net à l'échéance est égal au capital net diminué de l'ensemble
-des coûts récurrents capitalisés à l'échéance~:
+des coûts capitalisés à l'échéance et du courtage de sortie~:
 \begin{align}
   \text{CFN}_{\text{CT}} &=
     \underbrace{C_N^{\text{net}}}_{\text{capital net}}
   -
     \underbrace{%
       \sum_{t=0}^{n} \text{TOB}_t \times \bigl(1 + r_{\text{OLO}}(n-t)\bigr)^{n-t}
-    }_{\text{TOB capitalisée}} \notag \\
-  &\quad
+    }_{\text{TOB capitalisée}} 
   -
     \underbrace{%
       \sum_{t=0}^{n} \text{Courtage}_t \times \bigl(1 + r_{\text{OLO}}(n-t)\bigr)^{n-t}
-    }_{\text{courtage capitalisé}}
+    }_{\text{courtage capitalisé}} \notag \\
+  &\quad
   -
     \underbrace{%
       \sum_{t=0}^{n} \text{FraisGarde}_t \times \bigl(1 + r_{\text{OLO}}(n-t)\bigr)^{n-t}
     }_{\text{frais de garde capitalisés}}
+  -
+    \underbrace{\text{CourtageSortie}}_{\text{courtage de sortie}}
 \end{align}
 
 \subsubsection*{Comparaison et notion de dominance}
