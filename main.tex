@@ -56,22 +56,7 @@
 \includepdf[pages=-]{media/front.pdf}
 
 \newpage
-\tableofcontents
-
-\newpage
-\setcounter{page}{1}
-\pagestyle{fancy}
-\section*{Glossaire}
-\addcontentsline{toc}{section}{Glossaire}
-
-\begin{description}[leftmargin=4.5cm, style=sameline, font=\normalfont\bfseries]
-  \item[OPCVM] \textit{Organisme de Placement Collectif en Valeurs Mobilières} — fonds d'investissement collectif permettant à des investisseurs de mettre en commun leurs ressources pour investir dans un portefeuille diversifié de titres financiers.
-
-\end{description}
-%https://fr.wikipedia.org/wiki/Organisme_de_placement_collectif_en_valeurs_mobili%C3%A8res
-%https://fr.wikipedia.org/wiki/Organisme_de_placement_collectif_en_valeurs_mobili%C3%A8res
-%https://fr.wikipedia.org/wiki/Fonds_n%C3%A9goci%C3%A9_en_bourse
-\newpage
+\pagestyle{empty}
 
 \section*{Avant-propos}
 \addcontentsline{toc}{section}{Avant-propos}
@@ -115,6 +100,24 @@ professionnel.
 Je tiens à remercier [à compléter].
 
 \newpage
+\pagenumbering{Roman}
+\pagestyle{fancy}
+\tableofcontents
+
+\newpage
+\section*{Glossaire}
+\addcontentsline{toc}{section}{Glossaire}
+
+\begin{description}[leftmargin=4.5cm, style=sameline, font=\normalfont\bfseries]
+  \item[OPCVM] \textit{Organisme de Placement Collectif en Valeurs Mobilières} — fonds d'investissement collectif permettant à des investisseurs de mettre en commun leurs ressources pour investir dans un portefeuille diversifié de titres financiers.
+
+\end{description}
+%https://fr.wikipedia.org/wiki/Organisme_de_placement_collectif_en_valeurs_mobili%C3%A8res
+%https://fr.wikipedia.org/wiki/Organisme_de_placement_collectif_en_valeurs_mobili%C3%A8res
+%https://fr.wikipedia.org/wiki/Fonds_n%C3%A9goci%C3%A9_en_bourse
+
+\newpage
+\pagenumbering{arabic}
 
 \section{Cadre de travail}
 
@@ -1582,10 +1585,7 @@ marché.
 \hl{corriger}
 
 \newpage
-
-
-
-
+\pagestyle{empty}
 
 \bibliographystyle{apacite}
 \bibliography{references}
@@ -1593,6 +1593,7 @@ marché.
 \includepdf[pages=-]{media/back.pdf}
 
 \newpage
+\pagestyle{empty}
 \appendix
 
 \section{Référentiel OLO belge utilisé pour la capitalisation}
