@@ -291,138 +291,135 @@ et dépend de l'allocation d'actifs choisie par l'investisseur.
 \subsubsection*{Versements annuels constants}
 
 Nous supposons des versements annuels et identiques d'une année à l'autre pour simplifier
-la modélisation. Ils sont appliqués de manière uniforme aux deux véhicules afin que la comparaison
+la modélisation. Ils sont appliqués de manière uniforme aux différents
+véhicules afin que la comparaison
 reste cohérente. En pratique, les investisseurs peuvent choisir de faire des versements mensuels, 
-trimestriels ou à des intervalles irréguliers, 
-ce qui peut affecter la dynamique de capitalisation.
+trimestriels ou à des intervalles irréguliers.
 
 \subsubsection*{Grille de versements de 1~euro jusqu'au plafond légal}
 
-Nous supposons des montants annuels entiers allant de 1~euro jusqu'aux plafonds légaux
-ouvrant droit à la réduction d'impôt, afin de ne manquer aucun point de croisement
-potentiel entre les deux véhicules.
+Nous supposons des montants annuels entiers allant de 1~euro, borne non réaliste en
+pratique, jusqu'aux plafonds légaux ouvrant droit à la réduction d'impôt. Ces derniers
+constituant la borne supérieure naturelle au-delà de laquelle l'avantage fiscal ne
+s'applique plus. Cette grille exhaustive permet de ne manquer aucun point de
+croisement potentiel.
 
 \subsubsection*{Inflation et évolution du revenu non modélisées}
 
-Nous ignorons l'inflation et l'évolution du revenu de l'investisseur~; les versements
+Nous ignorons l'inflation et l'évolution du revenu de l'investisseur par simplification~; 
+les versements
 restent ainsi nominalement constants sur toute la durée de la simulation.
 
 \subsubsection*{Investissement intégral du versement annuel}
 
-Nous supposons que le montant versé est intégralement investi chaque année, ce qui est
-cohérent avec la disponibilité des fractions de parts. Dans la majorité des cas,
-acquérir une part entière d'un actif exige de débourser exactement son prix de marché~;
-si ce prix ne divise pas exactement le montant à investir, un solde en liquidités subsiste
-et n'est pas investi. Cette contrainte est toutefois levée par certains néocourtiers,
-qui proposent l'achat de fractions de parts et permettent ainsi d'investir n'importe
+Dans la majorité des cas,
+acquérir une part d'un actif exige de débourser exactement son prix de marché.
+Cependant, certains néocourtiers 
+proposent l'achat de fractions de parts et permettent ainsi d'investir n'importe
 quel montant sans résidu.
+
+Nous supposons donc que le montant versé est intégralement investi chaque année, ce qui est
+cohérent avec le fractionnement d'actifs.
+
+\hl{source}
 
 \subsubsection*{Effort d'épargne constant jusqu'à l'échéance}
 
-Nous supposons un effort d'épargne constant, sans rachat anticipé ni interruption des
-versements, pour ne pas modéliser une option structurellement défavorable. Pour la
+Pour la
 branche~23, un rachat avant le 60\textsuperscript{e} anniversaire entraîne une imposition
-à 33\,\% de la valeur de rachat auxquels s'ajoutent des frais de sortie pouvant atteindre
-5\,\%.
+à 33\,\% de la valeur de rachat auxquels s'ajoutent des frais de sortie.
+Nous supposons donc un effort d'épargne constant, sans rachat anticipé ni interruption des
+versements, pour ne pas modéliser une option structurellement défavorable.
 
 \subsubsection*{Horizon commun fixé à 65~ans}
 
 Nous supposons un horizon commun de 65~ans pour tous les véhicules pour homogénéiser la
-comparaison. Pour l'épargne-pension, les réductions d'impôt cessent après le
-65\textsuperscript{e} anniversaire, ce qui en fait le point d'arrêt naturel~; le même
-horizon est retenu pour le compte-titres et l'épargne à long terme.
+comparaison. C'est un point d'arrêt naturel étant donné que les réductions d'impôt cessent après le
+65\textsuperscript{e} anniversaire pour l'épargne-pension et que la retraite est fixé
+aux alentours de cet âge.
 
 \subsubsection*{Âge de début plafonné à 55~ans}
 
 Nous supposons que les versements débutent au plus tard à 55~ans pour préserver
-l'homogénéité de la comparaison. Au-delà de ce seuil, la législation reporte la taxe
-anticipative au dixième anniversaire du contrat~; pour un souscripteur débutant à 56~ans,
-ce report placerait l'échéance fiscale à 66~ans, au-delà de l'horizon commun de 65~ans.
+l'homogénéité de la comparaison. Cette limite s'appuie sur les conditions de la taxe anticipative.
+
+\hl{faire cf vers épargne pension et long terme}
 
 \subsubsection*{Portefeuille entièrement investi en actions via un ETF accumulant}
 
 Nous supposons un portefeuille intégralement investi via des ETF à réplication indicielle
-de type accumulant pour éviter de modéliser une fiscalité sur les distributions \cite{curvo_capitalisant_distribuant_2026}. 
+de type accumulant pour éviter de modéliser une fiscalité sur les distributions de dividendes \cite{curvo_capitalisant_distribuant_2026}. 
 Ce type
 d'actif est accessible aussi bien en compte-titres qu'au travers des contrats d'épargne-pension
-et d'épargne à long terme~: le fonds Vivium, par exemple, propose des ETF accumulants tels
-que le \textit{iShares MSCI World SRI UCITS ETF} ou l'\textit{Amundi MSCI World SRI Climate
-Paris Aligned UCITS ETF Acc}, tous deux également disponibles pour un investisseur individuel
-en compte-titres \cite{vivium_managed_funds}.
+et d'épargne à long terme (e.g. le fonds Vivium \footnote{\url{https://www.vivium.be/documents/d/vivium/managed-funds-reglements-de-gestion}}).
 
 \subsubsection*{Abstraction du spread}
 
 Nous ignorons le spread, frais implicite correspondant à l'écart entre le prix
 d'achat et le prix de vente d'un actif \cite{ig_spread}, car sa quantification
-générique est impossible, celui-ci variant selon l'instrument et les conditions
-de marché. Seuls les frais explicitement définis dans les scénarios sont intégrés.
+générique est impossible. Celui-ci variant selon l'instrument et les conditions
+de marché.
 
-\subsubsection*{Frais constants par scénario}
+\subsubsection*{Frais choisis}
 
-Nous supposons que les frais d'entrée et de gestion sont fixes dans un scénario donné
-pour isoler l'effet de la structure fiscale de chaque véhicule.
+Nous supposons des frais d'entrée et de gestion fixes dans un scénario donné, dont nous
+fixons nous-mêmes les niveaux selon deux configurations. Dans le scénario à frais
+réalistes, nous les fixons pour les compte-titres à 0\,\%, sans perte de généralité,
+étant donné que ces frais sont souvent très faibles ou inexistants chez les néocourtiers 
+(e.g. Trade Republic \footnote{\url{https://www.traderepublic.com/fr-be}}). 
+
+\hl{source réviser}
+
+Dans le scénario à
+frais majorés, nous les alignons sur les moyennes retenues pour
+les contrats d'assurance-vie. Cette convention établit une borne conservative sans
+désavantager excessivement l'un des deux véhicules et compense aussi les frais de gestion
+des ETF.
+
+\hl{source}
 
 \subsubsection*{Taxe sur les comptes-titres couverte par les frais de gestion de la branche~23}
 
 Nous supposons que la TCT éventuellement répercutée sur les assurés est incluse dans
-les frais de gestion retenus pour la branche~23, pour ne pas la modéliser séparément.
-La taxe ne s'appliquant qu'au-delà d'un million d'euros par compte, le montant répercuté
-par assuré individuel reste négligeable.
+les frais de gestion retenus pour la branche~23, pour simplifier l'application de cette taxe.
 
 \subsubsection*{Fiscalité figée au moment de la rédaction}
 
 Nous supposons que la réglementation fiscale est celle en vigueur au moment de la
 rédaction, pour disposer d'un cadre légal stable et déterministe.
 
-\subsubsection*{Comparaison en capital final net à l'échéance}
-
-Nous supposons une comparaison en capital final net à l'échéance (CFN) plutôt qu'en
-capital brut, pour intégrer la valeur temporelle des flux annexes~: les économies
-fiscales de la branche~23 et les coûts récurrents du compte-titres sont capitalisés
-jusqu'à l'horizon commun au taux OLO sans risque.
-
 \subsubsection*{Absence de risque de contrepartie}
 
 Nous supposons que les deux instruments sont exempts de tout risque de défaut de
 l'assureur ou du courtier, pour isoler les différences de structure fiscale et de frais.
 
-\subsubsection*{Méthode d'exonération des plus-values simplifiée}
-
-Nous supposons une méthode forfaitaire pour le calcul de l'exonération des plus-values
-du compte-titres (montant de base augmenté d'un cumul annuel plafonné), pour simplifier
-le mécanisme réel dont la modélisation exacte dépendrait de l'historique des transactions.
-
-\subsubsection*{Remboursement fiscal décalé d'un an}
-
-Nous supposons que la réduction d'impôt est perçue l'année suivant le versement,
-conformément au fonctionnement de la déclaration fiscale belge. Pour le versement de
-la dernière année, le remboursement intervient après l'horizon~; il est ramené à la date
-de référence par actualisation au taux OLO à un an.
-
 \subsubsection*{Réduction d'impôt systématiquement déclarée}
 
 Nous supposons que l'investisseur demande la réduction d'impôt chaque année sans
-exception, pour maximiser l'avantage fiscal de la branche~23 et établir une borne
-supérieure de cet avantage. Omettre de la déclarer une année ferait perdre la réduction
-correspondante.
+exception, pour maximiser l'avantage fiscal de la branche~23. 
+Chaque année où elle n'est pas demandée, cette réduction est perdue de manière irréversible. 
 
 \subsubsection*{Épargne à long terme~: plafond de déduction atteint chaque année}
 
 Nous supposons que le revenu professionnel de l'investisseur est suffisant pour atteindre
 le plafond légal de 2\,450~euros chaque année, pour simplifier le calcul de la réduction
-d'impôt~; les profils dont les revenus sont insuffisants pour y parvenir ne sont pas couverts.
+d'impôt.
 
 \subsubsection*{Flux annexes traités comme certains et taux OLO fixes}
 
 Nous supposons que les flux annexes sont certains et que la courbe OLO est fixe à sa
 valeur observée à la date de rédaction, pour justifier l'emploi d'un taux sans risque
-et d'un référentiel de capitalisation stable sur l'ensemble de la simulation.
+et d'un référentiel de capitalisation stable sur l'ensemble de la simulation \footnote{.}.
+
+\hl{30 max pour olo et donc au dessus de 30 on garde 30}
 
 \subsubsection*{TOB au taux de 0,12\,\%}
 
-Nous supposons l'application de la TOB au taux de 0,12\,\% pour l'instrument retenu,
-à savoir un ETF indiciel large inscrit auprès de la FSMA ou d'un régulateur d'un État
+Nous supposons l'application de la TOB au taux de 0,12\,\% pour simuler le taux d'un
+ETF indiciel large inscrit auprès de la FSMA ou d'un régulateur d'un État
 membre de l'EEE.
+
+\hl{cf tob}
 
 \newpage
 \section{L'assurance-vie : la branche 23}
@@ -1285,9 +1282,9 @@ observées en Belgique. Pour le compte-titres, les frais d'entrée correspondent
 aux commissions de courtage pratiquées par les principales plateformes en ligne
 belges, et les frais de gestion reflètent le total des frais sur encours (TER)
 d'un ETF indiciel large. Pour la branche~23, les frais de chargement retenus
-correspondent à la moyenne pondérée observée en 2020, soit 2.83\,\%\cite[p.~27]{fsma_couts_piliers},
+correspondent à la moyenne pondérée observée en 2020, soit 2,83\,\%\cite[p.~27]{fsma_couts_piliers},
 dernière année pour laquelle ces données sont disponibles~; les frais de gestion
-s'élèvent à 2.34\,\%\cite[p.~30]{fsma_couts_piliers}, cette
+s'élèvent à 2,34\,\%\cite[p.~30]{fsma_couts_piliers}, cette
 moyenne incluent les frais des fonds internes~; nous supposons en outre que
 l'éventuelle taxe sur les comptes-titres est également couverte.
 
@@ -1298,8 +1295,6 @@ en ligne, cette hypothèse constitue une borne supérieure pour les coûts du
 compte-titres~: elle est délibérément défavorable à ce véhicule et a pour objet
 de tester dans quelle mesure la branche~23 maintient son avantage même lorsque le compte-titres
 se voit pénalisé à hauteur des frais que la branche~23 elle-même supporte.
-
-
 
 \begin{table}[h!]
   \centering
