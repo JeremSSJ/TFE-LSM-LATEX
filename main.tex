@@ -281,12 +281,14 @@ rien parc qu assureurs ont plein de clients donc peuvent dépasser un million en
 La méthodologie repose sur un ensemble d'hypothèses simplificatrices qui délimitent le
 champ de la simulation et en conditionnent les résultats.
 
-\textbf{Rendement annuel brut constant.} Le taux de rendement est supposé identique
-chaque année pour les deux véhicules. Les marchés financiers sont en réalité
-volatils~; cette hypothèse est nécessaire pour que la comparaison soit déterministe
-et systématique sur l'ensemble des profils simulés.
+\subsubsection*{Rendement annuel brut constant.}
 
-\textbf{Versements annuels constants.} Les versements sont annuels et identiques d'une
+Les taux de rendement retenus sont des rendements espérés sur le long terme. Par 
+simplification, nous appliquons les mêmes taux à chaque véhicule.
+En pratique, le rendement annuel d'un portefeuille varie d'une année à l'autre,
+et dépend de l'allocation d'actifs choisie par l'investisseur.
+
+\subsubsection*{Versements annuels constants.} Les versements sont annuels et identiques d'une
 année à l'autre. Un versement mensuel aurait introduit une fréquence de
 capitalisation supplémentaire sans modifier la logique de comparaison~; le versement
 annuel est par ailleurs cohérent avec le cadre légal des contrats branche~23, dont
@@ -299,14 +301,14 @@ année à l'autre. Cette abstraction reste toutefois acceptable dans la mesure o
 nombreux courtiers proposent aujourd'hui l'achat de fractions de parts, permettant
 d'investir n'importe quel montant sans contrainte liée à la valeur d'une part entière.
 
-\textbf{Effort d'épargne constant jusqu'à l'échéance.} La simulation exclut tout rachat
+\subsubsection*{Effort d'épargne constant jusqu'à l'échéance.} La simulation exclut tout rachat
 anticipé et toute interruption des versements. Pour la branche~23, un rachat avant
 le 60\textsuperscript{e} anniversaire entraîne une imposition à 33\,\% sur la valeur
 de rachat, auxquels s'ajoutent des frais de sortie contractuels pouvant atteindre
 5\,\%~; cette option est donc structurellement défavorable et il n'est pas utile de
 la modéliser pour trancher la comparaison.
 
-\textbf{Horizon commun fixé à 65~ans.} Le régime fiscal de l'épargne-pension prévoit que
+\subsubsection*{Horizon commun fixé à 65~ans.} Le régime fiscal de l'épargne-pension prévoit que
 les réductions d'impôt cessent de s'appliquer aux versements effectués après le
 65\textsuperscript{e} anniversaire de l'assuré, ce qui en fait le point d'arrêt
 naturel pour ce véhicule. Par souci d'homogénéité, le même horizon est retenu pour
@@ -314,7 +316,7 @@ le compte-titres et l'épargne à long terme, qui n'imposent pas de borne supér
 légale similaire mais sont ici alignés sur 65~ans. Cet horizon commun joue donc le
 rôle de point de sortie unique à partir duquel tous les capitaux sont comparés.
 
-\textbf{Âge de début plafonné à 55~ans.} La simulation n'inclut que des profils dont les
+\subsubsection*{Âge de début plafonné à 55~ans.} La simulation n'inclut que des profils dont les
 versements débutent au plus tard à 55~ans, la borne précise correspondant au
 31~décembre de la 54\textsuperscript{e} année de vie, soit le dernier jour avant le
 55\textsuperscript{e} anniversaire. Au-delà de ce seuil, la législation reporte la
@@ -323,7 +325,7 @@ au dixième anniversaire du contrat~; pour un souscripteur débutant à 56~ans, 
 report déplacerait la taxation et la disponibilité du capital à 66~ans, au-delà de
 l'horizon de 65~ans, ce qui romprait l'homogénéité de la comparaison.
 
-\textbf{Portefeuille entièrement investi en actions via un ETF accumulant.} L'investisseur
+\subsubsection*{Portefeuille entièrement investi en actions via un ETF accumulant.} L'investisseur
 est supposé allouer l'intégralité de son capital en actions. Afin d'assurer la
 comparabilité entre les deux véhicules, les actifs sous-jacents retenus sont des ETF
 à réplication indicielle de type accumulant, c'est-à-dire réinvestissant
@@ -334,7 +336,7 @@ tendance dominante chez les investisseurs particuliers actuels et est représent
 des fonds disponibles dans les contrats de branche~23, dont certains permettent
 effectivement de loger des ETF actions à 100\,\% en capitalisation.
 
-\textbf{Abstraction du spread et des coûts d'exécution.} Lors de chaque transaction,
+\subsubsection*{Abstraction du spread et des coûts d'exécution.} Lors de chaque transaction,
 l'investisseur supporte en pratique un coût implicite appelé spread, c'est-à-dire
 l'écart entre le prix auquel un vendeur est prêt à céder l'actif et le prix qu'un
 acheteur est prêt à payer. Ce coût, difficile à quantifier de manière générique car
@@ -343,10 +345,10 @@ dans la simulation. De même, les variations de cours survenant entre la passati
 d'un ordre et son exécution effective ne sont pas prises en compte. Seuls les frais
 explicitement définis dans les scénarios sont intégrés au calcul.
 
-\textbf{Frais constants par scénario.} Les frais d'entrée et de gestion sont fixes dans un
+\subsubsection*{Frais constants par scénario.} Les frais d'entrée et de gestion sont fixes dans un
 scénario donné~; leur évolution dans le temps n'est pas modélisée.
 
-\textbf{Taxe sur les comptes-titres couverte par les frais de gestion de la branche~23.}
+\subsubsection*{Taxe sur les comptes-titres couverte par les frais de gestion de la branche~23.}
 La taxe sur les comptes-titres susceptible d'être répercutée sur les assurés est
 supposée incluse dans les frais de gestion moyens retenus pour la branche~23. Cette
 hypothèse est raisonnable~: la taxe ne s'applique qu'au-delà d'un million d'euros par
@@ -354,52 +356,52 @@ compte détenu~; un assureur regroupant de nombreux assurés dans ses fonds inte
 peut franchir ce seuil en tant que titulaire unique, mais le montant ainsi répercuté
 par assuré individuel reste négligeable.
 
-\textbf{Fiscalité figée au moment de la rédaction.} La réglementation fiscale est celle en
+\subsubsection*{Fiscalité figée au moment de la rédaction.} La réglementation fiscale est celle en
 vigueur au moment de la rédaction. Tout changement législatif futur n'est pas pris en
 compte.
 
-\textbf{Comparaison en capital final net à l'échéance.} La comparaison est conduite en
+\subsubsection*{Comparaison en capital final net à l'échéance.} La comparaison est conduite en
 termes de capital final net à l'échéance (CFN) plutôt qu'en capital brut. Ce choix
 permet d'intégrer la valeur temporelle des flux annexes~: les économies fiscales
 annuelles de la branche~23 et les coûts récurrents du compte-titres sont capitalisés
 jusqu'à l'horizon commun au taux sans risque OLO. Le résultat dépend du référentiel
 de taux retenu.
 
-\textbf{Absence de risque de contrepartie.} Les deux instruments sont supposés exempts de
+\subsubsection*{Absence de risque de contrepartie.} Les deux instruments sont supposés exempts de
 tout risque de défaut ou de faillite de l'assureur ou du courtier.
 
-\textbf{Méthode d'exonération des plus-values simplifiée.} L'exonération des plus-values
+\subsubsection*{Méthode d'exonération des plus-values simplifiée.} L'exonération des plus-values
 pour le compte-titres est calculée de manière forfaitaire (montant de base augmenté
 d'un cumul annuel plafonné), ce qui constitue une approximation du mécanisme réel.
 
-\textbf{Remboursement fiscal décalé d'un an.} La réduction d'impôt liée aux versements
+\subsubsection*{Remboursement fiscal décalé d'un an.} La réduction d'impôt liée aux versements
 effectués au cours d'une année est supposée perçue l'année suivante, conformément
 au fonctionnement habituel de la déclaration fiscale belge. Pour les versements
 effectués à l'année~$n$ (dernière année de l'horizon), le remboursement arrive donc
 après l'horizon de comparaison~; il est ramené à la date de référence par
 actualisation au taux OLO à un an.
 
-\textbf{Réduction d'impôt systématiquement déclarée.} La simulation suppose que
+\subsubsection*{Réduction d'impôt systématiquement déclarée.} La simulation suppose que
 l'investisseur demande la réduction d'impôt chaque année sans exception dans sa
 déclaration fiscale annuelle. En pratique, omettre de la déclarer une année ferait
 perdre la réduction correspondante~; l'hypothèse retenue maximise donc l'avantage
 fiscal de la branche~23.
 
-\textbf{Épargne à long terme~: plafond de déduction atteint chaque année.} Pour l'ELT,
+\subsubsection*{Épargne à long terme~: plafond de déduction atteint chaque année.} Pour l'ELT,
 la simulation suppose que le revenu professionnel de l'investisseur est suffisant
 pour atteindre le plafond légal de 2\,450~euros chaque année. En réalité, le montant
 déductible est plafonné selon une formule liée aux revenus professionnels~;
 les investisseurs dont les revenus sont insuffisants pour atteindre ce plafond ne
 sont pas couverts par la simulation.
 
-\textbf{Flux annexes traités comme certains et taux OLO fixes.} Les économies fiscales
+\subsubsection*{Flux annexes traités comme certains et taux OLO fixes.} Les économies fiscales
 annuelles de la branche~23 et les coûts périodiques du compte-titres capitalisés
 jusqu'à l'échéance sont traités comme des flux certains, ce qui justifie l'emploi
 d'un taux sans risque pour leur capitalisation. La courbe des OLO belges retenue est
 celle observée à la date de rédaction~; elle est supposée constante pour l'ensemble
 de la simulation et toute variation ultérieure des taux n'est pas prise en compte.
 
-\textbf{TOB au taux de 0,12\,\%.} La simulation applique la taxe sur les opérations de
+\subsubsection*{TOB au taux de 0,12\,\%.} La simulation applique la taxe sur les opérations de
 bourse au taux de 0,12\,\%, applicable aux ETF inscrits auprès de la FSMA ou d'un
 régulateur d'un État membre de l'Espace économique européen. Ce taux correspond à
 l'instrument retenu, à savoir un ETF indiciel large coté sur un marché réglementé
