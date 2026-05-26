@@ -127,60 +127,50 @@ Je tiens à remercier [à compléter].
 
 \section{Contexte}
 
-\subsection{L'essor de l'investissement individuel}
+\subsection{Un contexte d'investissement en pleine mutation}
 
 Au cours des dernières années, l'accès aux marchés financiers s'est profondément
-démocratisé. Le développement de néocourtiers à frais réduits a rendu la détention
-d'un compte-titres accessible à un public bien plus large qu'auparavant, tandis que
-la popularisation des fonds indiciels cotés (ETF) a contribué à diffuser une culture
-de l'investissement passif à long terme, fondée sur la diversification et la maîtrise
-des coûts. Dans ce contexte, l'investisseur particulier belge qui souhaite se
-constituer un capital en vue de la retraite se trouve confronté à un choix entre
-plusieurs enveloppes de placement aux logiques très différentes.
+démocratisé en Belgique. Le développement de néocourtiers à frais réduits et la
+popularisation des fonds indiciels cotés (ETF) ont conduit un nombre croissant de
+particuliers à gérer eux-mêmes leurs investissements, en dehors de tout cadre
+institutionnel. Dans les débats publics sur l'investissement individuel, cette
+approche est fréquemment mise en regard des enveloppes fiscales dédiées à la
+constitution d'un capital pour la retraite que constituent l'épargne-pension et
+l'épargne à long terme. La question de savoir laquelle de ces stratégies est la plus
+avantageuse financièrement est régulièrement soulevée, sans toujours faire l'objet
+d'une analyse rigoureuse à hypothèses comparables.
 
-\subsection{Les trois véhicules comparés}
+\subsection{Un régime fiscal historiquement favorable à l'investissement direct}
 
-Trois véhicules sont au cœur de cette étude. L'\textbf{épargne-pension} et
-l'\textbf{épargne à long terme} sont deux enveloppes fiscales permettant la
-constitution d'un capital complémentaire pour la retraite via des contrats
-d'assurance-vie. Les primes versées ouvrent droit à une réduction d'impôt à l'entrée ;
-en contrepartie, un prélèvement fiscal est opéré à la sortie sur les sommes
-constituées. Ces produits peuvent prendre la forme de contrats de la branche~23,
-dont la valeur est indexée sur la performance de fonds d'investissement sous-jacents.
+Jusqu'au 31~décembre~2025, la Belgique se distinguait par l'absence de taxation des
+plus-values réalisées par les particuliers dans le cadre de la gestion normale de
+leur patrimoine privé \cite[art.~90]{cir92_2025}. Seules les opérations à caractère
+spéculatif faisaient l'objet d'une imposition, au taux de 33\,\%
+\cite[art.~171]{cir92_2025}. Ce régime conférait à l'investissement direct en
+compte-titres un avantage structurel significatif, la totalité des gains en capital
+accumulés sur le long terme lui demeurant intégralement acquise.
 
-Le \textbf{compte-titres}, quant à lui, permet à l'investisseur de détenir
-directement des actifs financiers --- notamment des ETF --- sans enveloppe fiscale
-dédiée. Son attrait résidait historiquement en grande partie dans l'absence de
-taxation des plus-values réalisées par les particuliers gérant leur patrimoine privé
-dans le cadre normal de celui-ci. Cette caractéristique a cependant été remise en
-cause par une réforme fiscale majeure.
+En parallèle, les enveloppes d'épargne-pension et d'épargne à long terme offrent
+un avantage fiscal à l'entrée sous forme de réduction d'impôt, mais imposent une
+taxation anticipative, ainsi qu'une éventuelle taxe à l'entrée. 
+La comparaison entre les deux approches constituait donc déjà, dans
+ce cadre, une question pertinente.
 
-\subsection{Le tournant fiscal de 2026}
+\subsection{La réforme fiscale de 2026 et ses implications}
 
-À compter du 1\textsuperscript{er} janvier 2026, le paysage fiscal de l'investissement
-particulier en Belgique a été profondément modifié. La loi du 17~décembre~2025
-introduisant un impôt sur les plus-values des actifs financiers instaure une taxation
-de 10\,\% sur les plus-values réalisées lors de la cession d'actifs financiers en
-dehors de toute activité professionnelle, après exonération d'une première tranche
-annuelle de 10\,000~euros \cite[p.~4-5, 9]{chambre2025pv_actifs}. Ce changement
-modifie structurellement la rentabilité nette du compte-titres et repose la question
-de la comparaison avec les enveloppes fiscales avec une acuité renouvelée.
+À compter du 1\textsuperscript{er}~janvier~2026, ce paysage a été profondément
+modifié. Le projet de loi du 17~décembre~2025 introduit un impôt sur les plus-values des
+actifs financiers réalisées en dehors de toute activité professionnelle, au taux de
+10\,\%, après exonération d'une première tranche annuelle de 10\,000~euros
+\cite[p.~4-5, 9]{chambre2025pv_actifs}. Les actifs relevant de l'épargne-pension et
+de l'épargne à long terme sont explicitement exclus du champ de cet impôt
+\cite[p.~39]{chambre2025pv_actifs}.
 
-Les actifs relevant de l'épargne-pension et de l'épargne à long terme sont
-explicitement exclus de ce nouvel impôt \cite[p.~39]{chambre2025pv_actifs}, ce qui
-confère à ces enveloppes un avantage relatif supplémentaire par rapport à la
-situation antérieure à 2026.
-
-\subsection{Objet du travail}
-
-C'est dans ce contexte que s'inscrit ce travail. Il s'agit de déterminer, pour un
-particulier belge constituant un capital en vue de sa retraite, lequel des trois
-véhicules --- épargne-pension, épargne à long terme ou compte-titres --- offre le
-capital final net le plus élevé, et dans quelle mesure l'introduction de la taxe
-sur les plus-values de 2026 modifie la hiérarchie entre eux. Pour répondre à cette
-question, une simulation comparative est développée à rendement brut identique entre
-les véhicules, en faisant varier les paramètres pertinents que sont le montant versé,
-la durée de placement et la configuration fiscale.
+Cette réforme modifie structurellement les termes de la comparaison entre
+investissement direct et enveloppes fiscales. Elle réduit la rentabilité nette du
+compte-titres tout en laissant inchangée celle des contrats d'assurance-vie dédiés à
+l'épargne retraite, créant ainsi une asymétrie nouvelle qui justifie une réévaluation
+de la hiérarchie entre ces véhicules.
 
 \newpage
 \section{Cadre de travail}
