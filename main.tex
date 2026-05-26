@@ -346,8 +346,8 @@ anticipative (cf.~\hyperref[subsub:taxe_anticipative_ep]{l'épargne-pension} et
 
 \subsubsection*{Portefeuille entièrement investi en actions via un ETF accumulant}
 
-Nous supposons un portefeuille intégralement investi via des ETF à réplication indicielle
-de type accumulant pour éviter de modéliser une fiscalité sur les distributions de dividendes \cite{curvo_capitalisant_distribuant_2026}. 
+Nous supposons un portefeuille intégralement investi via des ETF
+accumulants composés exclusivement d'actions pour éviter de modéliser une fiscalité sur les distributions de dividendes \cite{curvo_capitalisant_distribuant_2026}. 
 Ce type
 d'actif est accessible aussi bien en compte-titres qu'au travers des contrats d'épargne-pension
 et d'épargne à long terme (e.g. le fonds Vivium \footnote{\url{https://www.vivium.be/documents/d/vivium/managed-funds-reglements-de-gestion}}).
@@ -355,25 +355,30 @@ et d'épargne à long terme (e.g. le fonds Vivium \footnote{\url{https://www.viv
 \subsubsection*{Abstraction du spread}
 
 Nous ignorons le spread, frais implicite correspondant à l'écart entre le prix
-d'achat et le prix de vente d'un actif \cite{ig_spread}, car sa quantification
+d'achat et le prix de vente d'un actif \cite{wikiped_spread}, car sa quantification
 générique est impossible. Celui-ci variant selon l'instrument et les conditions
 de marché.
 
 \subsubsection*{Frais choisis}
 
-Nous supposons des frais d'entrée et de gestion fixes dans un scénario donné, dont nous
+\hl{début chelou}
+
+Nous supposons des frais d'entrée et de garde fixes dans un scénario donné, dont nous
 fixons nous-mêmes les niveaux selon deux configurations. Dans le scénario à frais
 réalistes, nous les fixons pour les compte-titres à 0\,\%, sans perte de généralité,
 étant donné que ces frais sont souvent très faibles ou inexistants chez les néocourtiers 
-(e.g. Trade Republic \footnote{\url{https://www.traderepublic.com/fr-be}}). 
-
-\hl{source réviser}
+(e.g. Trade Republic \footnote{\url{https://support.traderepublic.com/fr-fr/719-How-expensive-is-it-to-open-a-securities-account}}). 
 
 Dans le scénario à
 frais majorés, nous les alignons sur les moyennes retenues pour
 les contrats d'assurance-vie. Cette convention établit une borne conservative sans
 désavantager excessivement l'un des deux véhicules et compense aussi les frais de gestion
 des ETF.
+
+\hl{plutot dire qu on a pas accès à des moyennes transparentes de source
+officielle comme pour assurance vie + dans tous les cas on veut juste voir la tendace}
+
+\hl{douteux}
 
 \hl{source}
 
@@ -408,17 +413,18 @@ d'impôt.
 
 Nous supposons que les flux annexes sont certains et que la courbe OLO est fixe à sa
 valeur observée à la date de rédaction, pour justifier l'emploi d'un taux sans risque
-et d'un référentiel de capitalisation stable sur l'ensemble de la simulation \footnote{.}.
+et d'un référentiel de capitalisation stable sur l'ensemble de la simulation\footnote{Les
+données publiées par la Banque nationale de Belgique couvrent des maturités allant jusqu'à
+30~ans. Pour les durées résiduelles supérieures à 30~ans, le taux OLO à 30~ans est
+retenu par convention.}.
 
-\hl{30 max pour olo et donc au dessus de 30 on garde 30}
+\hl{nécessaire en fait puisque c est dit en bas ?}
 
 \subsubsection*{TOB au taux de 0,12\,\%}
 
 Nous supposons l'application de la TOB au taux de 0,12\,\% pour simuler le taux d'un
 ETF indiciel large inscrit auprès de la FSMA ou d'un régulateur d'un État
-membre de l'EEE.
-
-\hl{cf tob}
+membre de l'EEE (cf.~\hyperref[subsub:tob_cto]{La taxe sur les opérations de bourse}).
 
 \newpage
 \section{L'assurance-vie : la branche 23}
@@ -693,7 +699,9 @@ certains allant jusqu'à supprimer les frais de garde et
 \url{https://sapians.com/blog/compte-titres} \hl{dit que frais de courtage peuvent aller
 à 1 pourcent et gestion à 0.26 pourcent de manière générale}
 
+\phantomsection
 \subsubsection*{La taxe sur les opérations de bourse}
+\label{subsub:tob_cto}
 
 Chaque transaction effectuée sur un compte-titres (tant à
 l'achat qu'à la vente) donne lieu au paiement de la taxe
