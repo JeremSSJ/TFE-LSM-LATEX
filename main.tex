@@ -82,6 +82,10 @@ plus-values boursières n'étaient pas taxées. Ce mouvement s'inscrit dans une
 tendance plus large : les néocourtiers sont de plus en plus nombreux et rendent l'accès
 aux marchés toujours plus accessible pour le grand public.
 
+\hl{corriger et dire que c est cohérent de mettre un rendement identique
+trop catégorique de dire que c était pas avantageux assurance vie,
+c était juste mon hypothèse qu on va essayer de vérifier ici}
+
 Par ailleurs, on a cherché à me proposer des produits d'assurance-vie de
 branche~23 dans le cadre de l'épargne-pension et de l'épargne à long terme, auxquels
 je n'ai pas souscrit. Pour évaluer leur pertinence dans ma situation, j'avais eu
@@ -96,6 +100,8 @@ durées de placement. Ce travail de fin d'études m'en a fourni l'occasion, sous
 forme d'une simulation développée en Java, me permettant ainsi de combiner les
 acquis de ce master en sciences de gestion avec mes compétences de développeur
 professionnel.
+
+\hl{pas citer java}
 
 Je tiens à remercier [à compléter].
 
@@ -130,7 +136,8 @@ un cadre délibérément circonscrit, dont les limites sont les suivantes.
 qui gère son épargne à titre personnel, de sa propre initiative. Les mécanismes
 collectifs d'épargne-pension organisés dans le cadre de l'emploi, à savoir les
 fonds de pension d'entreprise et les engagements individuels de pension, sont exclus du
-champ de l'étude. \hl{+ profil des risques}
+champ de l'étude. \hl{+ profil des risques, personne qui investissent 100 pc en action
+car accumulant c est la tendance plus pas plus value obligataire}
 
 \textbf{Véhicule de placement retenu pour le compte-titres.} Conformément à la
 tendance actuelle, la comparaison porte sur des comptes-titres ouverts auprès de
@@ -167,7 +174,47 @@ l'impact de la nouvelle taxe sur les plus-values.
 \hl{rachat anticipé pas simulé car comme nous le verrons ça implique une taxe punitive assez élevée et donc 
 forcément que c est désavantageux}
 
++ Classification des risques
+
+Ce document standardisé, dont le contenu est précisé par le
+règlement délégué (UE) 2017/653, présente de manière concise
+les caractéristiques essentielles du produit, notamment un
+indicateur synthétique de risque sur une échelle de 1 à 7,
+des scénarios de performance et un tableau des coûts totaux
+\cite{RegDel2017-653}.
+
 \section{Dans contexte}
+
+Le traitement fiscal des plus-values réalisées via un
+compte-titres a connu une évolution significative.
+
+Jusqu'au 31~décembre~2025, les plus-values réalisées dans
+le cadre de la gestion normale du patrimoine privé étaient
+exonérées d'impôt \cite[art.~90]{cir92_2025}~; seules les
+opérations spéculatives étaient imposées au taux de 33\,\%
+\cite[art.~171]{cir92_2025}. 
+
+À compter du 1\textsuperscript{er}~janvier~2026, le projet de
+loi du 17~décembre~2025 introduisant un impôt sur les
+plus-values des actifs financiers, dont les ETFs,
+instaure une taxation des plus-values réalisées lors de la
+cession à titre onéreux d'actifs financiers en dehors de
+toute activité professionnelle \cite[p.~4-5]{chambre2025pv_actifs}.
+
+Le régime général prévoit un taux d'imposition de 10\,\%
+de la plus-value réalisée, après exonération d'une première
+tranche annuelle de 10\,000~euros (montant indexé pour
+l'exercice d'imposition~2027). Le montant de base de
+l'exonération peut être reporté à hauteur de 1\,000~euros
+par période imposable, sans dépasser le montant maximum de
+15\,000~euros \cite[p.~9]{chambre2025pv_actifs}. 
+
+Les actifs financiers relevant de l'épargne-pension et de
+l'épargne à long terme sont toutefois exclus de ce nouvel
+impôt \cite[p.~39]{chambre2025pv_actifs}. 
+
+\hl{évolution de la fiscalité, peut être stat pour assurance vie particuliers,
+transposer la direction de taxe sur les plus values de compte titres à ici}
 
 Le contrat d'assurance-vie individuelle est un contrat par
 lequel le preneur verse à l'assureur une prime (unique ou
@@ -186,25 +233,10 @@ exemples les plus courants, l'épargne-pension et l'épargne
 réduction d'impôt sur les versements
 \cite[p.~115-116]{Binon2016}.
 
-+ Classification des risques
-
-Ce document standardisé, dont le contenu est précisé par le
-règlement délégué (UE) 2017/653, présente de manière concise
-les caractéristiques essentielles du produit, notamment un
-indicateur synthétique de risque sur une échelle de 1 à 7,
-des scénarios de performance et un tableau des coûts totaux
-\cite{RegDel2017-653}.
-
-La loi impose par ailleurs des limites d'investissement~:
-pour les clients de détail, les prestations ne peuvent être
-liées qu'à des parts d'OPCVM inscrits auprès de la
-F.S.M.A. ou à des actifs appartenant aux catégories ouvertes
-aux OPCVM de droit belge. Les actifs non conventionnels
-(collections d'art, matières premières, monnaies virtuelles)
-sont ainsi exclus \cite[p.~135-138]{Binon2016}.
-
 \newpage
 \section{L'assurance-vie : la branche 23}
+
+\hl{nous expliciterons dans ce chapitre l épargne pension et épargne long terme}
 
 En droit belge, les produits d'assurance-vie sont classés
 en branches réglementaires. Cette étude porte sur la
@@ -231,6 +263,8 @@ En général, la prestation de ce type de contrat est versée à son échéance
 \cite[p.~131-132]{Binon2016}.
 En outre, selon le contrat, il est permis à l'assureur de
 répercuter la taxe sur les comptes-titres (TCT) sur l'assuré \cite{monastuces2021tact, spf_tct_faq}.
+
+\hl{bouger ça}
 
 Les versements de primes sont en principe facultatifs
 sans qu'aucune exécution forcée ne soit possible.
@@ -287,6 +321,12 @@ constituer un capital complémentaire pour la retraite. Les
 primes versées ouvrent droit à une réduction d'impôt accordée
 par les pouvoirs publics \cite[p.~115-116]{Binon2016}.
 
+\hl{Seuls les versements effectués dans
+cette tranche ouvrent droit à la réduction d'impôt. Bien qu'il soit
+possible de maintenir des cotisations après 65~ans, celles-ci ne
+génèrent plus aucun avantage fiscal, ce qui rend préférable
+l'arrêt des versements à cet âge.}
+
 \subsubsection*{Conditions d'accès et désignation des
 bénéficiaires}
 
@@ -294,13 +334,6 @@ Le contrat doit avoir une durée minimale de dix ans, être
 souscrit entre 18 et 65~ans, et désigner obligatoirement le
 souscripteur lui-même comme bénéficiaire en cas de vie 
 \cite[art.~2; art.~145\textsuperscript{9}]{cir92_2025}.
-
-\hl{Cette
-limite d'âge est déterminante : seuls les versements effectués dans
-cette tranche ouvrent droit à la réduction d'impôt. Bien qu'il soit
-possible de maintenir des cotisations après 65~ans, celles-ci ne
-génèrent plus aucun avantage fiscal, ce qui rend préférable
-l'arrêt des versements à cet âge.}
 
 \hl{le truc c est que pour article 145 4 qui est pour épargne long terme 
 on dit bien que c est que les avantages doivent être à partir de 65 ans
@@ -380,7 +413,7 @@ retraite tout en bénéficiant d'une réduction d'impôt
 \cite[p.~115-116]{Binon2016}.
 
 \subsubsection*{Conditions d'accès et désignation des
-bénéficiaires}
+bénéficiaires} \hl{changer}
 
 Le contrat doit avoir une durée minimale de dix ans et être
 souscrit avant le 65\textsuperscript{e} anniversaire du
@@ -541,43 +574,13 @@ des investisseurs opérant sur de faibles montants.
 
 \subsection{Régime fiscal}
 
-\subsubsection*{Fiscalité des plus-values}
-
-Le traitement fiscal des plus-values réalisées via un
-compte-titres a connu une évolution significative.
-
-Jusqu'au 31~décembre~2025, les plus-values réalisées dans
-le cadre de la gestion normale du patrimoine privé étaient
-exonérées d'impôt \cite[art.~90]{cir92_2025}~; seules les
-opérations spéculatives étaient imposées au taux de 33\,\%
-\cite[art.~171]{cir92_2025}. 
-
-À compter du 1\textsuperscript{er}~janvier~2026, le projet de
-loi du 17~décembre~2025 introduisant un impôt sur les
-plus-values des actifs financiers, dont les ETFs,
-instaure une taxation des plus-values réalisées lors de la
-cession à titre onéreux d'actifs financiers en dehors de
-toute activité professionnelle \cite[p.~4-5]{chambre2025pv_actifs}.
-
-Le régime général prévoit un taux d'imposition de 10\,\%
-de la plus-value réalisée, après exonération d'une première
-tranche annuelle de 10\,000~euros (montant indexé pour
-l'exercice d'imposition~2027). Le montant de base de
-l'exonération peut être reporté à hauteur de 1\,000~euros
-par période imposable, sans dépasser le montant maximum de
-15\,000~euros \cite[p.~9]{chambre2025pv_actifs}. 
-
-Les actifs financiers relevant de l'épargne-pension et de
-l'épargne à long terme sont toutefois exclus de ce nouvel
-impôt \cite[p.~39]{chambre2025pv_actifs}. 
-
 \subsubsection*{La taxe sur les comptes-titres}
 
 Depuis 2021,
 une taxe annuelle sur les comptes-titres (TCT) s'applique
 aux comptes-titres dont la valeur moyenne des instruments
-financiers imposables (calculée sur la base de quatre
-points de référence trimestriels) excède le seuil d'un
+financiers imposables, calculée sur la base de quatre
+points de référence trimestriels, excède le seuil d'un
 million d'euros. Le taux de cette taxe est fixé à 0,15\,\%
 de la valeur imposable annuelle moyenne tout en ne pouvant dépasser
 10\,\% de la différence entre la base impossable et le seuil
@@ -585,12 +588,7 @@ d'un million d'euros. Elle est prélevée
 automatiquement par l'établissement financier teneur de
 compte (si belge) \cite[art.~21]{cdtd1927}. 
 
-\hl{c est passé à 0.3 ?}
-
-Les actions, obligations, fonds,
-dérivés, bons de caisse et liquidités du compte-titres sont
-imposables~; les comptes d'épargne réglementés et les
-comptes à terme ne le sont pas \cite[art.~21]{cdtd1927}. 
+\hl{note de bas de page voir point 1 2 3 de la référence, mettre les articles pertinents}
 
 \subsection{Garanties et protection de l'investisseur}
 
@@ -604,6 +602,8 @@ séparément des actifs propres de l'institution et restitués
 par ailleurs les créances jusqu'à 20\,000~euros par
 investisseur, sans couvrir les pertes de valeur résultant
 des fluctuations de marché \cite{directive97_9_ce}.
+
+\hl{à mettre dans définition}
 
 \newpage
 
