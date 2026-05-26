@@ -306,9 +306,7 @@ croisement potentiel.
 
 \subsubsection*{Inflation et évolution du revenu non modélisées}
 
-Nous ignorons l'inflation et l'évolution du revenu de l'investisseur par simplification~; 
-les versements
-restent ainsi nominalement constants sur toute la durée de la simulation.
+Nous ignorons l'inflation et l'évolution du revenu de l'investisseur par simplification.
 
 \subsubsection*{Investissement intégral du versement annuel}
 
@@ -316,12 +314,11 @@ Dans la majorité des cas,
 acquérir une part d'un actif exige de débourser exactement son prix de marché.
 Cependant, certains néocourtiers 
 proposent l'achat de fractions de parts et permettent ainsi d'investir n'importe
-quel montant sans résidu.
+quel montant sans résidu (e.g. Trade Republic 
+\footnote{\url{https://www.zonebourse.com/actualite-bourse/Trade-Republic-rend-accessible-l-investissement-fractionne-et-franchit-une-nouvelle-etape-cle-d-41933267/}}).
 
 Nous supposons donc que le montant versé est intégralement investi chaque année, ce qui est
 cohérent avec le fractionnement d'actifs.
-
-\hl{source}
 
 \subsubsection*{Effort d'épargne constant jusqu'à l'échéance}
 
@@ -330,6 +327,8 @@ branche~23, un rachat avant le 60\textsuperscript{e} anniversaire entraîne une 
 à 33\,\% de la valeur de rachat auxquels s'ajoutent des frais de sortie.
 Nous supposons donc un effort d'épargne constant, sans rachat anticipé ni interruption des
 versements, pour ne pas modéliser une option structurellement défavorable.
+
+\hl{d'office ?}
 
 \subsubsection*{Horizon commun fixé à 65~ans}
 
@@ -341,9 +340,9 @@ aux alentours de cet âge.
 \subsubsection*{Âge de début plafonné à 55~ans}
 
 Nous supposons que les versements débutent au plus tard à 55~ans pour préserver
-l'homogénéité de la comparaison. Cette limite s'appuie sur les conditions de la taxe anticipative.
-
-\hl{faire cf vers épargne pension et long terme}
+l'homogénéité de la comparaison. Cette limite s'appuie sur les conditions de la taxe
+anticipative (cf.~\hyperref[subsub:taxe_anticipative_ep]{l'épargne-pension} et
+\hyperref[subsub:taxe_anticipative_elt]{l'épargne à long terme}).
 
 \subsubsection*{Portefeuille entièrement investi en actions via un ETF accumulant}
 
@@ -545,7 +544,9 @@ contrats d'épargne-pension sont exemptés de la taxe sur les
 opérations d'assurance de 2\,\%  habituellement prélevée sur
 chaque prime, améliorant d'autant la rentabilité nette \cite[art.~175\textsuperscript{3} et 176\textsuperscript{2}]{cdtd1927}.
 
+\phantomsection
 \subsubsection*{Fiscalité à la sortie : la taxe anticipative}
+\label{subsub:taxe_anticipative_ep}
 
 Le capital constitué est soumis à la taxe
 anticipative qui est prélevée au taux de 8\,\% sur la valeur de rachat
@@ -615,7 +616,9 @@ et 2\,450~euros pour le plafond absolu pour l'année 2026, malgré ce qui était
 prévu \cite{cir92_circ2026}.
 L'économie fiscale maximale s'élève donc à 735~euros. 
 
+\phantomsection
 \subsubsection*{Fiscalité à la sortie : la taxe anticipative}
+\label{subsub:taxe_anticipative_elt}
 
 Le régime fiscal de l'épargne à long terme suit un mécanisme
 de taxation différée analogue à celui de l'épargne-pension,
@@ -624,7 +627,7 @@ au taux de 10\,\% et intervient automatiquement au
 60\textsuperscript{e} anniversaire de l'assuré pour les
 contrats souscrits avant le 55\textsuperscript{e}
 anniversaire. Pour les contrats conclus après 55~ans, le
-prélèvement est reporté au dixième anniversaire du contrat \cite[art.~184 à 186]{cdtd1927}. 
+prélèvement est reporté au dixième anniversaire du contrat \cite[art.~184 à 186]{cdtd1927}.
 
 La réduction d'impôt
 n'est acquise que si elle est demandée dans la déclaration
