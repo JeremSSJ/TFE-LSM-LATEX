@@ -284,22 +284,43 @@ champ de la simulation et en conditionnent les résultats.
 \subsubsection*{Rendement annuel brut constant.}
 
 Les taux de rendement retenus sont des rendements espérés sur le long terme. Par 
-simplification, nous appliquons les mêmes taux à chaque véhicule.
+simplification, nous appliquons les mêmes taux de manière uniforme à chaque véhicule.
 En pratique, le rendement annuel d'un portefeuille varie d'une année à l'autre,
 et dépend de l'allocation d'actifs choisie par l'investisseur.
 
-\subsubsection*{Versements annuels constants.} Les versements sont annuels et identiques d'une
-année à l'autre. Un versement mensuel aurait introduit une fréquence de
-capitalisation supplémentaire sans modifier la logique de comparaison~; le versement
-annuel est par ailleurs cohérent avec le cadre légal des contrats branche~23, dont
-les primes peuvent être uniques ou périodiques. L'inflation et l'évolution du revenu
-de l'investisseur ne sont pas modélisés. Par ailleurs, le montant versé chaque année
-est supposé intégralement investi dans l'actif, indépendamment du cours de celui-ci
-au moment de l'achat. En pratique, le prix d'une part d'ETF fluctue dans le temps,
-de sorte que le même montant permet d'acquérir un nombre de parts variable d'une
-année à l'autre. Cette abstraction reste toutefois acceptable dans la mesure où de
-nombreux courtiers proposent aujourd'hui l'achat de fractions de parts, permettant
-d'investir n'importe quel montant sans contrainte liée à la valeur d'une part entière.
+\subsubsection*{Versements annuels constants.}
+
+Nous supposons des versements annuels et identiques d'une année à l'autre. Un versement mensuel
+aurait introduit une fréquence de capitalisation supplémentaire sans modifier la logique
+de comparaison~; le versement annuel est par ailleurs cohérent avec le cadre légal des
+contrats branche~23, dont les primes peuvent être uniques ou périodiques.
+
+\subsubsection*{Grille de versements de 1~euro jusqu'au plafond légal.}
+
+La simulation balaie des versements annuels entiers allant de 1~euro jusqu'aux plafonds
+légaux au-delà desquels les réductions d'impôt cessent de s'appliquer pour les contrats
+d'assurance-vie concernés. Partir de 1~euro n'est pas représentatif de la pratique, mais
+cette granularité est nécessaire pour identifier les points de croisement entre les deux
+véhicules. Si, par exemple, le compte-titres est plus avantageux en dessous d'un certain
+montant de versement et que l'assurance-vie le devient au-delà, une simulation débutant
+à un montant trop élevé ne permettrait pas de localiser ce seuil et fournirait donc une
+information incomplète sur la zone de préférence de chaque instrument.
+
+\subsubsection*{Inflation et évolution du revenu non modélisées.}
+
+L'inflation et l'évolution du revenu de l'investisseur au fil du temps ne sont pas
+modélisées. Les versements restent donc nominalement constants sur toute la durée de
+la simulation.
+
+\subsubsection*{Investissement intégral du versement annuel.}
+
+Le montant versé chaque année est supposé intégralement investi dans l'actif,
+indépendamment du cours de celui-ci au moment de l'achat. En pratique, le prix d'un
+actif fluctue dans le temps, de sorte que le même montant permet d'acquérir un
+nombre de parts variable d'une année à l'autre. Cette abstraction reste toutefois
+acceptable dans la mesure où de nombreux courtiers proposent aujourd'hui l'achat de
+fractions de parts, permettant d'investir n'importe quel montant sans contrainte liée
+à la valeur d'une part entière.
 
 \subsubsection*{Effort d'épargne constant jusqu'à l'échéance.} La simulation exclut tout rachat
 anticipé et toute interruption des versements. Pour la branche~23, un rachat avant
