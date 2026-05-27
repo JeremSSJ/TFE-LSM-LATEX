@@ -1182,7 +1182,8 @@ et pour la branche~23, un chargement de 2,83\,\%\cite[p.~27]{fsma_couts_piliers}
 et des frais de gestion de 2,34\,\%\cite[p.~30]{fsma_couts_piliers}.
 
 Le scénario~C transpose les frais de la branche~23 vers le compte-titres,
-constituant une borne supérieure défavorable à ce dernier 
+les frais d'entrée et de gestion sont respectivement
+transposés aux frais de courtage et de garde du compte-titres
 (cf.~\hyperref[subsub:frais_choisis]{Frais choisis}).
 
 \begin{table}[h!]
@@ -1320,66 +1321,43 @@ sortie.
 
 Le scénario~A supprime tous les frais des deux côtés, de façon à observer
 l'avantage fiscal de l'ELT à l'état pur. Le scénario~C fait l'inverse~: il
-applique les mêmes frais au compte-titres qu'à l'ELT (2,83\,\% à l'entrée
-et 2,34\,\% de gestion), ce qui neutralise l'écart tarifaire. Les heatmaps
-correspondantes sont présentées en annexe
-(figures~\ref{fig:elt_frais_0_sans_taxe}, \ref{fig:elt_frais_0_avec_taxe},
-\ref{fig:elt_frais_majore_sans_taxe} et~\ref{fig:elt_frais_majore_avec_taxe}).
-
-\hl{tout ça on dit déjà, peut être retirer si trop redondant}
+applique au compte-titres des frais au même taux que ceux de l'ELT (2,83\,\% à l'entrée
+et 2,34\,\% de gestion), ce qui neutralise l'écart tarifaire.
 
 \subsubsection*{Résultats principaux}
 
-Pour le scénario~A sans taxe sur les plus-values, l'ELT domine
-presque partout. Le compte-titres ne l'emporte que dans les zones à rendement
-élevé et horizon long~: de 18 à 27~ans à 7\,\%, de 18 à 33~ans à 8\,\%,
-de 18 à 38~ans à 9\,\% et de 18 à 41~ans à 10\,\%. Ces exceptions
-correspondent à des situations où la taxe sur les opérations d'assurance de
-2\,\%, conjuguée à la taxe anticipative de
-10\,\%, finit par excéder
-l'ensemble des réductions d'impôt cumulées sur toute la durée du contrat.
-C'est en quelque sorte la limite inhérente au régime fiscal de l'ELT,
-indépendante du niveau des frais.
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.5\textwidth]{media/elt_frais_0_sans_taxe.png}
+  \caption{Dominance ELT\,/\,CT --- Scénario~A, sans taxe sur les
+           plus-values.}
+  \label{fig:elt_frais_0_sans_taxe}
+\end{figure}
 
-\hl{pour scenario A juste TOA 2 pourcents qui réduit directement les versements
+Dans le scénario~A, les seuls désavantages de l'ELT sont la taxe sur les
+opérations d'assurance de 2\,\% et la taxe anticipative de 10\,\% à
+60~ans~; sans frais d'entrée ni frais de gestion récurrents, l'avantage
+fiscal est moins rogné et l'ELT domine presque
+partout. Le compte-titres ne s'impose que dans les zones à rendement
+élevé et horizon long, ces zones s'agrandissent avec le rendement. Là, les intérêts
+composés du compte-titres, qui ne supporte ni frais ni taxe sur les
+plus-values, finissent par supplanter l'ensemble des avantages de l'ELT.
 
-+ 10 pourcents anticipative à 60 ans 
-mais pas d'autres frais sur prime ni récurrent sur réserve
-ce qui grignote moins l avantage des éco fiscale et permet une bonne capitalisation
-
-à l opposé sur des horizons plus longs et rendements plus élevés
-les intérêts composés du compte titres (qui ne subit toujours pas de frais et taxe pv )
-supplantent tous les avantages de l elt
-
-}
-
-
-\hl{pour scenario c avec frais majoré donc 
-frais elt transposés à ct l implication principale 
-est pour laquelle les comptes titres arrivent encore à gagner est 
-que les frais sont ponctionnés sur le côté 
-et ne réduisent ni les versements ni le capital en train de s accumuler
-
-et donc ils sont encore avantageux sur horizons long et rendements élevés
-
-mais à rendement plus faible économies fiscales donnent trop l avantage à l elt 
-
-}
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.5\textwidth]{media/elt_frais_majore_sans_taxe.png}
+  \caption{Dominance ELT\,/\,CT --- Scénario~C, sans taxe sur les
+           plus-values.}
+  \label{fig:elt_frais_majore_sans_taxe}
+\end{figure}
 
 Lorsque l'on égalise les frais (scénario~C), ces zones se réduisent
-nettement~ \hl{par rapport à B}: il ne reste que quatre bandes, à 7\,\% de 18 à 32 ans, à 8\,\% de 18 à 39 ans, à 9\,\% de 18 à 44~ans et à
-10\,\% de 18 à 46~ans. L'extension est en réalité significative~: en passant du scénario~A
-au scénario~C, les zones où le compte-titres l'emporte s'élargissent.
-Ce résultat peut sembler paradoxal puisque les frais sont désormais
-nominalement identiques des deux côtés, mais il s'explique par la façon
-dont ils sont prélevés~: pour le compte-titres, les frais sont certes
-calculés sur le capital accumulé, mais ils sont supportés en dehors du
-portefeuille, si bien que l'intégralité du capital continue à se
-capitaliser~; pour l'épargne long terme, ces mêmes frais sont en revanche
-déduits directement du capital accumulé, réduisant ainsi la base de
-composition à chaque période. À taux nominalement égal, le compte-titres
-conserve donc un avantage structurel de capitalisation que le scénario~C
-met précisément en évidence.
+nettement par rapport au scénario~B, bien que le compte-titres parvienne encore à
+s'imposer à rendements élevés et horizons longs car ses frais sont
+prélevés en dehors du portefeuille. L'intégralité du capital continue
+de se capitaliser, contrairement à l'ELT où ces mêmes frais sont déduits
+directement du capital accumulé. En revanche, à rendements plus faibles,
+les économies fiscales de l'ELT s'imposent.
 
 \subsubsection*{Incidence de la taxe sur les plus-values}
 
