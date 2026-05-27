@@ -675,59 +675,32 @@ est comptabilisée en t+1 comme en pratique (Art. 353 CIR 92).
 
 \hl{faire citation}
 
-\subsubsection*{Flux annexes traités comme certains et taux OLO fixes}
+\subsubsection*{Flux annexes traités comme certains}
+Nous supposons que les flux annexes (frais de courtage, de garde de compte-titres
+et économies fiscales de la branche~23) sont certains, ce qui justifie l'emploi
+du taux sans risque, assimilé au taux OLO \cite{Streel2017}, comme taux de référence pour leur capitalisation~\cite[p.~156]{berk2020}.
 
-\hl{coût opportunité des flux annexes}
+\subsubsection*{Courbe OLO~: données et date de référence}
+Nous supposons que la courbe OLO belge est fixe à sa valeur observée à la date
+du 30 avril 2026. Les taux sont tirés de
+la publication de la Banque nationale de Belgique~\cite{bnb_olo} et couvrent
+des maturités allant d'un à trente ans.
 
-Nous supposons que les flux annexes sont certains et que la courbe OLO est fixe à sa
-valeur observée à la date de rédaction, pour justifier l'emploi d'un taux sans risque
-et d'un référentiel de capitalisation stable sur l'ensemble de la simulation\footnote{source}.
+\subsubsection*{Convention pour les maturités supérieures à trente ans}
+Nous supposons que pour les flux dont la maturité résiduelle excède trente ans,
+le taux OLO à trente ans s'applique par convention, faute de données publiées
+au-delà de cet horizon.
 
-\hl{Les
-données publiées par la Banque nationale de Belgique couvrent des maturités allant jusqu'à
-30~ans. + date qu on a pris pour les taux}
+\subsubsection*{Réinvestissement au taux OLO de même maturité}
+Nous supposons que les intérêts générés sont réinvestis au taux OLO de la
+maturité initiale du flux~: un coût capitalisé sur vingt ans l'est au taux
+OLO à vingt ans, par intérêts composés, sur toute la durée.
 
-\hl{Pour les durées résiduelles supérieures à 30~ans, le taux OLO à 30~ans est
-retenu par convention.}
-
-\hl{dire que on part du principe que taux olo sont réinvesti au même taux par capitalisation}
-
-
-Les frais de courtage et de garde liés au compte-titres sont prélevés en dehors
-de la réserve, mais les sommes ainsi décaissées auraient pu être placées et
-générer un rendement jusqu'à l'échéance~: ne pas en tenir compte reviendrait à
-ignorer leur coût d'opportunité. Les additionner sans transformation temporelle
-serait donc inexact~: un euro décaissé aujourd'hui n'est pas équivalent à un euro
-décaissé dans le futur, puisque le premier aurait pu être placé et porter intérêts. 
-Par cohérence, les économies fiscales de la
-branche~23 sont soumises au même traitement~; il semblait incohérent d'appliquer
-la valeur temps de l'argent aux seuls frais du compte-titres tout en traitant les
-remboursements fiscaux comme des flux contemporains. Le
-taux retenu pour cette capitalisation est un taux sans risque~: pour un flux
-certain, le taux de référence approprié est le taux d'intérêt d'un titre de dette
-d'État \cite[p.~156]{berk2020} \hl{peut dire dans hypothèse qu on considère ça comme flux certains
-}. Le référentiel choisi est celui des OLO belges
-(Obligations Linéaires), obligations d'État qui
-constituent l'instrument sans risque de référence pour un investisseur résident
-en Belgique~; leur courbe est publiée pour des maturités allant de un à trente ans \cite{bnb_olo}.
-Dans la simulation, une simplification est retenue~: le taux OLO est utilisé comme
-taux approximatif sans risque, sans chercher à modéliser par quels moyens ces
-sommes auraient été investies ni les frais que cela engendrerait.
-
-\hl{justification à trouver}
-
-Plutôt que de retenir un taux unique pour l'ensemble des flux, la simulation
-applique le principe de correspondance par durée. Il est en effet nécessaire que
-le terme du taux d'intérêt et celui du flux coïncident~: un flux survenant dans
-deux ans doit être capitalisé au taux à deux ans, et un flux survenant dans dix
-ans au taux à dix ans \cite[p.~149--150]{berk2020}. Chaque flux annexe est donc
-capitalisé au taux OLO dont la maturité correspond précisément au nombre d'années
-restantes entre ce flux et l'échéance~; un coût supporté lors de la dernière année
-de versement ne fait l'objet d'aucune capitalisation supplémentaire. Pour les
-durées supérieures à trente ans, le taux de l'OLO à trente ans est appliqué par
-convention.
-
-\hl{justifier que 30 pourcents impots sur intérêt olo }
+\subsubsection*{Coût d'opportunité et capitalisation à l'échéance}
+Les sommes décaissées au titre des frais auraient pu être placées jusqu'à l'échéance. 
+Nous choisissons de les capitaliser au taux OLO dont la maturité correspond au nombre
+d'années restantes jusqu'à l'horizon~\cite[p.~149-150]{berk2020}. Les économies
+fiscales de la branche~23 reçoivent le même traitement par cohérence.
 
 \subsection{Le critère de comparaison~: le capital final net à l'échéance}
 
@@ -795,6 +768,13 @@ utilisés est présenté au tableau~\ref{tab:olo_referentiel} en annexe.
 \hl{+ source}
 
 \hl{ correspondance par maturité}
+
+\subsubsection*{Taux OLO net de précompte mobilier}
+Nous supposons que le précompte mobilier de 30\,\% est déduit des intérêts
+OLO~: le flux effectivement perçu est le taux OLO brut multiplié par
+$(1 - 0{,}30)$, soit un taux net de 70\,\% du taux brut \cite[art.~171]{cir92_2025}. Nous faisons
+abstraction des éventuelles exonérations fiscales ainsi que du véhicule
+concret par lequel ces sommes seraient investies.
 
 \subsubsection*{Construction pas à pas du capital final net à l'échéance} 
 
