@@ -513,9 +513,9 @@ même durée et sur une plage entière de versements annuels, ce qui permet de
 déterminer non seulement lequel domine, mais à partir de quel niveau de
 versement et dans quelle proportion.
 
-Les résultats sont visualisés sous forme de heatmaps bidimensionnelles \hl{cfr résultats} dont
+Les résultats sont visualisés sous forme de heatmaps bidimensionnelles \ref{sec:resultats_elt} dont
 l'axe~X représente le rendement annuel brut (de 0\,\% à 10\,\%\footnote{Cela permet d avoir un éventail large et de voir comment les tendances évoluent}) et l'axe~Y
-l'âge de début des versements (de 18 à 55~ans) \hl{section limitation cfr}. Chaque cellule indique
+l'âge de début des versements (de 18 à 55~ans) \ref{subsec:limites-methodo}. Chaque cellule indique
 l'instrument dominant global (bleu pour la branche~23, vert pour le CT, gris
 pour l'ex~æquo), dont l'intensité de couleur reflète la force de la dominance.
 Lorsqu'un point de croisement existe, le versement-seuil correspondant est
@@ -527,14 +527,15 @@ L'espace d'exploration couvre~:
   \item 38~profils d'âge d'entrée~;
   \item 11~niveaux de rendement annuel brut~;
   \item Plages de versements de 1~€ au plafond légal~;
-  \item Quatre configurations fiscales~\hl{cf section config fisc};
+  \item Quatre configurations fiscales \ref{sub:scenarii_fiscaux};
   \item Trois scénarios de frais \ref{sub:scenarii_frais}.
-\end{itemize} 
+\end{itemize}
 
 Cela représente $38 \times 11 \times 4 \times 3 = 5\,016$~combinaisons, chacune
 parcourant la plage de versements de maximum 2450 niveaux.
 
 \subsection{Limites et hypothèses de la méthodologie}
+\label{subsec:limites-methodo}
 
 La méthodologie repose sur un ensemble d'hypothèses simplificatrices qui délimitent le
 champ de la simulation et en conditionnent les résultats.
@@ -668,10 +669,12 @@ présent et la date~1 à la fin de la première période \cite[p.~94]{berk2020}.
 Les versements sont supposés constants d'année en année (annuités constantes) \cite[p.~108]{berk2020},
 on considère que chaque versement intervient en fin de période. 
 
-Dans notre modèle, l'économie fiscale générée par la réduction d'impôt (Art. 145/9 CIR 92)
-est comptabilisée en t+1 comme en pratique (Art. 353 CIR 92).
+Dans notre modèle, l'économie fiscale générée par la réduction d'impôt est
+comptabilisée en~$t+1$. En pratique, l'exercice d'imposition~$t+1$ est établi sur
+les revenus de la période imposable~$t$, si bien que l'impôt afférent à l'année~$t$
+et avec lui la réduction d'impôt, n'est établi qu'en~$t+1$ \cite[art.~360]{cir92_2025}.
 
-\hl{faire citation}
+\hl{à faire relire}
 
 \subsubsection*{Flux annexes traités comme certains}
 Nous supposons que les flux annexes (frais de courtage, de garde de compte-titres
@@ -1258,6 +1261,8 @@ ligne par ligne les valeurs calculées par le programme à celles obtenues
 manuellement, sur un ensemble représentatif de profils d'âge et de niveaux de
 rendement. Des tests automatisés ont par ailleurs été mis en place pour détecter
 toute erreur de régression lors d'une modification ultérieure du modèle.
+
+\newpage
 
 %==========================================================================
 \section{Résultats~: épargne long terme (branche~23) vs compte-titres}
