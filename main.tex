@@ -764,6 +764,8 @@ est retenu sur les intérêts \cite[art.~171]{cir92_2025}, d'où~:
 Le référentiel complet des taux utilisés est présenté au
 tableau~\ref{tab:olo_referentiel} en annexe.
 
+\subsection{La construction du capital final net : branche~23}
+
 \subsubsection*{Le versement net investi}
 \label{sub:versement_net_b23}
 
@@ -920,58 +922,110 @@ tableau~\ref{tab:diff_ep_elt}.
   \end{tabular}
 \end{table}
 
-\subsubsection*{Capital final net à l'échéance : compte-titres}
-\label{sub:va_ct_formule}
+\subsection{La construction du capital final net : compte-titres}
 
-Pour le compte-titres, le versement brut $v$ entre intégralement dans la
-réserve. Quatre types de coûts sont comptabilisés séparément comme des flux
-sortants~: les frais de courtage et la TOB, prélevés à chaque versement~; les
-frais de garde, prélevés chaque année sur la réserve~; et un frais de courtage
-à la sortie, prélevé une seule fois sur la valeur liquidée avant application de
-la taxe sur les plus-values~:
+\subsubsection*{Les coûts d'entrée~: courtage et TOB}
+\label{sub:couts_entree_ct}
 
-\hl{corriger}
-
+Contrairement à la branche~23, le versement brut $v$ entre intégralement dans
+la réserve~; aucun frais n'en est déduit à l'entrée. En revanche, deux coûts
+sont prélevés séparément à chaque versement~: les frais de courtage et la taxe
+sur les opérations de bourse (TOB).
 \begin{align}
-  \text{Courtage}_t      &= v \times f_e^{\text{CT}} \\
-  \text{TOB}_t            &= v \times \tau_{\text{TOB}} \\
-  \text{FraisGarde}_t    &= R_t \times f_{\text{garde}}^{\text{CT}} \\
-  \text{CourtageSortie}  &= R_N \times f_e^{\text{CT}}
+  \text{Courtage}_t &= v \times f_e^{\text{CT}} \\
+  \text{TOB}_t      &= v \times \tau_{\text{TOB}}
 \end{align}
-où $f_e^{\text{CT}}$ est le taux de frais de courtage (appliqué à l'entrée et
-à la sortie), $\tau_{\text{TOB}}$ le taux de la TOB, et $f_{\text{garde}}^{\text{CT}}$
-le taux de frais de garde annuels appliqué sur la réserve en fin d'année~$t$.
+Ces montants constituent des sorties de trésorerie réelles~; ils sont
+capitalisés jusqu'à l'échéance pour entrer dans le calcul du capital final net.
 
-La réserve s'accumule en deux temps selon la même logique que pour la
-branche~23, avec la même formule de TCT.
+\begin{quote}
+\textit{Exemple~: Antoine verse 1\,000~€ dans son compte-titres. Les frais de
+courtage s'élèvent à 0{,}5\,\% ($= 5$~€) et la TOB à 1{,}32\,\% ($= 13{,}20$~€).
+Ces 18{,}20~€ sortent de sa poche à chaque versement sans jamais entrer dans la
+réserve~; c'est pourquoi ils doivent être capitalisés jusqu'à l'échéance pour
+mesurer leur vrai coût.}
+\end{quote}
 
+\subsubsection*{Les frais de garde annuels}
+\label{sub:frais_garde_ct}
+
+Chaque année, des frais de garde sont prélevés proportionnellement à la valeur
+de la réserve. Ils réduisent directement la réserve et sont également
+comptabilisés comme flux sortants dans le calcul du capital final net.
+\begin{equation}
+  \text{FraisGarde}_t = R_t \times f_{\text{garde}}^{\text{CT}}
+\end{equation}
+
+\begin{quote}
+\textit{Exemple~: La réserve d'Antoine atteint 10\,000~€ en cours d'accumulation.
+Avec des frais de garde de 0{,}2\,\%, il supporte $10\,000 \times 0{,}002 = 20$~€
+de frais cette année-là. Répétés et croissants à mesure que la réserve grossit,
+ces frais représentent un coût cumulé important une fois ramenés à l'échéance.}
+\end{quote}
+
+\subsubsection*{L'accumulation de la réserve}
+\label{sub:accumulation_ct}
+
+La réserve du compte-titres se capitalise chaque année au taux de rendement
+brut. Les frais de garde sont ensuite prélevés sur la valeur capitalisée, puis
+le versement de l'année est crédité.
 \begin{align}
-  \widetilde{R}_0 &= v \notag \\
   \widetilde{R}_t &= R_{t-1} \times (1 + r) \notag \\
-  R_t &= \widetilde{R}_t - \text{TCT}_t + v
+  R_t             &= \widetilde{R}_t - \text{FraisGarde}_t + v
 \end{align}
-Le capital net à l'échéance tient compte de la taxe éventuelle sur les
-plus-values~:
+
+\begin{quote}
+\textit{Exemple~: Antoine dispose d'une réserve de 10\,000~€ en début d'année,
+placée à 5\,\%. Elle grossit à $10\,000 \times 1{,}05 = 10\,500$~€, puis les
+frais de garde de 20~€ sont prélevés~: 10\,480~€. Le versement annuel de 1\,000~€
+porte ensuite la réserve à 11\,480~€ en fin d'année. Cette logique se répète
+jusqu'à l'échéance.}
+\end{quote}
+
+\subsubsection*{La taxe sur les plus-values à la sortie}
+\label{sub:taxe_pv_ct}
+
+À l'échéance, la plus-value réalisée est la différence entre la valeur
+liquidative finale et la somme totale investie. Une partie est exonérée~:
+10\,000~€ de base, augmentés de 1\,000~€ par année d'investissement jusqu'à
+cinq ans d'ancienneté supplémentaires. Seule la fraction excédant cette
+exonération est soumise au taux $\tau_{\text{PV}}$~:
 \begin{align}
   \text{plusValue}        &= \max\!\left(0;\; R_N - {\textstyle\sum_{t=0}^{N}} v\right) \notag \\
   \text{exonération}      &= 10\,000 + \min(N,\,5) \times 1\,000 \notag \\
   \text{plusValueTaxable} &= \max\!\left(0;\; \text{plusValue} - \text{exonération}\right) \notag \\
   C_N^{\text{net}}        &= R_N - \text{plusValueTaxable} \times \tau_{\text{PV}}
 \end{align}
-Le prix de revient est calculé par la méthode du coût total, équivalente à FIFO
-lorsque toutes les parts sont cédées simultanément à l'échéance.
+Un frais de courtage de sortie est également comptabilisé au moment de la
+liquidation~:
+\begin{equation}
+  \text{CourtageSortie} = R_N \times f_e^{\text{CT}}
+\end{equation}
 
-\hl{expliquer fifo ?}
+\begin{quote}
+\textit{Exemple~: À 65~ans, Antoine dispose d'une réserve finale de 80\,000~€
+après 35~ans de versements de 1\,000~€, soit 35\,000~€ investis au total.
+La plus-value est de 45\,000~€. L'exonération s'élève à
+$10\,000 + 5 \times 1\,000 = 15\,000$~€. La plus-value taxable de 30\,000~€
+est imposée à 10\,\%~: 3\,000~€ de taxe. Le capital net s'établit à
+$80\,000 - 3\,000 = 77\,000$~€.}
+\end{quote}
 
-Le capital final net à l'échéance est égal au capital net diminué de l'ensemble
-des coûts capitalisés à l'échéance et du courtage de sortie~:
+\subsubsection*{Le capital final net du compte-titres}
+\label{sub:va_ct_formule}
+
+Le capital net dégagé à l'échéance ne reflète pas le vrai coût du
+compte-titres, car il ne tient pas compte des frais payés tout au long de
+l'investissement. Pour comparer équitablement avec la branche~23, l'ensemble
+de ces coûts est ramené à la date de référence commune par capitalisation au
+taux OLO net, puis soustrait du capital net~:
 \begin{align}
   \text{CFN}_{\text{CT}} &=
     \underbrace{C_N^{\text{net}}}_{\text{capital net}}
   -
     \underbrace{%
       \sum_{t=0}^{n} \text{TOB}_t \times \bigl(1 + r_{\text{OLO}}(n-t)\bigr)^{n-t}
-    }_{\text{TOB capitalisée}} 
+    }_{\text{TOB capitalisée}}
   -
     \underbrace{%
       \sum_{t=0}^{n} \text{Courtage}_t \times \bigl(1 + r_{\text{OLO}}(n-t)\bigr)^{n-t}
@@ -984,6 +1038,15 @@ des coûts capitalisés à l'échéance et du courtage de sortie~:
   -
     \underbrace{\text{CourtageSortie}}_{\text{courtage de sortie}}
 \end{align}
+
+\begin{quote}
+\textit{Exemple~: Sur ses 35~ans d'investissement, Antoine a payé chaque année
+18{,}20~€ de courtage et de TOB, capitalisés jusqu'à l'échéance. Les frais de
+garde annuels sur une réserve croissante représentent également un coût cumulé
+significatif une fois ramenés à l'échéance. L'ensemble de ces coûts capitalisés,
+déduit du capital net, donne le capital final net du compte-titres, directement
+comparable à celui de la branche~23.}
+\end{quote}
 
 \subsubsection*{Comparaison et notion de dominance}
 \label{sub:comparaison}
