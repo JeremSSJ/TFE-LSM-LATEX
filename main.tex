@@ -764,48 +764,6 @@ est retenu sur les intérêts \cite[art.~171]{cir92_2025}, d'où~:
 Le référentiel complet des taux utilisés est présenté au
 tableau~\ref{tab:olo_referentiel} en annexe.
 
-\subsubsection*{Construction pas à pas du capital final net à l'échéance} 
-
-\hl{à mon avis réduire cette partie}
-
-Avant de présenter les formules propres à chaque véhicule, il est utile de
-poser le cadre de calcul commun.
-
-À chaque année~$t$, la réserve investie croît selon les intérêts composés et les
-versements annuels. En notant $v_{\text{net}}$ le montant effectivement investi
-après les éventuels taxes et frais d'entrée, $r$ le rendement annuel brut et
-$f_g$ les frais de gestion annuels, la réserve en fin d'année~$t$ est~:
-\begin{equation}
-  R_0 = v_{\text{net}}, \qquad
-  R_t = R_{t-1} \times (1 + r) \times (1 - f_g) + v_{\text{net}}
-\end{equation}
-La croissance géométrique des intérêts composés signifie que les premières années
-de versements contribuent de manière disproportionnée au capital final~: un
-versement effectué à l'âge de 25~ans bénéficiera de quarante années de
-capitalisation, contre seulement dix pour un versement effectué à 55~ans.
-
-Les frais d'entrée réduisent soit directement le montant investi dans la réserve,
-soit sont comptabilisés comme des sorties d'argent récurrentes capitalisées
-jusqu'à l'échéance. Les frais de gestion annuels s'appliquent à la réserve en fin de
-chaque année via le facteur $(1 - f_g)$.
-
-Deux prélèvements fiscaux peuvent s'appliquer. Pendant la phase d'accumulation,
-la taxe sur les comptes-titres (TCT) réduit chaque année la réserve accumulée
-avant le versement de l'année en cours, si elle dépasse le seuil légal d'un
-million d'euros. À une certaine échéance, un prélèvement
-propre à chaque instrument s'ajoute. Le capital net
-$C_N^{\text{net}}$ est la réserve finale~$R_N$, déjà nette des TCT annuelles
-cumulées, diminuée de ce prélèvement.
-
-Le capital net $C_N^{\text{net}}$ constitue la première composante du capital
-final net~: il représente déjà la valeur de l'investissement à l'échéance.
-Les flux annexes (économies fiscales pour la branche~23, coûts récurrents pour
-le compte-titres) sont quant à eux capitalisés jusqu'à cette même échéance~:
-un flux survenant à l'année~$t$ est multiplié par le facteur
-$(1 + r_{\text{OLO}}(k))^k$ où $k = n - t$ est le nombre d'années restant
-entre ce flux et l'échéance, et $r_{\text{OLO}}(k)$ est le taux OLO net
-correspondant à cette durée résiduelle.
-
 \subsubsection*{Capital final net à l'échéance : branche~23}
 \label{sub:va_b23}
 
