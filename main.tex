@@ -1103,19 +1103,16 @@ deux capitaux finaux nets à l'échéance est calculée~:
 \begin{equation}
   \Delta(v) = \text{CFN}_{\text{B23}}(v) - \text{CFN}_{\text{CT}}(v)
 \end{equation}
-Lorsque $\Delta(v) > 0$, la branche~23 offre un capital final net à l'échéance supérieur pour
-ce versement~; lorsque $\Delta(v) < 0$, c'est le compte-titres qui l'emporte~;
-lorsque $|\Delta(v)| < 1$~€, les deux instruments sont considérés en situation
-d'ex~æquo.
+
 
 Pour chaque combinaison (âge de début, rendement), les indicateurs de dominance
 suivants sont calculés sur l'ensemble de la plage~:
 \begin{itemize}
   \item taux de dominance B23 (\%) : proportion des versements pour lesquels
-    $\text{CFN}_{\text{B23}} > \text{CFN}_{\text{CT}}$~;
+    le capital final net de la branche~23 est supérieur au capital final net du compte-titres~;
   \item taux de dominance CT (\%) : proportion des versements pour lesquels
-    $\text{CFN}_{\text{CT}} > \text{CFN}_{\text{B23}}$~;
-  \item taux d'égalité (\%) : proportion des versements en situation d'ex~æquo.
+    le capital final net du compte-titres est supérieur au capital final net de la branche~23~;
+  \item taux d'égalité (\%) : proportion des versements en situation d'ex~æquo (lorsqu'ils ont moins d'un euro de différence).
 \end{itemize}
 L'instrument présentant le taux de dominance le plus élevé est désigné dominant
 global pour cette combinaison. 
@@ -1126,7 +1123,7 @@ Un point de croisement est le versement annuel~$v^*$ à partir duquel la
 hiérarchie entre les deux instruments s'inverse. On parcourt la série des
 différences $\Delta(v)$ définie à la section~\ref{sub:comparaison} et l'on
 repère tout changement de signe entre deux versements consécutifs $v_i$ et
-$v_{i+1}$. Le croisement est localisé par interpolation linéaire~:
+$v_{i+1}$. Le croisement est localisé par interpolation linéaire \footnote{\url{https://fr.wikipedia.org/wiki/Interpolation_linéaire}} ~:
 \begin{equation}
   v^* = v_i - \Delta(v_i) \times \frac{v_{i+1} - v_i}{\Delta(v_{i+1}) - \Delta(v_i)}
 \end{equation}
