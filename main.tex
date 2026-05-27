@@ -177,145 +177,6 @@ leur fonctionnement, leur structure de coûts et leur régime fiscal, afin de po
 bases nécessaires à la simulation comparative.
 
 \newpage
-\subsection{Limites et hypothèses de la méthodologie}
-
-La méthodologie repose sur un ensemble d'hypothèses simplificatrices qui délimitent le
-champ de la simulation et en conditionnent les résultats.
-
-\subsubsection*{Rendement annuel brut constant}
-
-Nous supposons un taux de rendement constant correspondant au rendement espéré sur le
-long terme, appliqué uniformément à chaque véhicule et à chaque année. 
-En pratique, le rendement annuel varie d'une année à l'autre
-et dépend de l'allocation d'actifs choisie par l'investisseur.
-
-\subsubsection*{Versements annuels constants}
-
-Nous supposons des versements annuels et identiques d'une année à l'autre pour simplifier
-la modélisation. Ils sont appliqués de manière uniforme aux différents
-véhicules afin que la comparaison
-reste cohérente. En pratique, les investisseurs peuvent choisir de faire des versements mensuels, 
-trimestriels ou à des intervalles irréguliers.
-
-\subsubsection*{Grille de versements de 1~euro jusqu'au plafond légal}
-
-Nous supposons des montants annuels entiers allant de 1~euro, borne non réaliste en
-pratique, jusqu'aux plafonds légaux ouvrant droit à la réduction d'impôt. Ces derniers
-constituant la borne supérieure naturelle au-delà de laquelle l'avantage fiscal ne
-s'applique plus. Cette grille exhaustive permet de ne manquer aucun point de
-croisement potentiel.
-
-\subsubsection*{Inflation et évolution du revenu non modélisées}
-
-Nous ignorons l'inflation et l'évolution du revenu de l'investisseur par simplification.
-
-\subsubsection*{Investissement intégral du versement annuel}
-
-Dans la majorité des cas,
-acquérir une part d'un actif exige de débourser exactement son prix de marché.
-Cependant, certains néocourtiers 
-proposent l'achat de fractions de parts et permettent ainsi d'investir n'importe
-quel montant sans résidu (e.g. Trade Republic 
-\footnote{\url{https://www.zonebourse.com/actualite-bourse/Trade-Republic-rend-accessible-l-investissement-fractionne-et-franchit-une-nouvelle-etape-cle-d-41933267/}}).
-
-Nous supposons donc que le montant versé est intégralement investi chaque année, ce qui est
-cohérent avec le fractionnement d'actifs.
-
-\subsubsection*{Effort d'épargne constant jusqu'à l'échéance}
-
-Pour la
-branche~23, un rachat avant le 60\textsuperscript{e} anniversaire entraîne une imposition
-à 33\,\% de la valeur de rachat auxquels s'ajoutent des frais de sortie.
-Nous supposons donc un effort d'épargne constant, sans rachat anticipé ni interruption des
-versements, pour ne pas modéliser une option structurellement défavorable.
-
-\subsubsection*{Horizon commun fixé à 65~ans}
-
-Nous supposons un horizon commun de 65~ans pour tous les véhicules pour homogénéiser la
-comparaison. C'est un point d'arrêt naturel étant donné que les réductions d'impôt cessent après le
-65\textsuperscript{e} anniversaire pour l'épargne-pension et que la retraite est fixé
-aux alentours de cet âge.
-
-\subsubsection*{Âge de début plafonné à 55~ans}
-
-Nous supposons que les versements débutent au plus tard à 55~ans pour préserver
-l'homogénéité de la comparaison. Cette limite s'appuie sur les conditions de la taxe
-anticipative (cf.~\hyperref[subsub:taxe_anticipative_ep]{l'épargne-pension} et
-\hyperref[subsub:taxe_anticipative_elt]{l'épargne à long terme}).
-
-\subsubsection*{Portefeuille entièrement investi en actions via un ETF accumulant}
-
-Nous supposons un portefeuille intégralement investi via des ETF
-accumulants composés exclusivement d'actions pour éviter de modéliser une fiscalité sur les distributions de dividendes \cite{curvo_capitalisant_distribuant_2026}. 
-Ce type
-d'actif est accessible aussi bien en compte-titres qu'au travers des contrats d'épargne-pension
-et d'épargne à long terme (e.g. le fonds Vivium \footnote{\url{https://www.vivium.be/documents/d/vivium/managed-funds-reglements-de-gestion}}).
-
-\subsubsection*{Abstraction du spread}
-
-Nous ignorons le spread, frais implicite correspondant à l'écart entre le prix
-d'achat et le prix de vente d'un actif \cite{wikiped_spread}, car sa quantification
-générique est impossible. Celui-ci variant selon l'instrument et les conditions
-de marché.
-
-\subsubsection*{Frais choisis}
-
-Nous supposons des frais d'entrée et de garde fixes dans un scénario donné, dont nous
-fixons nous-mêmes les niveaux selon les scénarios. Dans le scénario à frais
-réalistes, nous les fixons pour les compte-titres à 0\,\%, sans perte de généralité,
-étant donné que ces frais sont souvent très faibles ou inexistants chez les néocourtiers 
-(e.g. Trade Republic \footnote{\url{https://support.traderepublic.com/fr-fr/719-How-expensive-is-it-to-open-a-securities-account}}). 
-
-Dans le scénario à frais majorés, nous alignons les frais moyens des compte-titres
-à ceux de l'assurance-vie. Notons qu'il est difficile d'obtenir des moyennes transparentes pour les frais
-des compte-titres. Malgré tout, nous pouvons considérer cette hypothèse étant donné qu'elle est suffisante
-pour observer une tendance générale entre les différents véhicules.
-
-\subsubsection*{Taxe sur les comptes-titres couverte par les frais de gestion de la branche~23}
-
-Nous supposons que la TCT éventuellement répercutée sur les assurés est incluse dans
-les frais de gestion retenus pour la branche~23, pour simplifier l'application de cette taxe.
-
-\subsubsection*{Fiscalité figée au moment de la rédaction}
-
-Nous supposons que la réglementation fiscale est celle en vigueur au moment de la
-rédaction, pour disposer d'un cadre légal stable et déterministe.
-
-\subsubsection*{Absence de risque de contrepartie}
-
-Nous supposons que les deux instruments sont exempts de tout risque de défaut de
-l'assureur ou du courtier, pour isoler les différences de structure fiscale et de frais.
-
-\subsubsection*{Réduction d'impôt systématiquement déclarée}
-
-Nous supposons que l'investisseur demande la réduction d'impôt chaque année sans
-exception, pour maximiser l'avantage fiscal de la branche~23. 
-Chaque année où elle n'est pas demandée, cette réduction est perdue de manière irréversible. 
-
-\subsubsection*{Épargne à long terme~: plafond de déduction atteint chaque année}
-
-Nous supposons que le revenu professionnel de l'investisseur est suffisant pour atteindre
-le plafond légal de 2\,450~euros chaque année, pour simplifier le calcul de la réduction
-d'impôt.
-
-\subsubsection*{Flux annexes traités comme certains et taux OLO fixes}
-
-Nous supposons que les flux annexes sont certains et que la courbe OLO est fixe à sa
-valeur observée à la date de rédaction, pour justifier l'emploi d'un taux sans risque
-et d'un référentiel de capitalisation stable sur l'ensemble de la simulation\footnote{Les
-données publiées par la Banque nationale de Belgique couvrent des maturités allant jusqu'à
-30~ans. Pour les durées résiduelles supérieures à 30~ans, le taux OLO à 30~ans est
-retenu par convention.}.
-
-\hl{nécessaire en fait puisque c est dit en bas ?}
-
-\subsubsection*{TOB au taux de 0,12\,\%}
-
-Nous supposons l'application de la TOB au taux de 0,12\,\% pour simuler le taux d'un
-ETF indiciel large inscrit auprès de la FSMA ou d'un régulateur d'un État
-membre de l'EEE (cf.~\hyperref[subsub:tob_cto]{La taxe sur les opérations de bourse}).
-
-\newpage
 \section{L'assurance-vie : la branche 23}
 
 En droit belge, les produits d'assurance-vie sont classés
@@ -644,147 +505,193 @@ compte (si belge) \cite[art.~201]{cdtd1927}.
 \section{Méthodologie de comparaison des véhicules d'investissement}
 \label{sec:methodo}
 %==========================================================================
-\hl{justifier le fait de verser à t+1 dans méthologie}
+
 \subsection{Présentation générale de l'approche}
 
-\hl{Dans le modèle, l'économie fiscale générée par la réduction d'impôt (Art. 145/9 CIR 92)
- est comptabilisée en t+1, conformément au mécanisme procédural de l'impôt des personnes physiques
-  belge : les dépenses de l'année t sont déclarées au cours de l'exercice d'imposition t+1 (Art. 353 CIR 92)
-  , et le remboursement est effectué dans les deux mois suivant l'envoi de l'avertissement-extrait
-   de rôle, lequel intervient pour la majorité des contribuables entre août et décembre de t+1 
-   (SPF Finances, Être remboursé : quand et comment, fin.belgium.be). Cette hypothèse constitue
-    une simplification conservative : dans les cas où l'AER est envoyé après janvier t+2, 
-    le flux réel serait légèrement surestimé en t+1.}
-
 La méthodologie repose sur une simulation déterministe comparant les trois
-véhicules jusqu'à l'horizon commun de 65~ans
-\hl{car comme nous l'avons vu éco fiscale jusque cet âge}, retenu comme référence dans la
-documentation des produits d'épargne-pension bien que la réforme de 2022
-porte progressivement la pension légale à 67~ans \cite{pension2030}. Pour chaque combinaison
+véhicules jusqu'à un horizon commun. Pour chaque combinaison
 d'âge de début et de taux de rendement, les instruments sont simulés sur la
 même durée et sur une plage entière de versements annuels, ce qui permet de
 déterminer non seulement lequel domine, mais à partir de quel niveau de
-versement et dans quelle proportion. Le résultat est exprimé en capital final
-net à l'échéance. 
+versement et dans quelle proportion.
 
-\url{https://www.vivium.be/documents/d/vivium/managed-funds-reglements-de-gestion}
-
-% https://www.justetf.com/fr-be/etf-profile.html?isin=IE00BYX2JD69#apercu
-
-\hl{pas vraiment d'argument pour 0 à 10 et 1 à plafond, si ce n est 
-que ça permet d avoir un éventail large et de voir comment ça se comporte visuellement
-ainsi on voit bien les tendances}
+Les résultats sont visualisés sous forme de heatmaps bidimensionnelles \hl{cfr résultats} dont
+l'axe~X représente le rendement annuel brut (de 0\,\% à 10\,\%\footnote{Cela permet d avoir un éventail large et de voir comment les tendances évoluent}) et l'axe~Y
+l'âge de début des versements (de 18 à 55~ans) \hl{section limitation cfr}. Chaque cellule indique
+l'instrument dominant global (bleu pour la branche~23, vert pour le CT, gris
+pour l'ex~æquo), dont l'intensité de couleur reflète la force de la dominance.
+Lorsqu'un point de croisement existe, le versement-seuil correspondant est
+annoté dans la cellule. Quatre heatmaps sont produites par scénario de frais,
+soit douze heatmaps au total.
 
 L'espace d'exploration couvre~:
 \begin{itemize}
-  \item 38~profils d'âge (18~$\to$~65~ans à 55~$\to$~65~ans, par pas d'un an)~;
-  \item 11~niveaux de rendement annuel brut (0\,\% à 10\,\%, par pas de 1\,\%)~;
-  \item Plages de versements de 1~€ au plafond légal (1\,350~€ pour l'EP,
-    2\,450~€ pour l'ELT)~;
-  \item Quatre configurations fiscales (EP/ELT~$\times$~CT sans ou avec taxe
-    sur les plus-values)~;
-  \item Trois scénarios de frais~: A~(frais nuls, effet fiscal pur),
-    B~(frais réalistes~: CT faibles, branche~23 aux tarifs du marché),
-    C~(CT pénalisé aux frais de la branche~23, borne supérieure) ---
-    voir section~\ref{sub:scenarii_frais}.
+  \item 38~profils d'âge d'entrée~;
+  \item 11~niveaux de rendement annuel brut~;
+  \item Plages de versements de 1~€ au plafond légal~;
+  \item Quatre configurations fiscales~\hl{cf section config fisc};
+  \item Trois scénarios de frais~ \hl{cf} \ref{sub:scenarii_frais}.
 \end{itemize} 
 
 Cela représente $38 \times 11 \times 4 \times 3 = 5\,016$~combinaisons, chacune
-parcourant jusqu'à 2\,450~niveaux de versement.
+parcourant la plage de versements de maximum 2450 niveaux.
 
-\subsection{Le profil investisseur}
+\subsection{Limites et hypothèses de la méthodologie}
 
-Un profil d'investisseur est défini par son âge de début des versements (variable,
-de 18 à 55~ans) et son horizon de retraite (fixé à 65~ans). La durée de
-l'investissement est donc~:
-\begin{equation}
-  \text{durée} = \text{âge de fin} - \text{âge de début}
-\end{equation} 
+La méthodologie repose sur un ensemble d'hypothèses simplificatrices qui délimitent le
+champ de la simulation et en conditionnent les résultats.
+
+\subsubsection*{Rendement annuel brut constant}
+
+Nous supposons un taux de rendement constant correspondant au rendement espéré sur le
+long terme, appliqué uniformément à chaque véhicule et à chaque année. 
+En pratique, le rendement annuel varie d'une année à l'autre
+et dépend de l'allocation d'actifs choisie par l'investisseur.
+
+\subsubsection*{Versements annuels constants}
+
+Nous supposons des versements annuels et identiques d'une année à l'autre pour simplifier
+la modélisation. Ils sont appliqués de manière uniforme aux différents
+véhicules afin que la comparaison
+reste cohérente. En pratique, les investisseurs peuvent choisir de faire des versements mensuels, 
+trimestriels ou à des intervalles irréguliers.
+
+\subsubsection*{Grille de versements de 1~euro jusqu'au plafond légal}
+
+Nous supposons des montants annuels entiers allant de 1~euro, borne non réaliste en
+pratique, jusqu'aux plafonds légaux ouvrant droit à la réduction d'impôt. Ces derniers
+constituant la borne supérieure naturelle au-delà de laquelle l'avantage fiscal ne
+s'applique plus. Cette grille exhaustive permet de ne manquer aucun point de
+croisement potentiel.
+
+\subsubsection*{Inflation et évolution du revenu non modélisées}
+
+Nous ignorons l'inflation et l'évolution du revenu de l'investisseur par simplification.
+
+\subsubsection*{Investissement intégral du versement annuel}
+
+Dans la majorité des cas,
+acquérir une part d'un actif exige de débourser exactement son prix de marché.
+Cependant, certains néocourtiers 
+proposent l'achat de fractions de parts et permettent ainsi d'investir n'importe
+quel montant sans résidu (e.g. Trade Republic 
+\footnote{\url{https://www.zonebourse.com/actualite-bourse/Trade-Republic-rend-accessible-l-investissement-fractionne-et-franchit-une-nouvelle-etape-cle-d-41933267/}}).
+
+Nous supposons donc que le montant versé est intégralement investi chaque année, ce qui est
+cohérent avec le fractionnement d'actifs.
+
+\subsubsection*{Effort d'épargne constant jusqu'à l'échéance}
+
+Pour la
+branche~23, un rachat avant le 60\textsuperscript{e} anniversaire entraîne une imposition
+à 33\,\% de la valeur de rachat auxquels s'ajoutent des frais de sortie.
+Nous supposons donc un effort d'épargne constant, sans rachat anticipé ni interruption des
+versements, pour ne pas modéliser une option structurellement défavorable.
+
+\subsubsection*{Horizon commun fixé à 65~ans}
+
+Nous supposons un horizon commun de 65~ans pour tous les véhicules pour homogénéiser la
+comparaison. C'est un point d'arrêt naturel étant donné que les réductions d'impôt cessent après le
+65\textsuperscript{e} anniversaire pour l'épargne-pension et que la retraite est fixé
+aux alentours de cet âge.
+
+\subsubsection*{Âge de début plafonné à 55~ans}
+
+Nous supposons que les versements débutent au plus tard à 55~ans pour préserver
+l'homogénéité de la comparaison. Cette limite s'appuie sur les conditions de la taxe
+anticipative (cf.~\hyperref[subsub:taxe_anticipative_ep]{l'épargne-pension} et
+\hyperref[subsub:taxe_anticipative_elt]{l'épargne à long terme}).
+
+\subsubsection*{Portefeuille entièrement investi en actions via un ETF accumulant}
+
+Nous supposons un portefeuille intégralement investi via des ETF
+accumulants composés exclusivement d'actions pour éviter de modéliser une fiscalité sur les distributions de dividendes \cite{curvo_capitalisant_distribuant_2026}. 
+Ce type
+d'actif est accessible aussi bien en compte-titres qu'au travers des contrats d'épargne-pension
+et d'épargne à long terme (e.g. le fonds Vivium \footnote{\url{https://www.vivium.be/documents/d/vivium/managed-funds-reglements-de-gestion}}).
+
+\subsubsection*{Abstraction du spread}
+
+Nous ignorons le spread, frais implicite correspondant à l'écart entre le prix
+d'achat et le prix de vente d'un actif \cite{wikiped_spread}, car sa quantification
+générique est impossible. Celui-ci variant selon l'instrument et les conditions
+de marché.
+
+\subsubsection*{Frais choisis}
+
+Nous supposons des frais d'entrée et de garde fixes dans un scénario donné, dont nous
+fixons nous-mêmes les niveaux selon les scénarios. Dans le scénario à frais
+réalistes, nous les fixons pour les compte-titres à 0\,\%, sans perte de généralité,
+étant donné que ces frais sont souvent très faibles ou inexistants chez les néocourtiers 
+(e.g. Trade Republic \footnote{\url{https://support.traderepublic.com/fr-fr/719-How-expensive-is-it-to-open-a-securities-account}}). 
+
+Dans le scénario à frais majorés, nous alignons les frais moyens des compte-titres
+à ceux de l'assurance-vie. Notons qu'il est difficile d'obtenir des moyennes transparentes pour les frais
+des compte-titres. Malgré tout, nous pouvons considérer cette hypothèse étant donné qu'elle est suffisante
+pour observer une tendance générale entre les différents véhicules.
+
+\subsubsection*{Taxe sur les comptes-titres couverte par les frais de gestion de la branche~23}
+
+Nous supposons que la TCT éventuellement répercutée sur les assurés est incluse dans
+les frais de gestion retenus pour la branche~23, pour simplifier l'application de cette taxe.
+
+\subsubsection*{Fiscalité figée au moment de la rédaction}
+
+Nous supposons que la réglementation fiscale est celle en vigueur au moment de la
+rédaction, pour disposer d'un cadre légal stable et déterministe.
+
+\subsubsection*{Absence de risque de contrepartie}
+
+Nous supposons que les deux instruments sont exempts de tout risque de défaut de
+l'assureur ou du courtier, pour isoler les différences de structure fiscale et de frais.
+
+\subsubsection*{Réduction d'impôt systématiquement déclarée}
+
+Nous supposons que l'investisseur demande la réduction d'impôt chaque année sans
+exception, pour maximiser l'avantage fiscal de la branche~23. 
+Chaque année où elle n'est pas demandée, cette réduction est perdue de manière irréversible. 
+
+\subsubsection*{Épargne à long terme~: plafond de déduction atteint chaque année}
+
+Nous supposons que le revenu professionnel de l'investisseur est suffisant pour atteindre
+le plafond légal de 2\,450~euros chaque année, pour simplifier le calcul de la réduction
+d'impôt.
+
+\subsubsection*{TOB au taux de 0,12\,\%}
+
+Nous supposons l'application de la TOB au taux de 0,12\,\% pour simuler le taux d'un
+ETF indiciel large inscrit auprès de la FSMA ou d'un régulateur d'un État
+membre de l'EEE (cf.~\hyperref[subsub:tob_cto]{La taxe sur les opérations de bourse}).
+
+\subsubsection*{Réception des économies fiscales à t+1}
 
 La simulation adopte la convention selon laquelle la date~0 correspond au moment
 présent et la date~1 à la fin de la première période \cite[p.~94]{berk2020}.
 Les versements sont supposés constants d'année en année (annuités constantes) \cite[p.~108]{berk2020},
 on considère que chaque versement intervient en fin de période. 
 
-Les profils débutant après 55~ans ne sont pas simulés étant donné que 
-retenir de tels profils romprait l'homogénéité de la comparaison
-en ne permettant plus d'aligner la date du prélèvement et celle du retrait
-sur l'horizon de retraite commun aux deux instruments.
+Dans notre modèle, l'économie fiscale générée par la réduction d'impôt (Art. 145/9 CIR 92)
+est comptabilisée en t+1 comme en pratique (Art. 353 CIR 92).
 
-\hl{cfr épargne pension et épargne long terme}
+\hl{faire citation}
 
-\subsection{Le critère de comparaison~: le capital final net à l'échéance}
+\subsubsection*{Flux annexes traités comme certains et taux OLO fixes}
 
-\subsubsection*{Principe du capital final net à l'échéance}
+\hl{coût opportunité des flux annexes}
 
-Comparer deux placements sur un horizon de plusieurs années pose une
-difficulté fondamentale~: les flux monétaires associés à chaque instrument
-surviennent à des dates différentes. Pour la branche~23, l'avantage fiscal se
-matérialise dès la première année sous forme de remboursement d'impôt annuel,
-tandis que le capital n'est disponible qu'à l'échéance. 
-Pour le compte-titres, la taxe sur les opérations de bourse et les frais de
-courtage sont supportés à chaque versement~: ils ne réduisent pas le montant
-investi mais constituent des sorties d'argent distinctes qui doivent être
-déduites séparément du résultat. 
-Additionner ces flux bruts sans correction temporelle reviendrait à traiter
-de manière identique un euro reçu aujourd'hui et un euro reçu dans plusieurs années,
-ce qui serait économiquement inexact.
+Nous supposons que les flux annexes sont certains et que la courbe OLO est fixe à sa
+valeur observée à la date de rédaction, pour justifier l'emploi d'un taux sans risque
+et d'un référentiel de capitalisation stable sur l'ensemble de la simulation\footnote{source}.
 
-\hl{à réduire}
+\hl{Les
+données publiées par la Banque nationale de Belgique couvrent des maturités allant jusqu'à
+30~ans. + date qu on a pris pour les taux}
 
-La solution consiste à ramener tous les flux à un même point dans le temps,
-la comparaison étant valide dès lors que les flux des deux
-instruments sont exprimés à la même date de référence \cite[p.~67]{berk2020}.
-Dans ce travail, on choisit l'horizon de l'investissement comme date de référence
-commune, ce qui conduit à raisonner en capital final net à l'échéance (CFN). Chaque flux
-annexe est porté à la valeur qu'il aurait s'il était réinvesti jusqu'à l'échéance. 
+\hl{Pour les durées résiduelles supérieures à 30~ans, le taux OLO à 30~ans est
+retenu par convention.}
 
-\subsubsection*{Capitalisation et actualisation}
+\hl{dire que on part du principe que taux olo sont réinvesti au même taux par capitalisation}
 
-La capitalisation et l'actualisation sont les deux opérations inverses qui
-permettent de comparer des flux survenant à des dates différentes. Si l'on place
-$F_0$ euros aujourd'hui à un taux annuel $r$, la valeur acquise au bout de
-$n$~années est~:
-\begin{equation}
-  F_n = F_0 \times (1 + r)^n
-\end{equation}
-La croissance est géométrique~: les intérêts de chaque période portent eux-mêmes
-intérêts lors des périodes suivantes, mécanisme connu sous le nom d'intérêts
-composés \cite[p.~96]{berk2020}. L'actualisation est l'opération inverse~: elle
-ramène un flux futur $F_n$ à sa valeur présente~:
-\begin{equation}
-  \text{VA}(F_n) = F_0 = \frac{F_n}{(1 + r)^n}
-\end{equation}
-où $r$ est le taux annuel et $n$ le nombre d'années séparant le moment présent
-de la réception du flux \cite[p.~97--98]{berk2020}.
-
-\bigskip
-Lorsque plusieurs flux se produisent à des dates différentes, les deux opérations
-se généralisent. La capitalisation totale à l'horizon $N$ est la somme des
-capitaux acquis par chaque flux~:
-\begin{equation}
-  F_{\text{total}} = \sum_{t=0}^{N} F_t \times (1 + r)^{N-t}
-\end{equation}
-La valeur actuelle nette (VAN) est l'opération symétrique~: elle ramène
-l'ensemble des flux à leur valeur présente~:
-\begin{equation}
-  \text{VAN} = \sum_{t=0}^{N} \frac{F_t}{(1 + r)^t}
-\end{equation}
-Ces deux grandeurs synthétisent en un seul chiffre l'intégralité des flux d'un
-investissement, quelle que soit leur date d'occurrence
-\cite[p.~96--97]{berk2020}. \hl{peut être à supprimer}
-
-La comparaison entre deux instruments peut être conduite indifféremment par
-capitalisation ou par actualisation~: les deux méthodes sont mathématiquement
-équivalentes et conduisent au même classement \cite[p.~68--70]{berk2020}.
-\begin{equation}
-  \Delta = F_{\text{inv. 1}} - F_{\text{inv. 2}}
-\end{equation}
-Si $\Delta > 0$, l'investissement~1 est préférable~; si $\Delta < 0$, c'est
-l'investissement~2.
-
-\subsubsection*{Le taux de capitalisation~: la courbe OLO belge}
-\label{sub:taux_olo}
 
 Les frais de courtage et de garde liés au compte-titres sont prélevés en dehors
 de la réserve, mais les sommes ainsi décaissées auraient pu être placées et
@@ -820,7 +727,60 @@ de versement ne fait l'objet d'aucune capitalisation supplémentaire. Pour les
 durées supérieures à trente ans, le taux de l'OLO à trente ans est appliqué par
 convention.
 
-voir url \url{https://claude.ai/chat/a34f742f-bb13-4b7f-a33d-3e81c77986e0}
+\hl{justifier que 30 pourcents impots sur intérêt olo }
+
+\subsection{Le critère de comparaison~: le capital final net à l'échéance}
+
+\hl{
+  il faut exprimer le lien entre le capital final net à l'échéance et la représentation
+  visuelle par heatmap et concrètement  ce qu'il représente et dire les étapes qu'on va parcourir
+  pour l obtenir
+
+  sera en quelquesorte l intro de la sectin
+}
+
+\hl{La solution consiste à ramener tous les flux à un même point dans le temps,
+la comparaison étant valide dès lors que les flux des deux
+instruments sont exprimés à la même date de référence [p.~67]{berk2020}.
+Dans ce travail, on choisit l'horizon de l'investissement comme date de référence
+commune, ce qui conduit à raisonner en capital final net à l'échéance (CFN). Chaque flux
+annexe est porté à la valeur qu'il aurait s'il était réinvesti jusqu'à l'échéance.}
+
+\subsubsection*{Capitalisation et actualisation}
+
+La capitalisation et l'actualisation sont deux opérations inverses qui
+permettent de comparer des flux survenant à des dates différentes.
+
+La capitalisation consiste à déterminer ce que vaut aujourd'hui 
+un montant placé, après $n$ années à un taux $r$, 
+où $r$ est le taux de rendement annuel et $n$ le nombre d'années séparant le moment présent
+de la réception du flux \cite[p.~97--98]{berk2020}.
+Placer 100~€ à 5~\% pendant trois ans ne donne pas $115$~€ (3~$\times$~5~€) 
+mais $115{,}76$~€~: chaque année, les intérêts déjà acquis génèrent à leur tour 
+des intérêts, selon le mécanisme des intérêts composés \cite[p.~96]{berk2020}.
+\begin{equation}
+  Capitalisation : F_n = F_0 \times (1 + r)^n
+\end{equation}
+
+L'actualisation répond à la question inverse~: combien faut-il placer aujourd'hui pour obtenir 
+un montant $F_n$ dans $n$ années~?
+\begin{equation}
+  Actualisation : F_0 = \frac{F_n}{(1 + r)^n}
+\end{equation}
+
+
+\bigskip
+Lorsque plusieurs flux se produisent à des dates différentes, les deux opérations
+se généralisent. La capitalisation totale à l'horizon $N$ est la somme des
+capitaux acquis par chaque flux \cite[p.~96--97]{berk2020}.
+\begin{equation}
+  \textit{Capitalisation totale} : F_{\text{total}} = \sum_{t=0}^{N} F_t \times (1 + r)^{N-t}
+\end{equation}
+
+Ces trois formules sont les fondements du calcul du capital final net à l'échéance.
+
+\subsubsection*{Le taux OLO belge}
+\label{sub:taux_olo}
 
 Les flux étant des montants nets de toute fiscalité, il a été choisi d'utiliser
 un taux de capitalisation lui aussi exprimé net d'impôt.
@@ -831,6 +791,10 @@ brut d'un OLO après précompte mobilier de 30\,\%, d'où~:
 \end{equation} 
 où $n$ désigne la maturité en années. Le référentiel complet des taux
 utilisés est présenté au tableau~\ref{tab:olo_referentiel} en annexe.
+
+\hl{+ source}
+
+\hl{ correspondance par maturité}
 
 \subsubsection*{Construction pas à pas du capital final net à l'échéance} 
 
@@ -1210,16 +1174,7 @@ se voit pénalisé à hauteur des frais que la branche~23 elle-même supporte.
   \end{tabular}
 \end{table}
 
-\subsection{Représentation graphique~: heatmaps}
 
-Les résultats sont visualisés sous forme de heatmaps bidimensionnelles dont
-l'axe~X représente le rendement annuel brut (de 0\,\% à 10\,\%) et l'axe~Y
-l'âge de début des versements (de 18 à 55~ans). Chaque cellule indique
-l'instrument dominant global (bleu pour la branche~23, vert pour le CT, gris
-pour l'ex~æquo), dont l'intensité de couleur reflète la force de la dominance.
-Lorsqu'un point de croisement existe, le versement-seuil correspondant est
-annoté dans la cellule. Quatre heatmaps sont produites par scénario de frais,
-soit douze heatmaps au total. 
 
 \subsection{Validation des résultats}
 
