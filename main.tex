@@ -946,30 +946,11 @@ réserve~; c'est pourquoi ils doivent être capitalisés jusqu'à l'échéance p
 mesurer leur vrai coût.}
 \end{quote}
 
-\subsubsection*{Les frais de garde annuels}
-\label{sub:frais_garde_ct}
-
-Chaque année, des frais de garde sont calculés proportionnellement à la valeur
-de la réserve. Contrairement aux frais de gestion de la branche~23, ils ne sont
-pas déduits de la réserve~: ils sont prélevés en dehors de celle-ci, comptabilisés
-comme flux sortants, puis capitalisés jusqu'à l'échéance pour entrer dans le
-calcul du capital final net.
-\begin{equation}
-  \text{FraisGarde}_t = R_t \times f_{\text{garde}}^{\text{CT}}
-\end{equation}
-
-\begin{quote}
-\textit{Exemple~: La réserve d'Antoine atteint 10\,000~€ en cours d'accumulation.
-Avec des frais de garde de 0{,}2\,\%, 20~€ sont prélevés cette année-là en dehors
-de la réserve. Ces 20~€ sont mis de côté, capitalisés jusqu'à l'échéance, et
-viendront réduire le capital final net au même titre que le courtage et la TOB.}
-\end{quote}
-
 \subsubsection*{L'accumulation de la réserve}
 \label{sub:accumulation_ct}
 
 La réserve du compte-titres se capitalise chaque année au taux de rendement
-brut, puis le versement de l'année est crédité. Comme dit précédemment,
+brut, puis le versement de l'année est ajouté. Comme dit précédemment,
 les frais de garde sont calculés
 sur la réserve mais prélevés séparément~: ils n'en réduisent pas la valeur.
 \begin{align}
@@ -983,6 +964,25 @@ placée à 5\,\%. Elle grossit à $10\,000 \times 1{,}05 = 10\,500$~€. Le vers
 annuel de 1\,000~€ porte la réserve à 11\,500~€. Les 20~€ de frais de garde
 calculés sur cette réserve sont prélevés en dehors~: la réserve reste à
 11\,500~€, mais ces 20~€ sont capitalisés séparément jusqu'à l'échéance.}
+\end{quote}
+
+\subsubsection*{Les frais de garde annuels}
+\label{sub:frais_garde_ct}
+
+Chaque année, des frais de garde sont calculés proportionnellement à la valeur
+de la réserve. Contrairement aux frais de gestion de la branche~23, ils ne sont
+pas déduits de la réserve~: ils sont prélevés en dehors de celle-ci, 
+puis capitalisés jusqu'à l'échéance pour entrer dans le
+calcul du capital final net.
+\begin{equation}
+  \text{FraisGarde}_t = \widetilde{R}_t \times f_{\text{garde}}^{\text{CT}}
+\end{equation}
+
+\begin{quote}
+\textit{Exemple~: La réserve d'Antoine atteint 10\,000~€ en cours d'accumulation.
+Avec des frais de garde de 0{,}2\,\%, 20~€ sont prélevés cette année-là en dehors
+de la réserve. Ces 20~€ sont mis de côté, capitalisés jusqu'à l'échéance, et
+viendront réduire le capital final net au même titre que le courtage et la TOB.}
 \end{quote}
 
 \subsubsection*{La taxe sur les plus-values à la sortie}
