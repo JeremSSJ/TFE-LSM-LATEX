@@ -764,120 +764,103 @@ est retenu sur les intérêts \cite[art.~171]{cir92_2025}, d'où~:
 Le référentiel complet des taux utilisés est présenté au
 tableau~\ref{tab:olo_referentiel} en annexe.
 
-\subsubsection*{L'accumulation de la réserve}
+\subsubsection*{Le versement net investi}
+\label{sub:versement_net_b23}
 
-La réserve désigne la valeur du portefeuille à un instant donné. Elle évolue chaque
-année selon une logique commune aux deux véhicules~: on commence par capitaliser
-la réserve existante au taux de rendement, on soustrait les coûts proportionnels aux
-frais de gestion, puis on ajoute le versement de l'année.
-
-\begin{quote}
-\textit{Exemple~: Antoine place 1\,000~€ par an à un taux de 5\,\% et
-les frais de gestion annuels s'élèvent à 1\,\%. La réserve après la première
-année vaut $1\,000 \times 1{,}05 \times 0{,}99 = 1\,039{,}50$~€~; en y ajoutant
-le versement suivant de 1\,000~€, la réserve en début d'année~2 s'établit
-à 2\,039{,}50~€. Cette logique se répète chaque année jusqu'à l'échéance.}
-\end{quote}
-
-\subsubsection*{Le capital net à l'échéance}
-
-À l'issue de la période d'accumulation, la réserve brute est soumise à une ou
-plusieurs taxations finales selon le véhicule. Pour la branche~23, la taxe
-anticipative (8\,\% pour l'EP, 10\,\% pour l'ELT) est prélevée une seule fois
-à l'âge de soixante ans sur la base d'une rente fictive~; aucune taxe n'est due
-à l'échéance finale. Pour le compte-titres, une taxe sur les plus-values est
-susceptible d'être prélevée sur la fraction de la réserve excédant le prix de
-revient et le seuil d'exonération.
-
-Le capital net à l'échéance $C_N^{\text{net}}$ est la réserve brute après
-déduction de ces taxes finales. C'est le montant que l'investisseur perçoit
-effectivement à la liquidation du produit.
-
-\subsubsection*{Du capital net au capital final net}
-
-Le capital net à lui seul ne suffit pas à comparer les véhicules, car il ne tient
-pas compte des flux intermédiaires qui ont accompagné l'investissement~: coûts
-payés en cours de route (pour le compte-titres) ou économies fiscales encaissées
-chaque année (pour la branche~23).
-
-Le capital final net (CFN) à l'échéance réconcilie ces flux en les ramenant tous
-à la même date de référence~: l'horizon de l'investissement. Il s'obtient en
-partant du capital net, en y soustrayant les coûts capitalisés (pour le
-compte-titres) ou en y ajoutant les économies fiscales capitalisées (pour la
-branche~23). Le résultat est un montant unique, exprimé en euros à l'échéance,
-directement comparable entre véhicules.
-
-\subsubsection*{Capital final net à l'échéance : branche~23}
-\label{sub:va_b23}
-
-Pour l'épargne-pension, comme aucune taxe sur les opérations d'assurance n'est due,
-les frais de chargement réduisent directement le montant investi~:
+Avant même de commencer à se capitaliser, le versement subit un premier
+prélèvement à l'entrée~: les frais de chargement. Pour l'épargne-pension,
+seuls ces frais réduisent le montant investi~:
 \begin{equation}
   v_{\text{net}}^{\text{EP}} = v \times (1 - f_e^{\text{B23}})
 \end{equation}
-La réduction fiscale annuelle suit le barème à deux paliers décrit à la
-section~\ref{sub:avantages_ep}~: 30\,\% pour un versement jusqu'à 1\,050~€ et
-25\,\% au-delà jusqu'au plafond maximal de 1\,350~€.
-En notant $v$ le versement annuel, on écrit~:
+Pour l'épargne à long terme, une taxe sur les opérations d'assurance (TOA)
+de 2\,\% vient s'y ajouter en amont, avant les frais de chargement~:
+\begin{equation}
+  v_{\text{net}}^{\text{ELT}} = v \times (1 - 2\,\%) \times (1 - f_e^{\text{B23}})
+\end{equation}
+
+\hl{cf}
+
+\begin{quote}
+\textit{Exemple~: Antoine verse 1\,000~€ dans son contrat d'épargne-pension.
+Les frais de chargement s'élèvent à 3\,\%. Le montant effectivement crédité
+dans le contrat est $1\,000 \times 0{,}97 = 970$~€. S'il avait opté pour
+l'épargne à long terme, la TOA de 2\,\% aurait d'abord ramené son versement
+à 980~€, puis les frais de chargement l'auraient réduit à
+$980 \times 0{,}97 = 950{,}60$~€.}
+\end{quote}
+
+\subsubsection*{L'accumulation de la réserve}
+\label{sub:accumulation_b23}
+
+La réserve désigne la valeur du contrat à un instant donné. Elle grossit
+chaque année selon la même mécanique~: la réserve existante est d'abord
+capitalisée au taux de rendement, les frais de gestion sont ensuite prélevés
+sur cette valeur capitalisée, puis le versement net de l'année est ajouté.
+\begin{align}
+  \widetilde{R}_t &= R_{t-1} \times (1 + r) \times (1 - f_g^{\text{B23}}) \\
+  R_t             &= \widetilde{R}_t + v_{\text{net}}
+\end{align}
+
+\begin{quote}
+\textit{Exemple~: Antoine place 970~€ nets par an à un taux de 5\,\% avec
+des frais de gestion de 1\,\%. La réserve après la première année vaut
+$970 \times 1{,}05 \times 0{,}99 = 1\,008{,}32$~€~; en y ajoutant le versement
+net suivant de 970~€, la réserve en début d'année~2 s'élève à
+1\,978{,}32~€. Cette logique se répète chaque année jusqu'à l'échéance.}
+\end{quote}
+
+\subsubsection*{La taxe anticipative à 60 ans}
+\label{sub:taxe_anticipative_b23}
+
+Pour la branche~23, la taxe anticipative est
+prélevée une unique fois sur la réserve à l'âge de 60 ans de l'assuré.
+\begin{equation}
+  R_{60}^{\text{après taxe}} = R_{60} \times (1 - \tau_{\text{ant}})
+\end{equation}
+Le taux est de 8\,\% pour l'épargne-pension et de 10\,\% pour l'épargne à
+long terme. La réserve ainsi réduite continue à se capitaliser jusqu'à
+l'échéance à 65~ans sans aucun prélèvement supplémentaire~: le montant
+disponible à terme constitue le capital net $C_N^{\text{net}}$.
+
+\hl{cf}
+
+\begin{quote}
+\textit{Exemple~: À ses 60~ans, Antoine dispose d'une réserve de 50\,000~€.
+La taxe anticipative de 8\,\% représente $50\,000 \times 0{,}08 = 4\,000$~€.
+La réserve réduite à 46\,000~€ continue à se capitaliser pendant encore
+5~ans jusqu'à ses 65~ans, sans qu'aucune nouvelle taxe ne soit due à ce terme.}
+\end{quote}
+
+\subsubsection*{L'économie fiscale annuelle}
+\label{sub:eco_fisc_b23}
+
+La branche~23 offre une réduction d'impôt chaque année sur le versement
+effectué. Pour l'épargne-pension, le barème est à deux paliers~:
 \begin{equation}
   \text{ÉcoFisc}(v)=
   \begin{cases}
-    0{,}30\,v & \text{si } 0 \le v \le 1\,050, \\
-    0{,}25\,v & \text{si } 1\,050 < v \le 1\,350.
+    0{,}30\,v & \text{si } 0 \le v \le 1\,050~\text{€}, \\
+    0{,}25\,v & \text{si } 1\,050 < v \le 1\,350~\text{€}.
   \end{cases}
 \end{equation}
+Pour l'épargne à long terme, un taux unique de 30\,\% s'applique jusqu'au
+plafond de 2\,450~€.
 
-La réserve s'accumule en deux temps:
-\begin{align}
-  \widetilde{R}_0 &= v_{\text{net}}^{\text{EP}} \notag \\
-  \widetilde{R}_t &= R_{t-1} \times (1 + r) \times (1 - f_g^{\text{B23}}) \notag \\
-  R_t &= \widetilde{R}_t + v_{\text{net}}^{\text{EP}}
-\end{align}
-La taxe
-anticipative de 8\,\% est ensuite prélevée une seule fois sur la réserve au
-60\textsuperscript{e} anniversaire~:
-\begin{equation}
-  R_{\text{60 après taxe}} = R_{60} \times (1 - 8\,\%)
-\end{equation}
-Cette réserve réduite continue ensuite à se capitaliser selon la même logique
-jusqu'à l'échéance finale à 65~ans. Aucune taxe supplémentaire n'est due à ce terme.
+\hl{cf}
+Ce remboursement est versé par le fisc l'année qui
+suit le versement~: un versement effectué à l'année~$t$ génère une économie
+encaissée à l'année~$t+1$.
 
-Le capital final net à l'échéance de l'EP se compose du capital net, des
-économies fiscales capitalisées jusqu'à l'échéance, et d'un ajustement pour
-le dernier remboursement fiscal reçu après l'horizon~:
-\begin{align}
-  \text{CFN}_{\text{B23}} &=
-    \underbrace{%
-      C_N^{\text{net}}
-    }_{\text{capital net}}
-  +
-    \underbrace{%
-      \sum_{t=0}^{n-1}
-      \text{ÉcoFisc}(t) \times
-      \bigl(1 + r_{\text{OLO}}(n-(t+1))\bigr)^{n-(t+1)}
-    }_{\text{économies fiscales capitalisées}}
-  +
-    \underbrace{%
-      \dfrac{\text{ÉcoFisc}(n)}{1 + r_{\text{OLO}}(1)}
-    }_{\text{dernier remb. actualisé}}
-\end{align}
-où $n$ est la durée totale et $C_N^{\text{net}}$ le capital final net après taxe
-anticipative.
-Pour tout versement de l'année~$t$, l'économie fiscale $\text{ÉcoFisc}(t)$ est
-remboursée à l'année~$t+1$. Pour les versements de l'année~$0$ à l'année~$n-1$,
-ce remboursement intervient avant ou à l'échéance ($t+1 \leq n$), et
-$\text{ÉcoFisc}(t)$ est capitalisée sur les $n-(t+1) \geq 0$~années résiduelles
-au taux OLO correspondant.
+\begin{quote}
+\textit{Exemple~: Antoine verse 1\,000~€ en épargne-pension. Il bénéficie
+du taux de 30\,\% et reçoit donc $1\,000 \times 0{,}30 = 300$~€ de
+remboursement d'impôt l'année suivante. Sur une carrière de 35~ans, ces
+300~€ annuels représentent un flux total de 10\,500~€ qu'il convient de
+ramener à la date de l'échéance pour les intégrer dans la comparaison.}
+\end{quote}
 
-Pour le versement effectué à l'année~$n$ (l'échéance elle-même), la même règle
-s'applique. Le remboursement $\text{ÉcoFisc}(n)$ intervient à l'année~$n+1$,
-soit un an après l'horizon de comparaison. Pour ramener ce flux à la date
-de référence commune, on applique la formule de la valeur actuelle (seul usage de
-l'actualisation dans cette méthodologie), en le divisant par
-$\bigl(1 + r_{\text{OLO}}(1)\bigr)$.
-
-
-Pour l'épargne à long terme (ELT), la structure est identique, avec les différences récapitulées dans le
+Les différences de paramètres entre EP et ELT sont récapitulées dans le
 tableau~\ref{tab:diff_ep_elt}.
 
 \begin{table}[h!]
@@ -899,13 +882,42 @@ tableau~\ref{tab:diff_ep_elt}.
   \end{tabular}
 \end{table}
 
-La TOA et les frais de chargement s'appliquent
-successivement~:
-\begin{equation}
-  v_{\text{net}}^{\text{ELT}} = v \times (1 - 2\,\%) \times (1 - f_e^{\text{B23}})
-\end{equation}
-L'accumulation, la taxe anticipative (au taux de 10\,\%),
-ainsi que le calcul du capital final net à l'échéance suivent la même logique que pour l'EP.
+\subsubsection*{Le capital final net de la branche~23}
+\label{sub:va_b23}
+
+Le capital net $C_N^{\text{net}}$ reçu à 65~ans ne reflète pas à lui seul
+l'avantage réel de la branche~23~: les économies fiscales encaissées chaque
+année constituent un flux réel qu'il faut intégrer dans la comparaison.
+Pour ce faire, chaque remboursement est capitalisé jusqu'à l'échéance au
+taux OLO net, de sorte à le ramener à la même date de référence. Seul le
+remboursement du dernier versement, encaissé un an après l'horizon, est
+actualisé plutôt que capitalisé.
+\begin{align}
+  \text{CFN}_{\text{B23}} &=
+    \underbrace{%
+      C_N^{\text{net}}
+    }_{\text{capital net}}
+  +
+    \underbrace{%
+      \sum_{t=0}^{n-1}
+      \text{ÉcoFisc}(t) \times
+      \bigl(1 + r_{\text{OLO}}(n-(t+1))\bigr)^{n-(t+1)}
+    }_{\text{économies fiscales capitalisées}}
+  +
+    \underbrace{%
+      \dfrac{\text{ÉcoFisc}(n)}{1 + r_{\text{OLO}}(1)}
+    }_{\text{dernier remb. actualisé}}
+\end{align}
+
+\begin{quote}
+\textit{Exemple~: Antoine reçoit 300~€ de remboursement chaque année. Le
+premier remboursement, encaissé en année~1 pour le versement de l'année~0,
+est capitalisé sur les 34~années restantes~; le dernier remboursement,
+correspondant au versement de l'année~35, est perçu en année~36, soit un
+an après l'horizon, et est donc actualisé d'un an. Tous ces flux, exprimés
+en euros à 65~ans, viennent s'ajouter au capital net pour former le capital
+final net de la branche~23.}
+\end{quote}
 
 \subsubsection*{Capital final net à l'échéance : compte-titres}
 \label{sub:va_ct_formule}
