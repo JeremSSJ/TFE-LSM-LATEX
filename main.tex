@@ -1250,6 +1250,10 @@ toute erreur de régression lors d'une modification ultérieure du modèle.
 
 \hl{faire intro}
 
+Les heatmaps
+correspondantes sont aussi présentées en annexe pour une meilleure lisibilité
+(figures~\ref{fig:ann_elt_frais_reel_sans_taxe}, \ref{fig:ann_elt_frais_reel_avec_taxe}).
+
 %--------------------------------------------------------------------------
 \subsection{Scénario~B --- Frais réalistes (cas central)}
 \label{sec:resultats_elt_B}
@@ -1322,7 +1326,10 @@ sortie.
 Le scénario~A supprime tous les frais des deux côtés, de façon à observer
 l'avantage fiscal de l'ELT à l'état pur. Le scénario~C fait l'inverse~: il
 applique au compte-titres des frais au même taux que ceux de l'ELT (2,83\,\% à l'entrée
-et 2,34\,\% de gestion), ce qui neutralise l'écart tarifaire.
+et 2,34\,\% de gestion), ce qui neutralise l'écart tarifaire. Les heatmaps
+correspondantes sont aussi présentées en annexe pour une meilleure lisibilité
+(figures~\ref{fig:elt_frais_0_sans_taxe}, \ref{fig:elt_frais_0_avec_taxe},
+\ref{fig:elt_frais_majore_sans_taxe} et~\ref{fig:elt_frais_majore_avec_taxe}).
 
 \subsubsection*{Résultats principaux}
 
@@ -1361,52 +1368,35 @@ les économies fiscales de l'ELT s'imposent.
 
 \subsubsection*{Incidence de la taxe sur les plus-values}
 
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.5\textwidth]{media/elt_frais_0_avec_taxe.png}
+  \caption{Dominance ELT\,/\,CT --- Scénario~A, avec taxe sur les
+           plus-values de 10\,\%.}
+  \label{fig:elt_frais_0_avec_taxe}
+\end{figure}
 
-\hl{quand taxe plus pour scenario A, alors victoire quasi totale d elt
-sauf à certains niveaux très bas de versement,  problament qu éco
-fiscale trop faible pas suffisante pour compenser intérêts composés
+Lorsque la taxe sur les plus-values s'applique au compte-titres dans le
+scénario~A, l'ELT devient dominant sur la quasi-totalité des
+combinaisons. Le compte-titres ne conserve un avantage que pour des
+montants de versement très faibles, là où les économies fiscales de
+l'ELT sont trop modestes pour compenser les intérêts composés générés
+de l'autre côté.
 
-}
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.5\textwidth]{media/elt_frais_majore_avec_taxe.png}
+  \caption{Dominance ELT\,/\,CT --- Scénario~C, avec taxe sur les
+           plus-values de 10\,\%.}
+  \label{fig:elt_frais_majore_avec_taxe}
+\end{figure}
 
-Lorsque la taxe de 10\,\% sur les plus-values s'applique au compte-titres,
-les quelques cellules encore dominées par celui-ci font apparaître un seuil
-de croisement à des montants très bas~: entre 73~€ et 218~€ par an dans le
-scénario~A. En dessous de ces
-montants, le compte-titres conserve encore un léger avantage~; au-delà,
-l'ELT reprend la tête. \hl{Ces seuils sont tellement faibles par rapport au
-plafond de versement de 2\,450~€ que, pour tout versement d'un niveau
-économiquement courant, l'ELT est gagnant dès lors que les deux instruments
-sont logés à la même enseigne fiscale à la sortie. Le fait que ces seuils
-soient comparables entre les scénarios~A et~C confirme qu'ils dépendent de
-la structure fiscale des deux instruments et non du niveau des frais.}
-
-\hl{pour le scenario C c est juste que la taxe sur les plus values vient grignoter
-des places par rapport au cas sans taxe sur les pv car forcément
-taxe pv vient donner un handicap supplémentaire au compte titre
-
-et donc cette fois toujours sur des horizons long et rendements élevés
-les couts pris sur l elt qui sont pris sur le côté sur l elt sont trop 
-préjudiciables et font que compte titres eux profitent mieux de l intérêt composé
-}
-
-\subsubsection*{Ce que la comparaison des trois scénarios révèle}
-
-En mettant les trois scénarios côte à côte, on peut attribuer un rôle précis
-à chaque variable. Le passage de~A à~B, c'est-à-dire l'ajout des frais
-moyens du marché à l'ELT sans modifier ceux du compte-titres, suffit à renverser
-presque entièrement l'avantage fiscal de l'ELT. Le passage de~B à~C,
-qui ajoute les mêmes frais au compte-titres, le restaure largement, sauf
-aux rendements les plus élevés sur certains horizons plus longs, où les
-taxes restent le facteur limitant. La taxe sur les plus-values de 2026, quant à elle, produit des effets
-différenciés selon le scénario. Dans le scénario~B, elle améliore
-légèrement la position de l'ELT sans en renverser la hiérarchie~: le
-compte-titres demeure dominant sur l'essentiel de la plage. Dans les
-scénarios~A et~C en revanche, elle fait basculer la hiérarchie en faveur
-de l'ELT, qui devient dominant sur toute la plage, à l'exception
-des quelques cellules présentant un seuil de croisement à des montants très
-bas.
-\hl{je ne sais pas si c est nécessaire, en plus c est vraiment obvious + plus
-accurate vu que j ai changé une partie}
+Dans le scénario~C, la taxe vient grignoter les zones restantes du
+compte-titres par rapport au cas sans taxe~: elle constitue un handicap
+supplémentaire. Cependant, sur les horizons longs et les rendements élevés,
+ les frais de gestion prélevés directement sur la réserve de
+l'ELT restent suffisamment pénalisants pour que le compte-titres
+continue d'y bénéficier d'un meilleur rendement composé.
 
 \newpage
 
@@ -1553,6 +1543,27 @@ fiscal, demeure le facteur déterminant dans les conditions réelles de
 marché.
 
 \hl{corriger}
+
+\hl{pour cluclusion}
+\subsubsection*{Ce que la comparaison des trois scénarios révèle}
+
+En mettant les trois scénarios côte à côte, on peut attribuer un rôle précis
+à chaque variable. Le passage de~A à~B, c'est-à-dire l'ajout des frais
+moyens du marché à l'ELT sans modifier ceux du compte-titres, suffit à renverser
+presque entièrement l'avantage fiscal de l'ELT. Le passage de~B à~C,
+qui ajoute les mêmes frais au compte-titres, le restaure largement, sauf
+aux rendements les plus élevés sur certains horizons plus longs, où les
+taxes restent le facteur limitant. La taxe sur les plus-values de 2026, quant à elle, produit des effets
+différenciés selon le scénario. Dans le scénario~B, elle améliore
+légèrement la position de l'ELT sans en renverser la hiérarchie~: le
+compte-titres demeure dominant sur l'essentiel de la plage. Dans les
+scénarios~A et~C en revanche, elle fait basculer la hiérarchie en faveur
+de l'ELT, qui devient dominant sur toute la plage, à l'exception
+des quelques cellules présentant un seuil de croisement à des montants très
+bas.
+\hl{je ne sais pas si c est nécessaire, en plus c est vraiment obvious + plus
+accurate vu que j ai changé une partie}
+
 
 \newpage
 \pagestyle{empty}
