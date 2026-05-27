@@ -226,6 +226,7 @@ d'épargne-pension échappent à cette taxation. La prime nette correspond dès 
 prime versée après déduction de cette taxe \cite[art.~175\textsuperscript{3} et art.~176\textsuperscript{2}]{wikifin_a, cdtd1927}.
 
 \subsubsection*{Les chargements}
+\label{subsub:chargements}
 
 L'assureur
 ne peut réclamer aucun frais ni indemnité en dehors de ces chargements, sauf en raison de
@@ -506,6 +507,8 @@ compte (si belge) \cite[art.~201]{cdtd1927}.
 
 \subsection{Présentation générale de l'approche}
 
+\hl{correct de dire comparer les 3 ?}
+
 La méthodologie repose sur une simulation déterministe comparant les trois
 véhicules jusqu'à un horizon commun. Pour chaque combinaison
 d'âge de début et de taux de rendement, les instruments sont simulés sur la
@@ -513,9 +516,9 @@ même durée et sur une plage entière de versements annuels, ce qui permet de
 déterminer non seulement lequel domine, mais à partir de quel niveau de
 versement et dans quelle proportion.
 
-Les résultats sont visualisés sous forme de heatmaps bidimensionnelles \ref{sec:resultats_elt} dont
+Les résultats sont visualisés sous forme de heatmaps bidimensionnelles (cf.~\hyperref[sec:resultats_elt]{Résultats}) dont
 l'axe~X représente le rendement annuel brut (de 0\,\% à 10\,\%\footnote{Cela permet d avoir un éventail large et de voir comment les tendances évoluent}) et l'axe~Y
-l'âge de début des versements (de 18 à 55~ans) \ref{subsec:limites-methodo}. Chaque cellule indique
+l'âge de début des versements (de 18 à 55~ans) (cf.~\hyperref[subsec:limites-methodo]{Limites et hypothèses}). Chaque cellule indique
 l'instrument dominant global (bleu pour la branche~23, vert pour le CT, gris
 pour l'ex~æquo), dont l'intensité de couleur reflète la force de la dominance.
 Lorsqu'un point de croisement existe, le versement-seuil correspondant est
@@ -527,8 +530,8 @@ L'espace d'exploration couvre~:
   \item 38~profils d'âge d'entrée~;
   \item 11~niveaux de rendement annuel brut~;
   \item Plages de versements de 1~€ au plafond légal~;
-  \item Quatre configurations fiscales \ref{sub:scenarii_fiscaux};
-  \item Trois scénarios de frais \ref{sub:scenarii_frais}.
+  \item Quatre configurations fiscales (cf.~\hyperref[sub:scenarii_fiscaux]{Scénarios fiscaux});
+  \item Trois scénarios de frais (cf.~\hyperref[sub:scenarii_frais]{Scénarios de frais}).
 \end{itemize}
 
 Cela représente $38 \times 11 \times 4 \times 3 = 5\,016$~combinaisons, chacune
@@ -771,7 +774,7 @@ tableau~\ref{tab:olo_referentiel} en annexe.
 \label{sub:versement_net_b23}
 
 Avant même de commencer à se capitaliser, le versement subit un premier
-prélèvement~: les frais d'entrée. Pour l'épargne-pension,
+prélèvement~: les frais d'entrée (cf.~\hyperref[subsub:chargements]{Les chargements}). Pour l'épargne-pension,
 seuls ces frais réduisent le montant investi~:
 \begin{equation}
   v_{\text{net}}^{\text{EP}} = v \times (1 - f_e^{\text{B23}})
