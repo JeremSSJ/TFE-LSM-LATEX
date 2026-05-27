@@ -826,25 +826,13 @@ En notant $v$ le versement annuel, on écrit~:
   \end{cases}
 \end{equation}
 
-La réserve s'accumule en deux temps, réserve intermédiaire par intérêts composés
-puis déduction de la TCT~:
+La réserve s'accumule en deux temps:
 \begin{align}
   \widetilde{R}_0 &= v_{\text{net}}^{\text{EP}} \notag \\
   \widetilde{R}_t &= R_{t-1} \times (1 + r) \times (1 - f_g^{\text{B23}}) \notag \\
-  R_t &= \widetilde{R}_t - \text{TCT}_t + v_{\text{net}}^{\text{EP}}
+  R_t &= \widetilde{R}_t + v_{\text{net}}^{\text{EP}}
 \end{align}
-avec
-\begin{equation}
-  \label{eq:tct}
-  \text{TCT}_t =
-  \begin{cases}
-    0 & \text{si } \widetilde{R}_t \leq 1\,000\,000 \\[4pt]
-    \min\!\bigl(\widetilde{R}_t \times 0{,}15\,\%,\;
-               (\widetilde{R}_t - 1\,000\,000) \times 10\,\%\bigr)
-      & \text{sinon}
-  \end{cases}
-\end{equation}
-reflétant l'impact indirect de la TCT via les actifs de l'assureur. La taxe
+La taxe
 anticipative de 8\,\% est ensuite prélevée une seule fois sur la réserve au
 60\textsuperscript{e} anniversaire~:
 \begin{equation}
@@ -941,15 +929,11 @@ où $f_e^{\text{CT}}$ est le taux de frais de courtage (appliqué à l'entrée e
 le taux de frais de garde annuels appliqué sur la réserve en fin d'année~$t$.
 
 La réserve s'accumule en deux temps selon la même logique que pour la
-branche~23, avec la même formule de TCT~(\ref{eq:tct}). Le facteur
-$(1 - f_{\text{TER}}^{\text{CT}})$ reflète la réduction annuelle de la valeur
-liquidative de l'ETF due à ses frais courants (TER), tandis que les frais de
-garde du courtier sont comptabilisés séparément~:
-\hl{retirer quand on parle du Ter}
+branche~23, avec la même formule de TCT.
 
 \begin{align}
   \widetilde{R}_0 &= v \notag \\
-  \widetilde{R}_t &= R_{t-1} \times (1 + r) \times (1 - f_{\text{TER}}^{\text{CT}}) \notag \\
+  \widetilde{R}_t &= R_{t-1} \times (1 + r) \notag \\
   R_t &= \widetilde{R}_t - \text{TCT}_t + v
 \end{align}
 Le capital net à l'échéance tient compte de la taxe éventuelle sur les
