@@ -677,11 +677,9 @@ Les versements sont supposés constants d'année en année (annuités constantes
 on considère que chaque versement intervient en fin de période. 
 
 Dans notre modèle, l'économie fiscale générée par la réduction d'impôt est
-comptabilisée en~$t+1$. En pratique, l'exercice d'imposition~$t+1$ est établi sur
-les revenus de la période imposable~$t$, si bien que l'impôt afférent à l'année~$t$
+comptabilisée en~$t+1$. En pratique, l'exercice d'imposition de l'année~$t+1$ est établi sur
+les revenus de la période précédente, si bien que l'impôt afférent à l'année~$t$
 et avec lui la réduction d'impôt, n'est établi qu'en~$t+1$ \cite[art.~360]{cir92_2025}.
-
-\hl{à faire relire}
 
 \subsubsection*{Flux annexes traités comme certains}
 Nous supposons que les flux annexes (frais de courtage, de garde de compte-titres
@@ -777,7 +775,7 @@ tableau~\ref{tab:olo_referentiel} en annexe.
 \subsubsection*{Le versement net investi}
 \label{sub:versement_net_b23}
 
-Avant même de commencer à se capitaliser, le versement subit un premier
+Avant même de commencer à se capitaliser, le versement brut subit un premier
 prélèvement~: les frais d'entrée (cf.~\hyperref[subsub:chargements]{Les chargements}). Pour l'épargne-pension,
 seuls ces frais réduisent le montant investi~:
 \begin{equation}
@@ -826,8 +824,8 @@ prélevée une unique fois sur la réserve à l'âge de 60 ans de l'assuré.
 \begin{equation}
   R_{60}^{\text{après taxe}} = R_{60} \times (1 - \tau_{\text{ant}})
 \end{equation}
-Le taux est de 8\,\% pour l'épargne-pension et de 10\,\% (cf.~\hyperref[subsub:taxe_anticipative_ep]{l'épargne-pension} et
-\hyperref[subsub:taxe_anticipative_elt]{l'épargne à long terme}) pour l'épargne à
+Le taux est de 8\,\% pour l'épargne-pension et de 10\,\% (cf.~\hyperref[subsub:taxe_anticipative_ep]{épargne-pension} et
+\hyperref[subsub:taxe_anticipative_elt]{épargne à long terme}) pour l'épargne à
 long terme. La réserve ainsi réduite continue à se capitaliser jusqu'à
 l'échéance à 65~ans sans aucun prélèvement supplémentaire~: le montant
 disponible à terme constitue le capital net $C_N^{\text{net}}$.
@@ -931,7 +929,7 @@ tableau~\ref{tab:diff_ep_elt}.
 \subsubsection*{Les coûts d'entrée~: courtage et TOB}
 \label{sub:couts_entree_ct}
 
-Contrairement à la branche~23, le versement brut $v$ entre intégralement dans
+Contrairement à la branche~23, le versement brut entre intégralement dans
 la réserve~; aucun frais n'en est déduit à l'entrée. En revanche, deux coûts
 sont prélevés séparément à chaque versement~: les frais de courtage (cf.~\hyperref[subsub:courtage_cto]{Frais de courtage}) et la TOB
 (cf.~\hyperref[subsub:tob_cto]{La taxe sur les opérations de bourse}).
@@ -939,24 +937,23 @@ sont prélevés séparément à chaque versement~: les frais de courtage (cf.~\h
   \text{Courtage}_t &= v \times f_c^{\text{CT}} \\
   \text{TOB}_t      &= v \times \tau_{\text{TOB}}
 \end{align}
-Ces montants constituent des sorties de trésorerie réelles~; ils sont
+Dans notre simulation, ils sont
 capitalisés jusqu'à l'échéance pour entrer dans le calcul du capital final net.
+
+\newpage
 
 \begin{quote}
 \textit{Exemple~: Antoine verse 1\,000~€ dans son compte-titres. Les frais de
 courtage s'élèvent à 0{,}5\,\% ($= 5$~€) et la TOB à 0{,}12\,\% ($= 1{,}20$~€).
 Ces 6{,}20~€ sortent de sa poche à chaque versement sans jamais entrer dans la
-réserve~; c'est pourquoi ils doivent être capitalisés jusqu'à l'échéance pour
-mesurer leur vrai coût.}
+réserve.}
 \end{quote}
 
 \subsubsection*{L'accumulation de la réserve}
 \label{sub:accumulation_ct}
 
 La réserve du compte-titres se capitalise chaque année au taux de rendement
-brut, puis le versement de l'année est ajouté. Comme dit précédemment,
-les frais de garde sont calculés
-sur la réserve mais prélevés séparément~: ils n'en réduisent pas la valeur.
+brut, puis le versement de l'année est ajouté.
 \begin{align}
   \widetilde{R}_t &= R_{t-1} \times (1 + r) \notag \\
   R_t             &= \widetilde{R}_t + v
@@ -965,9 +962,7 @@ sur la réserve mais prélevés séparément~: ils n'en réduisent pas la valeur
 \begin{quote}
 \textit{Exemple~: Antoine dispose d'une réserve de 10\,000~€ en début d'année,
 placée à 5\,\%. Elle grossit à $10\,000 \times 1{,}05 = 10\,500$~€. Le versement
-annuel de 1\,000~€ porte la réserve à 11\,500~€. Les 20~€ de frais de garde
-calculés sur cette réserve sont prélevés en dehors~: la réserve reste à
-11\,500~€, mais ces 20~€ sont capitalisés séparément jusqu'à l'échéance.}
+annuel de 1\,000~€ porte la réserve à 11\,500~€.}
 \end{quote}
 
 \subsubsection*{Les frais de garde annuels}
@@ -977,7 +972,7 @@ Chaque année, des frais de garde (cf.~\hyperref[subsub:frais_garde_cto]{Frais d
 de la réserve. Contrairement aux frais de gestion de la branche~23, ils ne sont
 pas déduits de la réserve~: ils sont prélevés en dehors de celle-ci, 
 puis capitalisés jusqu'à l'échéance pour entrer dans le
-calcul du capital final net. \hl{demander à arsène}
+calcul du capital final net.
 \begin{equation}
   \text{FraisGarde}_t = \widetilde{R}_t \times f_{\text{garde}}^{\text{CT}}
 \end{equation}
@@ -985,7 +980,7 @@ calcul du capital final net. \hl{demander à arsène}
 \begin{quote}
 \textit{Exemple~: La réserve d'Antoine atteint 10\,000~€ en cours d'accumulation.
 Avec des frais de garde de 0{,}2\,\%, 20~€ sont prélevés cette année-là en dehors
-de la réserve. Ces 20~€ sont mis de côté, capitalisés jusqu'à l'échéance, et
+de la réserve. Dans notre simulation, ces 20~€ sont mis de côté, capitalisés jusqu'à l'échéance, et
 viendront réduire le capital final net au même titre que le courtage et la TOB.}
 \end{quote}
 
@@ -999,8 +994,8 @@ entre la valeur de la réserve et ce seuil~:
 \begin{equation}
   \text{TCT}_t =
   \begin{cases}
-    \min\!\Bigl(R_t \times 0{,}15\%,\; 10\% \times (R_t - 1\,000\,000)\Bigr)
-      & \text{si } R_t > 1\,000\,000~\text{€}, \\
+    \min\!\Bigl(\widetilde{R}_t \times 0{,}15\%,\; 10\% \times (\widetilde{R}_t - 1\,000\,000)\Bigr)
+      & \text{si } \widetilde{R}_t > 1\,000\,000~\text{€}, \\
     0
       & \text{sinon.}
   \end{cases}
@@ -1010,9 +1005,9 @@ capitalisée jusqu'à l'échéance pour entrer dans le calcul du capital final n
 
 \begin{quote}
 \textit{Exemple~: Supposons qu'une année donnée la réserve d'Antoine s'élève
-à 1\,200\,000~€. La taxe brute serait de $1\,200\,000 \times 0{,}15\,\% =
-1\,800$~€ et le plafond de $10\,\% \times (1\,200\,000 - 1\,000\,000) = 20\,000$~€.
-La taxe due est donc $\min(1\,800;\,20\,000) = 1\,800$~€.}
+à $1\,001\,000$~€. La taxe brute serait de $1\,001\,000 \times 0{,}15\,\% =
+1\,501{,}50$~€ et le plafond de $10\,\% \times (1\,001\,000 - 1\,000\,000) = 100$~€.
+La taxe due est donc le minimum entre $1\,501{,}50$ et $100$, soit $100$~€.}
 \end{quote}
 
 \subsubsection*{Frais de courtage à la sortie}
@@ -1024,7 +1019,7 @@ liquidation~:
 \end{equation}
 
 \begin{quote}
-\textit{Exemple~: À 65~ans, Antoine liquide son compte-titres dont la réserve
+\textit{Exemple~: À 65~ans, Antoine liquide son compte-titres dont la réserve a
 atteint 80\,000~€. Avec des frais de courtage de 0{,}5\,\%, le courtage de sortie
 s'élève à $80\,000 \times 0{,}005 = 400$~€. Ce montant est retranché directement
 du capital final net, sans capitalisation puisqu'il est prélevé à l'échéance
@@ -1060,8 +1055,7 @@ $80\,000 - 3\,000 = 77\,000$~€, avant déduction des autres coûts capitalisé
 \subsubsection*{Le capital final net du compte-titres}
 \label{sub:va_ct_formule}
 
-Le capital net dégagé à l'échéance ne reflète pas le vrai coût du
-compte-titres, car il ne tient pas compte des frais payés tout au long de
+Le capital net ne tient pas compte des frais payés tout au long de
 l'investissement. Pour comparer équitablement avec la branche~23, l'ensemble
 de ces coûts est ramené à la date de référence commune par capitalisation au
 taux OLO net, puis soustrait du capital net~:
