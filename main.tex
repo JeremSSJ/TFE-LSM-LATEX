@@ -764,6 +764,62 @@ est retenu sur les intérêts \cite[art.~171]{cir92_2025}, d'où~:
 Le référentiel complet des taux utilisés est présenté au
 tableau~\ref{tab:olo_referentiel} en annexe.
 
+\subsubsection*{L'accumulation de la réserve}
+
+La réserve désigne la valeur du portefeuille à un instant donné. Elle évolue chaque
+année selon une logique commune aux deux véhicules~: on commence par capitaliser
+la réserve existante au taux de rendement, on soustrait les coûts proportionnels aux
+frais de gestion, puis on ajoute le versement de l'année.
+
+Concrètement, si un investisseur place 1\,000~€ par an à un taux de 5\,\% et que
+les frais de gestion annuels s'élèvent à 1\,\%~: la réserve après la première
+année vaut $1\,000 \times 1{,}05 \times 0{,}99 = 1\,039{,}50$~€, à laquelle
+s'ajoute le versement suivant de 1\,000~€, soit 2\,039{,}50~€. Cette logique se
+répète chaque année jusqu'à l'échéance.
+
+\subsubsection*{Le traitement des coûts comme flux sortants}
+
+Les coûts (frais de courtage, taxe sur les opérations boursières, frais de garde)
+ne sont pas simplement soustraits de la réserve finale. Ils sont traités comme des
+flux sortants et capitalisés jusqu'à l'échéance au taux OLO.
+
+La raison est la suivante~: un euro de frais payé en début de période représente
+un coût réel plus élevé qu'un euro payé en fin de période, car cet euro aurait pu
+être investi pendant toutes les années restantes. Capitaliser chaque coût jusqu'à
+l'horizon permet d'exprimer son coût réel total, de la même manière qu'on exprime
+le coût d'opportunité d'un achat immédiat en intérêts non perçus.
+
+Par exemple, 10~€ de TOB payés à l'année~1 sur un horizon de 20~ans valent, au
+taux OLO de 3\,\%, $10 \times 1{,}03^{19} \approx 17{,}54$~€ à l'échéance.
+
+\subsubsection*{Le capital net à l'échéance}
+
+À l'issue de la période d'accumulation, la réserve brute est soumise à une ou
+plusieurs taxations finales selon le véhicule. Pour la branche~23, la taxe
+anticipative (8\,\% pour l'EP, 10\,\% pour l'ELT) est prélevée une seule fois
+à l'âge de soixante ans sur la base d'une rente fictive~; aucune taxe n'est due
+à l'échéance finale. Pour le compte-titres, une taxe sur les plus-values est
+susceptible d'être prélevée sur la fraction de la réserve excédant le prix de
+revient et le seuil d'exonération.
+
+Le capital net à l'échéance $C_N^{\text{net}}$ est la réserve brute après
+déduction de ces taxes finales. C'est le montant que l'investisseur perçoit
+effectivement à la liquidation du produit.
+
+\subsubsection*{Du capital net au capital final net}
+
+Le capital net à lui seul ne suffit pas à comparer les véhicules, car il ne tient
+pas compte des flux intermédiaires qui ont accompagné l'investissement~: coûts
+payés en cours de route (pour le compte-titres) ou économies fiscales encaissées
+chaque année (pour la branche~23).
+
+Le capital final net (CFN) à l'échéance réconcilie ces flux en les ramenant tous
+à la même date de référence~: l'horizon de l'investissement. Il s'obtient en
+partant du capital net, en y soustrayant les coûts capitalisés (pour le
+compte-titres) ou en y ajoutant les économies fiscales capitalisées (pour la
+branche~23). Le résultat est un montant unique, exprimé en euros à l'échéance,
+directement comparable entre véhicules.
+
 \subsubsection*{Capital final net à l'échéance : branche~23}
 \label{sub:va_b23}
 
