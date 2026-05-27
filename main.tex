@@ -16,6 +16,7 @@
 \usepackage{float}
 \usepackage{longtable}
 \usepackage{makecell}
+\usepackage{caption}
 
 %highlight
 \usepackage{soul}
@@ -52,7 +53,7 @@
 
 % Renommage des listes
 \renewcommand{\listtablename}{Liste des tableaux}
-\renewcommand{\listfigurename}{Liste des graphiques}
+\renewcommand{\listfigurename}{Liste des figures}
 
 % Liste des annexes (fichier .loa généré séparément)
 \makeatletter
@@ -1547,12 +1548,17 @@ laquelle l'avantage fiscal peut jouer.
 \pagestyle{empty}
 \appendix
 
-% Redéfinit \section dans l'annexe pour alimenter la liste des annexes (.loa)
+% Dans l'annexe : entrées dans la liste des annexes (.loa) uniquement,
+% pas dans la table des matières, et pas dans la liste des tableaux/figures.
 \let\oldappsection\section
+\makeatletter
 \renewcommand{\section}[1]{%
-  \oldappsection{#1}%
+  \refstepcounter{section}%
+  \oldappsection*{\@seccntformat{section}#1}%
   \addcontentsline{loa}{section}{\protect\numberline{\thesection}#1}%
 }
+\makeatother
+\captionsetup{list=no}
 
 \section{Référentiel OLO belge utilisé pour la capitalisation}
 \label{ann:olo}
