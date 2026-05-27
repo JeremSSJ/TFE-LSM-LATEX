@@ -860,6 +860,44 @@ remboursement d'impôt l'année suivante. Sur une carrière de 35~ans, ces
 ramener à la date de l'échéance pour les intégrer dans la comparaison.}
 \end{quote}
 
+\subsubsection*{Le capital final net de la branche~23}
+\label{sub:va_b23}
+
+Le capital net $C_N^{\text{net}}$ reçu à 65~ans ne reflète pas à lui seul
+l'avantage réel de la branche~23~: les économies fiscales encaissées chaque
+année constituent un flux réel qu'il faut intégrer dans la comparaison.
+Pour ce faire, chaque remboursement est capitalisé jusqu'à l'échéance au
+taux OLO net, de sorte à le ramener à la même date de référence. Seul le
+remboursement du dernier versement, encaissé un an après l'horizon, est
+actualisé pour ramener sa valeur à la date d'échéance.
+\begin{align}
+  \text{CFN}_{\text{B23}} &=
+    \underbrace{%
+      C_N^{\text{net}}
+    }_{\text{capital net}}
+  +
+    \underbrace{%
+      \sum_{t=0}^{n-1}
+      \text{ÉcoFisc}(t) \times
+      \bigl(1 + r_{\text{OLO}}(n-(t+1))\bigr)^{n-(t+1)}
+    }_{\text{économies fiscales capitalisées}}
+  +
+    \underbrace{%
+      \dfrac{\text{ÉcoFisc}(n)}{1 + r_{\text{OLO}}(1)}
+    }_{\text{dernier remb. actualisé}}
+\end{align}
+
+\begin{quote}
+\textit{Exemple~: Antoine a commencé son épargne-pension à 18 ans et 
+reçoit 300~€ de remboursement fiscal chaque année. Le
+premier remboursement, encaissé en année~1 pour le versement de l'année~0,
+est capitalisé sur les 46~années restantes~; le dernier remboursement,
+correspondant au versement de l'année~47, est perçu en année~48, soit un
+an après l'horizon, et est donc actualisé d'un an. Tous ces flux, exprimés
+en euros à 65~ans, viennent s'ajouter au capital net pour former le capital
+final net de la branche~23.}
+\end{quote}
+
 Les différences de paramètres entre EP et ELT sont récapitulées dans le
 tableau~\ref{tab:diff_ep_elt}.
 
@@ -881,43 +919,6 @@ tableau~\ref{tab:diff_ep_elt}.
     \hline
   \end{tabular}
 \end{table}
-
-\subsubsection*{Le capital final net de la branche~23}
-\label{sub:va_b23}
-
-Le capital net $C_N^{\text{net}}$ reçu à 65~ans ne reflète pas à lui seul
-l'avantage réel de la branche~23~: les économies fiscales encaissées chaque
-année constituent un flux réel qu'il faut intégrer dans la comparaison.
-Pour ce faire, chaque remboursement est capitalisé jusqu'à l'échéance au
-taux OLO net, de sorte à le ramener à la même date de référence. Seul le
-remboursement du dernier versement, encaissé un an après l'horizon, est
-actualisé plutôt que capitalisé.
-\begin{align}
-  \text{CFN}_{\text{B23}} &=
-    \underbrace{%
-      C_N^{\text{net}}
-    }_{\text{capital net}}
-  +
-    \underbrace{%
-      \sum_{t=0}^{n-1}
-      \text{ÉcoFisc}(t) \times
-      \bigl(1 + r_{\text{OLO}}(n-(t+1))\bigr)^{n-(t+1)}
-    }_{\text{économies fiscales capitalisées}}
-  +
-    \underbrace{%
-      \dfrac{\text{ÉcoFisc}(n)}{1 + r_{\text{OLO}}(1)}
-    }_{\text{dernier remb. actualisé}}
-\end{align}
-
-\begin{quote}
-\textit{Exemple~: Antoine reçoit 300~€ de remboursement chaque année. Le
-premier remboursement, encaissé en année~1 pour le versement de l'année~0,
-est capitalisé sur les 34~années restantes~; le dernier remboursement,
-correspondant au versement de l'année~35, est perçu en année~36, soit un
-an après l'horizon, et est donc actualisé d'un an. Tous ces flux, exprimés
-en euros à 65~ans, viennent s'ajouter au capital net pour former le capital
-final net de la branche~23.}
-\end{quote}
 
 \subsubsection*{Capital final net à l'échéance : compte-titres}
 \label{sub:va_ct_formule}
