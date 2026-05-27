@@ -932,7 +932,7 @@ la réserve~; aucun frais n'en est déduit à l'entrée. En revanche, deux coût
 sont prélevés séparément à chaque versement~: les frais de courtage et la taxe
 sur les opérations de bourse (TOB).
 \begin{align}
-  \text{Courtage}_t &= v \times f_e^{\text{CT}} \\
+  \text{Courtage}_t &= v \times f_c^{\text{CT}} \\
   \text{TOB}_t      &= v \times \tau_{\text{TOB}}
 \end{align}
 Ces montants constituent des sorties de trésorerie réelles~; ils sont
@@ -973,7 +973,7 @@ Chaque année, des frais de garde sont calculés proportionnellement à la valeu
 de la réserve. Contrairement aux frais de gestion de la branche~23, ils ne sont
 pas déduits de la réserve~: ils sont prélevés en dehors de celle-ci, 
 puis capitalisés jusqu'à l'échéance pour entrer dans le
-calcul du capital final net.
+calcul du capital final net. \hl{demander à arsène}
 \begin{equation}
   \text{FraisGarde}_t = \widetilde{R}_t \times f_{\text{garde}}^{\text{CT}}
 \end{equation}
@@ -983,6 +983,48 @@ calcul du capital final net.
 Avec des frais de garde de 0{,}2\,\%, 20~€ sont prélevés cette année-là en dehors
 de la réserve. Ces 20~€ sont mis de côté, capitalisés jusqu'à l'échéance, et
 viendront réduire le capital final net au même titre que le courtage et la TOB.}
+\end{quote}
+
+\subsubsection*{La taxe sur les comptes-titres (TCT)}
+\label{sub:tct_ct}
+
+La taxe sur les comptes-titres est une taxe annuelle qui ne s'applique que
+lorsque la valeur de la réserve dépasse le seuil d'un million d'euros. Son
+taux est de 0{,}15\,\%, tout en ne pouvant excéder 10\,\% de la différence
+entre la valeur de la réserve et ce seuil~:
+\begin{equation}
+  \text{TCT}_t =
+  \begin{cases}
+    \min\!\Bigl(R_t \times 0{,}15\%,\; 10\% \times (R_t - 1\,000\,000)\Bigr)
+      & \text{si } R_t > 1\,000\,000~\text{€}, \\
+    0
+      & \text{sinon.}
+  \end{cases}
+\end{equation}
+Comme les frais de garde, elle est prélevée en dehors de la réserve et
+capitalisée jusqu'à l'échéance pour entrer dans le calcul du capital final net.
+
+\begin{quote}
+\textit{Exemple~: Supposons qu'une année donnée la réserve d'Antoine s'élève
+à 1\,200\,000~€. La taxe brute serait de $1\,200\,000 \times 0{,}15\,\% =
+1\,800$~€ et le plafond de $10\,\% \times (1\,200\,000 - 1\,000\,000) = 20\,000$~€.
+La taxe due est donc $\min(1\,800;\,20\,000) = 1\,800$~€.}
+\end{quote}
+
+\subsubsection*{Frais de courtage à la sortie}
+
+Un frais de courtage de sortie est également comptabilisé au moment de la
+liquidation~:
+\begin{equation}
+  \text{CourtageSortie} = R_N \times f_c^{\text{CT}}
+\end{equation}
+
+\begin{quote}
+\textit{Exemple~: À 65~ans, Antoine liquide son compte-titres dont la réserve
+atteint 80\,000~€. Avec des frais de courtage de 0{,}5\,\%, le courtage de sortie
+s'élève à $80\,000 \times 0{,}005 = 400$~€. Ce montant est retranché directement
+du capital final net, sans capitalisation puisqu'il est prélevé à l'échéance
+même.}
 \end{quote}
 
 \subsubsection*{La taxe sur les plus-values à la sortie}
@@ -999,19 +1041,14 @@ exonération est soumise au taux $\tau_{\text{PV}}$~:
   \text{plusValueTaxable} &= \max\!\left(0;\; \text{plusValue} - \text{exonération}\right) \notag \\
   C_N^{\text{net}}        &= R_N - \text{plusValueTaxable} \times \tau_{\text{PV}}
 \end{align}
-Un frais de courtage de sortie est également comptabilisé au moment de la
-liquidation~:
-\begin{equation}
-  \text{CourtageSortie} = R_N \times f_e^{\text{CT}}
-\end{equation}
 
 \begin{quote}
-\textit{Exemple~: À 65~ans, Antoine dispose d'une réserve finale de 80\,000~€
-après 35~ans de versements de 1\,000~€, soit 35\,000~€ investis au total.
-La plus-value est de 45\,000~€. L'exonération s'élève à
-$10\,000 + 5 \times 1\,000 = 15\,000$~€. La plus-value taxable de 30\,000~€
-est imposée à 10\,\%~: 3\,000~€ de taxe. Le capital net s'établit à
-$80\,000 - 3\,000 = 77\,000$~€.}
+\textit{Exemple~: Après 35~ans de versements de 1\,000~€, Antoine a investi
+35\,000~€ au total. Sa réserve finale est de 80\,000~€, soit une plus-value de
+45\,000~€. L'exonération s'élève à $10\,000 + 5 \times 1\,000 = 15\,000$~€.
+La plus-value taxable est donc de $45\,000 - 15\,000 = 30\,000$~€, imposée à
+10\,\%~: 3\,000~€ de taxe. Le capital net s'établit à
+$80\,000 - 3\,000 = 77\,000$~€, avant déduction des autres coûts capitalisés.}
 \end{quote}
 
 \subsubsection*{Le capital final net du compte-titres}
@@ -1039,16 +1076,22 @@ taux OLO net, puis soustrait du capital net~:
       \sum_{t=0}^{n} \text{FraisGarde}_t \times \bigl(1 + r_{\text{OLO}}(n-t)\bigr)^{n-t}
     }_{\text{frais de garde capitalisés}}
   -
+    \underbrace{%
+      \sum_{t=0}^{n} \text{TCT}_t \times \bigl(1 + r_{\text{OLO}}(n-t)\bigr)^{n-t}
+    }_{\text{TCT capitalisée}} 
+  -
     \underbrace{\text{CourtageSortie}}_{\text{courtage de sortie}}
 \end{align}
 
 \begin{quote}
 \textit{Exemple~: Sur ses 35~ans d'investissement, Antoine a payé chaque année
-18{,}20~€ de courtage et de TOB, capitalisés jusqu'à l'échéance. Les frais de
+6{,}20~€ de courtage et de TOB, capitalisés jusqu'à l'échéance. Les frais de
 garde annuels sur une réserve croissante représentent également un coût cumulé
-significatif une fois ramenés à l'échéance. L'ensemble de ces coûts capitalisés,
-déduit du capital net, donne le capital final net du compte-titres, directement
-comparable à celui de la branche~23.}
+significatif. La TCT, disons nulle dans cet exemple
+car la réserve reste en dessous du seuil d'un
+million d'euros, s'ajouterait au même titre si ce seuil était franchi.
+L'ensemble de ces coûts capitalisés, déduit du capital net, donne le capital
+final net du compte-titres, directement comparable à celui de la branche~23.}
 \end{quote}
 
 \subsubsection*{Comparaison et notion de dominance}
