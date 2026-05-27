@@ -50,6 +50,20 @@
 %\titleformat{\subsubsection}
 %  {\normalfont\normalsize\itshape}{\thesubsubsection}{1em}{}
 
+% Renommage des listes
+\renewcommand{\listtablename}{Liste des tableaux}
+\renewcommand{\listfigurename}{Liste des graphiques}
+
+% Liste des annexes (fichier .loa généré séparément)
+\makeatletter
+\newcommand{\listofappendicesname}{Liste des annexes}
+\newcommand{\listofappendices}{%
+  \section*{\listofappendicesname}%
+  \addcontentsline{toc}{section}{\listofappendicesname}%
+  \@starttoc{loa}%
+}
+\makeatother
+
 \begin{document}
 
 % Page de garde
@@ -111,6 +125,17 @@ Je tiens à remercier [à compléter].
 \pagenumbering{Roman}
 \pagestyle{fancy}
 \tableofcontents
+
+\newpage
+\listoftables
+\addcontentsline{toc}{section}{\listtablename}
+
+\newpage
+\listoffigures
+\addcontentsline{toc}{section}{\listfigurename}
+
+\newpage
+\listofappendices
 
 \newpage
 \section*{Glossaire}
@@ -1521,6 +1546,13 @@ laquelle l'avantage fiscal peut jouer.
 \newpage
 \pagestyle{empty}
 \appendix
+
+% Redéfinit \section dans l'annexe pour alimenter la liste des annexes (.loa)
+\let\oldappsection\section
+\renewcommand{\section}[1]{%
+  \oldappsection{#1}%
+  \addcontentsline{loa}{section}{\protect\numberline{\thesection}#1}%
+}
 
 \section{Référentiel OLO belge utilisé pour la capitalisation}
 \label{ann:olo}
