@@ -51,9 +51,11 @@
 %\titleformat{\subsubsection}
 %  {\normalfont\normalsize\itshape}{\thesubsubsection}{1em}{}
 
-% Renommage des listes
-\renewcommand{\listtablename}{Liste des tableaux}
-\renewcommand{\listfigurename}{Liste des figures}
+% Renommage des listes (via babel french)
+\addto\captionsfrench{%
+  \renewcommand{\listtablename}{Liste des tableaux}%
+  \renewcommand{\listfigurename}{Liste des graphiques}%
+}
 
 % Liste des annexes (fichier .loa généré séparément)
 \makeatletter
