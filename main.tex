@@ -77,6 +77,55 @@
 \newpage
 \pagestyle{empty}
 
+\section*{Résumé}
+\addcontentsline{toc}{section}{Résumé}
+
+En Belgique, l'investisseur particulier souhaitant constituer un capital en
+vue de la retraite dispose principalement de trois véhicules~:
+l'épargne-pension et l'épargne à long terme, organisées sous la forme de
+contrats d'assurance-vie de la branche~23, et l'investissement direct en
+compte-titres. Les deux premiers offrent une réduction d'impôt annuelle
+mais supportent des frais et une taxe anticipative à la sortie~; le
+troisième échappe à ces contraintes mais subit, depuis le
+1\textsuperscript{er}~janvier~2026, une taxe de 10\,\% sur les
+plus-values des actifs financiers réalisées par les particuliers. La
+question de savoir lequel de ces véhicules procure le capital le plus
+élevé à la retraite est régulièrement soulevée sans toujours faire
+l'objet d'une comparaison à hypothèses comparables.
+
+Ce travail propose une comparaison systématique des trois véhicules à
+partir d'un critère unique, le capital final net à 65~ans, calculé par
+une simulation déterministe développée spécifiquement pour ce travail.
+La simulation explore un large espace de combinaisons croisant l'âge de
+début des versements (18 à 55~ans), le rendement annuel brut (0 à
+10\,\%) et le versement annuel (de 1~euro au plafond légal), déclinées
+en trois scénarios de frais et quatre scénarios fiscaux intégrant ou
+non la taxe sur les plus-values de 2026. Les flux annexes (économies
+fiscales, frais, taxes) sont capitalisés à l'échéance au taux OLO belge
+net de précompte mobilier, afin de rendre les véhicules directement
+comparables. Les résultats sont restitués sous la forme de heatmaps qui
+identifient, pour chaque combinaison, l'instrument dominant et les
+éventuels points de croisement entre véhicules.
+
+Les résultats ne désignent pas un véhicule uniformément supérieur~: la
+hiérarchie est sensible aux paramètres. Dans le scénario réaliste de
+marché, le compte-titres domine sur la majorité des configurations, la
+branche~23 conservant un avantage dans les zones à rendement faible ou
+à horizon court. Cette hiérarchie s'inverse en grande partie lorsque
+les frais sont neutralisés ou égalisés entre les deux véhicules, ce qui
+souligne le poids déterminant des frais dans la comparaison, davantage
+que la fiscalité à la sortie. La taxe sur les plus-values de 2026
+érode la rentabilité du compte-titres sans toutefois renverser les
+résultats dans le scénario réaliste~: son effet ne devient nettement
+visible qu'en l'absence d'écart tarifaire entre les véhicules.
+L'originalité du travail tient à la systématicité de la comparaison, à
+hypothèses strictement homogènes (même rendement, même horizon, même
+versement) sur l'ensemble de l'espace des paramètres, et à l'intégration
+explicite du nouveau régime fiscal belge de 2026.
+
+\newpage
+\pagestyle{empty}
+
 \section*{Avant-propos}
 \addcontentsline{toc}{section}{Avant-propos}
 
@@ -1605,7 +1654,7 @@ l'épargne-pension, illustrent une bascule de hiérarchie mais ne
 garantissent pas qu'un versement légèrement inférieur ou supérieur au
 seuil produise des capitaux finaux nets sensiblement différents. Plus
 généralement, la simulation isole la seule dimension financière de la
-décision~: la liquidité, la flexibilité contractuelle, la disponibilité
+décision. La liquidité, la flexibilité contractuelle, la disponibilité
 du capital en cas d'imprévu et le profil de risque individuel, qui
 pèsent dans tout choix réel, ne sont pas reflétés dans la hiérarchie
 obtenue. Les résultats doivent donc être lus comme des tendances
