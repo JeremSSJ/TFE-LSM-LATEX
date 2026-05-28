@@ -369,7 +369,7 @@ rachat anticipé du contrat mais ne seront étudiés dans ce travail \cite{wikif
 \subsubsection*{La taxe sur les comptes-titres}
 
 Selon le contrat, il est permis à l'assureur de
-répercuter la taxe sur les comptes-titres (cf.~\hyperref[subsub:tct_cto]{La taxe sur les comptes-titres}) sur l'assuré \cite{monastuces2021tact, spf_tct_faq}.
+répercuter la taxe sur les comptes-titres (cf.~section~\ref{subsub:tct_cto}) sur l'assuré \cite{monastuces2021tact, spf_tct_faq}.
 
 \subsection{L'épargne-pension}
 
@@ -632,9 +632,9 @@ même durée et sur une plage entière de versements annuels, ce qui permet de
 déterminer non seulement lequel domine, mais à partir de quel niveau de
 versement et dans quelle proportion.
 
-Les résultats sont visualisés sous forme de heatmaps bidimensionnelles (cf.~\hyperref[sec:resultats_elt]{Résultats}) dont
+Les résultats sont visualisés sous forme de heatmaps bidimensionnelles (cf.~section~\ref{sec:resultats_elt}) dont
 l'axe~X représente le rendement annuel brut (de 0\,\% à 10\,\%\footnote{Cela permet d avoir un éventail large et de voir comment les tendances évoluent}) et l'axe~Y
-l'âge de début des versements (de 18 à 55~ans, cf.~\hyperref[subsec:limites-methodo]{Limites et hypothèses}). Chaque cellule indique
+l'âge de début des versements (de 18 à 55~ans, cf.~section~\ref{subsec:limites-methodo}). Chaque cellule indique
 l'instrument dominant global (bleu pour la branche~23, vert pour le CT, gris
 pour l'ex~æquo), dont l'intensité de couleur reflète la force de la dominance.
 Lorsqu'un point de croisement existe, le versement seuil correspondant est
@@ -645,8 +645,8 @@ L'espace d'exploration couvre~:
   \item 38~profils d'âge d'entrée~;
   \item 11~niveaux de rendement annuel brut~;
   \item Plages de versements de 1~€ au plafond légal~;
-  \item Quatre configurations fiscales (cf.~\hyperref[sub:scenarii_fiscaux]{Scénarios fiscaux});
-  \item Trois scénarios de frais (cf.~\hyperref[sub:scenarii_frais]{Scénarios de frais}).
+  \item Quatre configurations fiscales (cf.~section~\ref{sub:scenarii_fiscaux});
+  \item Trois scénarios de frais (cf.~section~\ref{sub:scenarii_frais}).
 \end{itemize}
 
 Cela représente $38 \times 11 \times 4 \times 3 = 5\,016$~combinaisons, chacune
@@ -718,8 +718,8 @@ aux alentours de cet âge.
 
 Nous supposons que les versements débutent au plus tard à 55~ans pour préserver
 l'homogénéité de la comparaison. Cette limite s'appuie sur les conditions de la taxe
-anticipative (cf.~\hyperref[subsub:taxe_anticipative_ep]{l'épargne-pension} et
-\hyperref[subsub:taxe_anticipative_elt]{l'épargne à long terme}).
+anticipative (cf.~section~\ref{subsub:taxe_anticipative_ep} et
+section~\ref{subsub:taxe_anticipative_elt}).
 
 \subsubsection*{Portefeuille entièrement investi en actions via un ETF accumulant}
 
@@ -776,7 +776,7 @@ d'impôt.
 
 Nous supposons l'application de la TOB au taux de 0,12\,\% pour simuler le taux d'un
 ETF indiciel large inscrit auprès de la FSMA ou d'un régulateur d'un État
-membre de l'EEE (cf.~\hyperref[subsub:tob_cto]{La taxe sur les opérations de bourse}).
+membre de l'EEE (cf.~section~\ref{subsub:tob_cto}).
 
 \subsubsection*{Réception des économies fiscales à t+1}
 
@@ -874,13 +874,13 @@ tableau~\ref{tab:olo_referentiel} en annexe.
 \label{sub:versement_net_b23}
 
 Avant même de commencer à se capitaliser, le versement brut subit un premier
-prélèvement~: les frais d'entrée (cf.~\hyperref[subsub:chargements]{Les chargements}). Pour l'épargne-pension,
+prélèvement~: les frais d'entrée (cf.~section~\ref{subsub:chargements}). Pour l'épargne-pension,
 seuls ces frais réduisent le montant investi~:
 \begin{equation}
   v_{\text{net}}^{\text{EP}} = v \times (1 - f_e^{\text{B23}})
 \end{equation}
 Pour l'épargne à long terme, une taxe sur les opérations d'assurance (TOA)
-de 2\,\% vient s'y ajouter en amont, avant les frais de chargement (cf.~\hyperref[subsub:tob_cto]{La taxe sur les opérations de bourse})~:
+de 2\,\% vient s'y ajouter en amont, avant les frais de chargement (cf.~section~\ref{subsub:tob_cto})~:
 \begin{equation}
   v_{\text{net}}^{\text{ELT}} = v \times (1 - 2\,\%) \times (1 - f_e^{\text{B23}})
 \end{equation}
@@ -923,8 +923,8 @@ prélevée une unique fois sur la réserve à l'âge de 60 ans de l'assuré.
   \widetilde{R}_{60}^{\text{après taxe}} = \widetilde{R}_{60} \times (1 - \tau_{\text{ant}})
 \end{equation}
 Le taux est de 8\,\% pour l'épargne-pension et de 10\,\% pour l'épargne à
-long terme (cf.~\hyperref[subsub:taxe_anticipative_ep]{épargne-pension} et
-\hyperref[subsub:taxe_anticipative_elt]{épargne à long terme}). La réserve ainsi réduite continue à se capitaliser jusqu'à
+long terme (cf.~section~\ref{subsub:taxe_anticipative_ep} et
+section~\ref{subsub:taxe_anticipative_elt}). La réserve ainsi réduite continue à se capitaliser jusqu'à
 l'échéance à 65~ans sans aucun prélèvement supplémentaire~: le montant
 disponible à terme constitue le capital net $C_N^{\text{net}}$.
 
@@ -939,7 +939,7 @@ La réserve réduite à 46\,000~€ continue à se capitaliser pendant encore
 \label{sub:eco_fisc_b23}
 
 La branche~23 offre une réduction d'impôt chaque année sur le versement
-effectué. Pour l'épargne-pension, le barème est à deux paliers (cf.~\hyperref[sub:avantages_ep]{épargne-pension})~:
+effectué. Pour l'épargne-pension, le barème est à deux paliers (cf.~section~\ref{sub:avantages_ep})~:
 \begin{equation}
   \text{ÉcoFisc}(v)=
   \begin{cases}
@@ -948,7 +948,7 @@ effectué. Pour l'épargne-pension, le barème est à deux paliers (cf.~\hyperre
   \end{cases}
 \end{equation}
 Pour l'épargne à long terme, un taux unique de 30\,\% s'applique jusqu'au
-plafond de 2\,450~€ (cf.~\hyperref[sub:avantages_elt]{épargne long terme}).
+plafond de 2\,450~€ (cf.~section~\ref{sub:avantages_elt}).
 
 Ce remboursement est versé par le fisc l'année qui
 suit le versement~: un versement effectué à l'année~$t$ génère une économie
@@ -1029,8 +1029,8 @@ tableau~\ref{tab:diff_ep_elt}.
 
 Contrairement à la branche~23, le versement brut entre intégralement dans
 la réserve~; aucun frais n'en est déduit à l'entrée. En revanche, deux coûts
-sont prélevés séparément à chaque versement~: les frais de transaction (cf.~\hyperref[subsub:courtage_cto]{Frais de transaction}) et la TOB
-(cf.~\hyperref[subsub:tob_cto]{La taxe sur les opérations de bourse}).
+sont prélevés séparément à chaque versement~: les frais de transaction (cf.~section~\ref{subsub:courtage_cto}) et la TOB
+(cf.~section~\ref{subsub:tob_cto}).
 \begin{align}
   \text{Transaction}_t &= v \times f_t^{\text{CT}} \\
   \text{TOB}_t      &= v \times \tau_{\text{TOB}}
@@ -1064,7 +1064,7 @@ annuel de 1\,000~€ porte la réserve à 11\,500~€.}
 \subsubsection*{Les frais de garde annuels}
 \label{sub:frais_garde_ct}
 
-Chaque année, des frais de garde (cf.~\hyperref[subsub:frais_garde_cto]{Frais de garde}) sont calculés proportionnellement à la valeur
+Chaque année, des frais de garde (cf.~section~\ref{subsub:frais_garde_cto}) sont calculés proportionnellement à la valeur
 de la réserve. Contrairement aux frais de gestion de la branche~23, ils ne sont
 pas déduits de la réserve. Dans notre simulation, ils sont 
 capitalisés jusqu'à l'échéance pour entrer dans le
@@ -1083,7 +1083,7 @@ viendront réduire le capital final net au même titre que les frais de transact
 \subsubsection*{La taxe sur les comptes-titres (TCT)}
 \label{sub:tct_ct}
 
-La taxe sur les comptes-titres (cf.~\hyperref[subsub:tct_cto]{La taxe sur les comptes-titres}) est une taxe annuelle qui ne s'applique que
+La taxe sur les comptes-titres (cf.~section~\ref{subsub:tct_cto}) est une taxe annuelle qui ne s'applique que
 lorsque la valeur de la réserve dépasse le seuil d'un million d'euros. Son
 taux est de 0{,}15\,\%, tout en ne pouvant excéder 10\,\% de la différence
 entre la valeur de la réserve et ce seuil~:
@@ -1124,7 +1124,7 @@ même.}
 
 \subsubsection*{TOB à la sortie}
 
-La taxe sur les opérations de bourse (cf.~\hyperref[subsub:tob_cto]{La taxe sur les opérations de bourse})
+La taxe sur les opérations de bourse
 s'applique à l'achat comme à la vente. Au-delà des prélèvements opérés à
 chaque versement, une TOB est donc également due au moment de la liquidation,
 appliquée sur la valeur de la réserve cédée~:
@@ -1143,7 +1143,7 @@ final net, sans capitalisation.}
 \label{sub:taxe_pv_ct}
 
 À l'échéance, pour les scénarios intégrant la taxe sur les plus-values 
-(cf.~\hyperref[subsec:regime_fiscal_2026]{Régime fiscal de 2026}), 
+(cf.~section~\ref{subsec:regime_fiscal_2026}), 
 la plus-value réalisée est la différence entre la valeur
 liquidative finale et la somme totale investie. Une partie est exonérée~:
 10\,000~€ de base, augmentés de 1\,000~€ par année d'investissement jusqu'à
@@ -1289,7 +1289,7 @@ et des frais de gestion de 2,34\,\%\cite[p.~30]{fsma_couts_piliers}.
 Le scénario~C transpose les frais de la branche~23 vers le compte-titres,
 les frais d'entrée et de gestion sont respectivement
 transposés aux frais de transaction et de garde du compte-titres
-(cf.~\hyperref[subsub:frais_choisis]{Frais choisis}).
+(cf.~section~\ref{subsub:frais_choisis}).
 
 \begin{table}[h!]
   \centering
