@@ -1024,25 +1024,23 @@ tableau~\ref{tab:diff_ep_elt}.
 
 \subsection{La construction du capital final net : compte-titres}
 
-\subsubsection*{Les coûts d'entrée~: courtage et TOB}
+\subsubsection*{Les coûts d'entrée~: frais de transaction et TOB}
 \label{sub:couts_entree_ct}
 
 Contrairement à la branche~23, le versement brut entre intégralement dans
 la réserve~; aucun frais n'en est déduit à l'entrée. En revanche, deux coûts
-sont prélevés séparément à chaque versement~: les frais de courtage (cf.~\hyperref[subsub:courtage_cto]{Frais de courtage}) et la TOB
+sont prélevés séparément à chaque versement~: les frais de transaction (cf.~\hyperref[subsub:courtage_cto]{Frais de transaction}) et la TOB
 (cf.~\hyperref[subsub:tob_cto]{La taxe sur les opérations de bourse}).
 \begin{align}
-  \text{Courtage}_t &= v \times f_c^{\text{CT}} \\
+  \text{Transaction}_t &= v \times f_t^{\text{CT}} \\
   \text{TOB}_t      &= v \times \tau_{\text{TOB}}
 \end{align}
 Dans notre simulation, ils sont
 capitalisés jusqu'à l'échéance pour entrer dans le calcul du capital final net.
 
-\newpage
-
 \begin{quote}
 \textit{Exemple~: Antoine verse 1\,000~€ dans son compte-titres. Les frais de
-courtage s'élèvent à 0{,}5\,\% ($= 5$~€) et la TOB à 0{,}12\,\% ($= 1{,}20$~€).
+transaction s'élèvent à 0{,}5\,\% ($= 5$~€) et la TOB à 0{,}12\,\% ($= 1{,}20$~€).
 Ces 6{,}20~€ sortent de sa poche à chaque versement sans jamais entrer dans la
 réserve.}
 \end{quote}
