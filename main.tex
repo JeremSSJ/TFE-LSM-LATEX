@@ -1122,6 +1122,23 @@ du capital final net, sans capitalisation puisqu'il est prélevé à l'échéanc
 même.}
 \end{quote}
 
+\subsubsection*{TOB à la sortie}
+
+La taxe sur les opérations de bourse (cf.~\hyperref[subsub:tob_cto]{La taxe sur les opérations de bourse})
+s'applique à l'achat comme à la vente. Au-delà des prélèvements opérés à
+chaque versement, une TOB est donc également due au moment de la liquidation,
+appliquée sur la valeur de la réserve cédée~:
+\begin{equation}
+  \text{TOBSortie} = R_N \times \tau_{\text{TOB}}
+\end{equation}
+
+\begin{quote}
+\textit{Exemple~: À 65~ans, Antoine liquide sa réserve de 80\,000~€. Avec une
+TOB de 0{,}12\,\%, la taxe de sortie s'élève à $80\,000 \times 0{,}0012 = 96$~€.
+Comme le courtage de sortie, ce montant est retranché directement du capital
+final net, sans capitalisation.}
+\end{quote}
+
 \subsubsection*{La taxe sur les plus-values à la sortie}
 \label{sub:taxe_pv_ct}
 
@@ -1178,6 +1195,8 @@ taux OLO net, puis soustrait du capital net~:
   &\quad
   -
     \underbrace{\text{CourtageSortie}}_{\text{courtage de sortie}}
+  -
+    \underbrace{\text{TOBSortie}}_{\text{TOB de sortie}}
 \end{align}
 
 \begin{quote}
