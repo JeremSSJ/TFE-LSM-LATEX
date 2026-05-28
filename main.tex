@@ -1066,8 +1066,8 @@ annuel de 1\,000~€ porte la réserve à 11\,500~€.}
 
 Chaque année, des frais de garde (cf.~\hyperref[subsub:frais_garde_cto]{Frais de garde}) sont calculés proportionnellement à la valeur
 de la réserve. Contrairement aux frais de gestion de la branche~23, ils ne sont
-pas déduits de la réserve~: ils sont prélevés en dehors de celle-ci, 
-puis capitalisés jusqu'à l'échéance pour entrer dans le
+pas déduits de la réserve. Dans notre simulation, ils sont 
+capitalisés jusqu'à l'échéance pour entrer dans le
 calcul du capital final net.
 \begin{equation}
   \text{FraisGarde}_t = \widetilde{R}_t \times f_{\text{garde}}^{\text{CT}}
@@ -1077,7 +1077,7 @@ calcul du capital final net.
 \textit{Exemple~: La réserve d'Antoine atteint 10\,000~€ en cours d'accumulation.
 Avec des frais de garde de 0{,}2\,\%, 20~€ sont prélevés cette année-là en dehors
 de la réserve. Dans notre simulation, ces 20~€ sont mis de côté, capitalisés jusqu'à l'échéance, et
-viendront réduire le capital final net au même titre que le courtage et la TOB.}
+viendront réduire le capital final net au même titre que les frais de transaction et la TOB.}
 \end{quote}
 
 \subsubsection*{La taxe sur les comptes-titres (TCT)}
