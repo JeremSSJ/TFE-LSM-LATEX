@@ -1,0 +1,307 @@
+﻿\documentclass[12pt]{article}
+
+% ---- Mise en page A3 portrait ----
+\usepackage[a3paper, portrait, top=1.5cm, bottom=1.5cm, left=1.5cm, right=1.5cm, noheadfoot]{geometry}
+
+% ---- Encodage et langue ----
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+
+% ---- Police ----
+\usepackage{mathptmx}
+
+% ---- Boites et couleurs ----
+\usepackage[most]{tcolorbox}
+\usepackage{xcolor}
+
+% ---- Graphiques ----
+\usepackage{graphicx}
+
+% ---- Listes ----
+\usepackage{enumitem}
+
+% ---- Espacement ----
+\usepackage{parskip}
+
+% ---- Maths ----
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+% ---- Tableaux ----
+\usepackage{booktabs}
+\usepackage{array}
+
+% ---- Dimensions ----
+\usepackage{calc}
+
+% ---- Micro-typographie ----
+\usepackage{microtype}
+
+\pagestyle{empty}
+\setlength{\parskip}{3pt}
+\setlength{\parindent}{0pt}
+
+% =============================================================
+% Palette de couleurs
+% =============================================================
+\definecolor{darkblue}{RGB}{0, 54, 108}
+\definecolor{midblue}{RGB}{20, 98, 178}
+\definecolor{lightblue}{RGB}{226, 238, 255}
+\definecolor{gold}{RGB}{178, 138, 0}
+\definecolor{lightgold}{RGB}{255, 251, 228}
+\definecolor{ctcolor}{RGB}{0, 118, 58}
+\definecolor{b23color}{RGB}{20, 70, 180}
+
+% =============================================================
+% Dimensions des cases (2x2, gap de 10pt)
+% =============================================================
+\newlength{\boxw}
+\newlength{\boxh}
+\AtBeginDocument{%
+  \setlength{\boxw}{\dimexpr(\textwidth - 10pt)/2\relax}%
+  \setlength{\boxh}{\dimexpr(\textheight - 10pt)/2\relax}%
+}
+
+% =============================================================
+% Styles tcolorbox
+% =============================================================
+\tcbset{
+  posterbox/.style={
+    enhanced,
+    colback=lightblue!40!white,
+    colframe=darkblue,
+    colbacktitle=darkblue,
+    coltitle=white,
+    fonttitle=\bfseries\large,
+    attach boxed title to top left={yshift=-2mm, xshift=4mm},
+    boxed title style={sharp corners, colback=darkblue},
+    boxrule=2pt,
+    arc=6pt,
+    left=10pt, right=10pt, top=10pt, bottom=8pt,
+  },
+  highlightbox/.style={
+    enhanced,
+    colback=lightgold,
+    colframe=gold,
+    boxrule=1.5pt,
+    arc=4pt,
+    left=7pt, right=7pt, top=6pt, bottom=6pt,
+  },
+  inlinebox/.style={
+    enhanced,
+    colback=lightblue!55,
+    colframe=midblue,
+    boxrule=0.8pt,
+    arc=3pt,
+    left=6pt, right=6pt, top=5pt, bottom=5pt,
+  }
+}
+
+% =============================================================
+\begin{document}
+% =============================================================
+\noindent
+% ==== LIGNE 1 ====
+\begin{minipage}[t]{\boxw}
+\begin{tcolorbox}[posterbox, title=Objectifs du m\'emoire]
+\small
+
+\begin{tcolorbox}[highlightbox]
+\small\centering
+\textbf{Question de recherche~:}\\[3pt]
+En 2026, en Belgique, dans une demarche d'investissement personnel
+visant la constitution d'un capital retraite, lequel de
+l'epargne-pension (EP), de l'epargne a long terme (ELT) ou du
+compte-titres (CT) offre le \textbf{capital final net le plus eleve
+a 65~ans}~? Dans quelle mesure la taxe sur les plus-values de~2026
+modifie-t-elle cette hierarchie~?
+\end{tcolorbox}
+
+\vspace{5pt}
+
+\begin{enumerate}[leftmargin=*, label=\textcolor{darkblue}{\bfseries\arabic*.}, itemsep=5pt]
+
+  \item \textbf{Comparer} les trois vehicules sur un critere unique~:
+    le \textbf{Capital Final Net (CFN)} a~65~ans, a hypotheses
+    strictement identiques~: meme rendement brut, meme versement
+    annuel, meme horizon.
+
+  \item \textbf{Explorer} un large espace de parametres~:
+    38~ages de debut (18 a 55~ans), 11~niveaux de rendement brut
+    (0 a 10\,\%) et la plage complete de versements annuels
+    de~1\,\texteuro{} jusqu'au plafond legal.
+
+  \item \textbf{Mesurer l'impact de la reforme fiscale de~2026}~:
+    la nouvelle taxe belge de~10\,\% sur les plus-values mobilieres,
+    en vigueur depuis le 1\textsuperscript{er}~janvier~2026,
+    modifie structurellement l'arbitrage entre vehicules.
+
+  \item \textbf{Fournir un outil de lecture}~: les heatmaps
+    produites identifient, pour chaque profil (age, rendement,
+    versement), l'instrument dominant et les seuils de croisement.
+
+\end{enumerate}
+
+\end{tcolorbox}
+\end{minipage}%
+\hspace{10pt}%
+\begin{minipage}[t]{\boxw}
+\begin{tcolorbox}[posterbox, title=Pertinence du th\`eme]
+\small
+
+\begin{itemize}[leftmargin=*, label=\textcolor{darkblue}{\textbullet}, itemsep=8pt]
+
+  \item \textbf{Reforme fiscale majeure de~2026~:} la Belgique
+    introduit un impot de~10\,\% sur les plus-values mobilieres
+    des particuliers, rompant avec l'absence historique de taxation.
+    Les contrats d'epargne-pension et d'epargne a long terme sont
+    explicitement exclus, creant une \textbf{asymetrie structurelle
+    inedite} dans la comparaison des vehicules d'investissement.
+
+  \item \textbf{Essor des neocourtiers et des ETF~:} le developpement
+    de plateformes a frais reduits (Trade Republic, etc.) et la
+    popularisation des ETF indiciels conduisent un nombre croissant
+    de Belges a investir directement en compte-titres, en dehors de
+    toute enveloppe institutionnelle, popularisant l'investissement
+    passif comme alternative aux produits d'assurance-vie.
+
+  \item \textbf{Comparaisons courantes biaisees~:} les analyses
+    disponibles dans les medias attribuent frequemment des rendements
+    differents selon le vehicule, invalidant leurs conclusions.
+    Elles refletent l'hypothese retenue plutot que les
+    caracteristiques intrinseques de chaque vehicule. Une comparaison
+    a \textbf{rendement identique} s'impose.
+
+  \item \textbf{Question d'actualite sans reponse systematique~:}
+    l'arbitrage entre enveloppes fiscales et investissement direct
+    est regulierement souleve sans jamais faire l'objet d'une analyse
+    rigoureuse a hypotheses comparables couvrant l'ensemble de
+    l'espace des parametres.
+
+\end{itemize}
+
+\end{tcolorbox}
+\end{minipage}
+
+\vspace{10pt}
+
+% ==== LIGNE 2 ====
+\noindent
+\begin{minipage}[t]{\boxw}
+\begin{tcolorbox}[posterbox, title=M\'ethodes mobilis\'ees]
+\small
+
+\textbf{Simulation deterministe}
+
+Pour chaque combinaison de parametres, la trajectoire complete de
+chaque vehicule est reconstituee jusqu'a~65~ans en appliquant
+strictement les regles fiscales et tarifaires en vigueur.
+
+\smallskip
+
+\textbf{5\,016 combinaisons~: $38 \times 11 \times 4 \times 3$}, chacune
+parcourant la plage de versements de~1\,\texteuro{} au plafond legal.
+
+\vspace{5pt}
+
+\textbf{Trois scenarios de frais}
+
+\smallskip
+
+\begin{tabular}{>{\bfseries\small}c >{\small}p{0.83\linewidth}}
+  A & \textit{Sans frais} des deux cotes~: isole l'effet fiscal pur \\[2pt]
+  B & \textit{Frais realistes}~: CT~=~0\,\%~;
+      B23~=~2,83\,\% entree + 2,34\,\% gestion \\[2pt]
+  C & \textit{Frais majores}~: CT calque sur les frais de B23
+      (egalisation) \\
+\end{tabular}
+
+\vspace{5pt}
+
+\textbf{Le Capital Final Net (CFN) --- critere unique}
+
+\begin{tcolorbox}[inlinebox]
+\small
+Le CFN integre, ramenes a la meme date (65~ans) par capitalisation
+au \textbf{taux OLO belge net de precompte (30\,\%)} (courbe BNB du
+30~avril~2026)~: (1)~le capital net de taxe anticipative (B23) ou de
+taxe sur les plus-values (CT)~; (2)~les economies fiscales annuelles
+de la B23 capitalisees~; (3)~les couts capitalises a meme date.
+\begin{equation*}
+  \text{CFN} = C_N^{\text{net}}
+  \;\pm\; \textstyle\sum\nolimits_t
+    \text{Flux}_t \cdot (1+r_{\text{OLO}})^{n-t}
+\end{equation*}
+\end{tcolorbox}
+
+\vspace{5pt}
+
+\textbf{Heatmaps 2D} --- axe~X~: rendement brut (0--10\,\%)~;
+axe~Y~: age de debut (18--55~ans). La couleur indique le vehicule
+dominant et son intensite la force de la dominance. Les seuils de
+croisement ($v^*$) sont annotes dans les cellules concernees.
+
+\smallskip
+
+\textbf{Validation}~: reproduction independante dans Excel (ligne par
+ligne) et tests automatises de non-regression.
+
+\end{tcolorbox}
+\end{minipage}%
+\hspace{10pt}%
+\begin{minipage}[t]{\boxw}
+\begin{tcolorbox}[posterbox, title=R\'esultats obtenus]
+\small
+
+\noindent
+\includegraphics[width=0.485\linewidth]{media/elt_frais_reel_sans_taxe.png}%
+\hfill%
+\includegraphics[width=0.485\linewidth]{media/ep_frais_reel_sans_taxe.png}
+\par\vspace{1pt}
+{\centering\scriptsize
+  \textcolor{b23color}{\textbf{Bleu}}~= B23 dominante\enspace
+  \textcolor{ctcolor}{\textbf{Vert}}~= CT dominant\enspace
+  Intensite~= force\par}
+
+\vspace{5pt}
+
+\begin{itemize}[leftmargin=*, label=\textcolor{darkblue}{\textbullet}, itemsep=4pt]
+
+  \item \textbf{Aucun vehicule universellement superieur}~: la
+    hierarchie est sensible a l'age de debut, au rendement et
+    surtout a la structure de frais.
+
+  \item \textbf{Scenario realiste (B)~:} le \textbf{CT domine} sur
+    la grande majorite des configurations. La branche~23 l'emporte
+    uniquement aux rendements faibles ($\leq$\,3--4\,\%) et aux
+    horizons courts.
+
+  \item \textbf{Egalisation des frais (C)~:} les zones CT se
+    reduisent fortement. \textbf{Les frais recurrents sont
+    determinants}, davantage que la fiscalite a la sortie.
+
+  \item \textbf{Taxe PV 2026~:} erode la rentabilite du CT sans
+    renverser les resultats dans le scenario realiste. Son effet ne
+    devient visible qu'en l'absence d'ecart tarifaire.
+
+  \item \textbf{Epargne-pension~:} seuils de croisement autour de
+    \textbf{1\,050\,\texteuro{}/an} (palier de reduction d'impot~:
+    30\,\% en dessous, 25\,\% au-dessus).
+
+\end{itemize}
+
+\vspace{4pt}
+
+\begin{tcolorbox}[highlightbox]
+\small\centering
+\textbf{Enseignement principal~:} les \textbf{frais recurrents}
+pesent bien plus lourd que la fiscalite a la sortie sur le long
+terme. La reforme de~2026 ne remet pas a elle seule en cause la
+pertinence du CT pour un investisseur de long terme en ETF accumulant.
+\end{tcolorbox}
+
+\end{tcolorbox}
+\end{minipage}
+
+\end{document}
