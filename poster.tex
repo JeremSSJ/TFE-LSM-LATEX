@@ -104,7 +104,247 @@
 \noindent
 % ==== LIGNE 1 ====
 \begin{minipage}[t]{\boxw}
-\begin{tcolorbox}[posterbox, title=Objectifs du m\'emoire]
+\begin{tcolorbox}[posterbox, title=Contexte et motivation]
+\small
+
+\textbf{Un discours dominant en faveur des ETF passifs}
+
+Depuis quelques années, un courant de contenu financier grand public
+(chaînes YouTube, livres comme \textit{Épargnant~3.0}) recommande
+l'investissement passif en ETF accumulants via des néocourtiers à frais
+réduits selon une stratégie \textit{buy-and-hold} jusqu'à la retraite.
+Ces contenus concluent que l'or, les actions individuelles, l'immobilier
+et \textbf{l'assurance-vie sont moins bons que les ETF}.
+
+\vspace{4pt}
+
+\textbf{Mais les comparaisons ne se font jamais \`a armes égales}
+
+La comparaison entre ETF et assurance-vie branche~23 attribue
+systématiquement des rendements différents aux deux véhicules
+(typiquement 8\,\% à l'ETF, 4\,\% à l'assurance-vie). La conclusion
+reflète alors \textbf{l'hypothèse de rendement retenue}, pas les
+caractéristiques intrinsèques du véhicule. Une comparaison rigoureuse
+exige le même rendement brut des deux côtés.
+
+\vspace{4pt}
+
+\textbf{La réforme fiscale de 2026 rebat les cartes}
+
+La Belgique a historiquement exonéré les plus-values mobilières.
+Depuis le 1\textsuperscript{er}~janvier~2026, une taxe de
+\textbf{10\,\%} s'applique aux plus-values en compte-titres~;
+les enveloppes EP et ELT en sont explicitement exclues,
+créant une asymétrie inédite.
+
+\vspace{4pt}
+
+\begin{tcolorbox}[highlightbox]
+\small\centering
+\textbf{Question de recherche~:}\\[3pt]
+En 2026, en Belgique, lequel de l'épargne-pension (EP),
+de l'épargne \`a long terme (ELT) ou du compte-titres (CT)
+procure le \textbf{capital final net le plus élevé \`a 65~ans}
+et dans quelle mesure la taxe sur les plus-values modifie-t-elle
+cette hiérarchie~?
+\end{tcolorbox}
+
+\end{tcolorbox}
+\end{minipage}%
+\hspace{10pt}%
+\begin{minipage}[t]{\boxw}
+\begin{tcolorbox}[posterbox, title=Les trois v\'ehicules compar\'es]
+\small
+
+\textbf{Branche~23 --- Épargne-pension (EP) et Épargne à long terme (ELT)}
+
+Contrats d'assurance-vie liés à des fonds d'investissement~: les primes
+sont investies dans des OPC après déduction des taxes et chargements.
+L'assureur assume une obligation de moyens (nombre de parts) mais pas
+le risque financier, supporté intégralement par le preneur.
+
+\vspace{4pt}
+
+\begin{tabular}{@{}>{\small\bfseries}p{3.4cm}
+                >{\small\centering}p{2.8cm}
+                >{\small\centering\arraybackslash}p{2.8cm}@{}}
+  \toprule
+  & \textbf{EP} & \textbf{ELT} \\
+  \midrule
+  Taxe opérations ass. & 0\,\% & 2\,\% \\
+  Frais d'entrée (moy.) & \multicolumn{2}{c}{2,83\,\% \textsuperscript{\textit{a}}} \\
+  Frais de gestion (moy.) & \multicolumn{2}{c}{2,34\,\%/an \textsuperscript{\textit{a}}} \\
+  Réduction d'impôt & 30\,\% ($\leq$1\,050\,€) & 30\,\% ($\leq$2\,450\,€) \\
+                    & 25\,\% ($\leq$1\,350\,€) & \\
+  Taxe anticipative & 8\,\% à 60~ans & 10\,\% à 60~ans \\
+  \bottomrule
+  \multicolumn{3}{@{}l@{}}{\textsuperscript{\textit{a}}\scriptsize Source~: étude FSMA sur les coûts des produits de pension.} \\
+\end{tabular}
+
+\vspace{6pt}
+
+\textbf{Compte-titres (CT)}
+
+Compte ouvert auprès d'un établissement financier pour détenir des
+instruments financiers~; l'investisseur reste propriétaire des actifs,
+sans enveloppe juridique interposée.
+
+\vspace{4pt}
+
+\begin{tabular}{@{}>{\small\bfseries}p{3.8cm} >{\small\arraybackslash}p{5.2cm}@{}}
+  \toprule
+  TOB (achat \& vente) & 0,12\,\% \\
+  Frais de transaction & 0\,\% (néocourtiers) \\
+  Taxe PV (depuis 2026) & 10\,\% au-delà de 10\,000\,€ \\
+  Avantage fiscal entrée & Aucun \\
+  \bottomrule
+\end{tabular}
+
+\vspace{6pt}
+
+\begin{tcolorbox}[inlinebox]
+\small
+\textbf{Principe~:} les deux enveloppes investissent dans les
+\textbf{mêmes actifs} (ETF actions accumulant). Rendement brut
+identique des deux côtés~; seuls les véhicules diffèrent.
+\end{tcolorbox}
+
+\end{tcolorbox}
+\end{minipage}
+
+\vspace{10pt}
+
+% ==== LIGNE 2 ====
+\noindent
+\begin{minipage}[t]{\boxw}
+\begin{tcolorbox}[posterbox, title=M\'ethodologie]
+\small
+
+\textbf{Simulation déterministe}
+
+La trajectoire de chaque véhicule est reconstituée jusqu'à~65~ans pour
+chaque combinaison de paramètres en appliquant strictement les règles
+fiscales et tarifaires en vigueur.
+\textbf{5\,016 combinaisons}~: $38 \times 11 \times 4 \times 3$ (âge de
+début $\times$ rendement $\times$ scénario fiscal $\times$ scénario de
+frais), chacune explorant la plage de versements de 1\,€ au plafond légal.
+
+\vspace{4pt}
+
+\textbf{Scénarios de frais} --- isoler l'effet de chaque composante
+
+\begin{tabular}{@{}>{\bfseries\small}c >{\small}p{0.83\linewidth}@{}}
+  B & \textit{Réaliste}~: CT\,=\,0\,\% (données Trade Republic)~;
+      B23\,=\,2,83\,\% entrée + 2,34\,\%/an gestion (données FSMA) \\[2pt]
+  A & \textit{Frais nuls} des deux côtés~: isole l'effet fiscal pur \\[2pt]
+  C & \textit{Frais majorés}~: CT calqué sur les frais de la B23 ---
+      borne supérieure, égalise les conditions tarifaires \\
+\end{tabular}
+
+\vspace{4pt}
+
+\textbf{Scénarios fiscaux~:} EP ou ELT $\times$ CT avec/sans taxe PV.
+Les scénarios sans taxe PV correspondent au régime avant~2026 et
+permettent de mesurer l'impact de la réforme.
+
+\vspace{4pt}
+
+\textbf{Critère unique~: le Capital Final Net (CFN) à~65~ans}
+
+\begin{tcolorbox}[inlinebox]
+\small
+Tous les flux sont ramenés à la même date~: le capital accumulé (net de
+taxe anticipative pour la B23, ou de taxe PV pour le CT), \textbf{plus}
+les économies fiscales annuelles de la B23 capitalisées,
+\textbf{moins} les coûts (frais, taxes) capitalisés~:
+\begin{equation*}
+  \text{CFN} = C_N^{\text{net}}
+  \;\pm\; \textstyle\sum\nolimits_t
+    \text{Flux}_t \cdot (1+r_{\text{OLO}})^{n-t}
+\end{equation*}
+Taux de capitalisation~: courbe \textbf{OLO belge nette de précompte
+mobilier (30\,\%)} au 30~avril~2026, de maturité égale à l'horizon du
+flux~; taux sans risque choisi car les flux annexes (économies fiscales,
+coûts) sont traités comme certains.
+\end{tcolorbox}
+
+\vspace{4pt}
+
+\textbf{Visualisation~: heatmaps 2D}
+
+Grille axe~X~= rendement (0--10\,\%) $\times$ axe~Y~= âge de début
+(18--55~ans). \textcolor{b23color}{\textbf{Bleu}}\,=\,B23 dominante,
+\textcolor{ctcolor}{\textbf{Vert}}\,=\,CT dominant~; l'intensité reflète
+la force de la dominance. Les seuils de croisement ($v^*$) sont annotés.
+Validation~: reproduction indépendante dans Excel et tests automatisés.
+
+\end{tcolorbox}
+\end{minipage}%
+\hspace{10pt}%
+\begin{minipage}[t]{\boxw}
+\begin{tcolorbox}[posterbox, title=R\'esultats]
+\small
+
+\noindent
+\includegraphics[width=0.485\linewidth]{media/elt_frais_reel_sans_taxe.png}%
+\hfill%
+\includegraphics[width=0.485\linewidth]{media/ep_frais_reel_sans_taxe.png}
+\par\vspace{1pt}
+{\centering\scriptsize
+  ELT vs CT (gauche) \quad EP vs CT (droite) \quad Scénario~B (frais réalistes), sans taxe PV\par
+  \textcolor{b23color}{\rule{8pt}{6pt}}~B23 dominante \quad
+  \textcolor{ctcolor}{\rule{8pt}{6pt}}~CT dominant \quad
+  Intensité = force de dominance\par}
+
+\vspace{5pt}
+
+\textbf{Scénario~B --- frais réalistes (cas central)}
+
+Le CT domine sur la grande majorité des configurations. La B23
+ne s'impose qu'aux rendements faibles et horizons courts, où les
+économies fiscales pèsent proportionnellement plus lourd que les
+intérêts composés pas encore accumulés. \textbf{La taxe PV de~2026
+érode le CT mais ne renverse pas cette hiérarchie}~: les frais de la B23
+absorbent l'avantage fiscal, quelle que soit la réforme.
+
+\vspace{4pt}
+
+\textbf{Scénario~A --- frais nuls (effet fiscal pur)}
+
+Sans frais, la B23 domine presque partout grâce à ses réductions
+d'impôt. Ajoutez la taxe PV~: la B23 devient dominante sur la
+quasi-totalité de la grille. C'est \textbf{l'effet fiscal à l'état pur}.
+
+\vspace{4pt}
+
+\textbf{Scénario~C --- frais égalisés}
+
+Quand on supprime l'avantage tarifaire du CT, ses zones de dominance se
+réduisent fortement. Il reste avantageux à rendement élevé et horizon
+long~: ses frais sont prélevés \textit{en dehors} de la réserve,
+contrairement à la B23 où ils sont déduits \textit{sur} le capital.
+
+\vspace{4pt}
+
+\textbf{Spécificité de l'EP~:} des seuils de croisement apparaissent
+autour de \textbf{1\,050\,€/an}, correspondant au palier de réduction
+d'impôt (30\,\% puis 25\,\%).
+
+\vspace{4pt}
+
+\begin{tcolorbox}[highlightbox]
+\small
+\textbf{Ce que le contenu grand public ne dit pas~:} à rendement
+identique, \textbf{les frais récurrents} de la B23 pèsent
+davantage que la fiscalité à la sortie. La taxe PV de~2026 n'invalide
+pas le compte-titres dans le scénario réaliste. Ce sont les frais, plus
+que le régime fiscal, qui déterminent la hiérarchie.
+\end{tcolorbox}
+
+\end{tcolorbox}
+\end{minipage}
+
+\end{document}
 \small
 
 \begin{tcolorbox}[highlightbox]
