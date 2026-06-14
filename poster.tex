@@ -1,9 +1,9 @@
-\documentclass[11pt]{article}
-\usepackage[a3paper,portrait,top=1.5cm,bottom=1.5cm,left=1.5cm,right=1.5cm,noheadfoot]{geometry}
+\documentclass[20pt]{extarticle}
+\usepackage[a0paper,portrait,top=2cm,bottom=2cm,left=2cm,right=2cm,noheadfoot]{geometry}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage[french]{babel}
-\usepackage{mathptmx}
+\usepackage{lmodern}
 \usepackage[most]{tcolorbox}
 \usepackage{xcolor}
 \usepackage{graphicx}
@@ -15,9 +15,10 @@
 \usepackage{array}
 \usepackage{calc}
 \usepackage{microtype}
+\usepackage{eurosym}
 
 \pagestyle{empty}
-\setlength{\parskip}{3pt}
+\setlength{\parskip}{5pt}
 \setlength{\parindent}{0pt}
 
 \definecolor{darkblue}{RGB}{0,54,108}
@@ -28,154 +29,152 @@
 \definecolor{ctcolor}{RGB}{0,118,58}
 \definecolor{b23color}{RGB}{20,70,180}
 
-\newlength{\colw}
-\AtBeginDocument{\setlength{\colw}{\dimexpr(\textwidth-10pt)/2\relax}}
+\newlength{\colone}
+\newlength{\coltwo}
+\newlength{\colthree}
+\AtBeginDocument{%
+  \setlength{\colone}{0.230\textwidth}%
+  \setlength{\coltwo}{0.375\textwidth}%
+  \setlength{\colthree}{0.375\textwidth}%
+}
 
 \tcbset{
   sectionbox/.style={enhanced,colback=lightblue!40!white,colframe=darkblue,
     colbacktitle=darkblue,coltitle=white,fonttitle=\bfseries\large,
-    boxrule=2pt,arc=6pt,left=10pt,right=10pt,top=8pt,bottom=8pt},
+    boxrule=2pt,arc=8pt,left=14pt,right=14pt,top=10pt,bottom=10pt},
   highlightbox/.style={enhanced,colback=lightgold,colframe=gold,
-    boxrule=1.5pt,arc=4pt,left=7pt,right=7pt,top=6pt,bottom=6pt},
+    boxrule=2pt,arc=5pt,left=12pt,right=12pt,top=10pt,bottom=10pt},
   inlinebox/.style={enhanced,colback=lightblue!55,colframe=midblue,
-    boxrule=0.8pt,arc=3pt,left=6pt,right=6pt,top=5pt,bottom=5pt},
+    boxrule=1pt,arc=5pt,left=10pt,right=10pt,top=8pt,bottom=8pt},
   pagehead/.style={enhanced,colback=darkblue,colframe=darkblue,
-    sharp corners,boxrule=0pt,left=8pt,right=8pt,top=8pt,bottom=8pt},
+    sharp corners,boxrule=0pt,left=12pt,right=12pt,top=12pt,bottom=12pt},
   resultsbox/.style={enhanced,colback=lightblue!25,colframe=darkblue,
-    boxrule=1pt,arc=4pt,left=7pt,right=7pt,top=5pt,bottom=5pt,
-    fontupper=\small}
+    boxrule=1pt,arc=5pt,left=10pt,right=10pt,top=7pt,bottom=7pt,
+    fontupper=\small},
+  headerbox/.style={enhanced,colback=darkblue,colframe=darkblue,
+    sharp corners,boxrule=0pt,left=24pt,right=24pt,top=18pt,bottom=18pt}
 }
 
 \begin{document}
 
 % ================================================================
-% PAGE 1 : Contexte et methodologie
+% HEADER
+% ================================================================
+\begin{tcolorbox}[headerbox]
+\begin{minipage}[c]{0.70\textwidth}
+  {\fontsize{52}{60}\selectfont\bfseries\color{white}
+  \'Epargne-pension, \'epargne \`a long terme ou compte-titres :\\
+  lequel choisir en 2026\,?\par}
+  \vspace{8pt}
+  {\large\color{white!80!darkblue}
+  Comparaison \`a rendement brut identique incluant la r\'eforme
+  fiscale belge sur les plus-values (taxe PV 10\,\%)}
+\end{minipage}%
+\hfill
+\begin{minipage}[c]{0.26\textwidth}
+  \raggedleft\color{white}
+  {\Large\textbf{[Votre nom]}\\[4pt]}
+  {\normalsize Universit\'e catholique de Louvain\\
+  Louvain School of Management\\[4pt]
+  Travail de fin d'\'etudes --- 2025--2026}
+\end{minipage}
+\end{tcolorbox}
+
+\vspace{14pt}
+
+% ================================================================
+% TROIS COLONNES
 % ================================================================
 \noindent
-\begin{minipage}[t]{\colw}
-\begin{tcolorbox}[sectionbox, title=Contexte et objectif]
-\small
+\begin{minipage}[t]{\colone}
 
+% Question de recherche
 \begin{tcolorbox}[highlightbox]
-\small\centering
-\textbf{Question de recherche}\\[3pt]
-En 2026, en Belgique, dans une
-démarche d'investissement personnel
-visant la constitution d'un capital en vue
-de la retraite, lequel de l'épargne-pension, 
-de l'épargne à long terme ou
-du compte-titres offre le capital final net
-le plus élevé, et dans quelle mesure la
-taxe sur les plus-values de 2026
-modifie-t-elle cette hiérarchie ?
+\centering
+\textbf{Question de recherche}\\[5pt]
+En 2026, en Belgique, lequel de l'EP, de l'ELT ou du CT
+procure le \textbf{capital final net le plus \'elev\'e \`a 65~ans}~?
+La taxe sur les plus-values de 2026 modifie-t-elle cette hi\'erarchie~?
 \end{tcolorbox}
+
+\vspace{10pt}
+
+% Contexte
+\begin{tcolorbox}[sectionbox, title=Contexte]
+\begin{itemize}[leftmargin=*,label=\textcolor{darkblue}{\textbullet},itemsep=5pt]
+  \item Cr\'eateurs de contenu (Guilmin, Baccino\,/\,Trade~Republic)~:
+    recommandent le CT, concluent que la B23 est trop ch\`ere.
+  \item Biais~: rendement CT (ex.\,8\,\%) $\neq$ B23 (ex.\,4\,\%)
+    dans leurs mod\`eles --- la conclusion refl\`ete
+    l'\textbf{hypoth\`ese}, pas le v\'ehicule.
+  \item Ce travail~: \textbf{rendement brut identique} pour les trois
+    enveloppes --- seuls co\^uts et fiscalit\'e diff\`erent.
+  \item R\'eforme 2026~: taxe PV 10\,\% sur CT~; EP et ELT exclus
+    --- asym\'etrie in\'edite.
+\end{itemize}
+\end{tcolorbox}
+
+\vspace{10pt}
+
+% Vehicules
+\begin{tcolorbox}[sectionbox, title=V\'ehicules compar\'es]
+\small
+\textbf{Branche~23 (B23)}~: assurance-vie unit-linked belge,
+rendement li\'e \`a des ETF accumulants. Deux enveloppes fiscales~:
 
 \vspace{6pt}
 
-\textbf{Les v\'ehicules en un coup d'\oe il}
-
-\begin{itemize}[leftmargin=*,label=\textcolor{darkblue}{\textbullet},itemsep=3pt]
-  \item \textbf{Assurance-vie branche~23}~: contrat d'assurance-vie, 
-  les primes sont investies dans des fonds d'investissement. 
-  Le rendement est entièrement lié à l'évolution de ces fonds et 
-  le risque financier est supporté par le souscripteur. 
-  Deux enveloppes fiscales distinctes~:
-    \begin{itemize}[leftmargin=*,label=\textcolor{midblue}{--},itemsep=1pt]
-      \item \textbf{\'Epargne-pension}~:
-        r\'eduction d'imp\^ot 30\,\% ($\leq$1\,050~€) ou 25\,\% jusqu'à 1\,350~€/an,
-        taxe anticipative 8\,\% \`a 60~ans.
-      \item \textbf{\'Epargne \`a long terme}~:
-       r\'eduction 30\,\% jusqu'à une prime maximale 
-       2\,450~€/an, taxe anticipative 10\,\%
-        \`a 60~ans, TOA~2\,\% \`a l'entrée.
-    \end{itemize}
-  \item \textbf{Compte-titres}~: portefeuille de valeurs
-    mobili\`eres d\'etenu directement. Aucune r\'eduction fiscale.
-\end{itemize}
-
-\vspace{5pt}
-
-\textbf{Pourquoi cette comparaison~?}
-
-\begin{itemize}[leftmargin=*,label=\textcolor{darkblue}{\textbullet},itemsep=2pt]
-  \item Cr\'eateurs de contenu~:
-    recommandent le CT, concluent que l'assurance vie est trop ch\`ere.
-  \item Biais~: rendement différents dans leurs explications.
-  \item Ce travail~: rendement identique pour les
-    trois enveloppes --- seuls les co\^uts et la fiscalit\'e diff\`erent.
-  \item R\'eforme 2026~: taxe PV~10\,\% sur CT uniquement (exonération jusqu'à 15\,000~€)~;
-    EP et ELT explicitement exclus --- asym\'etrie in\'edite.
-\end{itemize}
-
-\end{tcolorbox}
-\end{minipage}%
-\hspace{10pt}%
-\begin{minipage}[t]{\colw}
-\begin{tcolorbox}[sectionbox, title=V\'ehicules et m\'ethodologie]
-\small
-
-\vspace{4pt}
-
-\begin{tabular}{@{}>{\bfseries\small}p{2.9cm}
-                >{\small\centering}p{2.4cm}
-                >{\small\centering}p{2.4cm}
-                >{\small\centering\arraybackslash}p{2.3cm}@{}}
+\begin{tabular}{@{}>{\bfseries\small}p{3.0cm}
+                >{\small\centering}p{2.9cm}
+                >{\small\centering}p{2.9cm}
+                >{\small\centering\arraybackslash}p{2.5cm}@{}}
 \toprule
 & \textbf{EP} & \textbf{ELT} & \textbf{CT} \\
 \midrule
 Taxe entr\'ee & 0\,\% & TOA 2\,\% & TOB 0,12\,\% \\
 Frais entr\'ee & \multicolumn{2}{c}{2,83\,\%\,\textsuperscript{a}} & 0\,\% \\
 Frais gestion & \multicolumn{2}{c}{2,34\,\%/an\,\textsuperscript{a}} & 0\,\% \\
-R\'eduction fisc. & 30/25\,\% & 30\,\% & --- \\
-Taxe anticipative & 8\,\% \`a 60\,ans & 10\,\% \`a 60\,ans & --- \\
+R\'ed.\ fiscale & 30/25\,\% & 30\,\% & --- \\
+Taxe anticip. & 8\,\% (60\,ans) & 10\,\% (60\,ans) & --- \\
 Taxe PV (2026) & --- & --- & 10\,\% \\
 \bottomrule
-\multicolumn{4}{@{}l}{\textsuperscript{a}\scriptsize Moyennes FSMA.}\\
-\multicolumn{4}{@{}l}{\scriptsize Plafonds l\'egaux~: EP 1\,050/1\,350~€/an (30\,\% $\leq$ 1\,050~€~; 25\,\% au-del\`a), ELT 2\,450~€/an.}
+\multicolumn{4}{@{}l}{\footnotesize\textsuperscript{a}Moyennes FSMA.
+  Plafonds~: EP 1\,350~\euro/an~; ELT 2\,450~\euro/an.}
 \end{tabular}
-
-\vspace{6pt}
-
-\textbf{Simulation d\'eterministe}
---- $38\times11\times4\times3 = 5\,016$ combinaisons
-
-\vspace{3pt}
-
-\begin{tcolorbox}[inlinebox,top=4pt,bottom=4pt]
-\small\textbf{Commun aux 3 sc\'enarios}\\[2pt]
-\begin{tabular}{@{}ll@{}}
-  Actif sous-jacent & ETF actions accumulant \\
-  Rendement brut & identique (0--10\,\%) \\
-  \^Age de d\'ebut & 18--55~ans \\
-  Versement annuel & 1~€ $\to$ plafond l\'egal \\
-  Crit\`ere & CFN \`a 65~ans \\
-\end{tabular}
-\end{tcolorbox}
-
-\vspace{3pt}
-
-\begin{tcolorbox}[inlinebox,top=4pt,bottom=4pt]
-\small\textbf{Ce qui varie selon le sc\'enario}\\[2pt]
-\begin{tabular}{@{}>{\bfseries\small}p{1.1cm}
-                >{\small}p{2.2cm}
-                >{\small}p{2.2cm}@{}}
-  & \textbf{B23 (EP/ELT)} & \textbf{CT} \\
-\midrule
-Sc\'en.~A & frais nuls & frais nuls \\
-Sc\'en.~B & frais r\'eels & frais nuls \\
-Sc\'en.~C & frais r\'eels & frais calqu\'es sur B23 \\
-\multicolumn{3}{@{}l}{\footnotesize + d\'eclin\'e avant/apr\`es taxe PV~2026}
-\end{tabular}
-\end{tcolorbox}
 
 \vspace{5pt}
 
-\begin{tcolorbox}[inlinebox]
+\small\textbf{Compte-titres (CT)}~: valeurs mobili\`eres d\'etenues
+directement~; aucune r\'eduction fiscale~; frais nuls via n\'eocourtier.
+\end{tcolorbox}
+
+\vspace{10pt}
+
+% Methodologie
+\begin{tcolorbox}[sectionbox, title=M\'ethodologie]
+\small 5\,016 combinaisons~: \^age (18--55~ans) $\times$ rendement
+(0--10\,\%) $\times$ versement (1~\euro{} $\to$ plafond) $\times$ sc\'enario.
+
+\vspace{7pt}
+
+\begin{tcolorbox}[inlinebox,top=5pt,bottom=5pt]
 \small
-\textbf{Capital Final Net (CFN) --- crit\`ere unique.}
-Tous les flux sont ramen\'es \`a la date~$t\,{=}\,65$~ans par
-capitalisation au taux OLO belge net de pr\'ecompte (30\,\%)
---- courbe BNB au 30~avril~2026~:
+\begin{tabular}{@{}>{\bfseries}p{2.2cm}p{3.2cm}p{3.2cm}@{}}
+& \textbf{B23} & \textbf{CT} \\
+\midrule
+Sc\'en.~A & frais nuls & frais nuls \\
+Sc\'en.~B & frais r\'eels & frais nuls \\
+Sc\'en.~C & frais r\'eels & cal. sur B23 \\
+\multicolumn{3}{@{}l}{\footnotesize + avant / apr\`es taxe PV 2026}
+\end{tabular}
+\end{tcolorbox}
+
+\vspace{7pt}
+
+\begin{tcolorbox}[inlinebox]
+\small\textbf{Capital Final Net (CFN) --- crit\`ere unique.}
+Tous les flux capitalis\'es \`a $t = 65$~ans au taux OLO belge
+net de pr\'ecompte (30\,\%) --- courbe BNB au 30~avr.~2026~:
 \begin{equation*}
 \text{CFN} = C_N^{\text{net}}
 \;\pm\;\textstyle\sum\nolimits_t
@@ -183,267 +182,245 @@ capitalisation au taux OLO belge net de pr\'ecompte (30\,\%)
 \end{equation*}
 \end{tcolorbox}
 
-\vspace{5pt}
+\vspace{7pt}
 
-\textbf{Heatmaps 2D}~: axe~X\,=\,rendement (0--10\,\%),
-axe~Y\,=\,\^age de d\'ebut (18--55~ans).
+\small\textbf{Heatmaps 2D}~:
+axe~X\,=\,rendement, axe~Y\,=\,\^age de d\'ebut.
 \textcolor{b23color}{\textbf{Bleu}}\,=\,B23 dominante,
 \textcolor{ctcolor}{\textbf{Vert}}\,=\,CT dominant~;
-intensit\'e\,=\,force de dominance. Seuils de croisement ($v^*$)
-annot\'es dans les cellules.
+intensit\'e\,=\,force de dominance.
 
 \end{tcolorbox}
-\end{minipage}
 
-% ================================================================
-% PAGE 2 : Resultats ELT vs CT
-% ================================================================
-\newpage
+\end{minipage}%
+\hspace{0.010\textwidth}%
+% ----------------------------------------------------------------
+\begin{minipage}[t]{\coltwo}
 
 \begin{tcolorbox}[pagehead]
 \centering\large\bfseries\color{white}
 R\'esultats --- \'Epargne \`a long terme (ELT) vs Compte-titres (CT)
-\par\vspace{3pt}
+\par\vspace{4pt}
 \small\color{white}
-\textcolor{b23color!70!white}{\rule{8pt}{7pt}}~ELT dominante
-\quad\textcolor{ctcolor!70!white}{\rule{8pt}{7pt}}~CT dominant
-\quad Intensit\'e\,=\,force de dominance
-\quad Axe~X\,=\,rendement brut (0--10\,\%),
+\textcolor{b23color!70!white}{\rule{14pt}{12pt}}~ELT dominante
+\quad\textcolor{ctcolor!70!white}{\rule{14pt}{12pt}}~CT dominant
+\quad Axe~X\,=\,rendement (0--10\,\%),
       axe~Y\,=\,\^age de d\'ebut (18--55~ans)
 \end{tcolorbox}
 
-\vspace{6pt}
+\vspace{7pt}
 
 \noindent
-\begin{minipage}{0.317\textwidth}\centering\small
-\textbf{Sc\'enario~A --- Frais nuls}\\
+\begin{minipage}{0.317\coltwo}\centering\small
+\textbf{Sc\'en.~A --- Frais nuls}\\
 {\footnotesize effet fiscal pur}
 \end{minipage}%
 \hfill
-\begin{minipage}{0.317\textwidth}\centering\small
-\textbf{Sc\'enario~B --- Frais r\'ealistes}\\
+\begin{minipage}{0.317\coltwo}\centering\small
+\textbf{Sc\'en.~B --- Frais r\'ealistes}\\
 {\footnotesize CT\,=\,0\,\%~; B23\,=\,2,83\,\%\,+\,2,34\,\%/an}
 \end{minipage}%
 \hfill
-\begin{minipage}{0.317\textwidth}\centering\small
-\textbf{Sc\'enario~C --- Frais major\'es}\\
-{\footnotesize CT calqu\'e sur B23 (\'egalisation)}
+\begin{minipage}{0.317\coltwo}\centering\small
+\textbf{Sc\'en.~C --- Frais \'egalis\'es}\\
+{\footnotesize CT calqu\'e sur B23}
 \end{minipage}
 
+\vspace{5pt}
+\noindent\small\textbf{\textcolor{darkblue}{Sans taxe PV (avant 2026)}}
 \vspace{4pt}
 
-\noindent\small\textbf{\textcolor{darkblue}{%
-Sans taxe sur les plus-values (r\'egime avant 2026)}}
-
-\vspace{3pt}
-
 \noindent
-\begin{minipage}{0.317\textwidth}
+\begin{minipage}{0.317\coltwo}
 \includegraphics[width=\linewidth]{media/elt_frais_0_sans_taxe.png}
 \end{minipage}%
 \hfill
-\begin{minipage}{0.317\textwidth}
+\begin{minipage}{0.317\coltwo}
 \includegraphics[width=\linewidth]{media/elt_frais_reel_sans_taxe.png}
 \end{minipage}%
 \hfill
-\begin{minipage}{0.317\textwidth}
+\begin{minipage}{0.317\coltwo}
 \includegraphics[width=\linewidth]{media/elt_frais_majore_sans_taxe.png}
 \end{minipage}
 
-\vspace{6pt}
-
-\noindent\small\textbf{\textcolor{darkblue}{%
-Avec taxe sur les plus-values de 10\,\% (r\'egime 2026)}}
-
-\vspace{3pt}
+\vspace{7pt}
+\noindent\small\textbf{\textcolor{darkblue}{Avec taxe PV de 10\,\% (r\'egime 2026)}}
+\vspace{4pt}
 
 \noindent
-\begin{minipage}{0.317\textwidth}
+\begin{minipage}{0.317\coltwo}
 \includegraphics[width=\linewidth]{media/elt_frais_0_avec_taxe.png}
 \end{minipage}%
 \hfill
-\begin{minipage}{0.317\textwidth}
+\begin{minipage}{0.317\coltwo}
 \includegraphics[width=\linewidth]{media/elt_frais_reel_avec_taxe.png}
 \end{minipage}%
 \hfill
-\begin{minipage}{0.317\textwidth}
+\begin{minipage}{0.317\coltwo}
 \includegraphics[width=\linewidth]{media/elt_frais_majore_avec_taxe.png}
 \end{minipage}
 
-\vspace{8pt}
+\vspace{9pt}
 
 \noindent
-\begin{minipage}[t]{0.317\textwidth}
+\begin{minipage}[t]{0.317\coltwo}
 \begin{tcolorbox}[resultsbox]
-\textbf{Sc\'en.~A --- Frais nuls}
+\textbf{Sc\'en.~A}
 
 \textbf{ELT domine} presque partout~: r\'eduction fiscale
-(max 735~€/an) > co\^uts r\'esiduels (TOA~2\,\%,
-taxe anticipative~10\,\%).
+(max 735~\euro/an) > co\^uts r\'esiduels
+(TOA~2\,\%, taxe anticip.~10\,\%).
 CT r\'esiste~: rendements \'elev\'es + horizons longs.
 Avec taxe PV~2026~: CT repli\'e sur versements tr\`es faibles.
 \end{tcolorbox}
 \end{minipage}%
 \hfill
-\begin{minipage}[t]{0.317\textwidth}
+\begin{minipage}[t]{0.317\coltwo}
 \begin{tcolorbox}[resultsbox]
-\textbf{Sc\'en.~B --- Cas central}
+\textbf{Sc\'en.~B}
 
-\textbf{CT domine}~: frais ELT (TOA~2\,\% + 2,83\,\% entr\'ee
-+ 2,34\,\%/an) absorbent l'avantage fiscal (max 735~€/an).
+\textbf{CT domine}~: frais ELT (TOA~2\,\% + 2,83\,\%
++ 2,34\,\%/an) absorbent l'avantage fiscal (max 735~\euro/an).
 ELT r\'esiste~: rendements faibles + horizons courts.
-\textbf{Taxe PV~2026~: aucun effet} --- seuil 15\,000~€
-rarement atteint.
+\textbf{Taxe PV~2026~: aucun effet} (seuil 15\,000~\euro).
 \end{tcolorbox}
 \end{minipage}%
 \hfill
-\begin{minipage}[t]{0.317\textwidth}
+\begin{minipage}[t]{0.317\coltwo}
 \begin{tcolorbox}[resultsbox]
-\textbf{Sc\'en.~C --- Frais \'egalis\'es}
+\textbf{Sc\'en.~C}
 
 Zones ELT \'elargies~: avantage fiscal > CT
 aux rendements mod\'er\'es.
-CT conserve l'avantage~: rendements \'elev\'es + horizons longs
-(frais pr\'elev\'es \textit{hors} portefeuille~:
-base de capitalisation int\'egrale pr\'eserv\'ee).
-Taxe PV~2026~: r\'etr\'ecit les zones CT sans les supprimer.
+CT conserve l'avantage~: rendements \'elev\'es +
+horizons longs (frais hors portefeuille).
+Taxe PV~2026~: r\'etr\'ecit zones CT.
 \end{tcolorbox}
 \end{minipage}
 
-% ================================================================
-% PAGE 3 : Resultats EP vs CT
-% ================================================================
-\newpage
+\end{minipage}%
+\hspace{0.010\textwidth}%
+% ----------------------------------------------------------------
+\begin{minipage}[t]{\colthree}
 
 \begin{tcolorbox}[pagehead]
 \centering\large\bfseries\color{white}
 R\'esultats --- \'Epargne-pension (EP) vs Compte-titres (CT)
-\par\vspace{3pt}
+\par\vspace{4pt}
 \small\color{white}
-\textcolor{b23color!70!white}{\rule{8pt}{7pt}}~EP dominante
-\quad\textcolor{ctcolor!70!white}{\rule{8pt}{7pt}}~CT dominant
-\quad Intensit\'e\,=\,force de dominance
-\quad Axe~X\,=\,rendement brut (0--10\,\%),
+\textcolor{b23color!70!white}{\rule{14pt}{12pt}}~EP dominante
+\quad\textcolor{ctcolor!70!white}{\rule{14pt}{12pt}}~CT dominant
+\quad Axe~X\,=\,rendement (0--10\,\%),
       axe~Y\,=\,\^age de d\'ebut (18--55~ans)
 \end{tcolorbox}
 
-\vspace{6pt}
+\vspace{7pt}
 
 \noindent
-\begin{minipage}{0.317\textwidth}\centering\small
-\textbf{Sc\'enario~A --- Frais nuls}\\
+\begin{minipage}{0.317\colthree}\centering\small
+\textbf{Sc\'en.~A --- Frais nuls}\\
 {\footnotesize effet fiscal pur}
 \end{minipage}%
 \hfill
-\begin{minipage}{0.317\textwidth}\centering\small
-\textbf{Sc\'enario~B --- Frais r\'ealistes}\\
+\begin{minipage}{0.317\colthree}\centering\small
+\textbf{Sc\'en.~B --- Frais r\'ealistes}\\
 {\footnotesize CT\,=\,0\,\%~; EP\,=\,2,83\,\%\,+\,2,34\,\%/an}
 \end{minipage}%
 \hfill
-\begin{minipage}{0.317\textwidth}\centering\small
-\textbf{Sc\'enario~C --- Frais major\'es}\\
-{\footnotesize CT calqu\'e sur EP (\'egalisation)}
+\begin{minipage}{0.317\colthree}\centering\small
+\textbf{Sc\'en.~C --- Frais \'egalis\'es}\\
+{\footnotesize CT calqu\'e sur EP}
 \end{minipage}
 
+\vspace{5pt}
+\noindent\small\textbf{\textcolor{darkblue}{Sans taxe PV (avant 2026)}}
 \vspace{4pt}
 
-\noindent\small\textbf{\textcolor{darkblue}{%
-Sans taxe sur les plus-values (r\'egime avant 2026)}}
-
-\vspace{3pt}
-
 \noindent
-\begin{minipage}{0.317\textwidth}
+\begin{minipage}{0.317\colthree}
 \includegraphics[width=\linewidth]{media/ep_frais_0_sans_taxe.png}
 \end{minipage}%
 \hfill
-\begin{minipage}{0.317\textwidth}
+\begin{minipage}{0.317\colthree}
 \includegraphics[width=\linewidth]{media/ep_frais_reel_sans_taxe.png}
 \end{minipage}%
 \hfill
-\begin{minipage}{0.317\textwidth}
+\begin{minipage}{0.317\colthree}
 \includegraphics[width=\linewidth]{media/ep_frais_majore_sans_taxe.png}
 \end{minipage}
 
-\vspace{6pt}
-
-\noindent\small\textbf{\textcolor{darkblue}{%
-Avec taxe sur les plus-values de 10\,\% (r\'egime 2026)}}
-
-\vspace{3pt}
+\vspace{7pt}
+\noindent\small\textbf{\textcolor{darkblue}{Avec taxe PV de 10\,\% (r\'egime 2026)}}
+\vspace{4pt}
 
 \noindent
-\begin{minipage}{0.317\textwidth}
+\begin{minipage}{0.317\colthree}
 \includegraphics[width=\linewidth]{media/ep_frais_0_avec_taxe.png}
 \end{minipage}%
 \hfill
-\begin{minipage}{0.317\textwidth}
+\begin{minipage}{0.317\colthree}
 \includegraphics[width=\linewidth]{media/ep_frais_reel_avec_taxe.png}
 \end{minipage}%
 \hfill
-\begin{minipage}{0.317\textwidth}
+\begin{minipage}{0.317\colthree}
 \includegraphics[width=\linewidth]{media/ep_frais_majore_avec_taxe.png}
 \end{minipage}
 
-\vspace{8pt}
+\vspace{9pt}
 
 \noindent
-\begin{minipage}[t]{0.317\textwidth}
+\begin{minipage}[t]{0.317\colthree}
 \begin{tcolorbox}[resultsbox]
-\textbf{Sc\'en.~A --- Frais nuls}
+\textbf{Sc\'en.~A}
 
-\textbf{EP domine} plus largement qu'ELT~: pas de TOA,
-taxe anticipative~8\,\% (vs~10\,\%),
-r\'eduction 30\,\% jusqu'\`a 1\,050~€/an.
+\textbf{EP domine} plus qu'ELT~: pas de TOA,
+taxe anticipative 8\,\% (vs~10\,\%),
+r\'eduction 30\,\% jusqu'\`a 1\,050~\euro/an.
 CT r\'esiste~: rendements \'elev\'es + horizons longs.
 Avec taxe PV~2026~: EP quasi-total.
 \end{tcolorbox}
 \end{minipage}%
 \hfill
-\begin{minipage}[t]{0.317\textwidth}
+\begin{minipage}[t]{0.317\colthree}
 \begin{tcolorbox}[resultsbox]
-\textbf{Sc\'en.~B --- Cas central}
+\textbf{Sc\'en.~B}
 
 \textbf{CT domine} (m\^eme logique qu'ELT).
-Sp\'ecificit\'e EP~: seuil de croisement \`a \textbf{1\,050~€/an}
-(30\,\% $\to$ 25\,\%~: gain fiscal insuffisant au-del\`a).
+Sp\'ecificit\'e~: seuil \`a \textbf{1\,050~\euro/an}
+(30\,\% $\to$ 25\,\%~: gain insuffisant au-del\`a).
 EP r\'esiste~: rendements faibles + horizons courts.
 Taxe PV~2026~: aucun seuil d\'eplac\'e.
 \end{tcolorbox}
 \end{minipage}%
 \hfill
-\begin{minipage}[t]{0.317\textwidth}
+\begin{minipage}[t]{0.317\colthree}
 \begin{tcolorbox}[resultsbox]
-\textbf{Sc\'en.~C --- Frais \'egalis\'es}
+\textbf{Sc\'en.~C}
 
 Zones EP plus \'etendues qu'ELT
-(pas de TOA, taxe anticipative~8\,\%).
-EP s'impose aux rendements mod\'er\'es.
-CT conserve l'avantage~: rendements \'elev\'es + horizons longs
-(m\^eme avantage structurel de capitalisation).
+(pas de TOA, taxe anticipative 8\,\%).
+EP domine aux rendements mod\'er\'es.
+CT conserve l'avantage~: rendements \'elev\'es
++ horizons longs.
 \end{tcolorbox}
 \end{minipage}
 
-\vspace{10pt}
+\vspace{12pt}
 
-\begin{tcolorbox}[highlightbox,width=\textwidth]
+\begin{tcolorbox}[highlightbox]
 \small
 \textbf{Enseignement principal~:} aucun v\'ehicule n'est
-uniform\'ement sup\'erieur~; la hi\'erarchie d\'epend des param\`etres.
-Dans le sc\'enario r\'ealiste, \textbf{les frais r\'ecurrents} de la
-branche~23 (2,83\,\% \`a l'entr\'ee + 2,34\,\%/an) absorbent
-largement l'avantage fiscal (max 735~€/an ELT, max 315--338~€/an EP)~:
-le CT domine. La taxe sur les plus-values de~2026 (10\,\%,
-applicable au-del\`a de 15\,000~€ de plus-values) \'erode la
-rentabilit\'e du CT sans renverser la hi\'erarchie dans ce
-sc\'enario. En revanche, lorsque les frais sont ma\^{\i}tris\'es
-(sc\'en.~A) ou \'egalis\'es (sc\'en.~C), EP et ELT redeviennent
-comp\'etitifs~: l'avantage fiscal l'emporte. Ce sont donc les
-\textbf{frais, plus que la structure fiscale}, qui d\'eterminent le
-r\'esultat. Les contenus recommandant le CT restent fond\'es dans
-leurs conclusions, mais pour la \textit{bonne} raison~: non pas un
-rendement sup\'erieur, mais des \textbf{frais structurellement
-inf\'erieurs}.
+uniform\'ement sup\'erieur. Dans le sc\'enario r\'ealiste,
+\textbf{les frais r\'ecurrents} (2,83\,\% + 2,34\,\%/an)
+absorbent l'avantage fiscal
+(max 735~\euro/an ELT, 315--338~\euro/an EP)~: CT domine.
+La taxe PV~2026 (seuil 15\,000~\euro) n'inverse pas la hi\'erarchie.
+\`A frais ma\^{\i}tris\'es (sc\'en.~A) ou \'egalis\'es (sc\'en.~C)~:
+EP et ELT redeviennent comp\'etitifs.
+Ce sont les \textbf{frais, plus que la fiscalit\'e},
+qui d\'eterminent le r\'esultat.
 \end{tcolorbox}
+
+\end{minipage}
 
 \end{document}
