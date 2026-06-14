@@ -102,10 +102,8 @@ modifie-t-elle cette hiérarchie ?
 \begin{itemize}[leftmargin=*,label=\textcolor{darkblue}{\textbullet},itemsep=2pt]
   \item Cr\'eateurs de contenu~:
     recommandent le CT, concluent que l'assurance vie est trop ch\`ere.
-  \item Biais~: rendement CT (8\,\%) $\neq$ rendement B23 (4\,\%)
-    dans leurs mod\`eles --- la conclusion refl\`ete
-    \textbf{l'hypoth\`ese}, pas le v\'ehicule.
-  \item Ce travail~: \textbf{rendement identique} pour les
+  \item Biais~: rendement différents dans leurs explications.
+  \item Ce travail~: rendement identique pour les
     trois enveloppes --- seuls les co\^uts et la fiscalit\'e diff\`erent.
   \item R\'eforme 2026~: taxe PV~10\,\% sur CT uniquement~;
     EP et ELT explicitement exclus --- asym\'etrie in\'edite.
@@ -146,12 +144,34 @@ Taxe PV (2026) & --- & --- & 10\,\% \\
 \textbf{Simulation d\'eterministe}
 --- $38\times11\times4\times3 = 5\,016$ combinaisons
 
-\begin{itemize}[leftmargin=*,label=\textcolor{darkblue}{\textbullet},itemsep=2pt]
-  \item \^Age de d\'ebut : 18 \`a 55~ans ; rendement : 0 \`a 10\,\%
-  \item 3~sc\'en. de frais~: A (nuls), B (r\'ealistes), C (\'egalis\'es)
-  \item 4~sc\'en. fiscaux~: EP/ELT $\times$ avant/apr\`es taxe PV
-  \item Plage de versements de~1\,€ au plafond l\'egal
-\end{itemize}
+\vspace{3pt}
+
+\begin{tcolorbox}[inlinebox,top=4pt,bottom=4pt]
+\small\textbf{Commun aux 3 sc\'enarios}\\[2pt]
+\begin{tabular}{@{}ll@{}}
+  Actif sous-jacent & ETF actions accumulant \\
+  Rendement brut & identique (0--10\,\%) \\
+  \^Age de d\'ebut & 18--55~ans \\
+  Versement annuel & 1~€ $\to$ plafond l\'egal \\
+  Crit\`ere & CFN \`a 65~ans (taux OLO net) \\
+\end{tabular}
+\end{tcolorbox}
+
+\vspace{3pt}
+
+\begin{tcolorbox}[inlinebox,top=4pt,bottom=4pt]
+\small\textbf{Ce qui varie selon le sc\'enario}\\[2pt]
+\begin{tabular}{@{}>{\bfseries\small}p{1.1cm}
+                >{\small}p{2.2cm}
+                >{\small}p{2.2cm}@{}}
+  & \textbf{B23 (EP/ELT)} & \textbf{CT} \\
+\midrule
+Sc\'en.~A & frais nuls & frais nuls \\
+Sc\'en.~B & frais r\'eels (FSMA) & frais nuls \\
+Sc\'en.~C & frais r\'eels (FSMA) & frais calqu\'es sur B23 \\
+\multicolumn{3}{@{}l}{\footnotesize + d\'eclin\'e avant/apr\`es taxe PV~2026}
+\end{tabular}
+\end{tcolorbox}
 
 \vspace{5pt}
 
