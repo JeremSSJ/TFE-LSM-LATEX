@@ -107,18 +107,23 @@ les primes sont investies dans des fonds.
 \vspace{10pt}
 
 \begin{tcolorbox}[sectionbox, title=Contexte et objectif]
-L'essor de l'investissement passif --- n\'eocourtiers \`a frais tr\`es faibles
-et ETF indiciels accumulants --- popularise la strat\'egie \textit{buy and hold}
-pour la retraite. De nombreux cr\'eateurs de contenu comparent cette approche
-avec d'autres v\'ehicules comme l'assurance-vie et concluent syst\'ematiquement
-\`a la sup\'eriorit\'e de l'ETF via compte-titres. Ces comparaisons pr\'esentent
-pourtant un biais~: elles attribuent des rendements diff\'erents aux v\'ehicules
-(ex. 8\,\% pour l'ETF, 4\,\% pour l'assurance-vie), \'evaluant ainsi l'actif
-sous-jacent plut\^ot que le v\'ehicule lui-m\^eme. Ce travail impose le m\^eme
-rendement brut pour tous les v\'ehicules --- seuls les co\^uts et la fiscalit\'e
-diff\`erent. Enfin, la r\'eforme de 2026 introduit
-une taxe PV de 10\,\% (avec exonération de maximum 15\,000\,\euro{}) sur le CT, dont l'EP et l'ELT sont explicitement exclus,
-cr\'eant une asym\'etrie nouvelle \`a \'evaluer.
+Ce travail est pertinent dans le contexte actuel car l'essor des ETF et des
+n\'eocourtiers a popularis\'e l'investissement passif pour la retraite, mais
+les comparaisons avec les produits d'assurance-vie reposent souvent sur des
+hypoth\`eses de rendement diff\'erentes, en attribuant notamment un rendement
+plus \'elev\'e aux comptes-titres, ce qui biaise les conclusions en leur faveur.
+
+\vspace{8pt}
+
+Ce travail propose une comparaison plus \'equitable en supposant un m\^eme
+rendement brut pour tous les v\'ehicules, dans la mesure o\`u ceux-ci peuvent
+en r\'ealit\'e obtenir des rendements similaires.
+
+\vspace{8pt}
+
+Enfin, la r\'eforme de 2026 introduit une taxe PV de 10\,\% sur le CT~;
+l'EP et l'ELT sont explicitement exclus, cr\'eant une nouvelle asym\'etrie
+\`a \'evaluer.
 \end{tcolorbox}
 
 \end{minipage}%
@@ -130,25 +135,21 @@ cr\'eant une asym\'etrie nouvelle \`a \'evaluer.
 \begin{tcolorbox}[sectionbox, before skip=0pt, title=M\'ethodologie]
 \textbf{Approche~: simulation d\'eterministe.}
 
-\textbf{Crit\`ere unique de comparaison~: Capital Final Net (CFN) à 65 ans.}
+\textbf{Crit\`ere unique de comparaison~: Capital Final Net (CFN)}
 
 \vspace{6pt}
 
-\begin{tcolorbox}[inlinebox]
-\begin{tabular}{@{}ll@{}}
-  \'Age de d\'ebut         & 18 \`a 55~ans (38 profils) \\[3pt]
-  Rendement annuel brut   & 0 \`a 10\,\% (pas de 1\,\%) \\[3pt]
-  Versement annuel        & 1~\euro{} jusqu'au plafond fiscal \\[3pt]
-  Sc\'enarios             & 3 sc\'enarios de frais $\times$ 4 sc\'enarios fiscaux \\
-\end{tabular}
-\end{tcolorbox}
+\textbf{Principales hypoth\`eses~:}
+\begin{itemize}[leftmargin=*,label=\textcolor{darkblue}{\textbullet},itemsep=4pt]
+  \item Age de la retraite fixé à 65~ans
+  \item Rendements bruts constants et identiques
+  \item Versements annuels constants et identiques 
+  \item Portefeuille int\'egralement investi en ETF accumulants
+    (pas de fiscalit\'e sur les dividendes)
+  \item Aucun rachat anticip\'e~
+\end{itemize}
 
 \vspace{6pt}
-
-\smallskip
-\textbf{Sc\'enarios de frais}
-(r\'esultats pr\'esent\'es~: sc\'enario~B uniquement)~:
-\vspace{4pt}
 
 \begin{tcolorbox}[inlinebox]
 \begin{tabular}{@{}>{\bfseries}p{2.4cm}p{9.0cm}p{9.0cm}@{}}
@@ -163,15 +164,16 @@ Sc\'en.~C & Frais moyens de march\'e & Frais transpos\'es d'assurance-vie \\
 
 \vspace{6pt}
 
-\textbf{Principales hypoth\`eses~:}
-\begin{itemize}[leftmargin=*,label=\textcolor{darkblue}{\textbullet},itemsep=4pt]
-  \item Rendement brut \textbf{constant et identique} pour les deux v\'ehicules compar\'es
-  \item Versements annuels constants
-  \item Portefeuille int\'egralement investi en \textbf{ETF accumulants}
-    (pas de fiscalit\'e sur les dividendes)
-  \item Horizon fixe \`a 65~ans
-  \item Aucun rachat anticip\'e~
-\end{itemize}
+\smallskip
+
+\begin{tcolorbox}[inlinebox]
+\begin{tabular}{@{}ll@{}}
+  \'Age de d\'ebut         & 18 \`a 55~ans (38 profils) \\[3pt]
+  Rendement annuel brut   & 0 \`a 10\,\% (pas de 1\,\%) \\[3pt]
+  Versement annuel        & 1~\euro{} jusqu'au plafond fiscal \\[3pt]
+  Sc\'enarios             & 3 sc\'enarios de frais $\times$ 4 sc\'enarios fiscaux \\
+\end{tabular}
+\end{tcolorbox}
 
 \vspace{8pt}
 
