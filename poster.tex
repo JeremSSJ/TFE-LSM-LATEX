@@ -79,10 +79,13 @@
 \begin{tcolorbox}[highlightbox]
 \centering
 \textbf{Question de recherche}\\[5pt]
-En 2026, en Belgique, dans une d\'emarche d'investissement personnel visant la retraite,
-lequel de l'EP, de l'ELT ou du CT procure le
-\textbf{capital final net le plus \'elev\'e \`a 65~ans}~?
-La taxe sur les plus-values de 2026 modifie-t-elle cette hi\'erarchie~?
+En 2026, en Belgique, dans une démarche d'investissement personnel
+visant la constitution d'un capital en vue de la retraite, lequel de l'épargne-pension, 
+de l'épargne à long terme ou
+du compte-titres offre le capital final net
+le plus élevé, et dans quelle mesure la
+taxe sur les plus-values de 2026
+modifie-t-elle cette hiérarchie ?
 \end{tcolorbox}
 
 \vspace{12pt}
@@ -94,21 +97,18 @@ La taxe sur les plus-values de 2026 modifie-t-elle cette hi\'erarchie~?
 \begin{minipage}[t]{0.390\textwidth}
 \vspace*{0pt}
 
-\begin{tcolorbox}[sectionbox, title=V\'ehicules compar\'es, before skip=0pt]
-\textbf{ETF}~: Fonds indiciel cot\'e r\'epliquant un indice boursier
-(ex. S\&P~500, MSCI World). Accessible en CT et via certains contrats B23.
+\begin{tcolorbox}[sectionbox, title=Définitions préalables, before skip=0pt]
 
-\smallskip
-\textbf{Branche~23 (B23)}~: Assurance-vie li\'ee \`a des fonds~;
-les primes sont investies dans des OPC apr\`es d\'eduction des taxes et
-chargements. Le capital final d\'epend de la performance des actifs~;
+\textbf{Branche~23 (B23)}~: Assurance-vie dont
+les primes sont investies dans des fonds apr\`es d\'eduction des taxes et
+frais. Le capital final d\'epend de la performance des actifs~;
 le risque financier est support\'e par l'assur\'e.
 
 \smallskip
 \textbf{\'Epargne-pension (EP)}~: Enveloppe fiscale B23.
 R\'eduction d'imp\^ot 30\,\% ($\leq$1\,050~\euro{})
 ou 25\,\% ($\leq$1\,350~\euro{}).
-Taxe anticipative 8\,\% \`a 60~ans. Exon\'er\'ee de la TOA.
+Taxe anticipative 8\,\% \`a 60~ans.
 
 \smallskip
 \textbf{\'Epargne \`a long terme (ELT)}~: Enveloppe fiscale B23.
@@ -117,8 +117,12 @@ TOA 2\,\%. Taxe anticipative 10\,\% \`a 60~ans.
 
 \smallskip
 \textbf{Compte-titres (CT)}~: D\'etention directe de valeurs mobili\`eres.
-Aucune enveloppe fiscale. TOB 0,12\,\% par transaction.
-Depuis 2026~: taxe PV 10\,\% (exon\'eration $\leq$15\,000~\euro{}).
+Aucune enveloppe fiscale.
+
+\smallskip
+\textbf{ETF}~: Fonds indiciel cot\'e r\'epliquant un indice boursier
+(ex. S\&P~500, MSCI World). Accessible en CT et via certains contrats B23.
+
 \end{tcolorbox}
 
 \vspace{10pt}
@@ -162,15 +166,11 @@ asym\'etrie nouvelle \`a \'evaluer.
 \textbf{Crit\`ere unique~: Capital Final Net (CFN) \`a 65~ans.}
 Les flux annexes (\'economies fiscales, frais, taxes) sont
 capitalis\'es \`a l'\'ech\'eance au taux OLO belge net de
-pr\'ecompte mobilier (30\,\%) --- courbe BNB au 30~avr.~2026~:
-\begin{equation*}
-\text{CFN} = C_N^{\text{net}}
-\;\pm\;\textstyle\sum\nolimits_t
-\text{Flux}_t \cdot (1 + r_{\text{OLO}})^{n-t}
-\end{equation*}
+pr\'ecompte mobilier (30\,\%), proxy du taux sans risque.
 
 \vspace{6pt}
 
+\smallskip
 \textbf{Sc\'enarios de frais}
 (r\'esultats pr\'esent\'es~: sc\'enario~B uniquement)~:
 \vspace{4pt}
@@ -195,21 +195,11 @@ Sc\'en.~C & 2,83\,\% + 2,34\,\%/an & 2,83\,\% + 2,34\,\%/an \\
   \item Portefeuille int\'egralement investi en \textbf{ETF accumulants}
     (pas de fiscalit\'e sur les dividendes)
   \item R\'eduction d'imp\^ot d\'eclar\'ee syst\'ematiquement chaque ann\'ee
-  \item Flux annexes certains~: taux OLO = proxy du taux sans risque
-  \item TOB au taux de 0,12\,\% (ETF inscrit FSMA ou r\'egulateur EEE)
   \item Fiscalit\'e fig\'ee au 30~avril~2026~; horizon fixe \`a 65~ans
   \item Aucun rachat anticip\'e~; versements non interrompus
 \end{itemize}
 
 \vspace{8pt}
-
-\textbf{Lecture des heatmaps}~:
-axe~X\,=\,rendement (0--10\,\%), axe~Y\,=\,\^age de d\'ebut (18--55~ans).
-\textcolor{b23color}{\textbf{Bleu}}\,=\,B23 dominante,
-\textcolor{ctcolor}{\textbf{Vert}}\,=\,CT dominant~;
-intensit\'e\,=\,force de dominance.
-Un \textbf{seuil annot\'e} indique le versement de croisement
-lorsque la hi\'erarchie s'inverse au sein d'une cellule.
 
 \end{tcolorbox}
 
